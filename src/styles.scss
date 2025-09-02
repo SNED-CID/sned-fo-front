@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+@use "tailwindcss";
+
+:root {
+  --sned-blue: #139dcc;
+  --sned-orange: #f89851;
+
+  --sned-blue-light: #4bbbe0;
+  --sned-blue-dark: #0e6f94;
+
+  --sned-orange-light: #fbb98b;
+  --sned-orange-dark: #d16d28;
+}
+
+.sidebar-scroll {
+  -webkit-overflow-scrolling: touch; /* fluide iOS */
+  overscroll-behavior: contain;     /* évite de propager vers le body */
+  max-height: 100%;                 /* indispensable pour activer scroll interne */
+}
+
