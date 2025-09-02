@@ -51,7 +51,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       items: [
         {
           label: 'SNED',
-          route: '/sned'
+          route: '/'
         },
         {
           label: 'Projet de Liaison fixe',
@@ -79,6 +79,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
         },
         {
           label: 'Partenariats',
+          route: '/partenariat'
         },
         {
           label: 'Notre Travail',

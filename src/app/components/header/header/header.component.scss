@@ -1,0 +1,7 @@
+.active-link {
+  position: relative;
+}
+
+.active-link > span {
+  transform: scaleX(1) !important;
+}

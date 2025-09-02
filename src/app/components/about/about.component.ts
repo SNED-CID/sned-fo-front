@@ -22,57 +22,68 @@ interface Section {
     <section class="py-16 bg-gray-50">
       <div class="max-w-6xl mx-auto px-6 lg:px-12 space-y-20">
         <div *ngFor="let section of sections; let i = index"
-             class="grid md:grid-cols-2 gap-10 items-center">
+             class="grid md:grid-cols-2 gap-10">
 
           <!-- Image -->
-          <div class="relative" [id]="section.id"
+          <div class="flex items-center relative"
+               [id]="section.id"
                [ngClass]="{ 'order-first md:order-last': i % 2 === 1 }">
+
             <img [src]="section.image"
                  [alt]="section.title"
-                 class="rounded-2xl shadow-lg w-3/4 mx-auto h-auto object-contain" />
+                 class="rounded-2xl shadow-lg w-3/4 h-auto object-contain"
+                 [ngClass]="{ 'mr-auto': i % 2 === 0, 'ml-auto': i % 2 === 1 }" />
+
           </div>
 
+
           <!-- Texte -->
-          <div>
-            <h2 class="text-3xl font-bold text-primary mb-6">
-              {{ section.title }}
-            </h2>
-            <p class="text-gray-700 mb-6 line-clamp-3">
-              {{ section.short }}
-            </p>
-            <app-read-more
-              [imageUrl]="section.image"
-              [label]="'Lire la suite'"
-              [title]="section.title"
-              [fullText]="section.full">
-            </app-read-more>
+          <div class="flex items-center">
+            <div>
+              <h2 class="text-3xl font-bold text-primary mb-6">
+                {{ section.title }}
+              </h2>
+              <p class="text-gray-700 mb-6 line-clamp-3">
+                {{ section.short }}
+              </p>
+              <app-read-more
+                [imageUrl]="section.image"
+                [label]="'Lire la suite'"
+                [title]="section.title"
+                [fullText]="section.full">
+              </app-read-more>
+            </div>
           </div>
         </div>
+
       </div>
     </section>
 
-    <!-- Organigramme -->
-    <div class="py-16 bg-gray-50 text-center">
-      <h2 class="text-3xl font-bold text-primary mb-6">
-        Organigramme
-      </h2>
-      <div id="orga">
-        <img src="assets/images/orga.png"
-             alt="organigramme" class="mb-8 rounded-lg shadow-md w-3/4 mx-auto h-auto" />
+    <div class="bg-gray-50">
+      <div class="w-3/4 mx-auto">
+        <h2 class="text-3xl font-bold text-primary mb-6 text-left">
+          Organigramme
+        </h2>
+
+        <div id="orga">
+          <img src="assets/images/orga.png"
+               alt="organigramme"
+               class="mb-8 rounded-lg shadow-md w-full h-auto" />
+        </div>
       </div>
 
       <!-- Intervenants -->
-      <section class="py-16 bg-gray-50">
-        <div class="max-w-6xl mx-auto px-6 lg:px-12">
-          <div class="relative bg-white rounded-2xl shadow-lg overflow-hidden">
+      <section class=" bg-gray-50">
+        <div class="w-3/4 mx-auto"> <!-- même largeur que l'image -->
+          <h2 class="text-3xl font-bold text-primary mb-6 text-left">
+            Les Intervenants
+          </h2>
 
+          <div class="relative bg-white rounded-2xl shadow-lg overflow-hidden">
             <!-- Trait coloré en haut -->
             <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 to-orange-500"></div>
 
             <div class="p-10 space-y-6 text-left">
-              <h2 class="text-3xl font-bold text-primary mb-8 text-center">
-                Les Intervenants
-              </h2>
 
               <div class="space-y-4 text-gray-700 leading-relaxed">
                 <p><strong>Comité Mixte Intergouvernemental :</strong>
@@ -130,7 +141,7 @@ interface Section {
     <!-- Bouton Retour en haut -->
     <button *ngIf="showScrollTop"
             (click)="scrollToTop()"
-            class="fixed bottom-6 right-6 p-3 rounded-full shadow-lg bg-[var(--sned-orange)] text-white hover:bg-[var(--sned-orange-dark)] transition">
+            class="cursor-pointer fixed bottom-6 right-6 p-3 rounded-full shadow-lg bg-[var(--sned-orange)] text-white hover:bg-[var(--sned-orange-dark)] transition">
       ⬆
     </button>
   `
@@ -174,7 +185,7 @@ et faire de la Méditerranée Occidentale un centre d’échanges névralgique.
 Ce projet contribuerait à un essor économique et social régional, à l’intégration
 des réseaux de transport et au développement territorial sur les deux rives.
     `,
-      image: 'assets/images/gibraltar.jpg'
+      image: 'assets/images/contexte.jpg'
     },
     {
       id: 'missions',
@@ -226,7 +237,7 @@ Référentiel légal et réglementaire applicable :
 Ce cadre juridique assure à la SNED une gouvernance conforme aux normes nationales
 et internationales, notamment en matière de transparence, de durabilité et de bonne gouvernance.
     `,
-      image: 'assets/images/contexte.jpg'
+      image: 'assets/images/cadre.jpg'
     }
   ];
   showScrollTop = false;

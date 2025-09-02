@@ -17,38 +17,54 @@
               <!-- Item simple -->
               <a *ngIf="!item.children"
                  [routerLink]="item.route || '/'"
+                 routerLinkActive="active-link"
+                 [routerLinkActiveOptions]="{ exact: true }"
                  (click)="closeMobileMenu()"
-                 class="px-4 py-2 font-medium rounded-lg inline-flex items-center transition-all duration-200"
-                 [ngClass]="isScrolled()
-                   ? 'text-[var(--sned-blue-dark)] hover:text-[var(--sned-orange-dark)] hover:bg-[var(--sned-orange-light)]/20'
-                   : 'text-[var(--sned-blue-dark)] hover:text-[var(--sned-orange)] hover:bg-white/20'">
+                 class="relative px-4 py-2 font-medium rounded-lg inline-flex items-center transition group
+          text-[var(--sned-blue-dark)]">
                 {{ item.label }}
+
+                <!-- Trait animé -->
+                <span class="absolute left-0 right-0 -bottom-1 h-[3px] bg-[var(--sned-orange)]
+               scale-x-0 group-hover:scale-x-100 transition-transform duration-300
+               group-[.active-link]:scale-x-100"></span>
               </a>
 
+
+
               <!-- Item avec dropdown -->
-              <div *ngIf="item.children">
+              <div *ngIf="item.children" class="relative group">
                 <button
-                  class="px-4 py-2 font-medium rounded-lg inline-flex items-center gap-1 transition-all duration-200"
-                  [ngClass]="isScrolled()
-                    ? 'text-[var(--sned-blue-dark)] hover:text-[var(--sned-orange-dark)] hover:bg-[var(--sned-orange-light)]/20'
-                    : 'text-[var(--sned-blue-dark)] hover:text-[var(--sned-orange)] hover:bg-white/20'">
+                  class="relative px-4 py-2 font-medium rounded-lg inline-flex items-center gap-1 transition group
+           text-[var(--sned-blue-dark)]"
+                  routerLinkActive="active-link">
                   {{ item.label }}
                   <span class="text-xs">▼</span>
+
+                  <!-- Trait animé -->
+                  <span class="absolute left-0 right-0 -bottom-1 h-[3px] bg-[var(--sned-orange)]
+                 scale-x-0 group-hover:scale-x-100 transition-transform duration-300
+                 group-[.active-link]:scale-x-100"></span>
                 </button>
 
-                <!-- Sous-menu avec group-hover -->
+                <!-- Sous-menu -->
                 <div
                   class="absolute left-0 rtl:right-0 rtl:left-auto mt-2 min-w-[220px] bg-white rounded-lg shadow-lg border border-gray-100
-                         opacity-0 invisible group-hover:opacity-100 group-hover:visible
-                         transition duration-200 ease-out z-50">
+           opacity-0 invisible group-hover:opacity-100 group-hover:visible
+           transition duration-200 ease-out z-50">
                   <a *ngFor="let child of item.children"
                      [routerLink]="child.route || '/'"
+                     routerLinkActive="active-link"
+                     [routerLinkActiveOptions]="{ exact: true }"
                      (click)="closeMobileMenu()"
                      class="block px-4 py-2 text-[var(--sned-blue-dark)] hover:bg-[var(--sned-blue-light)]/10 whitespace-nowrap rtl:text-right">
                     {{ child.label }}
                   </a>
                 </div>
               </div>
+
+
+
             </div>
           </div>
         </nav>
