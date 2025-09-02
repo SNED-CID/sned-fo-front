@@ -1,5 +1,7 @@
+const { withRTL } = require('tailwindcss-rtl');
+
 // tailwind.config.js
-module.exports = {
+module.exports = withRTL({
   content: [
     "./src/**/*.{html,ts}",
   ],
@@ -14,4 +16,4 @@ module.exports = {
     },
   },
   plugins: [],
-};
+});

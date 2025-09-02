@@ -1,64 +1,92 @@
 <header class="fixed top-0 left-0 right-0 z-50"
-        [ngClass]="isScrolled() ? 'bg-white/10 backdrop-blur-sm shadow-lg' : ''">
-  <!-- Subheader -->
-  <div class="border-b border-white text-white text-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center py-2">
-        <!-- Lang switcher -->
-        <div class="flex items-center space-x-2">
-          <button *ngFor="let lang of languages"
-                  (click)="switchLanguage(lang.code)"
-                  [class]="getLangButtonClasses(lang.code)"
-                  class="px-3 py-1 text-sm font-medium rounded-full transition-all duration-200 bg-white/10 hover:bg-white/20">
-            {{ lang.label }}
-          </button>
-        </div>
-
-        <!-- Contact -->
-        <div class="flex items-center space-x-6">
-          <span class="opacity-90 hover:opacity-100">+212 5 37 77 77 77</span>
-          <div class="flex items-center space-x-2 opacity-90 hover:opacity-100">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
-              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
-            </svg>
-            <span>contact&#64;sned.ma</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+        [attr.dir]="currentLang() === 'ar' ? 'rtl' : 'ltr'"
+        [ngClass]="isScrolled() ? '' : ''">
 
   <!-- Main Header -->
   <div class="transition-all duration-300"
-       [ngClass]="isScrolled() ? 'bg-white/10 backdrop-blur-sm shadow-lg' : ''">
+       [ngClass]="isScrolled() ? 'bg-white ' : ''">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between">
         <!-- Logo -->
-        <a routerLink="/" class="flex items-center space-x-3">
+        <a routerLink="/" class="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="assets/images/sned.svg"
                alt="sned_logo"
                class="h-24 w-auto sm:h-22">
         </a>
 
         <!-- Menu -->
-        <nav class="hidden lg:flex items-center space-x-1">
-          <div *ngFor="let section of menuSections" class="flex space-x-1">
-            <div *ngFor="let item of section.items" class="relative group">
+        <nav class="hidden lg:flex items-center space-x-1 rtl:space-x-reverse">
+          <div *ngFor="let section of menuSections" class="flex space-x-1 rtl:space-x-reverse">
+            <div *ngFor="let item of section.items" class="relative group whitespace-nowrap inline-flex">
+
+              <!-- Item simple -->
               <a *ngIf="!item.children"
                  [routerLink]="item.route || '/'"
                  class="px-4 py-2 font-medium rounded-lg transition-all duration-200"
                  [ngClass]="isScrolled()
-                    ? 'text-gray-800 hover:text-red-600 hover:bg-red-50'
-                    : 'text-white hover:text-red-400 hover:bg-white/10'">
+                  ? 'text-[var(--sned-blue-dark)] hover:text-[var(--sned-orange-dark)] hover:bg-[var(--sned-orange-light)]/20'
+                  : 'text-white hover:text-[var(--sned-orange)] hover:bg-white'">
                 {{ item.label }}
               </a>
+
+              <!-- Item avec children (dropdown) -->
+              <div *ngIf="item.children" class="inline-flex whitespace-nowrap">
+                <button
+                  class="px-4 py-2 font-medium rounded-lg transition-all duration-200 flex items-center gap-1"
+                  [ngClass]="isScrolled()
+                    ? 'text-[var(--sned-blue-dark)] hover:text-[var(--sned-orange-dark)] hover:bg-[var(--sned-orange-light)]/20'
+                    : 'text-white hover:text-[var(--sned-orange)] hover:bg-white'">
+                  {{ item.label }}
+                  <span class="text-xs">▼</span>
+                </button>
+                <!-- Sous-menu -->
+                <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-lg mt-2 min-w-[220px] z-50 left-0 rtl:right-0 rtl:left-auto">
+                  <a *ngFor="let child of item.children"
+                     [routerLink]="child.route || '/'"
+                     class="block px-4 py-2 text-[var(--sned-blue-dark)] hover:bg-[var(--sned-blue-light)]/10 whitespace-nowrap rtl:text-right">
+                    {{ child.label }}
+                  </a>
+                </div>
+              </div>
+
             </div>
           </div>
         </nav>
+
       </div>
     </div>
   </div>
+  <!-- Subheader -->
+  <div class=" text-white text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-2">
+        <!-- Lang switcher -->
+        <div class="flex items-center space-x-2 rtl:space-x-reverse">
+          <button *ngFor="let lang of languages"
+                  (click)="switchLanguage(lang.code)"
+                  class="cursor-pointer p-1 rounded-full transition-all duration-200 flex items-center"
+                  [ngClass]="currentLang() === lang.code
+            ? 'ring-2 ring-[var(--sned-orange)] bg-[var(--sned-orange-light)]/20'
+            : 'hover:bg-[var(--sned-orange-light)]/30'">
+            <img [src]="lang.flag" [alt]="lang.label" class="w-6 h-6 rounded-full shadow-sm" />
+          </button>
+        </div>
+
+        <!-- Contact -->
+<!--        <div class="flex items-center space-x-6 rtl:space-x-reverse">-->
+<!--          <span class="opacity-90 hover:opacity-100 text-[var(&#45;&#45;sned-blue-dark)]">+212 5 37 77 77 77</span>-->
+<!--          <div class="flex items-center space-x-2 rtl:space-x-reverse opacity-90 hover:opacity-100 text-[var(&#45;&#45;sned-blue-dark)]">-->
+<!--            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">-->
+<!--              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>-->
+<!--              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>-->
+<!--            </svg>-->
+<!--            <span>contact&#64;sned.ma</span>-->
+<!--          </div>-->
+<!--        </div>-->
+      </div>
+    </div>
+  </div>
+
 </header>
 
 <!-- Hero unique -->
@@ -84,109 +112,8 @@
     <h2 class="text-2xl sm:text-4xl font-bold mb-4">Découvrez le projet SNED</h2>
     <p class="mb-6 text-gray-200">Une liaison fixe pour rapprocher les continents</p>
     <button (click)="playVideo()"
-            class="cursor-pointer px-6 py-3 bg-[var(--sned-orange)] text-white font-semibold rounded-full shadow-md hover:bg-[var(--sned-orange-dark)] transition">
+            class="px-6 py-3 bg-[var(--sned-orange)] text-white font-semibold rounded-full shadow-md hover:bg-[var(--sned-orange-dark)] transition">
       ▶ Voir la vidéo
     </button>
   </div>
 </section>
-
-<!--<div class="p-8 bg-gray-50 min-h-screen relative">-->
-<!--  <h2 class="text-2xl font-bold text-center text-blue-800 mb-10">-->
-<!--    Organigramme du SNED-->
-<!--  </h2>-->
-
-<!--  &lt;!&ndash; Comité Mixte &ndash;&gt;-->
-<!--  <div class="flex justify-center mb-12 relative">-->
-<!--    <div class="px-6 py-3 border-2 border-blue-400 rounded-lg bg-blue-50 text-blue-900 font-semibold shadow relative">-->
-<!--      Comité Mixte-->
-<!--      &lt;!&ndash; Flèche vers Conseil &ndash;&gt;-->
-<!--      <div class="absolute left-1/2 bottom-0 w-0 h-8 border-l-2 border-blue-400"></div>-->
-<!--    </div>-->
-<!--  </div>-->
-
-<!--  &lt;!&ndash; Conseil d'administration &ndash;&gt;-->
-<!--  <div class="flex flex-col items-center space-y-6 relative">-->
-<!--    <div class="px-6 py-3 border-2 border-blue-500 rounded-lg bg-white shadow font-bold relative">-->
-<!--      Conseil d’Administration SNED-->
-<!--      &lt;!&ndash; Flèche vers comités &ndash;&gt;-->
-<!--      <div class="absolute left-1/2 bottom-0 w-0 h-6 border-l-2 border-blue-500"></div>-->
-<!--    </div>-->
-
-<!--    <div class="flex gap-4 relative">-->
-<!--      <div class="px-4 py-2 border rounded-lg bg-blue-50 text-sm shadow relative">-->
-<!--        Comité d’Audit-->
-<!--      </div>-->
-<!--      <div class="px-4 py-2 border rounded-lg bg-blue-50 text-sm shadow relative">-->
-<!--        Comité de Gouvernance, Nomination et Rémunération-->
-<!--      </div>-->
-<!--    </div>-->
-
-<!--    &lt;!&ndash; Président Directeur Général &ndash;&gt;-->
-<!--    <div class="px-6 py-3 border-2 border-blue-500 rounded-lg bg-white shadow font-bold relative">-->
-<!--      Président Directeur Général-->
-<!--      &lt;!&ndash; Flèche vers DG délégué &ndash;&gt;-->
-<!--      <div class="absolute left-1/2 bottom-0 w-0 h-6 border-l-2 border-blue-500"></div>-->
-<!--    </div>-->
-
-<!--    &lt;!&ndash; Directeur Général Délégué &ndash;&gt;-->
-<!--    <div class="px-6 py-3 border-2 border-blue-400 rounded-lg bg-white shadow font-medium relative">-->
-<!--      Directeur Général Délégué-->
-<!--      &lt;!&ndash; Flèche vers Secrétariat/Bureau &ndash;&gt;-->
-<!--      <div class="absolute left-1/2 bottom-0 w-0 h-6 border-l-2 border-blue-400"></div>-->
-<!--    </div>-->
-
-<!--    &lt;!&ndash; Secrétariat & Bureau d’ordre &ndash;&gt;-->
-<!--    <div class="flex gap-6 relative">-->
-<!--      <div class="px-4 py-2 border rounded-lg bg-blue-50 shadow relative">-->
-<!--        Secrétariat-->
-<!--      </div>-->
-<!--      <div class="px-4 py-2 border rounded-lg bg-blue-50 shadow relative">-->
-<!--        Bureau d’Ordre-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-
-<!--  &lt;!&ndash; Pôles principaux &ndash;&gt;-->
-<!--  <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-12 relative">-->
-<!--    &lt;!&ndash; Pôle Études Techniques &ndash;&gt;-->
-<!--    <div class="space-y-4 relative">-->
-<!--      <div class="p-4 border-2 border-blue-500 rounded-lg bg-white shadow font-semibold text-center relative">-->
-<!--        Pôle Études Techniques-->
-<!--        &lt;!&ndash; Flèche vers services &ndash;&gt;-->
-<!--        <div class="absolute left-1/2 bottom-0 w-0 h-6 border-l-2 border-blue-500"></div>-->
-<!--      </div>-->
-<!--      <div class="pl-6 space-y-2">-->
-<!--        <div class="p-2 border rounded bg-blue-50 text-sm shadow">Service Conception</div>-->
-<!--        <div class="p-2 border rounded bg-blue-50 text-sm shadow">Service Reconnaissance Milieu physique</div>-->
-<!--      </div>-->
-<!--    </div>-->
-
-<!--    &lt;!&ndash; Pôle Promotion du Projet &ndash;&gt;-->
-<!--    <div>-->
-<!--      <div class="p-4 border-2 border-blue-500 rounded-lg bg-white shadow font-semibold text-center">-->
-<!--        Pôle Promotion du Projet et Coopération-->
-<!--      </div>-->
-<!--    </div>-->
-
-<!--    &lt;!&ndash; Pôle Études d’impacts &ndash;&gt;-->
-<!--    <div>-->
-<!--      <div class="p-4 border-2 border-blue-500 rounded-lg bg-white shadow font-semibold text-center">-->
-<!--        Pôle Études d’impacts Économiques, Sociaux et Environnementaux-->
-<!--      </div>-->
-<!--    </div>-->
-
-<!--    &lt;!&ndash; Pôle Support &ndash;&gt;-->
-<!--    <div class="space-y-4 relative">-->
-<!--      <div class="p-4 border-2 border-blue-500 rounded-lg bg-white shadow font-semibold text-center relative">-->
-<!--        Pôle Support-->
-<!--        &lt;!&ndash; Flèche vers services &ndash;&gt;-->
-<!--        <div class="absolute left-1/2 bottom-0 w-0 h-6 border-l-2 border-blue-500"></div>-->
-<!--      </div>-->
-<!--      <div class="pl-6 space-y-2">-->
-<!--        <div class="p-2 border rounded bg-blue-50 text-sm shadow">Service Ressources Humaines</div>-->
-<!--        <div class="p-2 border rounded bg-blue-50 text-sm shadow">Service Affaires Générales</div>-->
-<!--        <div class="p-2 border rounded bg-blue-50 text-sm shadow">Service Comptabilité et Finance</div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->

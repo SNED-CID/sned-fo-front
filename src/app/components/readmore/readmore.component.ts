@@ -58,7 +58,7 @@ import { LoaderComponent } from '../loader/loader.component';
 
         <!-- Image -->
         <img *ngIf="imageUrl && !loading()" [src]="imageUrl"
-             alt="{{ title }}" class="mb-4 rounded-lg shadow-md max-w-full h-auto" />
+             alt="{{ title }}" class="mb-4 rounded-lg shadow-md w-3/4 mx-auto h-auto" />
 
         <!-- Texte -->
         <p *ngIf="!loading()" class="text-gray-700 leading-relaxed whitespace-pre-line">

@@ -2,10 +2,12 @@ import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {HeaderComponent} from './components/header/header/header.component';
 import Lenis from 'lenis';
 import {AboutComponent} from './components/about/about.component';
+import {AnchorComponent} from './components/anchor/anchor.component';
+import {RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, AboutComponent],
+  imports: [HeaderComponent, AboutComponent, AnchorComponent, RouterOutlet],
   templateUrl: './app.component.html',
   standalone: true,
   styleUrls: ['./app.component.scss']

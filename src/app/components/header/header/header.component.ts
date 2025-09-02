@@ -36,8 +36,10 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   mobileDropdowns = signal<Set<string>>(new Set());
 
   languages = [
-    { code: 'fr', label: 'FR' },
-    { code: 'ar', label: 'العربية' }
+    { code: 'fr', label: 'Français', flag: 'assets/flags/fr.svg' },
+    { code: 'en', label: 'English', flag: 'assets/flags/en.svg' },
+    { code: 'es', label: 'Español', flag: 'assets/flags/es.svg' },
+    { code: 'ar', label: 'العربية', flag: 'assets/flags/ar.svg' }
   ];
   isVideoPlaying = false;
 
@@ -48,14 +50,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       title: 'Navigation Principale',
       items: [
         {
-          label: 'À propos de la SNED',
-          children: [
-            { label: 'Cadre Institutionnel', route: '/apropos/cadre-institutionnel', description: 'Structure et organisation' },
-            { label: 'Historique', route: '/apropos/historique', description: 'Création et lois' },
-            { label: 'Organisation', route: '/apropos/organisation', description: 'Structure organisationnelle' },
-            { label: 'Mot du PDG', route: '/apropos/pdg', description: 'Message du directeur général' },
-            { label: 'SNED et SECEG SA', route: '/apropos/seceg', description: 'Partenariat stratégique' }
-          ]
+          label: 'SNED',
+          route: '/sned'
         },
         {
           label: 'Projet de Liaison fixe',
@@ -101,14 +97,6 @@ export class HeaderComponent implements OnInit, AfterViewInit {
             { label: 'Vidéo de lien Physique SNED', route: '/travail/video', description: 'Présentation multimédia' },
             { label: 'Statistiques', route: '/travail/statistiques', description: 'Données et indicateurs' }
           ]
-        },
-        {
-          label: 'Contact',
-          route: '/contact'
-        },
-        {
-          label: 'Missions et Valeurs',
-          route: '/missions-valeurs'
         }
       ]
     }
