@@ -1,7 +1,7 @@
 // src/app/features/about/about.component.ts
-import { Component } from '@angular/core';
+import {Component, HostListener} from '@angular/core';
 import { ReadMoreComponent } from '../readmore/readmore.component';
-import { NgClass, NgFor } from '@angular/common';
+import {NgClass, NgFor, NgIf} from '@angular/common';
 
 interface Section {
   id: string;
@@ -14,8 +14,11 @@ interface Section {
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [ReadMoreComponent, NgClass, NgFor],
+  imports: [ReadMoreComponent, NgClass, NgFor, NgIf],
   template: `
+    <!-- Point de repère en haut -->
+    <div id="about-top"></div>
+
     <section class="py-16 bg-gray-50">
       <div class="max-w-6xl mx-auto px-6 lg:px-12 space-y-20">
         <div *ngFor="let section of sections; let i = index"
@@ -58,7 +61,6 @@ interface Section {
              alt="organigramme" class="mb-8 rounded-lg shadow-md w-3/4 mx-auto h-auto" />
       </div>
 
-      <!-- Intervenants -->
       <!-- Intervenants -->
       <section class="py-16 bg-gray-50">
         <div class="max-w-6xl mx-auto px-6 lg:px-12">
@@ -123,8 +125,14 @@ interface Section {
           </div>
         </div>
       </section>
-
     </div>
+
+    <!-- Bouton Retour en haut -->
+    <button *ngIf="showScrollTop"
+            (click)="scrollToTop()"
+            class="fixed bottom-6 right-6 p-3 rounded-full shadow-lg bg-[var(--sned-orange)] text-white hover:bg-[var(--sned-orange-dark)] transition">
+      ⬆
+    </button>
   `
 })
 export class AboutComponent {
@@ -221,6 +229,15 @@ et internationales, notamment en matière de transparence, de durabilité et de 
       image: 'assets/images/contexte.jpg'
     }
   ];
+  showScrollTop = false;
 
+  @HostListener('window:scroll')
+  onScroll() {
+    this.showScrollTop = window.scrollY > 300;
+  }
+
+  scrollToTop() {
+    document.getElementById('about-top')?.scrollIntoView({ behavior: 'smooth' });
+  }
 
 }

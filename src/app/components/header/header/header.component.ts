@@ -56,38 +56,29 @@ export class HeaderComponent implements OnInit, AfterViewInit {
         {
           label: 'Projet de Liaison fixe',
           children: [
-            { label: 'Solution Pont', route: '/projet/pont', description: 'Conception et études' },
-            { label: 'Solution Tunnel', route: '/projet/tunnel', description: 'Alternative souterraine' },
             { label: 'Composante Ingénierie', route: '/projet/ingenierie', hasPagination: true, description: 'Aspects techniques' },
+            { label: 'Historique', route: '/projet/historique', description: 'Conception et études' },
             { label: 'Composante Milieu physique', route: '/projet/milieu-physique', hasModal: true, hasPagination: true, description: 'Études environnementales' },
             { label: 'Composante Socio-économique', route: '/projet/socio-economique', hasPagination: true, description: 'Impact économique' },
-            { label: 'Environnement', route: '/projet/environnement', description: 'Études environnementales' },
-            { label: 'Géostratégie et Juridique', route: '/projet/geostrategie', description: 'Aspects légaux et stratégiques' },
-            { label: 'Composante Promotion de Projet', route: '/projet/promotion', description: 'Communication et promotion' }
+            { label: 'Composante promotion de projet', route: '/projet/socio-economique', hasPagination: true, description: 'Impact économique' },
+            { label: 'Mentions légales', route: '/projet/geostrategie', description: 'Aspects légaux et stratégiques' },
           ]
         },
         {
           label: 'Galerie de services',
-          route: '/galerie'
+          children: [
+            { label: 'Composante Ingénierie', route: '/projet/ingenierie', hasPagination: true, description: 'Aspects techniques' },
+            { label: 'Composante Milieu physique', route: '/projet/milieu-physique', hasModal: true, hasPagination: true, description: 'Études environnementales' },
+            { label: 'Composante Socio-économique', route: '/projet/socio-economique', hasPagination: true, description: 'Impact économique' },
+            { label: 'Composante promotion de projet', route: '/projet/socio-economique', hasPagination: true, description: 'Impact économique' },
+          ]
         },
         {
           label: 'Actualités',
-          children: [
-            { label: 'Dernières actualités', route: '/actualites/dernieres', hasPagination: true, description: 'Les plus récentes' },
-            { label: 'Communiqués nationaux', route: '/actualites/communiques-nationaux', description: 'Communications officielles' },
-            { label: 'Communiqués internationaux', route: '/actualites/communiques-internationaux', description: 'Communications internationales' },
-            { label: 'Classification par composante', route: '/actualites/classification', hasPagination: true, description: 'Organisées par thème' },
-            { label: 'Presse', route: '/actualites/presse', description: 'Revue de presse' }
-          ]
+          route: '/actualite'
         },
         {
           label: 'Partenariats',
-          children: [
-            { label: 'ADM', route: '/partenariats/adm', description: 'Autoroutes du Maroc' },
-            { label: 'ANGSPE', route: '/partenariats/angspe', description: 'Agence Nationale de Gestion Stratégique' },
-            { label: 'ONCF', route: '/partenariats/oncf', description: 'Office National des Chemins de Fer' },
-            { label: 'SECEG SA', route: '/partenariats/seceg', description: 'Société d\'Études' }
-          ]
         },
         {
           label: 'Notre Travail',
