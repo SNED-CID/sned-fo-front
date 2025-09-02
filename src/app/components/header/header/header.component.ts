@@ -171,16 +171,10 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       : 'bg-transparent';
   }
 
-  topBarClasses(): string {
-    return this.isScrolled()
-      ? 'max-h-0 overflow-hidden py-0'
-      : 'max-h-20 py-3';
-  }
-
   mainHeaderClasses(): string {
     return this.isScrolled()
       ? 'bg-white bg-opacity-98 backdrop-blur-sm shadow-lg'
-      : 'bg-white bg-opacity-90 backdrop-blur-sm';
+      : 'bg-transparent';
   }
 
   getLangButtonClasses(langCode: string): string {

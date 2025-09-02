@@ -44,12 +44,24 @@ import { LoaderComponent } from '../loader/loader.component';
       <!-- Header -->
       <div class="flex justify-between items-center p-4 border-b">
         <h2 class="text-2xl font-bold">{{ title }}</h2>
-        <button
-          (click)="closeSidebar()"
-          class="cursor-pointer text-gray-600 hover:text-black text-xl"
-        >
-          ✕
-        </button>
+        <div class="flex items-center gap-3">
+          <!-- Bouton partager -->
+          <button
+            (click)="shareContent()"
+            class="cursor-pointer text-gray-600 hover:text-blue-600 text-xl"
+            title="Partager"
+          >
+            ⤴
+          </button>
+          <!-- Bouton fermer -->
+          <button
+            (click)="closeSidebar()"
+            class="cursor-pointer text-gray-600 hover:text-black text-xl"
+            title="Fermer"
+          >
+            ✕
+          </button>
+        </div>
       </div>
 
       <!-- Contenu scrollable -->
@@ -72,7 +84,7 @@ export class ReadMoreComponent {
   @Input() label = 'Lire la suite';
   @Input() title = 'Détails';
   @Input() fullText = '';
-  @Input() imageUrl: string | null = null;  // ✅ nouvelle propriété
+  @Input() imageUrl: string | null = null;
 
   sidebarOpen = signal(false);
   loading = signal(false);
@@ -95,5 +107,26 @@ export class ReadMoreComponent {
     setTimeout(() => {
       this.loading.set(false);
     }, 1000);
+  }
+
+  async shareContent() {
+    const shareData = {
+      title: this.title,
+      text: this.fullText,
+      url: window.location.href
+    };
+
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+        console.log('✅ Partagé avec succès !');
+      } catch (err) {
+        console.warn('❌ Partage annulé ou erreur :', err);
+      }
+    } else {
+      // Fallback : copier dans le presse-papier
+      await navigator.clipboard.writeText(`${this.title} - ${window.location.href}`);
+      alert('📋 Lien copié dans le presse-papier');
+    }
   }
 }

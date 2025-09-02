@@ -26,7 +26,7 @@ interface Section {
                [ngClass]="{ 'order-first md:order-last': i % 2 === 1 }">
             <img [src]="section.image"
                  [alt]="section.title"
-                 class="rounded-2xl shadow-lg w-full object-cover" />
+                 class="rounded-2xl shadow-lg w-3/4 mx-auto h-auto object-contain" />
           </div>
 
           <!-- Texte -->
@@ -131,33 +131,96 @@ export class AboutComponent {
   sections: Section[] = [
     {
       id: 'apropos',
-      title: 'Une vision Royale pour le Détroit de Gibraltar',
-      short: `La Société Nationale d’Études du Détroit de Gibraltar (SNED) a été créée
-              pour concrétiser une vision Royale ambitieuse.`,
-      full: `...texte complet...`,
+      title: 'À propos de la SNED',
+      short: `La Société Nationale d’Études du Détroit de Gibraltar (SNED) a été créée en 1980
+            suite à un accord entre le Maroc et l’Espagne pour l’étude d’une liaison fixe
+            entre l’Europe et l’Afrique.`,
+      full: `
+La Société Nationale d’Etudes du Détroit de Gibraltar, par abréviation « SNED »,
+est une société anonyme créée en 1980 suite à « l’accord complémentaire de coopération
+entre le Royaume du Maroc et le Royaume d’Espagne pour l’étude d’une liaison fixe entre
+l’Europe et l’Afrique à travers le Détroit de Gibraltar ».
+
+Un accord additionnel a été signé en 1989 entre les deux Royaumes, précisant les responsabilités
+des différentes parties. Le lancement officiel des études fut décidé par Sa Majesté Hassan II
+et Sa Majesté Juan Carlos 1er en juin 1979.
+
+La SNED, sise à Rabat (Souissi), dispose d’un capital social de 2.750.000 dirhams,
+détenu à 99,9 % par l’État marocain. Elle est placée sous la tutelle du Ministère de l’Équipement
+et de l’Eau.
+    `,
       image: 'assets/images/bridge_engineer.jpg'
     },
     {
       id: 'contexte',
-      title: 'Une zone stratégique primordiale',
-      short: `Le Détroit de Gibraltar fait partie d’une zone stratégique de par sa position
-              géographique entre l’Europe et l’Afrique.`,
-      full: `...texte complet sur le contexte...`,
+      title: 'Contexte stratégique',
+      short: `Le Détroit de Gibraltar est une zone stratégique reliant l’Europe et l’Afrique,
+            et un carrefour maritime entre l’Atlantique et la Méditerranée.`,
+      full: `
+Le Détroit de Gibraltar occupe une position géographique primordiale,
+reliant l’Europe et l’Afrique et reliant l’Atlantique à la Méditerranée.
+Il s’agit d’un passage stratégique pour la navigation maritime mondiale.
+
+Le Maroc et l’Espagne ont initié l’étude d’une liaison fixe afin de renforcer leur coopération
+et faire de la Méditerranée Occidentale un centre d’échanges névralgique.
+Ce projet contribuerait à un essor économique et social régional, à l’intégration
+des réseaux de transport et au développement territorial sur les deux rives.
+    `,
       image: 'assets/images/gibraltar.jpg'
     },
     {
       id: 'missions',
       title: 'Missions et valeurs',
-      short: `La SNED a pour mission de conduire les études et de coordonner les efforts nationaux.`,
-      full: `...texte complet des missions...`,
-      image: 'assets/images/bridge_engineer.jpg'
+      short: `La SNED a pour mission principale de conduire les études relatives à la liaison fixe
+            Europe-Afrique et de promouvoir le projet.`,
+      full: `
+La SNED a pour objet social :
+
+• La réalisation d’études d’une liaison fixe entre l’Europe et l’Afrique à travers le Détroit,
+  portant sur la conception, les moyens et les modalités de sa construction et de son exploitation ;
+• La promotion du projet aux niveaux national et international ;
+• La mise en œuvre de toutes opérations susceptibles de favoriser son développement.
+
+Il est important de noter que la mission de la SNED se limite aux études,
+à la conception et à la promotion : la réalisation de la liaison fixe ne relève pas de sa responsabilité.
+
+Depuis sa création, la SNED a traversé plusieurs phases :
+– Phase préliminaire (1980–1982) : acquisition des données de base ;
+– Préfaisabilité (1982–1990) : études techniques, milieu physique et socio-économique ;
+– Faisabilité (1990–aujourd’hui) : approfondissement des études et choix technique.
+
+Depuis 2017, elle s’est engagée dans une nouvelle dynamique orientée vers la collecte et l’analyse
+des données socio-économiques et commerciales, avec un plan de travail triennal.
+    `,
+      image: 'assets/images/history.jpg'
     },
     {
       id: 'cadre',
-      title: 'Cadre institutionnel',
-      short: `Référentiel légal et réglementaire inhérent au statut juridique de la SNED.`,
-      full: `...texte complet du cadre institutionnel...`,
-      image: 'assets/images/bridge_engineer.jpg'
+      title: 'Cadre institutionnel et légal',
+      short: `La SNED est une société anonyme de droit marocain à majorité publique,
+            régie par un ensemble de textes législatifs et réglementaires.`,
+      full: `
+La SNED est une Société Anonyme dont le capital est divisé en 27.500 actions de 100 dirhams,
+détenues à 99,96 % par l’État et des organismes publics.
+
+Elle est considérée comme une filiale publique à participation directe majoritaire de l’État
+au sens de la loi 69-00 relative au contrôle financier des entreprises publiques.
+
+Référentiel légal et réglementaire applicable :
+– Statuts de la SNED refondus le 21 juin 2023 ;
+– Loi 69-00 relative au contrôle financier de l’État sur les EEP ;
+– Loi 82-20 portant création de l’Agence Nationale de Gestion Stratégique des Participations de l’État ;
+– Loi-cadre 50-21 relative à la réforme des EEP ;
+– Code du commerce, Code général des impôts, Code du travail, lois relatives à la comptabilité et à la fiscalité ;
+– Textes spécifiques à la protection de l’environnement (loi 11-03, loi 49-17, charte nationale de l’environnement, etc.) ;
+– Conventions internationales ratifiées (Convention de Montego Bay, CITES, Kyoto, Ramsar, Barcelone, etc.).
+
+Ce cadre juridique assure à la SNED une gouvernance conforme aux normes nationales
+et internationales, notamment en matière de transparence, de durabilité et de bonne gouvernance.
+    `,
+      image: 'assets/images/contexte.jpg'
     }
   ];
+
+
 }

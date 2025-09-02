@@ -4,10 +4,11 @@ import Lenis from 'lenis';
 import {AboutComponent} from './components/about/about.component';
 import {AnchorComponent} from './components/anchor/anchor.component';
 import {RouterOutlet} from '@angular/router';
+import {FooterComponent} from './components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, AboutComponent, AnchorComponent, RouterOutlet],
+  imports: [HeaderComponent, AboutComponent, AnchorComponent, RouterOutlet, FooterComponent],
   templateUrl: './app.component.html',
   standalone: true,
   styleUrls: ['./app.component.scss']
