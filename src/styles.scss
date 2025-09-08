@@ -1,4 +1,5 @@
 @use "tailwindcss";
+@import '@fortawesome/fontawesome-free/css/all.css';
 
 :root {
   --sned-blue: #139dcc;
@@ -108,6 +109,22 @@
   }
 }
 
+@keyframes fade-in-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-down {
+  animation: fade-in-down 0.25s ease-out forwards;
+}
+
+
 
 // Responsive adjustments
 @media (max-width: 768px) {
@@ -125,3 +142,26 @@
     }
   }
 }
+
+body {
+  position: relative;   /* pour que le ::before se positionne par rapport au body */
+  z-index: 0;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('/assets/waves.svg');
+  background-repeat: repeat;     /* se répète quand même, mais plus de coupure visible */
+  background-size: contain;
+  animation: moveWaves 10s linear infinite alternate;
+  opacity: 0.25;
+  z-index: -1;
+}
+
+@keyframes moveWaves {
+  from { background-position: 0 0; }
+  to   { background-position: -800px 900px; }
+}
+

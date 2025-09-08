@@ -51,16 +51,19 @@ import { LoaderComponent } from '../loader/loader.component';
             class="cursor-pointer text-gray-600 hover:text-blue-600 text-xl"
             title="Partager"
           >
-            ⤴
+            <i class="fas fa-share-alt"></i>
           </button>
+
+          <!-- Bouton fermer -->
           <!-- Bouton fermer -->
           <button
             (click)="closeSidebar()"
             class="cursor-pointer text-gray-600 hover:text-black text-xl"
             title="Fermer"
           >
-            ✕
+            <i class="fas fa-times"></i>
           </button>
+
         </div>
       </div>
 

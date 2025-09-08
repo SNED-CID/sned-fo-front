@@ -13,12 +13,12 @@ export class AnchorComponent implements OnInit {
   isHomeRoute = signal(false);
 
   links = [
-    { id: 'apropos', label: 'À propos' },
+    { id: 'apropos', label: 'Nous connaitre' },
     { id: 'contexte', label: 'Contexte stratégique' },
     { id: 'missions', label: 'Missions et valeurs' },
     { id: 'cadre', label: 'Cadre institutionnel' },
-    { id: 'orga', label: 'Organisation' },
     { id: 'pdg', label: 'Mot du PDG' },
+    { id: 'orga', label: 'Organisation' },
     { id: 'snedseceg', label: 'SNED & SECEG SA' }
   ];
 

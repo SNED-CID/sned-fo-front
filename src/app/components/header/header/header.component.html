@@ -3,71 +3,121 @@
   <div [ngClass]="mainHeaderClasses()" class="transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center">
+
         <!-- Logo -->
         <a routerLink="/" class="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="assets/images/sned.svg" alt="sned_logo" class="h-16 sm:h-20 w-auto"/>
         </a>
 
-        <!-- Menu Desktop -->
-        <nav class="hidden lg:flex items-center space-x-6 rtl:space-x-reverse">
-          <div *ngFor="let section of menuSections" class="flex space-x-6 rtl:space-x-reverse">
+        <!-- Menu + Sélecteur langues -->
+        <div class="flex items-center space-x-6 rtl:space-x-reverse">
 
-            <div *ngFor="let item of section.items" class="relative group">
+          <!-- Menu Desktop -->
+          <nav class="hidden lg:flex items-center space-x-6 rtl:space-x-reverse">
+            <div *ngFor="let section of menuSections" class="flex space-x-6 rtl:space-x-reverse">
 
-              <!-- Item simple -->
-              <a *ngIf="!item.children"
-                 [routerLink]="item.route || '/'"
-                 routerLinkActive="active-link"
-                 [routerLinkActiveOptions]="{ exact: true }"
-                 (click)="closeMobileMenu()"
-                 class="relative px-4 py-2 font-medium rounded-lg inline-flex items-center transition group
-          text-[var(--sned-blue-dark)]">
-                {{ item.label }}
+              <div *ngFor="let item of section.items" class="relative group">
 
-                <!-- Trait animé -->
-                <span class="absolute left-0 right-0 -bottom-1 h-[3px] bg-[var(--sned-orange)]
-               scale-x-0 group-hover:scale-x-100 transition-transform duration-300
-               group-[.active-link]:scale-x-100"></span>
-              </a>
-
-
-
-              <!-- Item avec dropdown -->
-              <div *ngIf="item.children" class="relative group">
-                <button
-                  class="relative px-4 py-2 font-medium rounded-lg inline-flex items-center gap-1 transition group
-           text-[var(--sned-blue-dark)]"
-                  routerLinkActive="active-link">
+                <!-- Item simple -->
+                <a *ngIf="!item.children"
+                   [routerLink]="item.route || '/'"
+                   routerLinkActive="active-link"
+                   [routerLinkActiveOptions]="{ exact: true }"
+                   (click)="closeMobileMenu()"
+                   class="relative px-4 py-2 font-medium rounded-lg inline-flex items-center transition group text-[var(--sned-orange-dark)]">
                   {{ item.label }}
-                  <span class="text-xs">▼</span>
 
                   <!-- Trait animé -->
-                  <span class="absolute left-0 right-0 -bottom-1 h-[3px] bg-[var(--sned-orange)]
-                 scale-x-0 group-hover:scale-x-100 transition-transform duration-300
-                 group-[.active-link]:scale-x-100"></span>
-                </button>
+                  <span class="absolute left-0 right-0 -bottom-1 h-[3px] bg-[var(--sned-blue)]
+                         scale-x-0 group-hover:scale-x-100 transition-transform duration-300
+                         group-[.active-link]:scale-x-100"></span>
+                </a>
 
-                <!-- Sous-menu -->
-                <div
-                  class="absolute left-0 rtl:right-0 rtl:left-auto mt-2 min-w-[220px] bg-white rounded-lg shadow-lg border border-gray-100
-           opacity-0 invisible group-hover:opacity-100 group-hover:visible
-           transition duration-200 ease-out z-50">
-                  <a *ngFor="let child of item.children"
-                     [routerLink]="child.route || '/'"
-                     routerLinkActive="active-link"
-                     [routerLinkActiveOptions]="{ exact: true }"
-                     (click)="closeMobileMenu()"
-                     class="block px-4 py-2 text-[var(--sned-blue-dark)] hover:bg-[var(--sned-blue-light)]/10 whitespace-nowrap rtl:text-right">
-                    {{ child.label }}
-                  </a>
+                <!-- Item avec dropdown -->
+                <div *ngIf="item.children" class="relative group">
+                  <button  [routerLink]="item.route || '/'" class="cursor-pointer relative px-4 py-2 font-medium rounded-lg inline-flex items-center gap-1 transition group text-[var(--sned-orange-dark)]"
+                          routerLinkActive="active-link">
+                    {{ item.label }}
+                    <span class="text-xs">▼</span>
+
+                    <!-- Trait animé -->
+                    <span class="absolute left-0 right-0 -bottom-1 h-[3px] bg-[var(--sned-orange)]
+                           scale-x-0 group-hover:scale-x-100 transition-transform duration-300
+                           group-[.active-link]:scale-x-100"></span>
+                  </button>
+
+                  <!-- Sous-menu -->
+                  <div class="absolute left-0 rtl:right-0 rtl:left-auto mt-2 min-w-[220px] bg-white rounded-lg shadow-lg border border-gray-100
+                              opacity-0 invisible group-hover:opacity-100 group-hover:visible
+                              transition duration-200 ease-out z-50">
+                    <a *ngFor="let child of item.children"
+                       [routerLink]="child.route || '/'"
+                       routerLinkActive="active-link"
+                       [routerLinkActiveOptions]="{ exact: true }"
+                       (click)="closeMobileMenu()"
+                       class="block px-4 py-2 text-[var(--sned-orange-dark)] hover:bg-[var(--sned-orange-light)]/10 whitespace-nowrap rtl:text-right">
+                      {{ child.label }}
+                    </a>
+                  </div>
                 </div>
               </div>
+            </div>
+          </nav>
 
+          <div class="relative"
+               (mouseenter)="toggleLangDropdown(true)"
+               (mouseleave)="toggleLangDropdown(false)">
 
+            <!-- Langue active -->
+            <div class="relative group">
+              <button class="cursor-pointer p-1 rounded-full shadow-md bg-white flex items-center justify-center hover:ring-2 hover:ring-[var(--sned-orange)] transition">
+                <img [src]="currentLangData().flag"
+                     [alt]="currentLangData().label"
+                     class="w-8 h-8 rounded-full"/>
+              </button>
+              <!-- Tooltip langue active -->
+              <span
+                class="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-2 py-1 text-sm rounded-md bg-gray-800 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+      {{ currentLangData().label }}
+    </span>
+            </div>
 
+            <!-- Zone de tolérance (invisible) -->
+            <div class="absolute top-full right-0 w-12 h-3"></div>
+
+            <!-- Autres langues -->
+            <div
+              class="absolute top-[calc(100%+0.5rem)] right-0 flex flex-col space-y-2 z-50 transform transition-all duration-300 ease-out"
+              [ngClass]="{
+      'opacity-100 translate-y-0 pointer-events-auto': showLangDropdown(),
+      'opacity-0 -translate-y-2 pointer-events-none': !showLangDropdown()
+    }">
+
+              <ng-container *ngFor="let lang of languages">
+                <div *ngIf="lang.code !== currentLang()" class="relative group">
+                  <button
+                    (click)="switchLanguage(lang.code)"
+                    class="cursor-pointer p-1 rounded-full shadow-md bg-white hover:bg-[var(--sned-orange-light)] flex items-center justify-center transition">
+                    <img [src]="lang.flag"
+                         [alt]="lang.label"
+                         class="w-8 h-8 rounded-full"/>
+                  </button>
+                  <!-- Tooltip langues secondaires -->
+                  <span
+                    class="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-2 py-1 text-sm rounded-md bg-gray-800 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+          {{ lang.label }}
+        </span>
+                </div>
+              </ng-container>
             </div>
           </div>
-        </nav>
+
+
+
+
+
+
+        </div>
 
         <!-- Bouton Mobile -->
         <div class="lg:hidden">
@@ -87,20 +137,6 @@
             </svg>
           </button>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Barre langues -->
-  <div class="max-h-20 py-3 transition-all duration-300 text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-      <div class="flex items-center space-x-2 rtl:space-x-reverse">
-        <button *ngFor="let lang of languages"
-                (click)="switchLanguage(lang.code)"
-                class="cursor-pointer p-1 rounded-full transition-all duration-200 flex items-center"
-                [ngClass]="getLangButtonClasses(lang.code)">
-          <img [src]="lang.flag" [alt]="lang.label" class="w-6 h-6 rounded-full shadow-sm"/>
-        </button>
       </div>
     </div>
   </div>
@@ -126,7 +162,7 @@
               <span [ngClass]="{'rotate-180': isMobileDropdownOpen(item.label)}"
                     class="transition-transform text-sm">▼</span>
             </button>
-            <div *ngIf="isMobileDropdownOpen(item.label)" class="flex flex-col bg-gray-50">
+            <div *ngIf="isMobileDropdownOpen(item.label)" class="flex flex-col">
               <a *ngFor="let child of item.children"
                  [routerLink]="child.route || '/'"
                  (click)="closeMobileMenu()"
@@ -143,7 +179,7 @@
 
 <!-- HERO Section -->
 <section class="relative h-screen text-white flex items-center bg-cover bg-center"
-         [style.background-image]="!isVideoPlaying ? 'url(assets/images/pont.jpg)' : ''">
+         [style.background-image]="!isVideoPlaying && currentBackground ? 'url(' + currentBackground + ')' : ''">
 
   <!-- Vidéo -->
   <video *ngIf="isVideoPlaying" autoplay muted loop playsinline
@@ -154,8 +190,9 @@
   <!-- Overlay -->
   <div class="absolute inset-0 bg-black/50 z-0"></div>
 
-  <!-- Loader -->
-  <div *ngIf="!isVideoPlaying" class="absolute inset-0 flex items-center justify-center z-10">
+  <!-- Loader si aucune image -->
+  <div *ngIf="!isVideoPlaying && !currentBackground"
+       class="absolute inset-0 flex items-center justify-center z-10">
     <app-loader></app-loader>
   </div>
 
@@ -164,8 +201,9 @@
     <h2 class="text-2xl sm:text-4xl font-bold mb-4">Découvrez le projet SNED</h2>
     <p class="mb-6 text-gray-200">Une liaison fixe pour rapprocher les continents</p>
     <button (click)="playVideo()"
-            class="px-6 py-3 bg-[var(--sned-orange)] text-white font-semibold rounded-full shadow-md hover:bg-[var(--sned-orange-dark)] transition">
-      ▶ Voir la vidéo
+            class="cursor-pointer flex items-center gap-2 px-6 py-3 bg-[var(--sned-orange)] text-white font-semibold rounded-full shadow-md hover:bg-[var(--sned-orange-dark)] transition">
+      <i class="fas fa-play-circle text-lg"></i>
+      <span>Voir la vidéo</span>
     </button>
   </div>
 </section>

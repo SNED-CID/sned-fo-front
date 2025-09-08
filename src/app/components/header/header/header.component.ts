@@ -1,7 +1,8 @@
 import {Component, HostListener, signal, OnInit, AfterViewInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import {NavigationEnd, Router, RouterModule} from '@angular/router';
 import {LoaderComponent} from '../../loader/loader.component';
+import {filter} from 'rxjs';
 interface MenuItem {
   label: string;
   route?: string;
@@ -29,11 +30,51 @@ interface MenuSection {
     }
   `]
 })
-export class HeaderComponent implements OnInit, AfterViewInit {
+export class HeaderComponent implements OnInit{
   isScrolled = signal(false);
   isMobileMenuOpen = signal(false);
   currentLang = signal('fr');
   mobileDropdowns = signal<Set<string>>(new Set());
+
+  menuBackgrounds: Record<string, string> = {
+    '/': 'assets/images/tunnel.png',
+    '/projet': 'assets/images/liaison_fixe.png',
+    '/galerie': 'assets/images/galerie_services.png',
+    '/actualite': 'assets/images/actualites.png',
+    '/partenariat': 'assets/images/partenariats.png',
+    '/travail': 'assets/images/notre_travail.png'
+  };
+  currentBackground: string | null = null;
+
+  constructor(private router: Router) {}
+
+  ngOnInit() {
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: any) => {
+        const url = event.urlAfterRedirects || event.url;
+        this.currentBackground = this.getBackgroundForUrl(url);
+      });
+  }
+
+  getBackgroundForUrl(url: string): string | null {
+    // si c'est exactement la home
+    if (url === '/' && this.menuBackgrounds['/']) {
+      return this.menuBackgrounds['/'];
+    }
+
+    const segments = url.split('/').filter(Boolean); // ex: "/projet/ingenierie" → ["projet","ingenierie"]
+
+    while (segments.length > 0) {
+      const candidate = '/' + segments.join('/');
+      if (this.menuBackgrounds[candidate]) {
+        return this.menuBackgrounds[candidate];
+      }
+      segments.pop(); // remonte au parent
+    }
+
+    return null;
+  }
 
   languages = [
     { code: 'fr', label: 'Français', flag: 'assets/flags/fr.svg' },
@@ -43,7 +84,20 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   ];
   isVideoPlaying = false;
 
+  showLangDropdown = signal(false);
 
+  currentLangData() {
+    return this.languages.find(l => l.code === this.currentLang())!;
+  }
+
+  toggleLangDropdown(open: boolean) {
+    this.showLangDropdown.set(open);
+  }
+
+  switchLanguage(langCode: string) {
+    this.currentLang.set(langCode);
+    this.showLangDropdown.set(false);
+  }
 
   menuSections: MenuSection[] = [
     {
@@ -55,6 +109,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
         },
         {
           label: 'Projet de Liaison fixe',
+          route: '/projet',
           children: [
             { label: 'Composante Ingénierie', route: '/projet/ingenierie', hasPagination: true, description: 'Aspects techniques' },
             { label: 'Historique', route: '/projet/historique', description: 'Conception et études' },
@@ -66,11 +121,12 @@ export class HeaderComponent implements OnInit, AfterViewInit {
         },
         {
           label: 'Galerie de services',
+          route: '/galerie',
           children: [
-            { label: 'Composante Ingénierie', route: '/projet/ingenierie', hasPagination: true, description: 'Aspects techniques' },
-            { label: 'Composante Milieu physique', route: '/projet/milieu-physique', hasModal: true, hasPagination: true, description: 'Études environnementales' },
-            { label: 'Composante Socio-économique', route: '/projet/socio-economique', hasPagination: true, description: 'Impact économique' },
-            { label: 'Composante promotion de projet', route: '/projet/socio-economique', hasPagination: true, description: 'Impact économique' },
+            { label: 'Composante Ingénierie', route: '/galerie/ingenierie', hasPagination: true, description: 'Aspects techniques' },
+            { label: 'Composante Milieu physique', route: '/galerie/milieu-physique', hasModal: true, hasPagination: true, description: 'Études environnementales' },
+            { label: 'Composante Socio-économique', route: '/galerie/socio-economique', hasPagination: true, description: 'Impact économique' },
+            { label: 'Composante promotion de projet', route: '/galerie/socio-economique', hasPagination: true, description: 'Impact économique' },
           ]
         },
         {
@@ -83,6 +139,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
         },
         {
           label: 'Notre Travail',
+          route: '/travail',
           children: [
             { label: 'Congrès', route: '/travail/congres', description: 'Événements et conférences' },
             { label: 'Activités de communication', route: '/travail/communication', description: 'Actions de sensibilisation' },
@@ -93,10 +150,6 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       ]
     }
   ];
-
-  ngOnInit() {
-    // Initialisation si nécessaire
-  }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
@@ -139,46 +192,13 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     return this.mobileDropdowns().has(itemLabel);
   }
 
-  switchLanguage(langCode: string) {
-    this.currentLang.set(langCode);
-    // Logique de changement de langue
-    console.log(`Langue changée vers: ${langCode}`);
-  }
-
-  getPaginationCount(itemLabel: string): number {
-    // Logique pour retourner le nombre d'éléments selon le menu
-    const counts: { [key: string]: number } = {
-      'Dernières actualités': 8,
-      'Composante Ingénierie': 15,
-      'Composante Milieu physique': 12,
-      'Composante Socio-économique': 10,
-      'Classification par composante': 6
-    };
-    return counts[itemLabel] || 8;
-  }
-
-  headerClasses(): string {
-    return this.isScrolled()
-      ? 'bg-white bg-opacity-95 backdrop-blur-md shadow-xl'
-      : 'bg-transparent';
-  }
-
   mainHeaderClasses(): string {
     return this.isScrolled()
       ? 'bg-white bg-opacity-98 backdrop-blur-sm shadow-lg'
       : 'bg-transparent';
   }
 
-  getLangButtonClasses(langCode: string): string {
-    return this.currentLang() === langCode
-      ? 'bg-red-600 text-white shadow-md'
-      : 'text-gray-600 hover:text-red-600 hover:bg-red-50';
-  }
   playVideo() {
     this.isVideoPlaying = true;
-  }
-
-  ngAfterViewInit(): void {
-
   }
 }
