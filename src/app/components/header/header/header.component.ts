@@ -1,8 +1,10 @@
-import {Component, HostListener, signal, OnInit, AfterViewInit} from '@angular/core';
+import {Component, HostListener, signal, OnInit, AfterViewInit, inject} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {NavigationEnd, Router, RouterModule} from '@angular/router';
 import {LoaderComponent} from '../../loader/loader.component';
 import {filter} from 'rxjs';
+import {LocaleService} from '../../../services/locale.service';
+import {TranslatePipe} from '@ngx-translate/core';
 interface MenuItem {
   label: string;
   route?: string;
@@ -21,7 +23,7 @@ interface MenuSection {
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterModule, LoaderComponent],
+  imports: [CommonModule, RouterModule, LoaderComponent, TranslatePipe],
   templateUrl: "./header.component.html",
   styleUrls: ['./header.component.scss'],
   styles: [`
@@ -47,6 +49,7 @@ export class HeaderComponent implements OnInit{
   currentBackground: string | null = null;
 
   constructor(private router: Router) {}
+  private readonly localeService = inject(LocaleService);
 
   ngOnInit() {
     this.router.events
@@ -97,6 +100,7 @@ export class HeaderComponent implements OnInit{
   switchLanguage(langCode: string) {
     this.currentLang.set(langCode);
     this.showLangDropdown.set(false);
+    this.localeService.setLanguage(langCode);
   }
 
   menuSections: MenuSection[] = [

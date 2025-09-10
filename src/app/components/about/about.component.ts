@@ -20,7 +20,7 @@ interface Section {
     <div id="about-top"></div>
 
     <section class="py-16 ">
-      <div class="max-w-6xl mx-auto px-6 lg:px-12 space-y-20">
+      <div class="max-w-6xl mx-auto px-6 lg:px-12 space-y-20 bg-white rounded-lg">
         <div *ngFor="let section of sections; let i = index"
              class="grid md:grid-cols-2 gap-10">
 
