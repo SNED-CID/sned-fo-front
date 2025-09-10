@@ -5,5 +5,54 @@
       "title": "Discover SNED project",
       "desc": "A fixed link to bring continents closer together"
     }
+  },
+  "footer": {
+    "company": {
+      "name": "National Company for the Study of the Strait",
+      "address": "11, Rue Antar Ibn Chaddad",
+      "city": "Avenue Mohamed VI, Km 8",
+      "location": "Souissi – Rabat, Morocco",
+      "phone": "Phone: +212 5 37 71 90 00",
+      "email": "contact@sned.ma"
+    },
+    "navigation": {
+      "title": "Navigation",
+      "home": "Home",
+      "about": "About",
+      "project": "The Project",
+      "news": "News",
+      "contact": "Contact",
+      "documents": "Documents"
+    },
+    "project": {
+      "title": "The Project",
+      "overview": "Overview",
+      "technical": "Technical Aspects",
+      "environmental": "Environmental Impact",
+      "economic": "Economic Impact",
+      "timeline": "Timeline"
+    },
+    "newsletter": {
+      "title": "Newsletter",
+      "description": "Stay informed about the latest SNED project updates",
+      "placeholder": "Your email address",
+      "subscribe": "Subscribe",
+      "privacy": "By subscribing, you agree to our privacy policy."
+    },
+    "social": {
+      "title": "Follow us",
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "linkedin": "LinkedIn",
+      "youtube": "YouTube",
+      "instagram": "Instagram"
+    },
+    "legal": {
+      "copyright": "© {year} SNED. All rights reserved.",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Use",
+      "cookies": "Cookie Policy",
+      "legal": "Legal Notice"
+    }
   }
 }

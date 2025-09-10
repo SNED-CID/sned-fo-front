@@ -5,5 +5,54 @@
       "title": "Découvrez le projet SNED",
       "desc": "Une liaison fixe pour rapprocher les continents"
     }
+  },
+  "footer": {
+    "company": {
+      "name": "Société Nationale d'Études du Détroit",
+      "address": "11, Rue Antar Ibn Chaddad",
+      "city": "Avenue Mohamed VI, Km 8",
+      "location": "Souissi – Rabat, Maroc",
+      "phone": "Téléphone : +212 5 37 71 90 00",
+      "email": "contact@sned.ma"
+    },
+    "navigation": {
+      "title": "Navigation",
+      "home": "Accueil",
+      "about": "À propos",
+      "project": "Le Projet",
+      "news": "Actualités",
+      "contact": "Contact",
+      "documents": "Documents"
+    },
+    "project": {
+      "title": "Le Projet",
+      "overview": "Vue d'ensemble",
+      "technical": "Aspects techniques",
+      "environmental": "Impact environnemental",
+      "economic": "Retombées économiques",
+      "timeline": "Calendrier"
+    },
+    "newsletter": {
+      "title": "Newsletter",
+      "description": "Restez informé des dernières actualités du projet SNED",
+      "placeholder": "Votre adresse email",
+      "subscribe": "S'abonner",
+      "privacy": "En vous abonnant, vous acceptez notre politique de confidentialité."
+    },
+    "social": {
+      "title": "Suivez-nous",
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "linkedin": "LinkedIn",
+      "youtube": "YouTube",
+      "instagram": "Instagram"
+    },
+    "legal": {
+      "copyright": "© {year} SNED. Tous droits réservés.",
+      "privacy": "Politique de confidentialité",
+      "terms": "Conditions d'utilisation",
+      "cookies": "Politique des cookies",
+      "legal": "Mentions légales"
+    }
   }
 }
