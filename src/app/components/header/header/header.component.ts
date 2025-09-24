@@ -1,42 +1,35 @@
-import {Component, HostListener, signal, OnInit, AfterViewInit, inject} from '@angular/core';
+import {Component, HostListener, signal, OnInit, inject} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {NavigationEnd, Router, RouterModule} from '@angular/router';
 import {LoaderComponent} from '../../loader/loader.component';
 import {filter} from 'rxjs';
 import {LocaleService} from '../../../services/locale.service';
 import {TranslatePipe} from '@ngx-translate/core';
-interface MenuItem {
-  label: string;
-  route?: string;
-  children?: MenuItem[];
-  description?: string;
-  isExternal?: boolean;
-  hasModal?: boolean;
-  hasPagination?: boolean;
-}
-
-interface MenuSection {
-  title: string;
-  items: MenuItem[];
-}
+import { LanguageSelectorComponent, Language } from '../language-selector/language-selector.component';
+import { NavigationMenuComponent, MenuSection } from '../navigation-menu/navigation-menu.component';
+// Les interfaces sont maintenant importées des composants
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterModule, LoaderComponent, TranslatePipe],
+  imports: [
+    CommonModule,
+    RouterModule,
+    LoaderComponent,
+    TranslatePipe,
+    LanguageSelectorComponent,
+    NavigationMenuComponent
+  ],
   templateUrl: "./header.component.html",
-  styleUrls: ['./header.component.scss'],
-  styles: [`
-    :host {
-      display: block;
-    }
-  `]
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit{
   isScrolled = signal(false);
   isMobileMenuOpen = signal(false);
   currentLang = signal('fr');
   mobileDropdowns = signal<Set<string>>(new Set());
+  showLangDropdown = signal(false);
+  showMobileLangDropdown = false;
 
   menuBackgrounds: Record<string, string> = {
     '/': 'assets/images/tunnel.png',
@@ -79,7 +72,7 @@ export class HeaderComponent implements OnInit{
     return null;
   }
 
-  languages = [
+  languages: Language[] = [
     { code: 'fr', label: 'Français', flag: 'assets/flags/fr.svg' },
     { code: 'en', label: 'English', flag: 'assets/flags/en.svg' },
     { code: 'es', label: 'Español', flag: 'assets/flags/es.svg' },
@@ -87,15 +80,6 @@ export class HeaderComponent implements OnInit{
   ];
   isVideoPlaying = false;
 
-  showLangDropdown = signal(false);
-
-  currentLangData() {
-    return this.languages.find(l => l.code === this.currentLang())!;
-  }
-
-  toggleLangDropdown(open: boolean) {
-    this.showLangDropdown.set(open);
-  }
 
   switchLanguage(langCode: string) {
     this.currentLang.set(langCode);
@@ -108,8 +92,14 @@ export class HeaderComponent implements OnInit{
       title: 'Navigation Principale',
       items: [
         {
-          label: 'SNED',
-          route: '/'
+          label: 'Découvrez le projet de liaison fixe',
+          route: '/',
+          children: [
+            { label: 'À propos', route: '/about', description: 'Qui sommes-nous' },
+            { label: 'Mission', route: '/mission', description: 'Notre mission et vision' },
+            { label: 'Équipe', route: '/team', description: 'Notre équipe' },
+            { label: 'Contact', route: '/contact', description: 'Nous contacter' }
+          ]
         },
         {
           label: 'Projet de Liaison fixe',
@@ -124,7 +114,7 @@ export class HeaderComponent implements OnInit{
           ]
         },
         {
-          label: 'Galerie de services',
+          label: 'Galerie de reconnaissance',
           route: '/galerie',
           children: [
             { label: 'Composante Ingénierie', route: '/galerie/ingenierie', hasPagination: true, description: 'Aspects techniques' },
@@ -165,6 +155,29 @@ export class HeaderComponent implements OnInit{
     if (window.innerWidth >= 1024) {
       this.isMobileMenuOpen.set(false);
       this.mobileDropdowns.set(new Set());
+      this.showLangDropdown.set(false);
+    }
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event) {
+    const target = event.target as HTMLElement;
+
+    // Close language dropdown if clicked outside
+    if (!target.closest('.language-selector')) {
+      this.showLangDropdown.set(false);
+    }
+  }
+
+  @HostListener('document:keydown.escape', ['$event'])
+  onEscapeKeydown(event: KeyboardEvent) {
+    if (this.isMobileMenuOpen()) {
+      this.closeMobileMenu();
+      event.preventDefault();
+    }
+    if (this.showLangDropdown()) {
+      this.showLangDropdown.set(false);
+      event.preventDefault();
     }
   }
 
@@ -173,11 +186,19 @@ export class HeaderComponent implements OnInit{
     if (!this.isMobileMenuOpen()) {
       this.mobileDropdowns.set(new Set());
     }
+
+    // Prevent body scroll when mobile menu is open
+    if (this.isMobileMenuOpen()) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
   }
 
   closeMobileMenu() {
     this.isMobileMenuOpen.set(false);
     this.mobileDropdowns.set(new Set());
+    document.body.style.overflow = '';
   }
 
   toggleMobileDropdown(itemLabel: string) {
@@ -196,10 +217,36 @@ export class HeaderComponent implements OnInit{
     return this.mobileDropdowns().has(itemLabel);
   }
 
+
+  onMenuItemClick() {
+    this.closeMobileMenu();
+  }
+
   mainHeaderClasses(): string {
+    const base = 'transition-all duration-500 ease-in-out';
     return this.isScrolled()
-      ? 'bg-white bg-opacity-98 backdrop-blur-sm shadow-lg'
-      : 'bg-transparent';
+      ? `${base} bg-white/95 backdrop-blur-md shadow-lg border-b border-white/20`
+      : `${base} bg-white/10 backdrop-blur-sm`;
+  }
+
+  currentLangData(): Language {
+    return this.languages.find(l => l.code === this.currentLang())!;
+  }
+
+  toggleLangDropdown(open: boolean) {
+    this.showLangDropdown.set(open);
+  }
+
+  onLanguageChange(language: Language) {
+    this.currentLang.set(language.code);
+    this.showLangDropdown.set(false);
+    this.localeService.setLanguage(language.code);
+  }
+
+  selectMobileLanguage(language: Language) {
+    this.currentLang.set(language.code);
+    this.showMobileLangDropdown = false;
+    this.localeService.setLanguage(language.code);
   }
 
   playVideo() {
