@@ -35,8 +35,19 @@
               </button>
               <!-- Tooltip langue active -->
               <span
-                class="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-2 py-1 text-sm rounded-md bg-gray-800 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+                [ngClass]="{
+                  'right-full mr-3': currentLang() !== 'ar',
+                  'left-full ml-3': currentLang() === 'ar'
+                }"
+                class="absolute top-1/2 -translate-y-1/2 px-2 py-1 text-xs rounded-md bg-gray-800 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-70">
                 {{ currentLangData().label }}
+                <!-- Flèche adaptive selon la direction -->
+                <span
+                  [ngClass]="{
+                    'left-full border-t-4 border-b-4 border-l-4 border-transparent border-l-gray-800': currentLang() !== 'ar',
+                    'right-full border-t-4 border-b-4 border-r-4 border-transparent border-r-gray-800': currentLang() === 'ar'
+                  }"
+                  class="absolute top-1/2 -translate-y-1/2"></span>
               </span>
             </div>
 
@@ -57,8 +68,19 @@
                   </button>
                   <!-- Tooltip langues secondaires -->
                   <span
-                    class="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-2 py-1 text-sm rounded-md bg-gray-800 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+                    [ngClass]="{
+                      'right-full mr-3': currentLang() !== 'ar',
+                      'left-full ml-3': currentLang() === 'ar'
+                    }"
+                    class="absolute top-1/2 -translate-y-1/2 px-2 py-1 text-xs rounded-md bg-gray-800 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-70">
                     {{ lang.label }}
+                    <!-- Flèche adaptive selon la direction -->
+                    <span
+                      [ngClass]="{
+                        'left-full border-t-4 border-b-4 border-l-4 border-transparent border-l-gray-800': currentLang() !== 'ar',
+                        'right-full border-t-4 border-b-4 border-r-4 border-transparent border-r-gray-800': currentLang() === 'ar'
+                      }"
+                      class="absolute top-1/2 -translate-y-1/2"></span>
                   </span>
                 </div>
               </ng-container>
@@ -67,7 +89,7 @@
         </div>
 
         <!-- Menu Mobile -->
-        <div class="lg:hidden flex items-center space-x-3">
+        <div class="lg:hidden flex items-center space-x-3 rtl:space-x-reverse">
           <!-- Language selector mobile simple -->
           <div class="relative">
             <button
@@ -80,16 +102,22 @@
 
             <!-- Dropdown langues mobile -->
             <div *ngIf="showMobileLangDropdown"
-                 class="absolute top-full right-0 mt-2 bg-white rounded-xl shadow-xl border border-gray-100 min-w-[160px] z-60 overflow-hidden">
+                 [ngClass]="{
+                   'right-0': currentLang() !== 'ar',
+                   'left-0': currentLang() === 'ar'
+                 }"
+                 class="absolute top-full mt-2 bg-white rounded-xl shadow-xl border border-gray-100 min-w-[160px] z-60 overflow-hidden">
               <div class="p-2">
                 <button *ngFor="let lang of languages"
                         (click)="selectMobileLanguage(lang)"
-                        [class.bg-[var(--sned-orange)]="lang.code === currentLang()"
-                        [class.text-white]="lang.code === currentLang()"
-                        class="w-full flex items-center space-x-3 px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 hover:bg-[var(--sned-orange)]/10 hover:text-[var(--sned-orange)]">
+                        [ngClass]="{
+                          'bg-gradient-to-r from-[var(--sned-orange)] to-orange-500 text-white shadow-md ring-2 ring-[var(--sned-orange)]/30': lang.code === currentLang(),
+                          'hover:bg-[var(--sned-orange)]/10 hover:text-[var(--sned-orange)]': lang.code !== currentLang()
+                        }"
+                        class="w-full flex items-center space-x-3 rtl:space-x-reverse px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 relative group">
                   <img [src]="lang.flag" [alt]="lang.label" class="w-4 h-4 rounded-full object-cover flex-shrink-0"/>
-                  <span>{{ lang.label }}</span>
-                  <i *ngIf="lang.code === currentLang()" class="fas fa-check w-4 h-4 ml-auto"></i>
+                  <span class="flex-1 text-left rtl:text-right">{{ lang.label }}</span>
+                  <i *ngIf="lang.code === currentLang()" class="fas fa-check w-4 h-4 text-white animate-pulse"></i>
                 </button>
               </div>
             </div>

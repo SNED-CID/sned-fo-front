@@ -1,11 +1,11 @@
 <div #anchorNav *ngIf="isHomeRoute()" class="bg-white shadow-md" >
-  <nav class="max-w-6xl mx-auto flex justify-center space-x-8 rtl:space-x-reverse py-4">
+  <nav class="max-w-6xl mx-auto flex flex-wrap md:flex-nowrap justify-center gap-2 sm:gap-4 md:gap-6 lg:gap-8 rtl:space-x-reverse p-2 sm:py-4">
     <button *ngFor="let link of links"
             (click)="scrollTo(link.id)"
-            class="relative text-[var(--sned-blue-dark)] font-medium px-2 py-1 transition group">
+            class="relative text-[var(--sned-blue-dark)] font-medium px-1 sm:px-2 py-1 text-xs sm:text-sm md:text-base transition group whitespace-nowrap">
       {{ link.label }}
       <!-- Trait animé -->
-      <span class="absolute left-0 right-0 -bottom-1 h-[3px] bg-[var(--sned-orange)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+      <span class="absolute left-0 right-0 -bottom-1 h-[2px] sm:h-[3px] bg-[var(--sned-orange)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
     </button>
   </nav>
 </div>

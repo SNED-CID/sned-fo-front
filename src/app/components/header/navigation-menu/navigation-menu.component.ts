@@ -87,16 +87,68 @@ export interface MenuSection {
   `,
   styles: [`
     .active-sublink {
-      background: linear-gradient(to right, var(--sned-orange, #ff6b35) 10%, var(--sned-blue, #0066cc) 5%);
-      color: var(--sned-blue, #0066cc);
+      background: linear-gradient(135deg, var(--sned-orange, #ff6b35) 0%, var(--sned-blue, #0066cc) 100%);
+      color: white !important;
+      box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+      transform: translateX(4px);
+      border-left: 3px solid var(--sned-orange, #ff6b35);
+      font-weight: 600;
+      position: relative;
     }
 
-    .active-sublink svg {
-      opacity: 1;
+    .active-sublink::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(to bottom, var(--sned-orange, #ff6b35), var(--sned-blue, #0066cc));
+      border-radius: 0 4px 4px 0;
+    }
+
+    .active-sublink i {
+      opacity: 1 !important;
+      transform: translateX(0) !important;
+      color: white;
+    }
+
+    .active-sublink .font-medium {
+      color: white;
+    }
+
+    .active-sublink .text-xs {
+      color: rgba(255, 255, 255, 0.8);
     }
 
     .group\\/item:hover {
       transform: scale(1.02);
+    }
+
+    .group\\/item.active-sublink:hover {
+      transform: scale(1.02) translateX(4px);
+      box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4);
+    }
+
+    /* Animation pour l'état actif */
+    .active-sublink {
+      animation: slideInActive 0.3s ease-out;
+    }
+
+    @keyframes slideInActive {
+      from {
+        transform: translateX(0);
+        box-shadow: none;
+      }
+      to {
+        transform: translateX(4px);
+        box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+      }
+    }
+
+    /* Amélioration du dropdown container */
+    .group:hover > div {
+      backdrop-filter: blur(12px);
     }
 
     @media (max-width: 1280px) {

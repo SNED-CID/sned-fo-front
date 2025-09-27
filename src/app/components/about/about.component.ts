@@ -159,16 +159,21 @@ interface Section {
       </section>
     </div>
 
-    <!-- Bouton Retour en haut -->
+    <!-- Bouton Retour en haut amélioré -->
     <button *ngIf="showScrollTop"
             (click)="scrollToTop()"
-            class="cursor-pointer fixed bottom-6 right-6
-               w-12 h-12 flex items-center justify-center
-               rounded-full shadow-lg
-               bg-[var(--sned-blue)] text-white
-               hover:bg-[var(--sned-orange)]
-               transition">
-      <i class="fa-solid fa-arrow-up text-lg"></i>
+            class="cursor-pointer fixed bottom-6 right-6 z-50
+               w-14 h-14 flex items-center justify-center
+               rounded-full shadow-xl border-2 border-white
+               bg-gradient-to-br from-[var(--sned-blue)] to-[var(--sned-blue-dark)] text-white
+               hover:from-[var(--sned-orange)] hover:to-orange-600 hover:scale-110
+               active:scale-95 transition-all duration-300 ease-in-out
+               backdrop-blur-sm group">
+      <i class="fa-solid fa-arrow-up text-xl group-hover:animate-bounce"></i>
+      <!-- Effet de brillance au survol -->
+      <div class="absolute inset-0 rounded-full opacity-0 group-hover:opacity-30
+                  bg-gradient-to-t from-transparent via-white to-transparent
+                  transition-opacity duration-300"></div>
     </button>
   `
 })
@@ -276,7 +281,7 @@ et internationales, notamment en matière de transparence, de durabilité et de 
   }
 
   scrollToTop() {
-    document.getElementById('about-top')?.scrollIntoView({ behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   toggleOrganigramme() {
