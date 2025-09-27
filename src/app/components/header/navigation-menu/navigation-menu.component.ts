@@ -30,7 +30,7 @@ export interface MenuSection {
              routerLinkActive="active-link"
              [routerLinkActiveOptions]="{ exact: true }"
              (click)="onMenuItemClick()"
-             class="relative px-4 py-2.5 font-medium text-sm xl:text-base rounded-lg inline-flex items-center transition-all duration-200 group text-[var(--sned-orange-dark)] hover:text-[var(--sned-blue)] hover:bg-[var(--sned-orange)]/5 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/20">
+             class="relative px-4 py-2.5 font-medium text-sm xl:text-base rounded-lg inline-flex items-center transition-all duration-200 group text-[var(--sned-orange-dark)] hover:text-[var(--sned-blue)] hover:bg-[var(--sned-orange)]/5 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/20 cursor-pointer">
             {{ item.label }}
 
             <!-- Trait animé sous le lien -->
@@ -43,7 +43,7 @@ export interface MenuSection {
               [routerLink]="item.route || '/'"
               routerLinkActive="active-link"
               [routerLinkActiveOptions]="{ exact: true }"
-              class="relative px-4 py-2.5 font-medium text-sm xl:text-base rounded-lg inline-flex items-center gap-2 transition-all duration-200 group text-[var(--sned-orange-dark)] hover:text-[var(--sned-blue)] hover:bg-[var(--sned-orange)]/5 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/20">
+              class="relative px-4 py-2.5 font-medium text-sm xl:text-base rounded-lg inline-flex items-center gap-2 transition-all duration-200 group text-[var(--sned-orange-dark)] hover:text-[var(--sned-blue)] hover:bg-[var(--sned-orange)]/5 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/20 cursor-pointer">
               {{ item.label }}
               <i class="fas fa-chevron-down w-4 h-4 transition-transform duration-200 group-hover:rotate-180"></i>
 
@@ -62,7 +62,7 @@ export interface MenuSection {
                    routerLinkActive="active-sublink"
                    [routerLinkActiveOptions]="{ exact: true }"
                    (click)="onMenuItemClick()"
-                   class="flex items-center px-4 py-3 text-sm font-medium text-[var(--sned-orange-dark)] hover:bg-gradient-to-r hover:from-[var(--sned-orange)]/8 hover:to-[var(--sned-blue)]/4 hover:text-[var(--sned-blue)] rounded-lg transition-all duration-200 whitespace-nowrap rtl:text-right group/item relative overflow-hidden">
+                   class="flex items-center px-4 py-3 text-sm font-medium text-[var(--sned-orange-dark)] hover:bg-gradient-to-r hover:from-[var(--sned-orange)]/8 hover:to-[var(--sned-blue)]/4 hover:text-[var(--sned-blue)] rounded-lg transition-all duration-200 whitespace-nowrap rtl:text-right group/item relative overflow-hidden cursor-pointer">
 
                   <!-- Icône animée -->
                   <i class="fas fa-chevron-right w-4 h-4 mr-3 text-[var(--sned-orange)] opacity-0 group-hover/item:opacity-100 transition-all duration-200 transform -translate-x-2 group-hover/item:translate-x-0"></i>

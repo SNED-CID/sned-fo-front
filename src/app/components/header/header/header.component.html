@@ -7,7 +7,7 @@
         <!-- Logo -->
         <a routerLink="/"
            class="flex items-center space-x-3 rtl:space-x-reverse group transition-transform duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/20 rounded-lg p-1">
-          <img src="assets/images/sned.svg"
+          <img [src]="getLogoPath()"
                alt="SNED Logo"
                class="h-12 sm:h-14 lg:h-16 w-auto transition-all duration-300 filter drop-shadow-sm group-hover:drop-shadow-md"/>
         </a>

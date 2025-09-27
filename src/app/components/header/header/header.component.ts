@@ -251,4 +251,15 @@ export class HeaderComponent implements OnInit{
   playVideo() {
     this.isVideoPlaying = true;
   }
+
+  getLogoPath(): string {
+    const isArabic = this.currentLang() === 'ar';
+    const hasScrolled = this.isScrolled();
+
+    if (isArabic) {
+      return hasScrolled ? 'assets/logos/arstdr.png' : 'assets/logos/arwhite.png';
+    } else {
+      return hasScrolled ? 'assets/logos/frstdr.png' : 'assets/logos/frwhite.png';
+    }
+  }
 }
