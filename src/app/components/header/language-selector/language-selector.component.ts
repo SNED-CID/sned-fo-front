@@ -36,7 +36,7 @@ export interface Language {
 
       <!-- Autres langues -->
       <div
-        class="absolute top-[calc(100%+0.5rem)] right-0 flex flex-col space-y-2 z-50 transform transition-all duration-300 ease-out"
+        class="absolute top-[calc(100%+0.5rem)] right-0 flex flex-col space-y-2 z-60 transform transition-all duration-300 ease-out"
         [ngClass]="{
           'opacity-100 translate-y-0 pointer-events-auto': isOpen,
           'opacity-0 -translate-y-2 pointer-events-none': !isOpen

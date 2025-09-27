@@ -45,7 +45,7 @@
 
             <!-- Autres langues -->
             <div *ngIf="showLangDropdown()"
-                 class="absolute top-[calc(100%+0.5rem)] right-0 flex flex-col space-y-2 z-50">
+                 class="absolute top-[calc(100%+0.5rem)] right-0 flex flex-col space-y-2 z-60">
               <ng-container *ngFor="let lang of languages">
                 <div *ngIf="lang.code !== currentLang()" class="relative group">
                   <button
@@ -80,7 +80,7 @@
 
             <!-- Dropdown langues mobile -->
             <div *ngIf="showMobileLangDropdown"
-                 class="absolute top-full right-0 mt-2 bg-white rounded-xl shadow-xl border border-gray-100 min-w-[160px] z-50 overflow-hidden">
+                 class="absolute top-full right-0 mt-2 bg-white rounded-xl shadow-xl border border-gray-100 min-w-[160px] z-60 overflow-hidden">
               <div class="p-2">
                 <button *ngFor="let lang of languages"
                         (click)="selectMobileLanguage(lang)"
@@ -89,9 +89,7 @@
                         class="w-full flex items-center space-x-3 px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 hover:bg-[var(--sned-orange)]/10 hover:text-[var(--sned-orange)]">
                   <img [src]="lang.flag" [alt]="lang.label" class="w-4 h-4 rounded-full object-cover flex-shrink-0"/>
                   <span>{{ lang.label }}</span>
-                  <svg *ngIf="lang.code === currentLang()" class="w-4 h-4 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
+                  <i *ngIf="lang.code === currentLang()" class="fas fa-check w-4 h-4 ml-auto"></i>
                 </button>
               </div>
             </div>
@@ -134,9 +132,7 @@
                        routerLinkActive="active-mobile"
                        class="flex items-center px-4 py-3.5 text-base font-medium text-[var(--sned-blue-dark)] hover:bg-gradient-to-r hover:from-[var(--sned-orange)]/8 hover:to-[var(--sned-blue)]/4 hover:text-[var(--sned-blue)] rounded-lg transition-all duration-200 group relative">
 
-                      <svg class="w-5 h-5 mr-3 text-[var(--sned-orange)] opacity-0 group-hover:opacity-100 transition-all duration-200 transform -translate-x-2 group-hover:translate-x-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                      </svg>
+                      <i class="fas fa-chevron-right w-5 h-5 mr-3 text-[var(--sned-orange)] opacity-0 group-hover:opacity-100 transition-all duration-200 transform -translate-x-2 group-hover:translate-x-0"></i>
 
                       <span>{{ item.label }}</span>
 
@@ -152,17 +148,12 @@
                       class="w-full flex items-center justify-between px-4 py-3.5 text-base font-medium text-[var(--sned-blue-dark)] hover:bg-gradient-to-r hover:from-[var(--sned-orange)]/8 hover:to-[var(--sned-blue)]/4 hover:text-[var(--sned-blue)] rounded-lg transition-all duration-200 group">
 
                       <div class="flex items-center">
-                        <svg class="w-5 h-5 mr-3 text-[var(--sned-orange)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                        </svg>
+                        <i class="fas fa-bars w-5 h-5 mr-3 text-[var(--sned-orange)]"></i>
                         <span>{{ item.label }}</span>
                       </div>
 
-                      <svg class="w-5 h-5 transition-transform duration-300"
-                           [ngClass]="{'rotate-180': isMobileDropdownOpen(item.label)}"
-                           fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                      </svg>
+                      <i class="fas fa-chevron-down w-5 h-5 transition-transform duration-300"
+                           [ngClass]="{'rotate-180': isMobileDropdownOpen(item.label)}"></i>
                     </button>
 
                     <!-- Submenu -->
@@ -174,9 +165,7 @@
                          routerLinkActive="active-mobile-sub"
                          class="flex items-start px-4 py-2.5 text-sm text-[var(--sned-blue-dark)] hover:bg-gradient-to-r hover:from-[var(--sned-orange)]/8 hover:to-[var(--sned-blue)]/4 hover:text-[var(--sned-blue)] rounded-lg transition-all duration-200 group/sub">
 
-                        <svg class="w-4 h-4 mr-3 mt-0.5 text-[var(--sned-orange)] opacity-0 group-hover/sub:opacity-100 transition-all duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12"></path>
-                        </svg>
+                        <i class="fas fa-arrow-right w-4 h-4 mr-3 mt-0.5 text-[var(--sned-orange)] opacity-0 group-hover/sub:opacity-100 transition-all duration-200 flex-shrink-0"></i>
 
                         <div class="flex-1">
                           <div class="font-medium">{{ child.label }}</div>
@@ -250,17 +239,13 @@
       <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
         <button (click)="playVideo()"
                 class="group flex items-center justify-center gap-3 px-8 py-4 bg-[var(--sned-orange)] text-white font-semibold rounded-full shadow-xl hover:bg-[var(--sned-orange-dark)] hover:shadow-2xl transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[var(--sned-orange)]/30">
-          <svg class="w-6 h-6 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/>
-          </svg>
+          <i class="fas fa-play w-6 h-6 group-hover:scale-110 transition-transform"></i>
           <span>{{ 'start-video' | translate }}</span>
         </button>
 
         <button routerLink="/projet"
                 class="group flex items-center justify-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-full border-2 border-white/30 hover:bg-white/20 hover:border-white/50 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/20">
-          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-          </svg>
+          <i class="fas fa-arrow-right w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
           <span>Découvrir le projet</span>
         </button>
       </div>
@@ -269,16 +254,12 @@
       <div class="flex flex-wrap gap-6 justify-center lg:justify-start text-sm">
         <a href="/assets/brochure-sned.pdf" download
            class="inline-flex items-center gap-2 px-4 py-2 text-white/80 hover:text-white border-b border-transparent hover:border-white/50 transition-all group">
-          <svg class="w-4 h-4 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-          </svg>
+          <i class="fas fa-download w-4 h-4 group-hover:scale-110 transition-transform"></i>
           Télécharger la brochure
         </a>
         <button routerLink="/contact"
                 class="inline-flex items-center gap-2 px-4 py-2 text-white/80 hover:text-white border-b border-transparent hover:border-white/50 transition-all group">
-          <svg class="w-4 h-4 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-          </svg>
+          <i class="fas fa-envelope w-4 h-4 group-hover:scale-110 transition-transform"></i>
           Nous contacter
         </button>
       </div>

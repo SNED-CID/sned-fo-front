@@ -5,7 +5,7 @@ import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-home',
-  imports: [AnchorComponent, AboutComponent, NgIf],
+  imports: [AnchorComponent, AboutComponent],
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'

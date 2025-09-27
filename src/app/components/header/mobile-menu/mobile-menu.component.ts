@@ -78,9 +78,7 @@ export interface Language {
                     class="w-full flex items-center space-x-3 px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 hover:bg-[var(--sned-orange)]/10 hover:text-[var(--sned-orange)]">
               <img [src]="lang.flag" [alt]="lang.label" class="w-4 h-4 rounded-full object-cover flex-shrink-0"/>
               <span>{{ lang.label }}</span>
-              <svg *ngIf="lang.code === currentLanguage.code" class="w-4 h-4 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
+              <i *ngIf="lang.code === currentLanguage.code" class="fas fa-check w-4 h-4 ml-auto"></i>
             </button>
           </div>
         </div>
@@ -124,9 +122,7 @@ export interface Language {
                    routerLinkActive="active-mobile"
                    class="flex items-center px-4 py-3.5 text-base font-medium text-[var(--sned-blue-dark)] hover:bg-gradient-to-r hover:from-[var(--sned-orange)]/8 hover:to-[var(--sned-blue)]/4 hover:text-[var(--sned-blue)] rounded-lg transition-all duration-200 group relative">
                   
-                  <svg class="w-5 h-5 mr-3 text-[var(--sned-orange)] opacity-0 group-hover:opacity-100 transition-all duration-200 transform -translate-x-2 group-hover:translate-x-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                  </svg>
+                  <i class="fas fa-chevron-right w-5 h-5 mr-3 text-[var(--sned-orange)] opacity-0 group-hover:opacity-100 transition-all duration-200 transform -translate-x-2 group-hover:translate-x-0"></i>
                   
                   <span>{{ item.label }}</span>
                   
@@ -142,17 +138,12 @@ export interface Language {
                   class="w-full flex items-center justify-between px-4 py-3.5 text-base font-medium text-[var(--sned-blue-dark)] hover:bg-gradient-to-r hover:from-[var(--sned-orange)]/8 hover:to-[var(--sned-blue)]/4 hover:text-[var(--sned-blue)] rounded-lg transition-all duration-200 group">
                   
                   <div class="flex items-center">
-                    <svg class="w-5 h-5 mr-3 text-[var(--sned-orange)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                    </svg>
+                    <i class="fas fa-bars w-5 h-5 mr-3 text-[var(--sned-orange)]"></i>
                     <span>{{ item.label }}</span>
                   </div>
                   
-                  <svg class="w-5 h-5 transition-transform duration-300"
-                       [ngClass]="{'rotate-180': isMobileDropdownOpen(item.label)}"
-                       fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                  </svg>
+                  <i class="fas fa-chevron-down w-5 h-5 transition-transform duration-300"
+                       [ngClass]="{'rotate-180': isMobileDropdownOpen(item.label)}"></i>
                 </button>
                 
                 <!-- Submenu -->
@@ -165,9 +156,7 @@ export interface Language {
                      routerLinkActive="active-mobile-sub"
                      class="flex items-start px-4 py-2.5 text-sm text-[var(--sned-blue-dark)] hover:bg-gradient-to-r hover:from-[var(--sned-orange)]/8 hover:to-[var(--sned-blue)]/4 hover:text-[var(--sned-blue)] rounded-lg transition-all duration-200 group/sub">
                     
-                    <svg class="w-4 h-4 mr-3 mt-0.5 text-[var(--sned-orange)] opacity-0 group-hover/sub:opacity-100 transition-all duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M6 12h12"></path>
-                    </svg>
+                    <i class="fas fa-arrow-right w-4 h-4 mr-3 mt-0.5 text-[var(--sned-orange)] opacity-0 group-hover/sub:opacity-100 transition-all duration-200 flex-shrink-0"></i>
                     
                     <div class="flex-1">
                       <div class="font-medium">{{ child.label }}</div>

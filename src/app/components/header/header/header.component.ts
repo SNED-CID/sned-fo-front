@@ -17,7 +17,6 @@ import { NavigationMenuComponent, MenuSection } from '../navigation-menu/navigat
     RouterModule,
     LoaderComponent,
     TranslatePipe,
-    LanguageSelectorComponent,
     NavigationMenuComponent
   ],
   templateUrl: "./header.component.html",
@@ -105,11 +104,11 @@ export class HeaderComponent implements OnInit{
           label: 'Projet de Liaison fixe',
           route: '/projet',
           children: [
-            { label: 'Composante Ingénierie', route: '/projet/ingenierie', hasPagination: true, description: 'Aspects techniques' },
+            { label: 'Composante Ingénierie', route: '/projet/ingenierie', description: 'Aspects techniques' },
             { label: 'Historique', route: '/projet/historique', description: 'Conception et études' },
-            { label: 'Composante Milieu physique', route: '/projet/milieu-physique', hasModal: true, hasPagination: true, description: 'Études environnementales' },
-            { label: 'Composante Socio-économique', route: '/projet/socio-economique', hasPagination: true, description: 'Impact économique' },
-            { label: 'Composante promotion de projet', route: '/projet/socio-economique', hasPagination: true, description: 'Impact économique' },
+            { label: 'Composante Milieu physique', route: '/projet/milieu-physique', description: 'Études environnementales' },
+            { label: 'Composante Socio-économique', route: '/projet/socio-economique', description: 'Impact économique' },
+            { label: 'Composante promotion de projet', route: '/projet/socio-economique', description: 'Impact économique' },
             { label: 'Mentions légales', route: '/projet/geostrategie', description: 'Aspects légaux et stratégiques' },
           ]
         },
@@ -117,10 +116,10 @@ export class HeaderComponent implements OnInit{
           label: 'Galerie de reconnaissance',
           route: '/galerie',
           children: [
-            { label: 'Composante Ingénierie', route: '/galerie/ingenierie', hasPagination: true, description: 'Aspects techniques' },
-            { label: 'Composante Milieu physique', route: '/galerie/milieu-physique', hasModal: true, hasPagination: true, description: 'Études environnementales' },
-            { label: 'Composante Socio-économique', route: '/galerie/socio-economique', hasPagination: true, description: 'Impact économique' },
-            { label: 'Composante promotion de projet', route: '/galerie/socio-economique', hasPagination: true, description: 'Impact économique' },
+            { label: 'Composante Ingénierie', route: '/galerie/ingenierie', description: 'Aspects techniques' },
+            { label: 'Composante Milieu physique', route: '/galerie/milieu-physique', description: 'Études environnementales' },
+            { label: 'Composante Socio-économique', route: '/galerie/socio-economique', description: 'Impact économique' },
+            { label: 'Composante promotion de projet', route: '/galerie/socio-economique', description: 'Impact économique' },
           ]
         },
         {

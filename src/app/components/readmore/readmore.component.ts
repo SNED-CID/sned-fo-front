@@ -31,7 +31,7 @@ import { LoaderComponent } from '../loader/loader.component';
     <!-- Overlay -->
     <div
       *ngIf="sidebarOpen()"
-      class="fixed inset-0 bg-black/50 z-40"
+      class="fixed inset-0 bg-black/50 z-80"
       (click)="closeSidebar()"
     ></div>
 
@@ -39,7 +39,7 @@ import { LoaderComponent } from '../loader/loader.component';
     <aside
       *ngIf="sidebarOpen()"
       @slideInOut
-      class="fixed top-0 right-0 w-full md:w-[600px] h-full bg-white shadow-2xl z-50 flex flex-col"
+      class="fixed top-0 right-0 w-full md:w-[600px] h-full bg-white shadow-2xl z-90 flex flex-col"
     >
       <!-- Header -->
       <div class="flex justify-between items-center p-4 border-b">
