@@ -1,12 +1,11 @@
 import { Component, Input, Output, EventEmitter, signal } from '@angular/core';
-import {NgForOf, NgIf} from '@angular/common';
 import { trigger, style, transition, animate } from '@angular/animations';
 import { LoaderComponent } from '../loader/loader.component';
 
 @Component({
   selector: 'app-read-more',
   standalone: true,
-  imports: [NgIf, LoaderComponent, NgForOf],
+  imports: [LoaderComponent],
   animations: [
     trigger('slideInOut', [
       transition(':enter', [
@@ -29,20 +28,21 @@ import { LoaderComponent } from '../loader/loader.component';
     </button>
 
     <!-- Overlay -->
-    <div
-      *ngIf="sidebarOpen()"
-      class="fixed inset-0 bg-black/50"
-      style="z-index: 9998;"
-      (click)="closeSidebar()"
-    ></div>
+    @if (sidebarOpen()) {
+      <div
+        class="fixed inset-0 bg-black/50"
+        style="z-index: 9998;"
+        (click)="closeSidebar()"
+      ></div>
+    }
 
     <!-- Sidebar animée -->
-    <aside
-      *ngIf="sidebarOpen()"
-      @slideInOut
-      class="fixed top-0 right-0 w-full md:w-[600px] h-full bg-white shadow-2xl flex flex-col"
-      style="z-index: 9999;"
-    >
+    @if (sidebarOpen()) {
+      <aside
+        @slideInOut
+        class="fixed top-0 right-0 w-full md:w-[600px] h-full bg-white shadow-2xl flex flex-col"
+        style="z-index: 9999;"
+      >
       <!-- Header -->
       <div class="flex justify-between items-center p-4 border-b">
         <h2 class="text-2xl font-bold">{{ title }}</h2>
@@ -71,46 +71,57 @@ import { LoaderComponent } from '../loader/loader.component';
 
       <!-- Contenu scrollable -->
       <div class="flex-1 overflow-y-auto p-6 sidebar-scroll" data-lenis-prevent>
-        <app-loader *ngIf="loading()"></app-loader>
+        @if (loading()) {
+          <app-loader></app-loader>
+        }
 
         <!-- Image spéciale pour SNED-SECEGSA -->
-        <div *ngIf="sectionId === 'sned_secegsa' && !loading()"
-             class="mb-4 w-3/4 mx-auto aspect-[4/3] flex items-center justify-center gap-8 p-8 bg-gradient-to-r from-blue-50 to-orange-50 rounded-lg shadow-md">
-          <img src="assets/logos/snednotext.png"
-               alt="SNED Logo"
-               class="h-20 w-auto object-contain" />
-          <div class="text-3xl font-bold text-gray-400">+</div>
-          <img src="assets/logos/secegsa.png"
-               alt="SECEGSA Logo"
-               class="h-20 w-auto object-contain" />
-        </div>
+        @if (sectionId === 'sned_secegsa' && !loading()) {
+          <div class="mb-4 w-3/4 mx-auto aspect-[4/3] flex items-center justify-center gap-8 p-8 bg-gradient-to-r from-blue-50 to-orange-50 rounded-lg shadow-md">
+            <img src="assets/logos/snednotext.png"
+                 alt="SNED Logo"
+                 class="h-20 w-auto object-contain" />
+            <div class="text-3xl font-bold text-gray-400">+</div>
+            <img src="assets/logos/secegsa.png"
+                 alt="SECEGSA Logo"
+                 class="h-20 w-auto object-contain" />
+          </div>
+        }
 
         <!-- Image normale pour les autres sections -->
-        <img *ngIf="imageUrl && !loading() && sectionId !== 'sned_secegsa'" [src]="imageUrl"
-             alt="{{ title }}" class="mb-4 rounded-lg shadow-md w-3/4 mx-auto h-auto" />
+        @if (imageUrl && !loading() && sectionId !== 'sned_secegsa') {
+          <img [src]="imageUrl"
+               alt="{{ title }}" class="mb-4 rounded-lg shadow-md w-3/4 mx-auto h-auto" />
+        }
 
         <!-- Texte en paragraphes -->
-        <div *ngIf="!loading()">
-          <p *ngFor="let paragraph of paragraphs" class="text-gray-700 leading-relaxed mb-4 adaptive-body">
-            {{ paragraph }}
-          </p>
-        </div>
+        @if (!loading()) {
+          <div>
+            @for (paragraph of paragraphs; track paragraph) {
+              <p class="text-gray-700 leading-relaxed mb-4 adaptive-body">
+                {{ paragraph }}
+              </p>
+            }
+          </div>
+        }
       </div>
 
       <!-- Footer avec navigation vers section suivante -->
-      <div *ngIf="nextSectionId && nextSectionTitle"
-           class="border-t bg-gray-50 p-4">
-        <button
-          (click)="navigateToNextSection()"
-          class="cursor-pointer w-full flex items-center justify-between p-3 rounded-lg hover:bg-gray-100 transition-colors duration-200 group">
-          <div class="flex items-center gap-3">
-            <span class="text-gray-600">Section suivante :</span>
-            <span class="font-semibold text-gray-800">{{ nextSectionTitle }}</span>
-          </div>
-          <i class="fas fa-arrow-right text-[var(--sned-orange)] group-hover:translate-x-1 transition-transform duration-200"></i>
-        </button>
-      </div>
-    </aside>
+      @if (nextSectionId && nextSectionTitle) {
+        <div class="border-t bg-gray-50 p-4">
+          <button
+            (click)="navigateToNextSection()"
+            class="cursor-pointer w-full flex items-center justify-between p-3 rounded-lg hover:bg-gray-100 transition-colors duration-200 group">
+            <div class="flex items-center gap-3">
+              <span class="text-gray-600">Section suivante :</span>
+              <span class="font-semibold text-gray-800">{{ nextSectionTitle }}</span>
+            </div>
+            <i class="fas fa-arrow-right text-[var(--sned-orange)] group-hover:translate-x-1 transition-transform duration-200"></i>
+          </button>
+        </div>
+      }
+      </aside>
+    }
   `
 })
 export class ReadMoreComponent {

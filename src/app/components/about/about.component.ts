@@ -1,7 +1,7 @@
 // src/app/features/about/about.component.ts
 import {Component, HostListener, OnInit, ViewChildren, QueryList} from '@angular/core';
 import { ReadMoreComponent } from '../readmore/readmore.component';
-import {JsonPipe, NgClass, NgFor, NgIf} from '@angular/common';
+import {NgClass} from '@angular/common';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 interface Section {
@@ -16,42 +16,44 @@ interface Section {
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [ReadMoreComponent, NgClass, NgFor, NgIf, TranslatePipe, JsonPipe],
+  imports: [ReadMoreComponent, NgClass, TranslatePipe],
   template: `
     <!-- Point de repère en haut -->
     <div id="about-top"></div>
 
     <section class="py-16 pb-32">
       <div class="max-w-6xl mx-auto px-6 lg:px-12 space-y-20 bg-white rounded-lg">
-        <div *ngFor="let section of sections; let i = index"
-             class="grid md:grid-cols-2 gap-10">
+        @for (section of sections; track section.id; let i = $index) {
+          <div class="grid md:grid-cols-2 gap-10">
 
-          <!-- Image -->
-          <div class="flex items-center relative"
-               [id]="section.id"
-               [ngClass]="{ 'order-first md:order-last': i % 2 === 1 }">
+            <!-- Image -->
+            <div class="flex items-center relative"
+                 [id]="section.id"
+                 [ngClass]="{ 'order-first md:order-last': i % 2 === 1 }">
 
-            <!-- Section SNED-SECEGSA avec logos côte à côte -->
-            <div *ngIf="section.id === 'sned_secegsa'"
-                 class="w-3/4 aspect-[4/3] flex items-center justify-center gap-8 p-8 bg-gradient-to-r from-blue-50 to-orange-50 rounded-2xl shadow-lg"
-                 [ngClass]="{ 'mr-auto': i % 2 === 0, 'ml-auto': i % 2 === 1 }">
-              <img src="assets/logos/snednotext.png"
-                   alt="SNED Logo"
-                   class="h-20 w-auto object-contain" />
-              <div class="text-3xl font-bold text-gray-400">+</div>
-              <img src="assets/logos/secegsa.png"
-                   alt="SECEGSA Logo"
-                   class="h-20 w-auto object-contain" />
+              <!-- Section SNED-SECEGSA avec logos côte à côte -->
+              @if (section.id === 'sned_secegsa') {
+                <div class="w-3/4 aspect-[4/3] flex items-center justify-center gap-8 p-8 bg-gradient-to-r from-blue-50 to-orange-50 rounded-2xl shadow-lg"
+                     [ngClass]="{ 'mr-auto': i % 2 === 0, 'ml-auto': i % 2 === 1 }">
+                  <img src="assets/logos/snednotext.png"
+                       alt="SNED Logo"
+                       class="h-20 w-auto object-contain" />
+                  <div class="text-3xl font-bold text-gray-400">+</div>
+                  <img src="assets/logos/secegsa.png"
+                       alt="SECEGSA Logo"
+                       class="h-20 w-auto object-contain" />
+                </div>
+              }
+
+              <!-- Autres sections avec image normale -->
+              @if (section.id !== 'sned_secegsa') {
+                <img [src]="section.image"
+                     [alt]="section.title"
+                     class="rounded-2xl shadow-lg w-3/4 h-auto object-contain"
+                     [ngClass]="{ 'mr-auto': i % 2 === 0, 'ml-auto': i % 2 === 1 }" />
+              }
+
             </div>
-
-            <!-- Autres sections avec image normale -->
-            <img *ngIf="section.id !== 'sned_secegsa'"
-                 [src]="section.image"
-                 [alt]="section.title"
-                 class="rounded-2xl shadow-lg w-3/4 h-auto object-contain"
-                 [ngClass]="{ 'mr-auto': i % 2 === 0, 'ml-auto': i % 2 === 1 }" />
-
-          </div>
 
           <!-- Texte -->
           <div class="flex items-center">
@@ -74,7 +76,8 @@ interface Section {
               </app-read-more>
             </div>
           </div>
-        </div>
+          </div>
+        }
       </div>
     </section>
 
@@ -93,7 +96,7 @@ interface Section {
             class="cursor-pointer flex items-center gap-2 text-lg font-semibold text-primary hover:text-[var(--sned-orange)] transition"
             [title]="isOrganigrammeExpanded ? 'Réduire' : 'Agrandir'">
             <i class="fas"
-               [ngClass]="isOrganigrammeExpanded ? 'fa-compress-alt' : 'fa-expand-alt'"></i>
+               [class.fa-compress-alt]="isOrganigrammeExpanded" [class.fa-expand-alt]="!isOrganigrammeExpanded"></i>
           </button>
         </div>
 
@@ -149,21 +152,22 @@ interface Section {
     </div>
 
     <!-- Bouton Retour en haut amélioré -->
-    <button *ngIf="showScrollTop"
-            (click)="scrollToTop()"
-            class="cursor-pointer fixed bottom-6 right-6 z-50
-               w-14 h-14 flex items-center justify-center
-               rounded-full shadow-xl border-2 border-white
-               bg-gradient-to-br from-[var(--sned-blue)] to-[var(--sned-blue-dark)] text-white
-               hover:from-[var(--sned-orange)] hover:to-orange-600 hover:scale-110
-               active:scale-95 transition-all duration-300 ease-in-out
-               backdrop-blur-sm group">
-      <i class="fa-solid fa-arrow-up text-xl group-hover:animate-bounce"></i>
-      <!-- Effet de brillance au survol -->
-      <div class="absolute inset-0 rounded-full opacity-0 group-hover:opacity-30
-                  bg-gradient-to-t from-transparent via-white to-transparent
-                  transition-opacity duration-300"></div>
-    </button>
+    @if (showScrollTop) {
+      <button (click)="scrollToTop()"
+              class="cursor-pointer fixed bottom-6 right-6 z-50
+                 w-14 h-14 flex items-center justify-center
+                 rounded-full shadow-xl border-2 border-white
+                 bg-gradient-to-br from-[var(--sned-blue)] to-[var(--sned-blue-dark)] text-white
+                 hover:from-[var(--sned-orange)] hover:to-orange-600 hover:scale-110
+                 active:scale-95 transition-all duration-300 ease-in-out
+                 backdrop-blur-sm group">
+        <i class="fa-solid fa-arrow-up text-xl group-hover:animate-bounce"></i>
+        <!-- Effet de brillance au survol -->
+        <div class="absolute inset-0 rounded-full opacity-0 group-hover:opacity-30
+                    bg-gradient-to-t from-transparent via-white to-transparent
+                    transition-opacity duration-300"></div>
+      </button>
+    }
   `
 })
 export class AboutComponent implements OnInit {

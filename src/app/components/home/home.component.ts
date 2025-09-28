@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {AnchorComponent} from '../anchor/anchor.component';
 import {AboutComponent} from '../about/about.component';
-import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-home',
