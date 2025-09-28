@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/components/header/language-selector/language-selector.component.ts", "language-selector.component.ts"],
+  "sourcesContent": ["\n    @media (max-width: 640px) {\n      :host {\n        display: none;\n      }\n    }\n  ", "@media (max-width: 640px) {\n  :host {\n    display: none;\n  }\n}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJmaWxlOi8vL0M6L3BlcnNvL1NORUQvc25lZC1mby1mcm9udC9zbmVkLWZvLWZyb250L3NyYy9hcHAvY29tcG9uZW50cy9oZWFkZXIvbGFuZ3VhZ2Utc2VsZWN0b3IvbGFuZ3VhZ2Utc2VsZWN0b3IuY29tcG9uZW50LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUNJO0VBQ0U7SUFDRSIsInNvdXJjZXNDb250ZW50IjpbIlxuICAgIEBtZWRpYSAobWF4LXdpZHRoOiA2NDBweCkge1xuICAgICAgOmhvc3Qge1xuICAgICAgICBkaXNwbGF5OiBub25lO1xuICAgICAgfVxuICAgIH1cbiAgIl19 */"],
+  "mappings": "AACI,OAAA,CAAA,SAAA,EAAA,OACE,MACE,QAAA,ICAN,CACF",
+  "names": []
+}

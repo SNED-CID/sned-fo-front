@@ -1,0 +1,23 @@
+{
+  "routes": {
+    "/sned-fo-front": {},
+    "/sned-fo-front/actualite": {},
+    "/sned-fo-front/galerie": {},
+    "/sned-fo-front/galerie/ingenierie": {},
+    "/sned-fo-front/galerie/milieu-physique": {},
+    "/sned-fo-front/galerie/socio-economique": {},
+    "/sned-fo-front/partenariat": {},
+    "/sned-fo-front/projet": {},
+    "/sned-fo-front/projet/geostrategie": {},
+    "/sned-fo-front/projet/historique": {},
+    "/sned-fo-front/projet/ingenierie": {},
+    "/sned-fo-front/projet/milieu-physique": {},
+    "/sned-fo-front/projet/socio-economique": {},
+    "/sned-fo-front/sned": {},
+    "/sned-fo-front/travail": {},
+    "/sned-fo-front/travail/communication": {},
+    "/sned-fo-front/travail/congres": {},
+    "/sned-fo-front/travail/statistiques": {},
+    "/sned-fo-front/travail/video": {}
+  }
+}
