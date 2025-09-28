@@ -51,42 +51,52 @@ import { LocaleService } from '../../services/locale.service';
               <a routerLink="/" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
                 {{ 'footer.navigation.home' | translate }}
               </a>
-              <a routerLink="/about" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
-                {{ 'footer.navigation.about' | translate }}
-              </a>
-              <a routerLink="/project" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
+              <a routerLink="/projet" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
                 {{ 'footer.navigation.project' | translate }}
               </a>
-              <a routerLink="/news" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
+              <a routerLink="/galerie" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
+                {{ 'footer.navigation.gallery' | translate }}
+              </a>
+              <a routerLink="/actualite" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
                 {{ 'footer.navigation.news' | translate }}
               </a>
-              <a routerLink="/contact" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
-                {{ 'footer.navigation.contact' | translate }}
+              <a routerLink="/partenariat" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
+                {{ 'footer.navigation.partnerships' | translate }}
               </a>
-              <a routerLink="/documents" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
-                {{ 'footer.navigation.documents' | translate }}
+              <a routerLink="/travail" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
+                {{ 'footer.navigation.work' | translate }}
               </a>
             </nav>
           </div>
 
-          <!-- Project Links -->
+          <!-- Project & Work Links -->
           <div class="">
             <h3 class="text-lg font-semibold text-slate-800 mb-4">{{ 'footer.project.title' | translate }}</h3>
             <nav class="space-y-2">
-              <a routerLink="/project/overview" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
-                {{ 'footer.project.overview' | translate }}
+              <a routerLink="/projet/ingenierie" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
+                {{ 'footer.project.engineering' | translate }}
               </a>
-              <a routerLink="/project/technical" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
-                {{ 'footer.project.technical' | translate }}
+              <a routerLink="/projet/historique" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
+                {{ 'footer.project.history' | translate }}
               </a>
-              <a routerLink="/project/environmental" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
-                {{ 'footer.project.environmental' | translate }}
+              <a routerLink="/projet/milieu-physique" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
+                {{ 'footer.project.physical' | translate }}
               </a>
-              <a routerLink="/project/economic" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
-                {{ 'footer.project.economic' | translate }}
+              <a routerLink="/galerie" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
+                {{ 'footer.gallery.title' | translate }}
               </a>
-              <a routerLink="/project/timeline" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
-                {{ 'footer.project.timeline' | translate }}
+            </nav>
+
+            <h4 class="text-md font-semibold text-slate-800 mb-3 mt-6">{{ 'footer.work.title' | translate }}</h4>
+            <nav class="space-y-2">
+              <a routerLink="/travail/congres" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
+                {{ 'footer.work.congress' | translate }}
+              </a>
+              <a routerLink="/travail/communication" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
+                {{ 'footer.work.communication' | translate }}
+              </a>
+              <a routerLink="/travail/video" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
+                {{ 'footer.work.video' | translate }}
               </a>
             </nav>
           </div>
@@ -122,7 +132,7 @@ import { LocaleService } from '../../services/locale.service';
               </div>
               <p *ngIf="newsletterForm.get('email')?.invalid && newsletterForm.get('email')?.touched"
                  class="text-red-500 text-xs mt-1">
-                Veuillez entrer une adresse email valide
+                {{ 'footer.newsletter.email_error' | translate }}
               </p>
               <p class="text-xs text-slate-500 mt-2">
                 {{ 'footer.newsletter.privacy' | translate }}

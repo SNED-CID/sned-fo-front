@@ -1,5 +1,5 @@
 // src/app/features/about/about.component.ts
-import {Component, HostListener} from '@angular/core';
+import {Component, HostListener, OnInit, ViewChildren, QueryList} from '@angular/core';
 import { ReadMoreComponent } from '../readmore/readmore.component';
 import {JsonPipe, NgClass, NgFor, NgIf} from '@angular/common';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
@@ -21,7 +21,7 @@ interface Section {
     <!-- Point de repère en haut -->
     <div id="about-top"></div>
 
-    <section class="py-16 ">
+    <section class="py-16 pb-32">
       <div class="max-w-6xl mx-auto px-6 lg:px-12 space-y-20 bg-white rounded-lg">
         <div *ngFor="let section of sections; let i = index"
              class="grid md:grid-cols-2 gap-10">
@@ -31,7 +31,22 @@ interface Section {
                [id]="section.id"
                [ngClass]="{ 'order-first md:order-last': i % 2 === 1 }">
 
-            <img [src]="section.image"
+            <!-- Section SNED-SECEGSA avec logos côte à côte -->
+            <div *ngIf="section.id === 'sned_secegsa'"
+                 class="w-3/4 aspect-[4/3] flex items-center justify-center gap-8 p-8 bg-gradient-to-r from-blue-50 to-orange-50 rounded-2xl shadow-lg"
+                 [ngClass]="{ 'mr-auto': i % 2 === 0, 'ml-auto': i % 2 === 1 }">
+              <img src="assets/logos/snednotext.png"
+                   alt="SNED Logo"
+                   class="h-20 w-auto object-contain" />
+              <div class="text-3xl font-bold text-gray-400">+</div>
+              <img src="assets/logos/secegsa.png"
+                   alt="SECEGSA Logo"
+                   class="h-20 w-auto object-contain" />
+            </div>
+
+            <!-- Autres sections avec image normale -->
+            <img *ngIf="section.id !== 'sned_secegsa'"
+                 [src]="section.image"
                  [alt]="section.title"
                  class="rounded-2xl shadow-lg w-3/4 h-auto object-contain"
                  [ngClass]="{ 'mr-auto': i % 2 === 0, 'ml-auto': i % 2 === 1 }" />
@@ -51,7 +66,11 @@ interface Section {
                 [imageUrl]="section.image"
                 [label]="'Lire la suite'"
                 [title]="section.title"
-                [paragraphs]="section.paragraphs">
+                [paragraphs]="section.paragraphs"
+                [sectionId]="section.id"
+                [nextSectionId]="getNextSection(i)?.id || null"
+                [nextSectionTitle]="getNextSection(i)?.title || null"
+                (navigateToSection)="onNavigateToSection($event)">
               </app-read-more>
             </div>
           </div>
@@ -62,7 +81,7 @@ interface Section {
     <div class=" pb-16">
       <!-- Organigramme -->
       <!-- Organigramme -->
-      <div class="w-3/4 mx-auto">
+      <div id="organigramme" class="w-3/4 mx-auto">
         <div class="flex justify-between items-center mb-6">
           <h2 class="text-3xl font-bold text-primary">
             Organigramme
@@ -97,10 +116,10 @@ interface Section {
 
 
       <!-- Intervenants -->
-      <section class="mt-16">
+      <section id="conseil-administration-section" class="mt-16">
         <div class="w-3/4 mx-auto">
           <h2 class="text-3xl font-bold text-primary mb-6 text-left">
-            Les Intervenants
+            {{ 'about.conseil_administration.title' | translate }}
           </h2>
 
           <div class="relative bg-white rounded-2xl shadow-lg overflow-hidden">
@@ -109,51 +128,19 @@ interface Section {
 
             <div class="p-10 space-y-6 text-left">
               <div class="space-y-4 text-gray-700 leading-relaxed">
-                <p><strong>Comité Mixte Intergouvernemental :</strong>
-                  Ce comité a été créé à la suite de l'accord complémentaire de coopération signé en 1980 entre le Maroc et l'Espagne donnant naissance aux études pour le projet de liaison fixe entre l'Europe et l'Afrique à travers le détroit de Gibraltar.
-                  Il constitue l'organe de gouvernance le plus élevé du projet et donne les grandes directives pour la SNED et la SECEGSA.
+                <p class="adaptive-body mb-4">
+                  {{ 'about.conseil_administration.short' | translate }}
                 </p>
-
-                <p><strong>SECEGSA :</strong>
-                  La SECEGSA est la « sœur jumelle » de la SNED, agissant conjointement sur l'ensemble des missions et activités.
-                </p>
-
-                <p><strong>Conseil d'Administration de la SNED :</strong>
-                  Composé de trois à douze membres, il fixe les orientations, contrôle la gestion, nomme le Président et les Directeurs Généraux Délégués.
-                  <em>Comité d'audit</em> : contrôle régulier des opérations, de l'organisation et des risques.
-                  <em>Comité de Gouvernance, de nomination et de rémunération</em> : s'assure des bonnes pratiques et définit la politique salariale.
-                </p>
-
-                <p><strong>Président Directeur Général :</strong>
-                  Représente la SNED et coordonne ses activités.
-                  <em>Secrétariat</em> : gère la communication, la rédaction et l'organisation.
-                </p>
-
-                <p><strong>Directeur Général Délégué :</strong>
-                  Dispose des mêmes pouvoirs que le Directeur Général selon les délégations.
-                  <em>Bureau d'Ordre</em> : gère le courrier entrant/sortant et la documentation.
-                </p>
-
-                <p><strong>Pôle Études Techniques :</strong>
-                  Collecte et exploite les données, conduit les études d'ingénierie.
-                  <em>Service Conception</em> : études de modélisation (tunnel ferroviaire).
-                  <em>Service Reconnaissance Milieu Physique</em> : études géologiques, océanographiques, sismiques, etc.
-                </p>
-
-                <p><strong>Pôle Promotion du Projet et Coopération :</strong>
-                  Assure la communication internationale et le développement des coopérations.
-                </p>
-
-                <p><strong>Pôle Études d'impacts Économiques, Sociales et Environnementales :</strong>
-                  Étudie les répercussions du projet et son intégration dans l'écosystème socio-économique.
-                </p>
-
-                <p><strong>Pôle Support :</strong>
-                  Garantit le bon fonctionnement de la SNED.
-                  <em>Service RH</em> : gestion du personnel et de la paie.
-                  <em>Service Affaires Générales</em> : patrimoine documentaire, achats, juridique.
-                  <em>Service Comptabilité et Finance</em> : comptabilité, budget, trésorerie et audits.
-                </p>
+                <app-read-more
+                  [imageUrl]="null"
+                  [label]="'Lire la suite'"
+                  [title]="'about.conseil_administration.title' | translate"
+                  [paragraphs]="'about.conseil_administration.paragraphs' | translate"
+                  [sectionId]="'conseil_administration'"
+                  [nextSectionId]="getNextSectionForConseilAdmin()?.id || null"
+                  [nextSectionTitle]="getNextSectionForConseilAdmin()?.title || null"
+                  (navigateToSection)="onNavigateToSection($event)">
+                </app-read-more>
               </div>
             </div>
           </div>
@@ -179,11 +166,19 @@ interface Section {
     </button>
   `
 })
-export class AboutComponent {
+export class AboutComponent implements OnInit {
   sections: Section[] = [];
+  @ViewChildren(ReadMoreComponent) readMoreComponents!: QueryList<ReadMoreComponent>;
 
-  constructor(private translateService: TranslateService) {
+  constructor(private translateService: TranslateService) {}
+
+  ngOnInit() {
     this.initializeSections();
+
+    // S'abonner aux changements de langue
+    this.translateService.onLangChange.subscribe(() => {
+      this.initializeSections();
+    });
   }
 
   private initializeSections() {
@@ -197,73 +192,32 @@ export class AboutComponent {
       },
       {
         id: 'contexte',
-        title: 'Contexte stratégique',
-      short: `Le Détroit de Gibraltar est une zone stratégique reliant l'Europe et l'Afrique,
-            et un carrefour maritime entre l'Atlantique et la Méditerranée.`,
-      full: `
-Le Détroit de Gibraltar occupe une position géographique primordiale,
-reliant l'Europe et l'Afrique et reliant l'Atlantique à la Méditerranée.
-Il s'agit d'un passage stratégique pour la navigation maritime mondiale.
-
-Le Maroc et l'Espagne ont initié l'étude d'une liaison fixe afin de renforcer leur coopération
-et faire de la Méditerranée Occidentale un centre d'échanges névralgique.
-Ce projet contribuerait à un essor économique et social régional, à l'intégration
-des réseaux de transport et au développement territorial sur les deux rives.
-    `,
-      image: 'assets/images/contexte.jpg'
-    },
-    {
-      id: 'missions',
-      title: 'Missions et valeurs',
-      short: `La SNED a pour mission principale de conduire les études relatives à la liaison fixe
-            Europe-Afrique et de promouvoir le projet.`,
-      full: `
-La SNED a pour objet social :
-
-• La réalisation d'études d'une liaison fixe entre l'Europe et l'Afrique à travers le Détroit,
-  portant sur la conception, les moyens et les modalités de sa construction et de son exploitation ;
-• La promotion du projet aux niveaux national et international ;
-• La mise en œuvre de toutes opérations susceptibles de favoriser son développement.
-
-Il est important de noter que la mission de la SNED se limite aux études,
-à la conception et à la promotion : la réalisation de la liaison fixe ne relève pas de sa responsabilité.
-
-Depuis sa création, la SNED a traversé plusieurs phases :
-– Phase préliminaire (1980–1982) : acquisition des données de base ;
-– Préfaisabilité (1982–1990) : études techniques, milieu physique et socio-économique ;
-– Faisabilité (1990–aujourd'hui) : approfondissement des études et choix technique.
-
-Depuis 2017, elle s'est engagée dans une nouvelle dynamique orientée vers la collecte et l'analyse
-des données socio-économiques et commerciales, avec un plan de travail triennal.
-    `,
-      image: 'assets/images/history.jpg'
-    },
-    {
-      id: 'cadre',
-      title: 'Cadre institutionnel et légal',
-      short: `La SNED est une société anonyme de droit marocain à majorité publique,
-            régie par un ensemble de textes législatifs et réglementaires.`,
-      full: `
-La SNED est une Société Anonyme dont le capital est divisé en 27.500 actions de 100 dirhams,
-détenues à 99,96 % par l'État et des organismes publics.
-
-Elle est considérée comme une filiale publique à participation directe majoritaire de l'État
-au sens de la loi 69-00 relative au contrôle financier des entreprises publiques.
-
-Référentiel légal et réglementaire applicable :
-– Statuts de la SNED refondus le 21 juin 2023 ;
-– Loi 69-00 relative au contrôle financier de l'État sur les EEP ;
-– Loi 82-20 portant création de l'Agence Nationale de Gestion Stratégique des Participations de l'État ;
-– Loi-cadre 50-21 relative à la réforme des EEP ;
-– Code du commerce, Code général des impôts, Code du travail, lois relatives à la comptabilité et à la fiscalité ;
-– Textes spécifiques à la protection de l'environnement (loi 11-03, loi 49-17, charte nationale de l'environnement, etc.) ;
-– Conventions internationales ratifiées (Convention de Montego Bay, CITES, Kyoto, Ramsar, Barcelone, etc.).
-
-Ce cadre juridique assure à la SNED une gouvernance conforme aux normes nationales
-et internationales, notamment en matière de transparence, de durabilité et de bonne gouvernance.
-    `,
-      image: 'assets/images/cadre.jpg'
-    }
+        title: this.translateService.instant('about.contexte.title'),
+        short: this.translateService.instant('about.contexte.short'),
+        paragraphs: this.translateService.instant('about.contexte.paragraphs'),
+        image: 'assets/images/contexte.jpg'
+      },
+      {
+        id: 'missions',
+        title: this.translateService.instant('about.missions.title'),
+        short: this.translateService.instant('about.missions.short'),
+        paragraphs: this.translateService.instant('about.missions.paragraphs'),
+        image: 'assets/images/history.jpg'
+      },
+      {
+        id: 'cadre',
+        title: this.translateService.instant('about.cadre.title'),
+        short: this.translateService.instant('about.cadre.short'),
+        paragraphs: this.translateService.instant('about.cadre.paragraphs'),
+        image: 'assets/images/cadre.jpg'
+      },
+      {
+        id: 'sned_secegsa',
+        title: this.translateService.instant('about.sned_secegsa.title'),
+        short: this.translateService.instant('about.sned_secegsa.short'),
+        paragraphs: this.translateService.instant('about.sned_secegsa.paragraphs'),
+        image: 'assets/images/cooperation.jpg'
+      }
     ];
   }
 
@@ -281,5 +235,59 @@ et internationales, notamment en matière de transparence, de durabilité et de 
 
   toggleOrganigramme() {
     this.isOrganigrammeExpanded = !this.isOrganigrammeExpanded;
+  }
+
+  getNextSection(currentIndex: number): { id: string, title: string } | null {
+    const nextIndex = currentIndex + 1;
+    if (nextIndex < this.sections.length) {
+      return {
+        id: this.sections[nextIndex].id,
+        title: this.sections[nextIndex].title
+      };
+    }
+    // Si on est à la dernière section, la suivante est l'organigramme
+    if (nextIndex === this.sections.length) {
+      return {
+        id: 'organigramme',
+        title: 'Organigramme'
+      };
+    }
+    return null;
+  }
+
+  getNextSectionAfterOrganigramme(): { id: string, title: string } | null {
+    // Depuis l'organigramme, aller au Conseil d'Administration
+    return {
+      id: 'conseil-administration-section',
+      title: this.translateService.instant('about.conseil_administration.title')
+    };
+  }
+
+  getNextSectionForConseilAdmin(): { id: string, title: string } | null {
+    // Après le conseil d'administration, on pourrait revenir en haut ou ne rien afficher
+    return null;
+  }
+
+  onNavigateToSection(sectionId: string) {
+    // Scroller vers la section
+    const nextElement = document.getElementById(sectionId);
+    if (nextElement) {
+      nextElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
+
+      // Ouvrir automatiquement le ReadMore de la section de destination (si elle en a un)
+      if (sectionId !== 'organigramme') {
+        setTimeout(() => {
+          const readMoreComponent = this.readMoreComponents.find(
+            comp => comp.sectionId === sectionId
+          );
+          if (readMoreComponent) {
+            readMoreComponent.openSidebarFromExternal();
+          }
+        }, 800); // Délai pour laisser le scroll se terminer
+      }
+    }
   }
 }
