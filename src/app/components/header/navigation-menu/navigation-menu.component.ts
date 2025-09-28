@@ -52,11 +52,11 @@ export interface MenuSection {
             </button>
 
             <!-- Sous-menu dropdown -->
-            <div class="absolute left-0 rtl:right-0 rtl:left-auto mt-2 min-w-[280px] bg-white/98 backdrop-blur-sm rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out transform translate-y-2 group-hover:translate-y-0 z-70 overflow-hidden">
+            <div class="absolute left-0 rtl:right-0 rtl:left-auto mt-2 min-w-[280px] bg-white backdrop-blur-sm rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out transform translate-y-2 group-hover:translate-y-0 z-70 overflow-hidden">
               <!-- Arrow pointer -->
-              <div class="absolute -top-2 left-6 w-4 h-4 bg-white/98 rotate-45 border-l border-t border-gray-100"></div>
+              <div class="absolute -top-2 left-6 w-4 h-4 bg-white rotate-45 border-l border-t border-gray-100"></div>
 
-              <div class="relative bg-white/98 rounded-xl p-2">
+              <div class="relative bg-white rounded-xl p-2">
                 <a *ngFor="let child of item.children; trackBy: trackByRoute"
                    [routerLink]="child.route || '/'"
                    routerLinkActive="active-sublink"

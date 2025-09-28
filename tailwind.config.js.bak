@@ -1,4 +1,6 @@
-/** @type {import('tailwindcss').Config} */
+// const { withRTL } = require('tailwindcss-rtl');
+
+// tailwind.config.js
 module.exports = {
   content: [
     "./src/**/*.{html,ts}",
@@ -24,5 +26,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
-
+};

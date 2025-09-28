@@ -32,12 +32,12 @@ export interface Language {
     trigger('slideDown', [
       transition(':enter', [
         style({ transform: 'translateY(-100%)', opacity: 0 }),
-        animate('300ms cubic-bezier(0.4, 0, 0.2, 1)', 
+        animate('300ms cubic-bezier(0.4, 0, 0.2, 1)',
           style({ transform: 'translateY(0)', opacity: 1 })
         )
       ]),
       transition(':leave', [
-        animate('300ms cubic-bezier(0.4, 0, 0.2, 1)', 
+        animate('300ms cubic-bezier(0.4, 0, 0.2, 1)',
           style({ transform: 'translateY(-100%)', opacity: 0 })
         )
       ])
@@ -55,19 +55,19 @@ export interface Language {
   template: `
     <!-- Mobile Menu Toggle Button -->
     <div class="lg:hidden flex items-center space-x-3">
-      
+
       <!-- Language selector mobile simple -->
       <div class="relative">
-        <button 
+        <button
           (click)="toggleMobileLangDropdown()"
           class="flex items-center justify-center w-10 h-10 rounded-lg bg-white/90 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/50">
           <img [src]="currentLanguage.flag"
                [alt]="currentLanguage.label"
                class="w-5 h-5 rounded-full object-cover"/>
         </button>
-        
+
         <!-- Dropdown langues mobile -->
-        <div *ngIf="showMobileLangDropdown()" 
+        <div *ngIf="showMobileLangDropdown()"
              [@expandCollapse]
              class="absolute top-full right-0 mt-2 bg-white rounded-xl shadow-xl border border-gray-100 min-w-[160px] z-50 overflow-hidden">
           <div class="p-2">
@@ -83,14 +83,14 @@ export interface Language {
           </div>
         </div>
       </div>
-      
+
       <!-- Menu Toggle Button -->
-      <button 
+      <button
         (click)="toggleMenu()"
         [attr.aria-expanded]="isOpen"
         [attr.aria-label]="isOpen ? 'Fermer le menu' : 'Ouvrir le menu'"
         class="relative flex items-center justify-center w-10 h-10 rounded-lg bg-white/90 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/50 group">
-        
+
         <!-- Animated hamburger icon -->
         <div class="relative w-5 h-5 flex flex-col justify-center items-center">
           <span class="absolute w-5 h-0.5 bg-[var(--sned-blue-dark)] transform transition-all duration-300 ease-in-out"
@@ -104,28 +104,28 @@ export interface Language {
     </div>
 
     <!-- Mobile Menu Overlay -->
-    <div *ngIf="isOpen" 
+    <div *ngIf="isOpen"
          [@slideDown]
-         class="lg:hidden absolute top-full left-0 right-0 bg-white/98 backdrop-blur-md shadow-2xl border-t border-gray-100/50 z-40 max-h-[calc(100vh-theme(spacing.16))] overflow-y-auto">
-      
+         class="lg:hidden absolute top-full left-0 right-0 bg-white backdrop-blur-md shadow-2xl border-t border-gray-100/50 z-40 max-h-[calc(100vh-theme(spacing.16))] overflow-y-auto">
+
       <div class="max-w-7xl mx-auto">
         <div class="px-4 py-4 space-y-2">
-          
+
           <!-- Menu Items -->
           <ng-container *ngFor="let section of menuSections; trackBy: trackBySection">
             <ng-container *ngFor="let item of section.items; trackBy: trackByItem">
-              
+
               <!-- Simple menu item -->
               <div *ngIf="!item.children" class="relative overflow-hidden rounded-lg">
                 <a [routerLink]="item.route || '/'"
                    (click)="onMenuItemClick()"
                    routerLinkActive="active-mobile"
                    class="flex items-center px-4 py-3.5 text-base font-medium text-[var(--sned-blue-dark)] hover:bg-gradient-to-r hover:from-[var(--sned-orange)]/8 hover:to-[var(--sned-blue)]/4 hover:text-[var(--sned-blue)] rounded-lg transition-all duration-200 group relative">
-                  
+
                   <i class="fas fa-chevron-right w-5 h-5 mr-3 text-[var(--sned-orange)] opacity-0 group-hover:opacity-100 transition-all duration-200 transform -translate-x-2 group-hover:translate-x-0"></i>
-                  
+
                   <span>{{ item.label }}</span>
-                  
+
                   <!-- Active indicator -->
                   <div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[var(--sned-orange)] to-[var(--sned-blue)] scale-y-0 group-[.active-mobile]:scale-y-100 transition-transform duration-300 origin-top rounded-r-full"></div>
                 </a>
@@ -133,21 +133,21 @@ export interface Language {
 
               <!-- Dropdown menu item -->
               <div *ngIf="item.children" class="relative overflow-hidden rounded-lg">
-                <button 
+                <button
                   (click)="toggleMobileDropdown(item.label)"
                   class="w-full flex items-center justify-between px-4 py-3.5 text-base font-medium text-[var(--sned-blue-dark)] hover:bg-gradient-to-r hover:from-[var(--sned-orange)]/8 hover:to-[var(--sned-blue)]/4 hover:text-[var(--sned-blue)] rounded-lg transition-all duration-200 group">
-                  
+
                   <div class="flex items-center">
                     <i class="fas fa-bars w-5 h-5 mr-3 text-[var(--sned-orange)]"></i>
                     <span>{{ item.label }}</span>
                   </div>
-                  
+
                   <i class="fas fa-chevron-down w-5 h-5 transition-transform duration-300"
                        [ngClass]="{'rotate-180': isMobileDropdownOpen(item.label)}"></i>
                 </button>
-                
+
                 <!-- Submenu -->
-                <div *ngIf="isMobileDropdownOpen(item.label)" 
+                <div *ngIf="isMobileDropdownOpen(item.label)"
                      [@expandCollapse]
                      class="mt-1 ml-4 pl-6 border-l-2 border-[var(--sned-orange)]/20 space-y-1">
                   <a *ngFor="let child of item.children; trackBy: trackByChild"
@@ -155,9 +155,9 @@ export interface Language {
                      (click)="onMenuItemClick()"
                      routerLinkActive="active-mobile-sub"
                      class="flex items-start px-4 py-2.5 text-sm text-[var(--sned-blue-dark)] hover:bg-gradient-to-r hover:from-[var(--sned-orange)]/8 hover:to-[var(--sned-blue)]/4 hover:text-[var(--sned-blue)] rounded-lg transition-all duration-200 group/sub">
-                    
+
                     <i class="fas fa-arrow-right w-4 h-4 mr-3 mt-0.5 text-[var(--sned-orange)] opacity-0 group-hover/sub:opacity-100 transition-all duration-200 flex-shrink-0"></i>
-                    
+
                     <div class="flex-1">
                       <div class="font-medium">{{ child.label }}</div>
                       <div *ngIf="child.description" class="text-xs text-gray-500 mt-1">{{ child.description }}</div>
@@ -172,7 +172,7 @@ export interface Language {
     </div>
 
     <!-- Backdrop -->
-    <div *ngIf="isOpen" 
+    <div *ngIf="isOpen"
          (click)="closeMenu()"
          class="fixed inset-0 bg-black/20 backdrop-blur-sm z-30 lg:hidden"
          [@slideDown]></div>
@@ -181,20 +181,20 @@ export interface Language {
     .active-mobile {
       @apply bg-gradient-to-r from-[var(--sned-orange)]/10 to-[var(--sned-blue)]/5 text-[var(--sned-blue)];
     }
-    
+
     .active-mobile-sub {
       @apply bg-gradient-to-r from-[var(--sned-orange)]/8 to-[var(--sned-blue)]/4 text-[var(--sned-blue)];
     }
-    
+
     /* Smooth scrollbar */
     .overflow-y-auto::-webkit-scrollbar {
       width: 4px;
     }
-    
+
     .overflow-y-auto::-webkit-scrollbar-track {
       background: transparent;
     }
-    
+
     .overflow-y-auto::-webkit-scrollbar-thumb {
       background-color: var(--sned-orange);
       border-radius: 2px;

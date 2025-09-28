@@ -1,4 +1,6 @@
-@use "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import '@fortawesome/fontawesome-free/css/all.css';
 
 /* Configuration globale des polices Nunito Sans */

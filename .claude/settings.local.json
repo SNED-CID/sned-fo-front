@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(ng build)",
+      "Read(//tmp/ng-TMkp3T/**)",
+      "Bash(rm:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(npx tailwindcss init:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
