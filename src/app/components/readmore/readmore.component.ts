@@ -1,12 +1,13 @@
-import { Component, Input, Output, EventEmitter, signal } from '@angular/core';
+import { Component, Input, Output, EventEmitter, signal, inject } from '@angular/core';
 import { trigger, style, transition, animate } from '@angular/animations';
 import { LoaderComponent } from '../loader/loader.component';
 import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-read-more',
   standalone: true,
-  imports: [LoaderComponent, LazyImageComponent],
+  imports: [LoaderComponent, LazyImageComponent, TranslatePipe],
   animations: [
     trigger('slideInOut', [
       transition(':enter', [
@@ -24,7 +25,7 @@ import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
       (click)="openSidebar()"
       class="cursor-pointer group flex items-center gap-2 px-5 py-2 rounded-full bg-[var(--sned-orange)] text-white font-medium transition-all duration-300 hover:translate-y-[-2px] hover:bg-sned-blue"
     >
-      <span>{{ label }}</span>
+      <span>{{ label | translate }}</span>
       <span class="transition-transform duration-300 group-hover:translate-x-1">➔</span>
     </button>
 
@@ -46,13 +47,13 @@ import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
       >
       <!-- Header -->
       <div class="flex justify-between items-center p-4 border-b">
-        <h2 class="text-2xl font-bold">{{ title }}</h2>
+        <h2 class="text-2xl font-bold">{{ title | translate }}</h2>
         <div class="flex items-center gap-3">
           <!-- Bouton partager -->
           <button
             (click)="shareContent()"
             class="cursor-pointer text-gray-600 hover:text-blue-600 text-xl"
-            title="Partager"
+            [title]="'shared.readmore.share' | translate"
           >
             <i class="fas fa-share-alt"></i>
           </button>
@@ -62,7 +63,7 @@ import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
           <button
             (click)="closeSidebar()"
             class="cursor-pointer text-gray-600 hover:text-black text-xl"
-            title="Fermer"
+            [title]="'shared.readmore.close' | translate"
           >
             <i class="fas fa-times"></i>
           </button>
@@ -137,7 +138,7 @@ import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
             (click)="navigateToNextSection()"
             class="cursor-pointer w-full flex items-center justify-between p-3 rounded-lg hover:bg-gray-100 transition-colors duration-200 group">
             <div class="flex items-center gap-3">
-              <span class="text-gray-600">Section suivante :</span>
+              <span class="text-gray-600">{{ 'shared.readmore.next_section' | translate }}</span>
               <span class="font-semibold text-gray-800">{{ nextSectionTitle }}</span>
             </div>
             <i class="fas fa-arrow-right text-[var(--sned-orange)] group-hover:translate-x-1 transition-transform duration-200"></i>
@@ -149,8 +150,9 @@ import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
   `
 })
 export class ReadMoreComponent {
-  @Input() label = 'Lire la suite';
-  @Input() title = 'Détails';
+  private translate = inject(TranslateService);
+  @Input() label = 'shared.readmore.read_more';
+  @Input() title = 'shared.readmore.details';
   @Input() paragraphs: string[] | undefined = [];
   @Input() imageUrl: string | null = null;
   @Input() sectionId: string = '';
@@ -195,14 +197,14 @@ export class ReadMoreComponent {
     if (navigator.share) {
       try {
         await navigator.share(shareData);
-        console.log('✅ Partagé avec succès !');
+        console.log(this.translate.instant('shared.readmore.share_success'));
       } catch (err) {
-        console.warn('❌ Partage annulé ou erreur :', err);
+        console.warn(this.translate.instant('shared.readmore.share_error'), err);
       }
     } else {
       // Fallback : copier dans le presse-papier
       await navigator.clipboard.writeText(`${this.title} - ${window.location.href}`);
-      alert('📋 Lien copié dans le presse-papier');
+      alert(this.translate.instant('shared.readmore.link_copied'));
     }
   }
 

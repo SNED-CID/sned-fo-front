@@ -93,53 +93,53 @@ export class HeaderComponent implements OnInit{
       title: 'Navigation Principale',
       items: [
         {
-          label: 'Découvrez le projet de liaison fixe',
+          label: 'header.navigation.discover_project',
           route: '/',
           children: [
-            { label: 'À propos', route: '/about', description: 'Qui sommes-nous' },
-            { label: 'Mission', route: '/mission', description: 'Notre mission et vision' },
-            { label: 'Équipe', route: '/team', description: 'Notre équipe' },
-            { label: 'Contact', route: '/contact', description: 'Nous contacter' }
+            { label: 'header.navigation.about', route: '/about', description: 'header.navigation.about_desc' },
+            { label: 'header.navigation.mission', route: '/mission', description: 'header.navigation.mission_desc' },
+            { label: 'header.navigation.team', route: '/team', description: 'header.navigation.team_desc' },
+            { label: 'header.navigation.contact', route: '/contact', description: 'header.navigation.contact_desc' }
           ]
         },
         {
-          label: 'Projet de Liaison fixe',
+          label: 'header.navigation.project',
           route: '/projet',
           children: [
-            { label: 'Composante Ingénierie', route: '/projet/ingenierie', description: 'Aspects techniques' },
-            { label: 'Historique', route: '/projet/historique', description: 'Conception et études' },
-            { label: 'Composante Milieu physique', route: '/projet/milieu-physique', description: 'Études environnementales' },
-            { label: 'Composante Socio-économique', route: '/projet/socio-economique', description: 'Impact économique' },
-            { label: 'Composante promotion de projet', route: '/projet/socio-economique', description: 'Impact économique' },
-            { label: 'Mentions légales', route: '/projet/geostrategie', description: 'Aspects légaux et stratégiques' },
+            { label: 'header.navigation.engineering', route: '/projet/ingenierie', description: 'header.navigation.engineering_desc' },
+            { label: 'header.navigation.history', route: '/projet/historique', description: 'header.navigation.history_desc' },
+            { label: 'header.navigation.physical', route: '/projet/milieu-physique', description: 'header.navigation.physical_desc' },
+            { label: 'header.navigation.socioeconomic', route: '/projet/socio-economique', description: 'header.navigation.socioeconomic_desc' },
+            { label: 'header.navigation.promotion', route: '/projet/socio-economique', description: 'header.navigation.promotion_desc' },
+            { label: 'header.navigation.legal', route: '/projet/geostrategie', description: 'header.navigation.legal_desc' },
           ]
         },
         {
-          label: 'Galerie de reconnaissance',
+          label: 'header.navigation.gallery',
           route: '/galerie',
           children: [
-            { label: 'Composante Ingénierie', route: '/galerie/ingenierie', description: 'Aspects techniques' },
-            { label: 'Composante Milieu physique', route: '/galerie/milieu-physique', description: 'Études environnementales' },
-            { label: 'Composante Socio-économique', route: '/galerie/socio-economique', description: 'Impact économique' },
-            { label: 'Composante promotion de projet', route: '/galerie/socio-economique', description: 'Impact économique' },
+            { label: 'header.navigation.engineering', route: '/galerie/ingenierie', description: 'header.navigation.engineering_desc' },
+            { label: 'header.navigation.physical', route: '/galerie/milieu-physique', description: 'header.navigation.physical_desc' },
+            { label: 'header.navigation.socioeconomic', route: '/galerie/socio-economique', description: 'header.navigation.socioeconomic_desc' },
+            { label: 'header.navigation.promotion', route: '/galerie/socio-economique', description: 'header.navigation.promotion_desc' },
           ]
         },
         {
-          label: 'Actualités',
+          label: 'header.navigation.news',
           route: '/actualite'
         },
         {
-          label: 'Partenariats',
+          label: 'header.navigation.partnerships',
           route: '/partenariat'
         },
         {
-          label: 'Notre Travail',
+          label: 'header.navigation.work',
           route: '/travail',
           children: [
-            { label: 'Congrès', route: '/travail/congres', description: 'Événements et conférences' },
-            { label: 'Activités de communication', route: '/travail/communication', description: 'Actions de sensibilisation' },
-            { label: 'Vidéo de lien Physique SNED', route: '/travail/video', description: 'Présentation multimédia' },
-            { label: 'Statistiques', route: '/travail/statistiques', description: 'Données et indicateurs' }
+            { label: 'header.navigation.congress', route: '/travail/congres', description: 'header.navigation.congress_desc' },
+            { label: 'header.navigation.communication', route: '/travail/communication', description: 'header.navigation.communication_desc' },
+            { label: 'header.navigation.video', route: '/travail/video', description: 'header.navigation.video_desc' },
+            { label: 'header.navigation.statistics', route: '/travail/statistiques', description: 'header.navigation.statistics_desc' }
           ]
         }
       ]

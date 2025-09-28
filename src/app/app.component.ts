@@ -5,10 +5,11 @@ import {AboutComponent} from './components/about/about.component';
 import {AnchorComponent} from './components/anchor/anchor.component';
 import {RouterOutlet} from '@angular/router';
 import {FooterComponent} from './components/footer/footer.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, RouterOutlet, FooterComponent],
+  imports: [HeaderComponent, RouterOutlet, FooterComponent, TranslatePipe],
   templateUrl: './app.component.html',
   standalone: true,
   styleUrls: ['./app.component.scss']

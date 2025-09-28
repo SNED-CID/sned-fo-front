@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 
 export interface MenuItem {
   label: string;
@@ -18,7 +19,7 @@ export interface MenuSection {
 @Component({
   selector: 'app-navigation-menu',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, TranslatePipe],
   template: `
     <nav class="hidden lg:flex items-center justify-center space-x-6 rtl:space-x-reverse h-full">
       <div *ngFor="let section of menuSections" class="flex items-center space-x-6 rtl:space-x-reverse">
@@ -31,7 +32,7 @@ export interface MenuSection {
              [routerLinkActiveOptions]="{ exact: true }"
              (click)="onMenuItemClick()"
              class="relative px-4 py-2.5 font-medium text-sm xl:text-base rounded-lg inline-flex items-center transition-all duration-200 group text-[var(--sned-orange-dark)] hover:text-[var(--sned-blue)] hover:bg-[var(--sned-orange)]/5 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/20 cursor-pointer">
-            {{ item.label }}
+            {{ item.label | translate }}
 
             <!-- Trait animé sous le lien -->
             <span class="absolute left-0 right-0 -bottom-1 h-0.5 bg-gradient-to-r from-[var(--sned-blue)] to-[var(--sned-orange)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left group-[.active-link]:scale-x-100 rounded-full"></span>
@@ -44,7 +45,7 @@ export interface MenuSection {
               routerLinkActive="active-link"
               [routerLinkActiveOptions]="{ exact: true }"
               class="relative px-4 py-2.5 font-medium text-sm xl:text-base rounded-lg inline-flex items-center gap-2 transition-all duration-200 group text-[var(--sned-orange-dark)] hover:text-[var(--sned-blue)] hover:bg-[var(--sned-orange)]/5 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/20 cursor-pointer">
-              {{ item.label }}
+              {{ item.label | translate }}
               <i class="fas fa-chevron-down w-4 h-4 transition-transform duration-200 group-hover:rotate-180"></i>
 
               <!-- Trait animé sous le lien -->
@@ -68,8 +69,8 @@ export interface MenuSection {
                   <i class="fas fa-chevron-right w-4 h-4 mr-3 text-[var(--sned-orange)] opacity-0 group-hover/item:opacity-100 transition-all duration-200 transform -translate-x-2 group-hover/item:translate-x-0"></i>
 
                   <div class="flex-1">
-                    <div class="font-medium">{{ child.label }}</div>
-                    <div *ngIf="child.description" class="text-xs text-gray-500 mt-0.5">{{ child.description }}</div>
+                    <div class="font-medium">{{ child.label | translate }}</div>
+                    <div *ngIf="child.description" class="text-xs text-gray-500 mt-0.5">{{ child.description | translate }}</div>
                   </div>
 
                   <div class="flex items-center space-x-1 ml-2">

@@ -1,10 +1,11 @@
 import { Component, Input, signal, OnInit } from '@angular/core';
 import { LoaderComponent } from '../../loader/loader.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-lazy-image',
   standalone: true,
-  imports: [LoaderComponent],
+  imports: [LoaderComponent, TranslatePipe],
   template: `
     <div class="relative inline-block" [style.width]="width" [style.height]="height">
       @defer (on viewport) {
@@ -32,7 +33,7 @@ import { LoaderComponent } from '../../loader/loader.component';
         <div class="flex items-center justify-center w-full h-full bg-gray-200 rounded-lg text-gray-500">
           <div class="text-center">
             <i class="fas fa-image text-2xl mb-2"></i>
-            <p class="text-sm">Image indisponible</p>
+            <p class="text-sm">{{ 'shared.lazy_image.image_unavailable' | translate }}</p>
           </div>
         </div>
       }
