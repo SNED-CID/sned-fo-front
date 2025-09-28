@@ -17,27 +17,43 @@
     },
     "navigation": {
       "title": "Navigation",
-      "home": "Home",
-      "about": "About",
-      "project": "The Project",
+      "home": "Discover the fixed link project",
+      "project": "Fixed Link Project",
+      "gallery": "Recognition Gallery",
       "news": "News",
-      "contact": "Contact",
-      "documents": "Documents"
+      "partnerships": "Partnerships",
+      "work": "Our Work"
     },
     "project": {
       "title": "The Project",
-      "overview": "Overview",
-      "technical": "Technical Aspects",
-      "environmental": "Environmental Impact",
-      "economic": "Economic Impact",
-      "timeline": "Timeline"
+      "engineering": "Engineering Component",
+      "history": "History",
+      "physical": "Physical Environment Component",
+      "socioeconomic": "Socio-economic Component",
+      "promotion": "Project Promotion Component",
+      "legal": "Legal Notice"
+    },
+    "gallery": {
+      "title": "Gallery",
+      "engineering": "Engineering Component",
+      "physical": "Physical Environment Component",
+      "socioeconomic": "Socio-economic Component",
+      "promotion": "Project Promotion Component"
+    },
+    "work": {
+      "title": "Our Work",
+      "congress": "Congress",
+      "communication": "Communication Activities",
+      "video": "SNED Physical Link Video",
+      "statistics": "Statistics"
     },
     "newsletter": {
       "title": "Newsletter",
       "description": "Stay informed about the latest SNED project updates",
       "placeholder": "Your email address",
       "subscribe": "Subscribe",
-      "privacy": "By subscribing, you agree to our privacy policy."
+      "privacy": "By subscribing, you agree to our privacy policy.",
+      "email_error": "Please enter a valid email address"
     },
     "social": {
       "title": "Follow us",
@@ -48,7 +64,7 @@
       "instagram": "Instagram"
     },
     "legal": {
-      "copyright": "© {{year}} SNED. All rights reserved.",
+      "copyright": "© {{ year }} SNED. All rights reserved.",
       "privacy": "Privacy Policy",
       "terms": "Terms of Use",
       "cookies": "Cookie Policy",

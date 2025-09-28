@@ -17,27 +17,43 @@
     },
     "navigation": {
       "title": "Navigation",
-      "home": "Accueil",
-      "about": "À propos",
-      "project": "Le Projet",
+      "home": "Découvrez le projet de liaison fixe",
+      "project": "Projet de Liaison fixe",
+      "gallery": "Galerie de reconnaissance",
       "news": "Actualités",
-      "contact": "Contact",
-      "documents": "Documents"
+      "partnerships": "Partenariats",
+      "work": "Notre Travail"
     },
     "project": {
       "title": "Le Projet",
-      "overview": "Vue d'ensemble",
-      "technical": "Aspects techniques",
-      "environmental": "Impact environnemental",
-      "economic": "Retombées économiques",
-      "timeline": "Calendrier"
+      "engineering": "Composante Ingénierie",
+      "history": "Historique",
+      "physical": "Composante Milieu physique",
+      "socioeconomic": "Composante Socio-économique",
+      "promotion": "Composante promotion de projet",
+      "legal": "Mentions légales"
+    },
+    "gallery": {
+      "title": "Galerie",
+      "engineering": "Composante Ingénierie",
+      "physical": "Composante Milieu physique",
+      "socioeconomic": "Composante Socio-économique",
+      "promotion": "Composante promotion de projet"
+    },
+    "work": {
+      "title": "Notre Travail",
+      "congress": "Congrès",
+      "communication": "Activités de communication",
+      "video": "Vidéo de lien Physique SNED",
+      "statistics": "Statistiques"
     },
     "newsletter": {
       "title": "Newsletter",
       "description": "Restez informé des dernières actualités du projet SNED",
       "placeholder": "Votre adresse email",
       "subscribe": "S'abonner",
-      "privacy": "En vous abonnant, vous acceptez notre politique de confidentialité."
+      "privacy": "En vous abonnant, vous acceptez notre politique de confidentialité.",
+      "email_error": "Veuillez entrer une adresse email valide"
     },
     "social": {
       "title": "Suivez-nous",
@@ -48,7 +64,7 @@
       "instagram": "Instagram"
     },
     "legal": {
-      "copyright": "© {{year}} SNED. Tous droits réservés.",
+      "copyright": "© {{ year }} SNED. Tous droits réservés.",
       "privacy": "Politique de confidentialité",
       "terms": "Conditions d'utilisation",
       "cookies": "Politique des cookies",
@@ -65,6 +81,117 @@
         "La SNED est sise à Rabat (Souissi) – n°11, Rue Antar Ibn Chaddad, Avenue Mohamed VI, Km 8.",
         "Le capital social de la SNED est fixé à la somme de DEUX MILLIONS SEPT CENT CINQUANTE MILLE (2.750.000) dirhams. L'Etat Marocain est l'actionnaire majoritaire avec 99,9% du capital et 11 actions sont détenues par divers administrateurs.",
         "La SNED est sous la tutelle du Ministère de l'équipement et de l'eau."
+      ]
+    },
+    "contexte": {
+      "title": "Contexte stratégique",
+      "short": "Le Détroit de Gibraltar est une zone stratégique reliant l'Europe et l'Afrique, et un carrefour maritime entre l'Atlantique et la Méditerranée.",
+      "paragraphs": [
+        "Le Détroit de Gibraltar fait partie d'une zone stratégique primordiale de par sa position géographique entre l'Europe et l'Afrique et en tant que carrefour des voies de communication entre l'Atlantique et la Méditerranée, il constitue un passage décisif pour la navigation maritime.",
+        "Le Maroc et l'Espagne ont décidé de mettre en place une étude de liaison fixe à travers ce bras de mer, afin de consolider leur relation de coopération et de faire de la Méditerranée Occidentale un centre d'échanges névralgiques entre l'Europe et l'Afrique. Une fois achevé, ce projet constituerait un des maillons essentiels du réseau de transport de l'axe euroméditerranéen.",
+        "L'importance du projet est indéniable pour l'essor économique et social dans toute la zone concernée, c'est une possibilité de développement intégré. Le flux des échanges de personnes, de marchandises et de services devrait marquer le point de départ d'une évolution qualitative, ouvrant la voie à un nouvel aménagement du territoire et au développement des réseaux de transport sur les deux rives du Détroit.",
+        "Dans une vision prospective et une fois les nouvelles infrastructures de transport mises en fonctionnement, les pays riverains pourront accéder à une position privilégiée au sein de la Méditerranée Occidentale."
+      ]
+    },
+    "missions": {
+      "title": "Missions et valeurs",
+      "short": "La SNED a pour mission principale de conduire les études relatives à la liaison fixe Europe-Afrique et de promouvoir le projet.",
+      "paragraphs": [
+        "La SNED a pour objet social :",
+        "La réalisation d'études d'une liaison fixe entre l'Europe et l'Afrique à travers le Détroit de Gibraltar, axées sur la conception, les moyens et les modalités de sa construction et de sa mise en exploitation ;",
+        "La promotion du projet sur le plan national et international, ainsi que la mise en oeuvre de toutes opérations de quelque nature qu'elles soient, susceptibles d'en favoriser le développement ou la réalisation au Maroc, en Espagne ou à l'étranger ;",
+        "Et généralement toutes opérations se rattachant directement ou indirectement aux objets ci-dessus.",
+        "Ainsi, le périmètre de la mission confiée à la SNED se concentre sur les études, la conception et les propositions de promotions de la liaison fixe. La réalisation à proprement dite de cette liaison fixe n'est pas dans le périmètre des responsabilités la SNED.",
+        "Depuis sa création, la SNED n'a cessé de jouer ses rôles tels que définis par l'objet social et les termes des accords complémentaire et additionnel de coopération entre le Royaume du Maroc et l'Espagne. En effet, elle a contribué dans divers travaux, au cours des principales phases du projet :",
+        "• Phase préliminaire de 1980 à 1982 : acquisition des données de base ;",
+        "• Phase de préfaisabilité, de 1982 à 1990 : développement d'études dans cinq principaux domaines, à savoir, le milieu physique, les études techniques, le milieu socio-économique, les études juridiques et institutionnelles, et les relations externes ;",
+        "• Phase de faisabilité, de 1990 jusqu'à présent : approfondissement des études amorcées lors de la phase de préfaisabilité jusqu'au choix d'une solution technique associée à un corridor et à l'évaluation de sa pertinence.",
+        "La SNED est entrée dans une nouvelle dynamique depuis 2017 avec comme objectif la collecte, l'exploitation et l'analyse des données socioéconomiques et commerciales des infrastructures ferroviaires dans la région du détroit. Un plan de travail triennal a été demandé pour formaliser les activités permettant de répondre aux ambitions de cette nouvelle dynamique."
+      ]
+    },
+    "cadre": {
+      "title": "Cadre institutionnel et légal",
+      "short": "La SNED est une société anonyme de droit marocain à majorité publique, régie par un ensemble de textes législatifs et réglementaires.",
+      "paragraphs": [
+        "Référentiel légal et réglementaire général inhérent au statut juridique de la SNED :",
+        "Rappel du statut juridique de la SNED ; La SNED est une Société Anonyme (SA) dont le capital est divisé en 27.500 actions d'une valeur nominale de 100 Dirhams chacune réparties comme suit : • 27 489 actions sont détenues par des Organismes Publiques [1] soit 99,96% ; • 11 actions sont détenues par divers administrateurs.",
+        "Les caractéristique juridiques de la SNED, telles que présentées ci-dessus et au niveau de la section « Présentation de la SNED », correspondent à la forme juridique « Filiale Publique [2] à participation directe majoritaire de l'Etat » au sens des articles 1 et 15 de la loi 69-00 relative au contrôle financier de l'Etat sur les entreprises publiques et autres organismes, ainsi que l'article 3 de la loi n° 82-20 portant création de l'Agence Nationale de Gestion Stratégique des Participations de l'Etat et de Suivi des Performances des EEP.",
+        "Textes législatifs et réglementaires applicables à la SNED : • Statuts de la SNED refondus par l'Assemblée Générale Mixte du 21 juin 2023 ; • Dahir n° 1-03-195 du 16 ramadan 1424 (11 novembre 2003) portant promulgation de la Loi n° 69-00 relative au contrôle financier de l'Etat sur les entreprises publiques et autres organismes (Un nouveau projet de loi portant réforme du texte 69-00 a été examiné le 24 janvier 2023 par la Commission des finances à la chambre des représentants ; ce projet était déjà adopté en Conseil de gouvernement en décembre 2022) ;",
+        "• Dahir n° 1.21.96 du 15 Dou Al-hijja 1442 (26 Juillet 2021) de loi n° 82-20 portant création de l'Agence Nationale de Gestion Stratégique des Participations de l'Etat et de Suivi des Performances des Etablissements et Entreprises Publics (ANGSPE) ; • Loi-cadre n° 50-21 relative à la réforme des établissements et entreprises publics ;",
+        "• Dahir n° 1-11-147 du 16 ramadan 1432 (17 août 2011) portant promulgation de la loi n° 32-10 complétant la loi n° 15-95 formant code de commerce ; • Dahir n° 1-96-124 du 30 août 1996 portant promulgation de la loi n° 17-95 relative aux sociétés anonymes telle qu'elle a été modifiée et complétée • La loi n° 69-21 modifiant la loi n° 15-95 formant code de commerce et édictant des dispositions particulières relatives aux délais de paiement ;",
+        "• Code Général de Normalisation Comptable (C.G.N.C) ; • Dahir n ° 1-92-138 (30 Joumada II 1413) portant promulgation de la loi n ° 9-88 relative aux obligations comptables des commerçants (B.O. 30 décembre 1992) ; • Le Code général des impôts ; • Dahir 1-07-195 du 19 kaada 1428 (30 novembre 2007) portant promulgation de la loi n° 47-06 relative à la fiscalité des collectivités locales ;",
+        "• Conventions fiscales internationales signées et ratifiées par le Maroc afin d'éviter les doubles impositions et l'évasion fiscale ; • La loi 65-99 relative au Code du travail ; • Dahir n° 1-02-296 du 25 rejeb 1423 (3 octobre 2002) portant promulgation de la loi n° 65-00 relative à l'assurance maladie obligatoire de base ;",
+        "• Dahir n° 1-09-15 du 22 safar 1430 (18 février 2009) portant promulgation de la loi n° 09-08 relative à la protection des personnes physiques à l'égard du traitement des données à caractère personnel ; • Loi n° 86-12 relative aux contrats de PPP telle que modifiée par la loi 46-18 du 6 mars 2020 ;",
+        "• Dahir n° 1-15-62 du 14 chaâbane 1436 (2 juin 2015) portant promulgation de la loi organique n° 130-13 relative à la loi de finances ; [1] « Organismes Publics : l'Etat, les collectivités locales et les établissements publics » - Article 1 de la loi 69.00. [2] « Filiales publiques : les sociétés dont le capital est détenu à plus de la moitié par des organismes publics » - Article 1 de la loi 69.00. Décret n° 2-15-426 du 28 ramadan 1436 (15 juillet 2015) relatif à l'élaboration et à l'exécution des lois de finance tel qu'il a été modifié et complété ;",
+        "• Dahir n°1-02-25 du 19 moharrem 1423 portant promulgation de la loi n° 61-99 relative à la responsabilité des ordonnateurs, des contrôleurs et des comptables publics ; • Loi n°62.99 formant code des juridictions financières ; • Dahir n° 1-59-269 du 17 chaoual 1379 (14 avril 1960) relatif à l'Inspection Générale des Finances.",
+        "Autres circulaires applicables à la SNED : • Circulaires du Chef du Gouvernement et du ministre de l'économie et des finances relatives aux budgets des EEP ; • Circulaire du Chef de Gouvernement adressée le 19 mars 2012 aux membres du Gouvernement, les invitant à veiller à la généralisation et à la mise en œuvre du contenu du Code marocain de bonnes pratiques de gouvernance des EEP relevant de leur tutelle.",
+        "Principaux accords signés ou conventions structurantes afférentes à la SNED : • Convention de coopération scientifique et technique signée le 8 Novembre 1979 entre le Royaume du Maroc et le Royaume d'Espagne ; • L'accord complémentaire de coopération signé le 24 Octobre 1980 entre le Royaume du Maroc et le Royaume d'Espagne pour l'étude d'une liaison fixe entre l'Europe et l'Afrique à travers le détroit de Gibraltar, publié par Décret n° 1.91.43 du 2 Août 2011 ;",
+        "• L'accord additionnel signé le 27 Septembre 1989 entre le Royaume du Maroc et le Royaume d'Espagne pour l'étude d'une liaison fixe entre l'Europe et l'Afrique à travers le détroit de Gibraltar, publié par Décret n° 1.91.43 du 2 Août 2011 ; • Convention de coopération SNED-SECEGSA pour le lacement et le suivi de l'étude de faisabilité économique de la liaison fixe ;",
+        "• Accord « MoU » signé par le ministre de l'Equipement et de l'Eau, Nizar Baraka, et la ministre espagnole des Transports, des Mobilités et des Programmes Urbains, Raquel Sánchez Jiménez lors de la 12ème Réunion de haut niveau entre les deux pays, co-présidée jeudi 2 février 2023 à Rabat par le Chef du Gouvernement M. Aziz Akhannouch et le Président du Gouvernement espagnol M. Pedro Sanchez ;",
+        "• Règlement SNED-SECEGSA pour l'achat en commun des prestations en modalités « A » approuvé par le CA en 2017 et validé par le comité mixte lors de sa réunion en date du 10 avril 2023.",
+        "Référentiel légal et réglementaire spécifique à la protection de l'environnement : La réalisation d'études de la liaison fixe, reliant l'Europe à l'Afrique à travers le Détroit de Gibraltar, présente des aspects environnementaux en ce qui concerne le milieu marin, l'espace littoral et l'intérieur du tunnel. L'impact écologique présente ainsi des implications juridiques du projet au niveau national et international.",
+        "Textes législatifs et réglementaire relatifs à la protection de la nature et l'environnement au Maroc [3] : • Constitution du Maroc, juillet 2011 (Articles 31, 35, 88, 71, 151) ; • Dahir n° 1-14-09 du 4 joumada I 1435 (6 mars 2014) portant promulgation de la loi cadre n° 99-12 portant charte nationale de l'environnement et du développement durable ;",
+        "• Dahir n° 1-03-59 du 10 rabii I 1424 (12 mai 2003) portant promulgation de la loi n° 11-03 relative à la protection et à la mise en valeur de l'environnement ; • Dahir n° 1-20-78 du 18 hija 1441 (8 août 2020) portant promulgation de la loi n° 49-17 relative à l'évaluation environnementale ; • Dahir n° 1-03-60 du 10 rabii I 1424 (12 mai 2003) portant promulgation de la loi n° 12-03 relative aux études d'impact sur l'environnement ; • Dahir sur la conservation et l'exploitation des forêts du 10 octobre 1917 ;",
+        "[3] Sources : Site web officiel du ministère de la transition énergétique et du développement durable https://www.environnement.gov.ma ; Etude d'évaluation de l'impact sur l'environnement du projet de la liaison fixe à travers le détroit de Gibraltar, Référence : APP-GIB-F-DP-GR-RD-002-1-AP SNED – Manuel des procédures :",
+        "• Dahir sur la police de la chasse du 21 juillet 1923 ; • Dahir sur l'extension aux exploitations forestières du dahir du 25/6/1927 sur les accidents de travail du 24 avril 1931 ; • Arrêté portant réglementation des chasses réservées du 6 mai 1931 ; • Dahir créant le Fonds National Forestier du 12 septembre 1949 ; • Dahir relatif aux gardes particuliers du 10 décembre 1951 ;",
+        "• Dahir étendant à la zone nord certaines dispositions de la législation forestière du 30 juillet 1957 ; • Dahir relatif à l'organisation de la participation des populations au développement de l'économie forestière du 20 septembre 1976 ; • Dahir sur la protection et la délimitation des forêts d'arganier du 4 mars 1925 ; • Dahir déterminant le régime juridique des nappes alfatières du 15 août 1928 ; • Dahir relatif à la conservation et à l'exploitation des noyers du 8 septembre 1928 ;",
+        "• Dahir relatif à la protection des nappes de palmier nain et réglementant la production et la commercialisation du crin végétal du 24 octobre 1962 ; • Dahir sur la création des parcs nationaux du 11 septembre 1934 ; • Dahir sur la défense et la restauration des sols du 25 juillet 1969 ; • Dahir relatif à la création de périmètres d'amélioration pastorale du 25 juillet 1969 ;",
+        "• Dahir du 8 Juin 1948 modifiant le dahir du 23 Septembre 1946 majorant le montant des amendes prononcées en vertus des dahirs des 10 Octobre 1917 sur la conservation et l'exploitation des forêts sur la police de la chasse et sur la pêche fluviale ; • Arrêté du 14 Novembre 1949 fixant les modalités de soumission au régime forestier des bois, forêts et terrains non domaniaux ;",
+        "• Arrêté du 20 février 1960 rendant applicable dans la province de Tanger certaines dispositions législatives et réglementaires relatives à la marine marchande et aux pêches maritimes en zone sud ; • Dahir du 8 janvier 1974 portait publication de la convention internationale pour la protection des végétaux faite à Rome le 6 décembre 1951 (B.O du 27 mars 1974) ;",
+        "• Dahir du 17 décembre 1980 portant publication de la convention sur le commerce international des espèces de faune et flore sauvage menacées d'extinction, et ses annexes, faite à Washington le 3 mars 1973 (B.O n° 3553 du 3 décembre 1980) ; • Dahir n° 1-85-160 du 28 mai 1993 portant promulgation de la loi n° 25-85 portant approbation quant au principe de la ratification de la convention sur la conservation des espèces migratrices appartenant à la faune sauvage, faite à Rome le 23 juin 1979 ;",
+        "• Arrêté du 24 décembre 1951 portant création de périmètres de défense et de restauration des sols (18 janvier 1952 P.91) ; • Décret du 20 août 1957 portant création de périmètres de défense et de restauration des sols (B.O n° 2341 du 6 septembre 1957 P. 1170) ; • Dahir du 25 juillet 1969 sur la défense et la restauration des sols (B.O n° 2960 bis du 29 juillet 1969 P. 802) ;",
+        "• Décret n° 2-69-311 du 25 juillet 1969 portant application du dahir du 25 juillet 1969 sur la défense et la restauration des sols (B.O n° 2960 bis 29 juillet 1969 P. 807 et rectif (B.O du 19 novembre 1969 P. 1417) ; • Arrêté Interministériel du 23 juillet 1980 sur la défense et la restauration des sols (B.O n° 3540 du 3 septembre 1980 P.621) ;",
+        "• Arrêté du 31 août 1995 du Ministre de l'Agriculture et de la Mise en Valeur Agricole pris pour l'application du dahir du 25 juillet 1969 sur la défense et la restauration des sols (B.O n° 4340 du 3 janvier 1996 P. 9) ; Conventions internationales relatives à la flore et la faune sauvage [4] • Convention des Nations Unies de l'ONU sur le droit de la mer. Montego Bay, 10 décembre 1982. Ratifiée le 31 mai 2007 ;",
+        "[4] Sources : Site web officiel du ministère de la transition énergétique et du développement durable https://www.environnement.gov.ma ; Etude d'évaluation de l'impact sur l'environnement du projet de la liaison fixe à travers le détroit de Gibraltar, Référence : APP-GIB-F-DP-GR-RD-002-1-AP ; https://treaties.un.org/ الرئيسية الصفحة - MINISTERE DE LA TRANSITION ENERGETIQUE ET DU DEVELOPPEMENT وزارة االنتقال الطاقي والتنمية المستدامة DURABLE MINISTERE DE LA TRANSITION ENERGETIQUE ET DU DEVELOPPEMENT DURABLE - Département de l'Environnement Convention des Nations Unies de l'ONU sur la lutte contre la désertification. Paris 1994 ;",
+        "• Conventions de l'Organisation Maritime internationale (OMI) relatives à la prévention de la pollution marine : o La Convention sur l'Organisation Maritime Internationale (OMI) ratifiée en 1962 ; o La Convention pour la prévention de la pollution des mers résultant de l'immersion de déchets et autres matières, ratifiée en 1977 ; o La convention internationale sur la préparation, la lutte et la coopération en matière de pollution par les hydrocarbures, ratifiée en 2003 ;",
+        "• Convention internationale pour la protection des oiseaux. Paris. 1950 ; • Convention pour l'établissement de l'Organisation Européenne et Méditerranéenne pour la protection des plantes. Paris. 1951 ; • Convention internationale sur la protection des végétaux. Rome. 1951 ; • Convention Africaine Pour la Conservation de la Nature et des Ressources Naturelles. Alger. 1968 ;",
+        "• Convention relative aux zones humides d'importance internationale particulièrement comme habitats de la sauvagine. Ramsar. 1971 ; • Protocole amendant la Convention relative aux zones humides d'importance internationale particulièrement comme habitats de la sauvagine. Paris 1982 ; • Amendement aux articles 6 et 7 de la Convention relative aux zones humides d'importance internationale particulièrement comme habitats de la sauvagine. Canada 1987 ;",
+        "• Convention concernant la protection du patrimoine mondial culturel et naturel. Paris 1972 ; • CITES : Convention sur le commerce international des espèces de faune et de flore sauvage menacées d'extinction. Washington. 1973 ; • Amendement à l'alinéa A paragraphe 3, article 11 de la Convention sur le commerce international des espèces de faune et de flore sauvage menacées d'extinction. Bonn. 1979 ;",
+        "• Amendement à l'article 21 de la Convention CITES. Gaborone. 1983. • Convention de Barcelone : Convention de la protection de la Méditerranée contre la pollution. 1976 ; • Nouveau protocole relatif à la coopération en matière de lutte contre la pollution de la mer Méditerranée par les hydrocarbures et autres substances nocives. Malte. 2002 ;",
+        "• Protocole relatif à la coopération entre les pays d'Afrique du Nord dans le domaine de la lutte contre la désertification. Caire. 1977 ; • Convention sur la conservation des espèces migratrices appartenant à la faune sauvage. Bonn. 1979 ; • Amendement à la Convention internationale sur la protection des végétaux. Rome.1979 ; • Protocole concernant les aires spécialement protégées en Méditerranée. Genève. 1982 ;",
+        "• Convention internationale sur la préparation, la lutte et la coopération en matière de pollution par les hydrocarbures. Londres. 1990 ; • Convention sur les changements climatiques. New York. 1992 ; • Convention sur la diversité biologique. Rio de Janeiro. 1992 ; • Charte Maghrébine relative à la protection de l'environnement et du développement durable. Nouakchott. 1992 ;",
+        "• Protocole relatif aux aires spécialement protégées de la Méditerranée et à la diversité biologique de la Méditerranée et ses annexes. Barcelone 1995 ; • Accord sur la conservation des Cétacés de la Mer Noire, de la Méditerranée et de la zone atlantique adjacente. Monaco.1996 ; • Protocole de Kyoto à la Convention sur les changements climatiques. Kyoto.1997."
+      ]
+    },
+    "sned_secegsa": {
+      "title": "SNED et SECEGSA",
+      "short": "Coopération entre la SNED (Maroc) et la SECEGSA (Espagne) sous la supervision du Comité Mixte Intergouvernemental pour le projet de liaison fixe.",
+      "paragraphs": [
+        "• Comité Mixte Intergouvernemental :",
+        "Ce comité a été créé à la suite de l'accord complémentaire de coopération signé en 1980 entre le Maroc et l'Espagne donnant naissance aux études pour le projet de liaison fixe entre l'Europe et l'Afrique à travers le détroit de Gibraltar. Il constitue l'organe de gouvernance le plus élevé du projet de liaison fixe. Il donne les grandes directives pour la réalisation de l'objet social des deux entreprises étatiques, à savoir la SNED et la SECEGSA.",
+        "• SECEGSA :",
+        "La SECEGSA est à considérer comme « la sœur jumelle » de la SNED, les deux agissant conjointement sur l'ensemble de leurs activités et missions."
+      ]
+    },
+    "conseil_administration": {
+      "title": "Conseil d'Administration",
+      "short": "Organisation et gouvernance de la SNED : Conseil d'Administration, comités spécialisés, direction générale et structure opérationnelle par pôles d'activité.",
+      "paragraphs": [
+        "• Conseil d'Administration de la SNED :",
+        "La SNED est administrée par un conseil d'administration composé de trois à douze membres, pris parmi les actionnaires. Le Conseil d'administration détermine les orientations de l'activité de la SNED et veille à leur mise en œuvre. Le Conseil procède également aux contrôles et vérifications qu'il juge opportuns. Par ailleurs, il choisit le mode de gouvernance et nomme le Président, le Directeur Général et les Directeurs Généraux Délégués.",
+        "o Comité d'audit : La SNED, étant soumise au contrôle d'accompagnement, doit instituer un comité d'audit. Le comité d'audit est habilité, à travers les opérations d'audit, à apprécier la régularité des opérations, la qualité de l'organisation, la fiabilité et la bonne application du système d'information ainsi que les performances de l'organisme.",
+        "Il a pour mission de faire prescrire et réaliser, aux frais de l'organisme, les audits internes et externes ainsi que les évaluations qui lui paraissent nécessaires. Il peut, en outre, inviter tout expert indépendant à participer à ses travaux. Le comité d'audit adresse directement au directeur de l'organisme un rapport retraçant le résultat de chaque intervention effectuée ainsi que les recommandations qu'il estime utiles pour l'amélioration de la gestion et la maîtrise des risques économiques et financiers de l'organisme. Ce rapport est soumis au conseil d'administration ou à l'organe délibérant.",
+        "Le comité d'audit doit être composé, outre le contrôleur d'Etat, de deux à quatre membres nommés par le conseil d'administration ou par l'organe délibérant parmi les membres non-dirigeants ou de mandataires nommément désignés par eux à cet effet. Le Conseil d'Administration de la SNED, dont la réunion s'est tenue le 21 Juin 2023, a décidé de désigner les membres du Comité d'Audit (un président et deux membres).",
+        "o Comité de Gouvernance, de nomination et de rémunération : Ce Comité s'assure de l'application des bonnes pratiques édictées au niveau de l'Organe de Gouvernance et de ses comités spécialisés. De plus, ce comité aide l'Organe de Gouvernance à mettre en place une politique salariale appropriée, incitative et transparente pour les cadres dirigeants et les salariés de la SNED. Le Conseil d'Administration de la SNED, dont la réunion s'est tenue le 21 Juin 2023, a décidé de désigner les membres du Comité de Gouvernance, de nomination et de rémunération (un président et deux membres).",
+        "• Président Directeur Général :",
+        "La direction générale de la SNED est assumée par son Président Directeur Général. Il a pour rôle la représentation de la société dans ses rapports avec les tiers et la coordination de l'ensemble de ses activités.",
+        "o Secrétariat : Le secrétariat est responsable de la gestion des activités de bureau, de communication, de rédaction et d'organisation pour le compte de la Direction Générale.",
+        "• Directeur Général Délégué :",
+        "Le Directeur Général Délégué complète la direction générale de la SNED. A l'égard de la société, le Directeur Général Délégué est investi des pouvoirs dont le Conseil d'administration détermine, sur proposition du Directeur Général, l'étendue et la durée. À l'égard des tiers, il dispose des mêmes pouvoirs que le Directeur Général.",
+        "o Bureau d'Ordre : Le bureau d'ordre est responsable du processus de catégorisation du courrier entrant/sortant. Il peut s'agir de correspondance écrite numérisée ou de communication électronique.",
+        "• Pôle Etudes Techniques :",
+        "Le Pôle Etudes Techniques est responsable de la collecte, de l'exploitation des données du site, des études d'ingénierie du projet, et plus généralement toutes activités nécessitant la mobilisation de compétences techniques de la SNED (partenariats, événementiel...). Ce pôle est constitué de deux services :",
+        "o Service Conception : Études de modélisation du choix technique de la solution (construction d'un tunnel ferroviaire creusé dans le sous-sol marin) pour la connexion à travers le détroit de Gibraltar.",
+        "o Service Reconnaissance Milieu Physique : Études (géologiques, océanographiques, sismiques et météorologiques) pour appréhender les difficultés du site de la future zone de construction.",
+        "• Pôle Promotion du Projet et Coopération :",
+        "Le Pôle Promotion du Projet et Coopération est responsable de la formulation de propositions de communication visant à faire connaître le projet à travers le monde, le développer à travers des coopérations avec divers organismes et le communiquer efficacement à l'opinion publique.",
+        "• Pôle Etudes d'impacts Économiques, Sociales et Environnementales :",
+        "Le Pôle Etudes d'impacts Économiques, Sociales et Environnementales est responsable des études portant sur les répercussions du projet sur les différents espaces concernés (notamment le littoral), et plus généralement toutes activités nécessitant la mobilisation de compétences socioéconomiques de l'écosystème de la SNED (partenariats, évènementiel...).",
+        "• Pôle Support :",
+        "Le pôle Support est responsable de l'ensemble des activités de gestion qui veillent au bon fonctionnement de la SNED. Ce pôle est constitué de 3 services :",
+        "o Service Ressources Humaines : Ce service est chargé de la gestion du personnel, de la paie, des missions et des déplacements.",
+        "o Service Affaires Générales : Ce service est chargé des aspects administratifs concernant la gestion du patrimoine documentaire et de son archivage (y compris la documentation technique, juridique et financière), la gestion des droits de propriété intellectuelle, la gestion des achats et des approvisionnements, la gestion des stocks et des immobilisations. De plus, le domaine des études juridiques relatives au projet de liaison fixe à travers le détroit de Gibraltar est également couvert par ce service.",
+        "o Service Comptabilité et Finance : Ce service est chargé de la tenue de la comptabilité, l'arrêté des comptes, la planification et contrôle budgétaire, la gestion de la trésorerie et l'audit interne et externe."
       ]
     }
   }
