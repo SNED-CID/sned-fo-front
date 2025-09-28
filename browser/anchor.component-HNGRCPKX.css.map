@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/components/anchor/anchor.component.scss", "src/app/components/anchor/anchor.component.scss"],
-  "sourcesContent": [":host {\n  display: block;\n}\nbutton {\n  cursor: pointer;\n}\n", ":host {\n  display: block;\n}\n\nbutton {\n  cursor: pointer;\n}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJmaWxlOi8vL2hvbWUvcnVubmVyL3dvcmsvc25lZC1mby1mcm9udC9zbmVkLWZvLWZyb250L3NyYy9hcHAvY29tcG9uZW50cy9hbmNob3IvYW5jaG9yLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0U7OztBQUVGO0VBQ0UiLCJzb3VyY2VzQ29udGVudCI6WyI6aG9zdCB7XG4gIGRpc3BsYXk6IGJsb2NrO1xufVxuYnV0dG9uIHtcbiAgY3Vyc29yOiBwb2ludGVyO1xufVxuIl19 */"],
-  "mappings": "AAAA,MACE,QAAA,KCCF,CDCA,OACE,OAAA,OCEF",
-  "names": []
-}
