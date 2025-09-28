@@ -20,9 +20,9 @@ export interface MenuSection {
   standalone: true,
   imports: [CommonModule, RouterModule],
   template: `
-    <nav class="hidden lg:flex items-center space-x-6 rtl:space-x-reverse">
-      <div *ngFor="let section of menuSections" class="flex space-x-6 rtl:space-x-reverse">
-        <div *ngFor="let item of section.items" class="relative group">
+    <nav class="hidden lg:flex items-center justify-center space-x-6 rtl:space-x-reverse h-full">
+      <div *ngFor="let section of menuSections" class="flex items-center space-x-6 rtl:space-x-reverse">
+        <div *ngFor="let item of section.items" class="relative group flex items-center">
 
           <!-- Menu item simple -->
           <a *ngIf="!item.children"
