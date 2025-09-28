@@ -2,14 +2,14 @@
   <!-- Header principal -->
   <div [ngClass]="mainHeaderClasses()">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16 sm:h-18 lg:h-20">
+      <div class="flex justify-between items-center h-20 sm:h-24 lg:h-28">
 
         <!-- Logo -->
         <a routerLink="/"
            class="flex items-center space-x-3 rtl:space-x-reverse group transition-transform duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/20 rounded-lg p-1">
           <img [src]="getLogoPath()"
                alt="SNED Logo"
-               class="h-12 sm:h-14 lg:h-16 w-auto transition-all duration-300 filter drop-shadow-sm group-hover:drop-shadow-md"/>
+               class="h-16 sm:h-20 lg:h-24 w-auto object-contain transition-all duration-300 filter drop-shadow-sm group-hover:drop-shadow-md"/>
         </a>
 
         <!-- Navigation Desktop et Sélecteur de langues -->
