@@ -7,6 +7,7 @@ import {LocaleService} from '../../../services/locale.service';
 import {TranslatePipe} from '@ngx-translate/core';
 import { LanguageSelectorComponent, Language } from '../language-selector/language-selector.component';
 import { NavigationMenuComponent, MenuSection } from '../navigation-menu/navigation-menu.component';
+import { LazyImageComponent } from '../../shared/lazy-image/lazy-image.component';
 // Les interfaces sont maintenant importées des composants
 
 @Component({
@@ -17,7 +18,8 @@ import { NavigationMenuComponent, MenuSection } from '../navigation-menu/navigat
     RouterModule,
     LoaderComponent,
     TranslatePipe,
-    NavigationMenuComponent
+    NavigationMenuComponent,
+    LazyImageComponent
   ],
   templateUrl: "./header.component.html",
   styleUrls: ['./header.component.scss']

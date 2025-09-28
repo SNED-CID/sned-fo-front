@@ -1,5 +1,16 @@
 <div class="relative min-h-screen flex flex-col">
   <app-header></app-header>
   <router-outlet></router-outlet>
-  <app-footer></app-footer>
+  @defer (on viewport; prefetch on idle) {
+    <app-footer></app-footer>
+  } @placeholder {
+    <div class="h-96 bg-gray-100 border-t border-gray-200"></div>
+  } @loading (minimum 200ms) {
+    <div class="h-96 bg-gray-50 border-t border-gray-200 flex items-center justify-center">
+      <div class="text-center">
+        <div class="w-8 h-8 border-4 border-[var(--sned-blue)] border-t-transparent rounded-full animate-spin mx-auto mb-2"></div>
+        <p class="text-gray-500 text-sm">Chargement du pied de page...</p>
+      </div>
+    </div>
+  }
 </div>

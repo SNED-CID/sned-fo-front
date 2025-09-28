@@ -4,11 +4,12 @@ import { RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LocaleService } from '../../services/locale.service';
+import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [CommonModule, RouterLink, TranslateModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, RouterLink, TranslateModule, FormsModule, ReactiveFormsModule, LazyImageComponent],
   template: `
     <footer class="bg-gradient-to-br from-slate-50 to-slate-100 border-t border-slate-200 mt-auto">
       <!-- Main Footer Content -->
@@ -19,7 +20,14 @@ import { LocaleService } from '../../services/locale.service';
           <div class="lg:col-span-1">
             <div class="mb-6">
               <a routerLink="/" class="inline-block hover:opacity-80 transition-opacity">
-                <img [src]="getLogoPath()" alt="SNED Logo" class="h-12 sm:h-16 w-auto"/>
+                <app-lazy-image
+                  [src]="getLogoPath()"
+                  alt="SNED Logo"
+                  imageClass="h-12 sm:h-16 w-auto"
+                  width="auto"
+                  height="4rem"
+                  [priority]="true">
+                </app-lazy-image>
               </a>
             </div>
             <div class="space-y-3 text-sm text-slate-600">

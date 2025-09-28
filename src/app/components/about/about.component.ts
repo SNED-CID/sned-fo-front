@@ -3,6 +3,7 @@ import {Component, HostListener, OnInit, ViewChildren, QueryList} from '@angular
 import { ReadMoreComponent } from '../readmore/readmore.component';
 import {NgClass} from '@angular/common';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
 
 interface Section {
   id: string;
@@ -16,7 +17,7 @@ interface Section {
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [ReadMoreComponent, NgClass, TranslatePipe],
+  imports: [ReadMoreComponent, NgClass, TranslatePipe, LazyImageComponent],
   template: `
     <!-- Point de repère en haut -->
     <div id="about-top"></div>
@@ -24,36 +25,51 @@ interface Section {
     <section class="py-16 pb-32">
       <div class="max-w-6xl mx-auto px-6 lg:px-12 space-y-20 bg-white rounded-lg">
         @for (section of sections; track section.id; let i = $index) {
-          <div class="grid md:grid-cols-2 gap-10">
+          @defer (on viewport; prefetch on idle) {
+            <div class="grid md:grid-cols-2 gap-10">
 
-            <!-- Image -->
-            <div class="flex items-center relative"
-                 [id]="section.id"
-                 [ngClass]="{ 'order-first md:order-last': i % 2 === 1 }">
+              <!-- Image -->
+              <div class="flex items-center relative"
+                   [id]="section.id"
+                   [ngClass]="{ 'order-first md:order-last': i % 2 === 1 }">
 
-              <!-- Section SNED-SECEGSA avec logos côte à côte -->
-              @if (section.id === 'sned_secegsa') {
-                <div class="w-3/4 aspect-[4/3] flex items-center justify-center gap-8 p-8 bg-gradient-to-r from-blue-50 to-orange-50 rounded-2xl shadow-lg"
-                     [ngClass]="{ 'mr-auto': i % 2 === 0, 'ml-auto': i % 2 === 1 }">
-                  <img src="assets/logos/snednotext.png"
-                       alt="SNED Logo"
-                       class="h-20 w-auto object-contain" />
-                  <div class="text-3xl font-bold text-gray-400">+</div>
-                  <img src="assets/logos/secegsa.png"
-                       alt="SECEGSA Logo"
-                       class="h-20 w-auto object-contain" />
-                </div>
-              }
+                <!-- Section SNED-SECEGSA avec logos côte à côte -->
+                @if (section.id === 'sned_secegsa') {
+                  <div class="w-3/4 aspect-[4/3] flex items-center justify-center gap-8 p-8 bg-gradient-to-r from-blue-50 to-orange-50 rounded-2xl shadow-lg"
+                       [ngClass]="{ 'mr-auto': i % 2 === 0, 'ml-auto': i % 2 === 1 }">
+                    <app-lazy-image
+                      src="assets/logos/snednotext.png"
+                      alt="SNED Logo"
+                      imageClass="h-20 w-auto object-contain"
+                      width="auto"
+                      height="5rem"
+                      [priority]="true">
+                    </app-lazy-image>
+                    <div class="text-3xl font-bold text-gray-400">+</div>
+                    <app-lazy-image
+                      src="assets/logos/secegsa.png"
+                      alt="SECEGSA Logo"
+                      imageClass="h-20 w-auto object-contain"
+                      width="auto"
+                      height="5rem"
+                      [priority]="true">
+                    </app-lazy-image>
+                  </div>
+                }
 
-              <!-- Autres sections avec image normale -->
-              @if (section.id !== 'sned_secegsa') {
-                <img [src]="section.image"
-                     [alt]="section.title"
-                     class="rounded-2xl shadow-lg w-3/4 h-auto object-contain"
-                     [ngClass]="{ 'mr-auto': i % 2 === 0, 'ml-auto': i % 2 === 1 }" />
-              }
+                <!-- Autres sections avec image normale -->
+                @if (section.id !== 'sned_secegsa') {
+                  <app-lazy-image
+                    [src]="section.image"
+                    [alt]="section.title"
+                    imageClass="rounded-2xl shadow-lg w-3/4 h-auto object-contain"
+                    [class]="{ 'mr-auto': i % 2 === 0, 'ml-auto': i % 2 === 1 }"
+                    width="75%"
+                    height="auto">
+                  </app-lazy-image>
+                }
 
-            </div>
+              </div>
 
           <!-- Texte -->
           <div class="flex items-center">
@@ -77,6 +93,33 @@ interface Section {
             </div>
           </div>
           </div>
+          } @placeholder {
+            <div class="grid md:grid-cols-2 gap-10 animate-pulse">
+              <div class="w-3/4 h-64 bg-gray-200 rounded-2xl mx-auto"></div>
+              <div class="space-y-4">
+                <div class="h-8 bg-gray-200 rounded w-3/4"></div>
+                <div class="h-4 bg-gray-200 rounded w-full"></div>
+                <div class="h-4 bg-gray-200 rounded w-5/6"></div>
+                <div class="h-10 bg-gray-200 rounded w-32"></div>
+              </div>
+            </div>
+          } @loading (minimum 300ms) {
+            <div class="grid md:grid-cols-2 gap-10">
+              <div class="flex items-center justify-center w-3/4 h-64 bg-gray-100 rounded-2xl mx-auto">
+                <div class="text-center">
+                  <div class="w-8 h-8 border-4 border-[var(--sned-orange)] border-t-transparent rounded-full animate-spin mx-auto mb-2"></div>
+                  <p class="text-sm text-gray-500">Chargement...</p>
+                </div>
+              </div>
+              <div class="flex items-center">
+                <div class="w-full space-y-4">
+                  <div class="h-8 bg-gray-200 rounded w-3/4 animate-pulse"></div>
+                  <div class="h-4 bg-gray-200 rounded w-full animate-pulse"></div>
+                  <div class="h-4 bg-gray-200 rounded w-5/6 animate-pulse"></div>
+                </div>
+              </div>
+            </div>
+          }
         }
       </div>
     </section>
@@ -107,11 +150,30 @@ interface Section {
           <!-- Contenu collapsible -->
           <div class="overflow-hidden transition-all duration-500 ease-in-out"
                [ngClass]="isOrganigrammeExpanded ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'">
-            <div class="p-10 text-center">
-              <img src="assets/images/orga.png"
-                   alt="organigramme"
-                   class="rounded-lg shadow-md w-full h-auto transition-transform duration-300 hover:scale-105 cursor-pointer" />
-            </div>
+            @defer (on interaction; prefetch on hover) {
+              <div class="p-10 text-center">
+                <app-lazy-image
+                  src="assets/images/orga.png"
+                  alt="organigramme"
+                  imageClass="rounded-lg shadow-md w-full h-auto transition-transform duration-300 hover:scale-105 cursor-pointer"
+                  width="100%"
+                  height="auto">
+                </app-lazy-image>
+              </div>
+            } @placeholder {
+              <div class="p-10 text-center">
+                <div class="w-full h-96 bg-gray-200 rounded-lg animate-pulse"></div>
+              </div>
+            } @loading {
+              <div class="p-10 text-center">
+                <div class="flex items-center justify-center w-full h-96 bg-gray-100 rounded-lg">
+                  <div class="text-center">
+                    <div class="w-12 h-12 border-4 border-[var(--sned-blue)] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                    <p class="text-gray-600">Chargement de l'organigramme...</p>
+                  </div>
+                </div>
+              </div>
+            }
           </div>
         </div>
       </div>

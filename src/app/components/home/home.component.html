@@ -1,2 +1,23 @@
-<app-anchor></app-anchor>
-<app-about></app-about>
+@defer (on immediate) {
+  <app-anchor></app-anchor>
+} @placeholder {
+  <div class="h-16 bg-white shadow-md animate-pulse"></div>
+}
+
+@defer (on viewport; prefetch on idle) {
+  <app-about></app-about>
+} @placeholder {
+  <div class="flex items-center justify-center py-32">
+    <div class="text-center">
+      <div class="w-12 h-12 border-4 border-[var(--sned-orange)] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+      <p class="text-gray-500">Chargement du contenu...</p>
+    </div>
+  </div>
+} @loading (minimum 500ms) {
+  <div class="flex items-center justify-center py-32">
+    <div class="text-center">
+      <div class="w-12 h-12 border-4 border-[var(--sned-blue)] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+      <p class="text-gray-600">Préparation de la section À propos...</p>
+    </div>
+  </div>
+}

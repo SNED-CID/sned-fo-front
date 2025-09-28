@@ -7,9 +7,14 @@
         <!-- Logo -->
         <a routerLink="/"
            class="flex items-center space-x-3 rtl:space-x-reverse group transition-transform duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/20 rounded-lg p-1">
-          <img [src]="getLogoPath()"
-               alt="SNED Logo"
-               class="h-16 sm:h-20 lg:h-24 w-auto object-contain transition-all duration-300 filter drop-shadow-sm group-hover:drop-shadow-md"/>
+          <app-lazy-image
+            [src]="getLogoPath()"
+            alt="SNED Logo"
+            imageClass="h-16 sm:h-20 lg:h-24 w-auto object-contain transition-all duration-300 filter drop-shadow-sm group-hover:drop-shadow-md"
+            width="auto"
+            height="6rem"
+            [priority]="true">
+          </app-lazy-image>
         </a>
 
         <!-- Navigation Desktop et Sélecteur de langues -->
@@ -29,9 +34,14 @@
             <!-- Langue active -->
             <div class="relative group">
               <button class="cursor-pointer p-1 rounded-full shadow-md bg-white flex items-center justify-center hover:ring-2 hover:ring-[var(--sned-orange)] transition">
-                <img [src]="currentLangData().flag"
-                     [alt]="currentLangData().label"
-                     class="w-8 h-8 rounded-full"/>
+                <app-lazy-image
+                  [src]="currentLangData().flag"
+                  [alt]="currentLangData().label"
+                  imageClass="w-8 h-8 rounded-full"
+                  width="2rem"
+                  height="2rem"
+                  [priority]="true">
+                </app-lazy-image>
               </button>
               <!-- Tooltip langue active -->
               <span
@@ -63,9 +73,13 @@
                   <button
                     (click)="onLanguageChange(lang)"
                     class="cursor-pointer p-1 rounded-full shadow-md bg-white hover:bg-[var(--sned-orange-light)] flex items-center justify-center transition">
-                    <img [src]="lang.flag"
-                         [alt]="lang.label"
-                         class="w-8 h-8 rounded-full"/>
+                    <app-lazy-image
+                      [src]="lang.flag"
+                      [alt]="lang.label"
+                      imageClass="w-8 h-8 rounded-full"
+                      width="2rem"
+                      height="2rem">
+                    </app-lazy-image>
                   </button>
                   <!-- Tooltip langues secondaires -->
                   <span
@@ -98,9 +112,14 @@
             <button
               (click)="showMobileLangDropdown = !showMobileLangDropdown"
               class="flex items-center justify-center w-10 h-10 rounded-lg bg-white/90 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/50">
-              <img [src]="currentLangData().flag"
-                   [alt]="currentLangData().label"
-                   class="w-5 h-5 rounded-full object-cover"/>
+              <app-lazy-image
+                [src]="currentLangData().flag"
+                [alt]="currentLangData().label"
+                imageClass="w-5 h-5 rounded-full object-cover"
+                width="1.25rem"
+                height="1.25rem"
+                [priority]="true">
+              </app-lazy-image>
             </button>
 
             <!-- Dropdown langues mobile -->
@@ -118,7 +137,13 @@
                               'hover:bg-[var(--sned-orange)]/10 hover:text-[var(--sned-orange)]': lang.code !== currentLang()
                             }"
                             class="w-full flex items-center space-x-3 rtl:space-x-reverse px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 relative group">
-                      <img [src]="lang.flag" [alt]="lang.label" class="w-4 h-4 rounded-full object-cover flex-shrink-0"/>
+                      <app-lazy-image
+                        [src]="lang.flag"
+                        [alt]="lang.label"
+                        imageClass="w-4 h-4 rounded-full object-cover flex-shrink-0"
+                        width="1rem"
+                        height="1rem">
+                      </app-lazy-image>
                       <span class="flex-1 text-left rtl:text-right">{{ lang.label }}</span>
                       @if (lang.code === currentLang()) {
                         <i class="fas fa-check w-4 h-4 text-white animate-pulse"></i>

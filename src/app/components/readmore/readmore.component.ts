@@ -1,11 +1,12 @@
 import { Component, Input, Output, EventEmitter, signal } from '@angular/core';
 import { trigger, style, transition, animate } from '@angular/animations';
 import { LoaderComponent } from '../loader/loader.component';
+import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
 
 @Component({
   selector: 'app-read-more',
   standalone: true,
-  imports: [LoaderComponent],
+  imports: [LoaderComponent, LazyImageComponent],
   animations: [
     trigger('slideInOut', [
       transition(':enter', [
@@ -77,21 +78,44 @@ import { LoaderComponent } from '../loader/loader.component';
 
         <!-- Image spéciale pour SNED-SECEGSA -->
         @if (sectionId === 'sned_secegsa' && !loading()) {
-          <div class="mb-4 w-3/4 mx-auto aspect-[4/3] flex items-center justify-center gap-8 p-8 bg-gradient-to-r from-blue-50 to-orange-50 rounded-lg shadow-md">
-            <img src="assets/logos/snednotext.png"
-                 alt="SNED Logo"
-                 class="h-20 w-auto object-contain" />
-            <div class="text-3xl font-bold text-gray-400">+</div>
-            <img src="assets/logos/secegsa.png"
-                 alt="SECEGSA Logo"
-                 class="h-20 w-auto object-contain" />
-          </div>
+          @defer (on viewport) {
+            <div class="mb-4 w-3/4 mx-auto aspect-[4/3] flex items-center justify-center gap-8 p-8 bg-gradient-to-r from-blue-50 to-orange-50 rounded-lg shadow-md">
+              <app-lazy-image
+                src="assets/logos/snednotext.png"
+                alt="SNED Logo"
+                imageClass="h-20 w-auto object-contain"
+                width="auto"
+                height="5rem"
+                [priority]="true">
+              </app-lazy-image>
+              <div class="text-3xl font-bold text-gray-400">+</div>
+              <app-lazy-image
+                src="assets/logos/secegsa.png"
+                alt="SECEGSA Logo"
+                imageClass="h-20 w-auto object-contain"
+                width="auto"
+                height="5rem"
+                [priority]="true">
+              </app-lazy-image>
+            </div>
+          } @placeholder {
+            <div class="mb-4 w-3/4 mx-auto aspect-[4/3] bg-gray-200 rounded-lg animate-pulse"></div>
+          }
         }
 
         <!-- Image normale pour les autres sections -->
         @if (imageUrl && !loading() && sectionId !== 'sned_secegsa') {
-          <img [src]="imageUrl"
-               alt="{{ title }}" class="mb-4 rounded-lg shadow-md w-3/4 mx-auto h-auto" />
+          @defer (on viewport) {
+            <app-lazy-image
+              [src]="imageUrl"
+              [alt]="title"
+              imageClass="mb-4 rounded-lg shadow-md w-3/4 mx-auto h-auto"
+              width="75%"
+              height="auto">
+            </app-lazy-image>
+          } @placeholder {
+            <div class="mb-4 w-3/4 mx-auto h-64 bg-gray-200 rounded-lg animate-pulse"></div>
+          }
         }
 
         <!-- Texte en paragraphes -->
