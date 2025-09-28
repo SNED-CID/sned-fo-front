@@ -48,7 +48,7 @@
       "instagram": "Instagram"
     },
     "legal": {
-      "copyright": "© {year} SNED. All rights reserved.",
+      "copyright": "© {{year}} SNED. All rights reserved.",
       "privacy": "Privacy Policy",
       "terms": "Terms of Use",
       "cookies": "Cookie Policy",

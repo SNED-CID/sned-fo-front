@@ -1,6 +1,121 @@
 @use "tailwindcss";
 @import '@fortawesome/fontawesome-free/css/all.css';
 
+/* Configuration globale des polices Nunito Sans */
+* {
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+/* Classes typographiques personnalisées */
+.font-title {
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 800; /* Extrabold */
+}
+
+.font-subtitle {
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 600; /* Semibold */
+}
+
+.font-body {
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 400; /* Regular */
+}
+
+.font-keyword {
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 700; /* Bold */
+}
+
+/* Classes Tailwind personnalisées pour titres */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 800; /* Extrabold pour tous les titres par défaut */
+}
+
+/* Corps de texte par défaut */
+p, span, div {
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 400; /* Regular */
+}
+
+/* Classes typographiques pour l'arabe avec Cairo */
+.font-title-ar {
+  font-family: 'Cairo', sans-serif;
+  font-weight: 700; /* Bold */
+}
+
+.font-subtitle-ar {
+  font-family: 'Cairo', sans-serif;
+  font-weight: 600; /* Semibold */
+}
+
+.font-body-ar {
+  font-family: 'Cairo', sans-serif;
+  font-weight: 400; /* Regular */
+}
+
+.font-keyword-ar {
+  font-family: 'Cairo', sans-serif;
+  font-weight: 700; /* Bold */
+}
+
+/* Styles conditionnels selon la direction (RTL pour l'arabe) */
+[dir="rtl"] {
+  font-family: 'Cairo', sans-serif;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700; /* Bold pour les titres en arabe */
+  }
+
+  p, span, div {
+    font-family: 'Cairo', sans-serif;
+    font-weight: 400; /* Regular pour le corps de texte en arabe */
+  }
+}
+
+/* Classes universelles qui s'adaptent à la langue */
+.adaptive-title {
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 800; /* Extrabold */
+}
+
+[dir="rtl"] .adaptive-title {
+  font-family: 'Cairo', sans-serif;
+  font-weight: 700; /* Bold */
+}
+
+.adaptive-subtitle {
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 600; /* Semibold */
+}
+
+[dir="rtl"] .adaptive-subtitle {
+  font-family: 'Cairo', sans-serif;
+  font-weight: 600; /* Semibold */
+}
+
+.adaptive-body {
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 400; /* Regular */
+}
+
+[dir="rtl"] .adaptive-body {
+  font-family: 'Cairo', sans-serif;
+  font-weight: 400; /* Regular */
+}
+
+.adaptive-keyword {
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 700; /* Bold */
+}
+
+[dir="rtl"] .adaptive-keyword {
+  font-family: 'Cairo', sans-serif;
+  font-weight: 700; /* Bold */
+}
+
 :root {
   --sned-blue: #139dcc;
   --sned-orange: #f89851;

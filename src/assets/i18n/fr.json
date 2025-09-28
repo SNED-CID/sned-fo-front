@@ -48,11 +48,24 @@
       "instagram": "Instagram"
     },
     "legal": {
-      "copyright": "© {year} SNED. Tous droits réservés.",
+      "copyright": "© {{year}} SNED. Tous droits réservés.",
       "privacy": "Politique de confidentialité",
       "terms": "Conditions d'utilisation",
       "cookies": "Politique des cookies",
       "legal": "Mentions légales"
+    }
+  },
+  "about": {
+    "sned": {
+      "title": "À propos de la SNED",
+      "short": "La Société Nationale d'Études du Détroit de Gibraltar (SNED) a été créée en 1980 suite à un accord entre le Maroc et l'Espagne pour l'étude d'une liaison fixe entre l'Europe et l'Afrique.",
+      "paragraphs": [
+        "La Société Nationale d'Etudes du Détroit de Gibraltar, par abréviation « SNED » est une société anonyme créée en 1980 suite à « l'accord complémentaire de coopération entre le Royaume du Maroc et le Royaume d'Espagne pour l'étude d'une liaison fixe entre l'Europe et l'Afrique à travers le Détroit de Gibraltar ». Un accord additionnel a été signé en 1989 entre le Royaume du Maroc et le Royaume d'Espagne pour « l'étude d'une liaison fixe entre l'Europe et l'Afrique à travers le détroit de Gibraltar », détaillant en particulier les responsabilités des différentes parties prenantes.",
+        "En effet, le lancement officiel des études du projet de liaison fixe à travers le Détroit de Gibraltar a été décidé conjointement par Sa Majesté Hassan II du Maroc et Sa Majesté Juan Carlos 1er d'Espagne, en juin 1979. La résolution Royale s'est vue matérialisée le 24 octobre 1980, lors de la signature d'un Accord entre les deux gouvernements, créant ainsi, d'une part, un Comité Mixte hispano-marocain qui constitue l'organe de direction du projet, et d'autre part, deux sociétés étatiques d'études, chargées de la réalisation des plans de travail approuvés par le Comité Mixte : la SNED à Rabat, et la Sociedad Española de Estudios para la Comunicación Fija a través del Estrecho de Gibraltar, S.A. (SECEGSA) à Madrid.",
+        "La SNED est sise à Rabat (Souissi) – n°11, Rue Antar Ibn Chaddad, Avenue Mohamed VI, Km 8.",
+        "Le capital social de la SNED est fixé à la somme de DEUX MILLIONS SEPT CENT CINQUANTE MILLE (2.750.000) dirhams. L'Etat Marocain est l'actionnaire majoritaire avec 99,9% du capital et 11 actions sont détenues par divers administrateurs.",
+        "La SNED est sous la tutelle du Ministère de l'équipement et de l'eau."
+      ]
     }
   }
 }

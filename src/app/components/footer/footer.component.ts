@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import {Component, computed, inject} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -192,7 +192,7 @@ export class FooterComponent {
   private translate = inject(TranslateService);
   private localeService = inject(LocaleService);
 
-  currentYear = new Date().getFullYear();
+  currentYear = computed(()=>(new Date().getFullYear()).toString());
   isSubmitting = false;
 
   newsletterForm: FormGroup = this.fb.group({

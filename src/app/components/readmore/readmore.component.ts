@@ -75,10 +75,12 @@ import { LoaderComponent } from '../loader/loader.component';
         <img *ngIf="imageUrl && !loading()" [src]="imageUrl"
              alt="{{ title }}" class="mb-4 rounded-lg shadow-md w-3/4 mx-auto h-auto" />
 
-        <!-- Texte -->
-        <p *ngIf="!loading()" class="text-gray-700 leading-relaxed whitespace-pre-line">
-          {{ fullText }}
-        </p>
+        <!-- Texte en paragraphes -->
+        <div *ngIf="!loading()">
+          <p *ngFor="let paragraph of paragraphs" class="text-gray-700 leading-relaxed mb-4 adaptive-body">
+            {{ paragraph }}
+          </p>
+        </div>
       </div>
     </aside>
   `
@@ -86,7 +88,7 @@ import { LoaderComponent } from '../loader/loader.component';
 export class ReadMoreComponent {
   @Input() label = 'Lire la suite';
   @Input() title = 'Détails';
-  @Input() fullText = '';
+  @Input() paragraphs: string[] | undefined = [];
   @Input() imageUrl: string | null = null;
 
   sidebarOpen = signal(false);
@@ -115,7 +117,7 @@ export class ReadMoreComponent {
   async shareContent() {
     const shareData = {
       title: this.title,
-      text: this.fullText,
+      text: this.paragraphs!.join('\n\n')!,
       url: window.location.href
     };
 

@@ -1,20 +1,22 @@
 // src/app/features/about/about.component.ts
 import {Component, HostListener} from '@angular/core';
 import { ReadMoreComponent } from '../readmore/readmore.component';
-import {NgClass, NgFor, NgIf} from '@angular/common';
+import {JsonPipe, NgClass, NgFor, NgIf} from '@angular/common';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 interface Section {
   id: string;
   title: string;
   short: string;
-  full: string;
+  full?: string;
+  paragraphs?: string[];
   image: string;
 }
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [ReadMoreComponent, NgClass, NgFor, NgIf],
+  imports: [ReadMoreComponent, NgClass, NgFor, NgIf, TranslatePipe, JsonPipe],
   template: `
     <!-- Point de repère en haut -->
     <div id="about-top"></div>
@@ -49,7 +51,7 @@ interface Section {
                 [imageUrl]="section.image"
                 [label]="'Lire la suite'"
                 [title]="section.title"
-                [fullText]="section.full">
+                [paragraphs]="section.paragraphs">
               </app-read-more>
             </div>
           </div>
@@ -178,32 +180,24 @@ interface Section {
   `
 })
 export class AboutComponent {
-  sections: Section[] = [
-    {
-      id: 'apropos',
-      title: 'À propos de la SNED',
-      short: `La Société Nationale d'Études du Détroit de Gibraltar (SNED) a été créée en 1980
-            suite à un accord entre le Maroc et l'Espagne pour l'étude d'une liaison fixe
-            entre l'Europe et l'Afrique.`,
-      full: `
-La Société Nationale d'Etudes du Détroit de Gibraltar, par abréviation « SNED »,
-est une société anonyme créée en 1980 suite à « l'accord complémentaire de coopération
-entre le Royaume du Maroc et le Royaume d'Espagne pour l'étude d'une liaison fixe entre
-l'Europe et l'Afrique à travers le Détroit de Gibraltar ».
+  sections: Section[] = [];
 
-Un accord additionnel a été signé en 1989 entre les deux Royaumes, précisant les responsabilités
-des différentes parties. Le lancement officiel des études fut décidé par Sa Majesté Hassan II
-et Sa Majesté Juan Carlos 1er en juin 1979.
+  constructor(private translateService: TranslateService) {
+    this.initializeSections();
+  }
 
-La SNED, sise à Rabat (Souissi), dispose d'un capital social de 2.750.000 dirhams,
-détenu à 99,9 % par l'État marocain. Elle est placée sous la tutelle du Ministère de l'Équipement
-et de l'Eau.
-    `,
-      image: 'assets/images/bridge_engineer.jpg'
-    },
-    {
-      id: 'contexte',
-      title: 'Contexte stratégique',
+  private initializeSections() {
+    this.sections = [
+      {
+        id: 'apropos',
+        title: this.translateService.instant('about.sned.title'),
+        short: this.translateService.instant('about.sned.short'),
+        paragraphs: this.translateService.instant('about.sned.paragraphs'),
+        image: 'assets/images/bridge_engineer.jpg'
+      },
+      {
+        id: 'contexte',
+        title: 'Contexte stratégique',
       short: `Le Détroit de Gibraltar est une zone stratégique reliant l'Europe et l'Afrique,
             et un carrefour maritime entre l'Atlantique et la Méditerranée.`,
       full: `
@@ -270,7 +264,8 @@ et internationales, notamment en matière de transparence, de durabilité et de 
     `,
       image: 'assets/images/cadre.jpg'
     }
-  ];
+    ];
+  }
 
   showScrollTop = false;
   isOrganigrammeExpanded = false;
