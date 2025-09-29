@@ -71,6 +71,64 @@
       "legal": "Mentions légales"
     }
   },
+  "shared": {
+    "lazy_image": {
+      "image_unavailable": "Image indisponible"
+    },
+    "readmore": {
+      "read_more": "Lire la suite",
+      "details": "Détails",
+      "share": "Partager",
+      "close": "Fermer",
+      "next_section": "Section suivante :",
+      "loading": "Chargement...",
+      "share_success": "✅ Partagé avec succès !",
+      "share_error": "❌ Partage annulé ou erreur :",
+      "link_copied": "📋 Lien copié dans le presse-papier"
+    },
+    "loading": {
+      "loading": "Chargement...",
+      "footer_loading": "Chargement du pied de page..."
+    }
+  },
+  "header": {
+    "navigation": {
+      "discover_project": "Découvrez le projet de liaison fixe",
+      "about": "À propos",
+      "about_desc": "Qui sommes-nous",
+      "mission": "Mission",
+      "mission_desc": "Notre mission et vision",
+      "team": "Équipe",
+      "team_desc": "Notre équipe",
+      "contact": "Contact",
+      "contact_desc": "Nous contacter",
+      "project": "Projet de Liaison fixe",
+      "engineering": "Composante Ingénierie",
+      "engineering_desc": "Aspects techniques",
+      "history": "Historique",
+      "history_desc": "Conception et études",
+      "physical": "Composante Milieu physique",
+      "physical_desc": "Études environnementales",
+      "socioeconomic": "Composante Socio-économique",
+      "socioeconomic_desc": "Impact économique",
+      "promotion": "Composante promotion de projet",
+      "promotion_desc": "Impact économique",
+      "legal": "Mentions légales",
+      "legal_desc": "Aspects légaux et stratégiques",
+      "gallery": "Galerie de reconnaissance",
+      "news": "Actualités",
+      "partnerships": "Partenariats",
+      "work": "Notre Travail",
+      "congress": "Congrès",
+      "congress_desc": "Événements et conférences",
+      "communication": "Activités de communication",
+      "communication_desc": "Actions de sensibilisation",
+      "video": "Vidéo de lien Physique SNED",
+      "video_desc": "Présentation multimédia",
+      "statistics": "Statistiques",
+      "statistics_desc": "Données et indicateurs"
+    }
+  },
   "about": {
     "sned": {
       "title": "À propos de la SNED",
