@@ -41,6 +41,7 @@ export class HeaderComponent implements OnInit{
     '/travail': 'assets/images/notre_travail.png'
   };
   currentBackground: string | null = null;
+  isBackgroundLoading = signal(false);
 
   constructor(private router: Router) {}
   private readonly localeService = inject(LocaleService);
@@ -50,7 +51,13 @@ export class HeaderComponent implements OnInit{
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: any) => {
         const url = event.urlAfterRedirects || event.url;
-        this.currentBackground = this.getBackgroundForUrl(url);
+        const newBackground = this.getBackgroundForUrl(url);
+
+        if (newBackground && newBackground !== this.currentBackground) {
+          this.loadBackgroundImage(newBackground);
+        } else {
+          this.currentBackground = newBackground;
+        }
       });
   }
 
@@ -252,6 +259,21 @@ export class HeaderComponent implements OnInit{
 
   playVideo() {
     this.isVideoPlaying = true;
+  }
+
+  private loadBackgroundImage(imagePath: string) {
+    this.isBackgroundLoading.set(true);
+
+    const img = new Image();
+    img.onload = () => {
+      this.currentBackground = imagePath;
+      this.isBackgroundLoading.set(false);
+    };
+    img.onerror = () => {
+      console.warn('Failed to load background image:', imagePath);
+      this.isBackgroundLoading.set(false);
+    };
+    img.src = imagePath;
   }
 
   getLogoPath(): string {

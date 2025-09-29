@@ -282,8 +282,8 @@
     <div class="absolute top-2/3 right-1/3 w-1.5 h-1.5 bg-[var(--sned-blue)]/25 rounded-full animate-pulse delay-1000"></div>
   </div>
 
-  <!-- Loader si aucune image -->
-  @if (!isVideoPlaying && !currentBackground) {
+  <!-- Loader si aucune image ou pendant le chargement -->
+  @if (!isVideoPlaying && (!currentBackground || isBackgroundLoading())) {
     <div class="absolute inset-0 flex items-center justify-center z-30">
       <app-loader></app-loader>
     </div>
