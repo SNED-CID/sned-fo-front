@@ -150,7 +150,7 @@ interface Section {
           <!-- Contenu collapsible -->
           <div class="overflow-hidden transition-all duration-500 ease-in-out"
                [ngClass]="isOrganigrammeExpanded ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'">
-            @defer (on interaction; prefetch on hover) {
+            @defer (on viewport; prefetch on idle) {
               <div class="p-10 text-center">
                 <app-lazy-image
                   src="assets/images/orga.png"
@@ -288,7 +288,7 @@ export class AboutComponent implements OnInit {
   }
 
   showScrollTop = false;
-  isOrganigrammeExpanded = false;
+  isOrganigrammeExpanded = true;
 
   @HostListener('window:scroll')
   onScroll() {

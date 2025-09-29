@@ -107,15 +107,19 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
         <!-- Image normale pour les autres sections -->
         @if (imageUrl && !loading() && sectionId !== 'sned_secegsa') {
           @defer (on viewport) {
-            <app-lazy-image
-              [src]="imageUrl"
-              [alt]="title"
-              imageClass="mb-4 rounded-lg shadow-md w-3/4 mx-auto h-auto"
-              width="75%"
-              height="auto">
-            </app-lazy-image>
+            <div class="mb-4 text-center">
+              <app-lazy-image
+                [src]="imageUrl"
+                [alt]="title"
+                imageClass="rounded-lg shadow-md w-full h-auto"
+                width="75%"
+                height="auto">
+              </app-lazy-image>
+            </div>
           } @placeholder {
-            <div class="mb-4 w-3/4 mx-auto h-64 bg-gray-200 rounded-lg animate-pulse"></div>
+            <div class="mb-4 text-center">
+              <div class="inline-block w-3/4 h-64 bg-gray-200 rounded-lg animate-pulse"></div>
+            </div>
           }
         }
 

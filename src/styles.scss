@@ -266,18 +266,18 @@ body {
 }
 
 
-body::before,
-body::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url('/assets/waves.svg');
-  background-repeat: repeat;
-  background-size: contain;
-  animation: moveWaves 10s linear infinite alternate;
-  opacity: 0.25;
-  z-index: -1;
-}
+//body::before,
+//body::after {
+//  content: "";
+//  position: absolute;
+//  inset: 0;
+//  background-image: url('/assets/waves.svg');
+//  background-repeat: repeat;
+//  background-size: contain;
+//  animation: moveWaves 10s linear infinite alternate;
+//  opacity: 0.25;
+//  z-index: -1;
+//}
 
 /* le second est décalé de -20% en Y pour se chevaucher */
 body::after {
