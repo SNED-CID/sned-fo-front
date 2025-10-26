@@ -232,9 +232,7 @@ export class HeaderComponent implements OnInit{
 
   mainHeaderClasses(): string {
     const base = 'transition-all duration-500 ease-in-out';
-    return this.isScrolled()
-      ? `${base} bg-white/95 backdrop-blur-md shadow-lg border-b border-white/20`
-      : `${base} bg-white/10 backdrop-blur-sm`;
+    return `${base} bg-white/95 backdrop-blur-md shadow-lg border-b border-white/20`;
   }
 
   currentLangData(): Language {
@@ -278,12 +276,11 @@ export class HeaderComponent implements OnInit{
 
   getLogoPath(): string {
     const isArabic = this.currentLang() === 'ar';
-    const hasScrolled = this.isScrolled();
 
     if (isArabic) {
-      return hasScrolled ? 'assets/logos/arstdr.png' : 'assets/logos/arwhite.png';
+      return 'assets/logos/arstdr.png';
     } else {
-      return hasScrolled ? 'assets/logos/frstdr.png' : 'assets/logos/frwhite.png';
+      return 'assets/logos/frstdr.png';
     }
   }
 }
