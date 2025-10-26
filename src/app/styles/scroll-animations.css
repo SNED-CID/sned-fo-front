@@ -1,0 +1,97 @@
+/* Scroll Animation Styles */
+
+/* État initial - invisible et décalé */
+.scroll-animated {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* Animation Fade Up (par défaut) */
+.scroll-animated.animation-fadeUp {
+  transform: translateY(30px);
+  animation: fadeUpAnimation 0.8s ease-out forwards;
+}
+
+.scroll-animated.animation-fadeUp.visible {
+  animation: fadeUpAnimation 0.8s ease-out forwards;
+}
+
+@keyframes fadeUpAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation Fade In */
+.scroll-animated.animation-fadeIn {
+  animation: fadeInAnimation 0.8s ease-out forwards;
+}
+
+.scroll-animated.animation-fadeIn.visible {
+  animation: fadeInAnimation 0.8s ease-out forwards;
+}
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Animation Slide Left */
+.scroll-animated.animation-slideLeft {
+  transform: translateX(-40px);
+  animation: slideLeftAnimation 0.8s ease-out forwards;
+}
+
+.scroll-animated.animation-slideLeft.visible {
+  animation: slideLeftAnimation 0.8s ease-out forwards;
+}
+
+@keyframes slideLeftAnimation {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animation Slide Right */
+.scroll-animated.animation-slideRight {
+  transform: translateX(40px);
+  animation: slideRightAnimation 0.8s ease-out forwards;
+}
+
+.scroll-animated.animation-slideRight.visible {
+  animation: slideRightAnimation 0.8s ease-out forwards;
+}
+
+@keyframes slideRightAnimation {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Support de prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-animated {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

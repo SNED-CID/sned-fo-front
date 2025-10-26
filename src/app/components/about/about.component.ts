@@ -4,6 +4,7 @@ import { ReadMoreComponent } from '../readmore/readmore.component';
 import {NgClass} from '@angular/common';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
+import { ScrollAnimationDirective } from '../../directives/scroll-animation.directive';
 
 interface Section {
   id: string;
@@ -17,25 +18,25 @@ interface Section {
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [ReadMoreComponent, NgClass, TranslatePipe, LazyImageComponent],
+  imports: [ReadMoreComponent, NgClass, TranslatePipe, LazyImageComponent, ScrollAnimationDirective],
   template: `
     <!-- Point de repère en haut -->
     <div id="about-top"></div>
 
     <section class="py-16 pb-32">
-      <div class="max-w-6xl mx-auto px-6 lg:px-12 space-y-20 bg-white rounded-lg">
+      <div class="w-full mx-auto px-6 sm:px-8 lg:px-16 xl:px-20 2xl:px-24 space-y-24 bg-white rounded-lg max-w-7xl lg:max-w-full 2xl:max-w-7xl">
         @for (section of sections; track section.id; let i = $index) {
           @defer (on viewport; prefetch on idle) {
-            <div class="grid md:grid-cols-2 gap-10">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-16" appScrollAnimation [animationType]="'fadeUp'" [animationDelay]="i * 100">
 
               <!-- Image -->
-              <div class="flex items-center relative"
+              <div class="flex items-center justify-center relative"
                    [id]="section.id"
                    [ngClass]="{ 'order-first md:order-last': i % 2 === 1 }">
 
                 <!-- Section SNED-SECEGSA avec logos côte à côte -->
                 @if (section.id === 'sned_secegsa') {
-                  <div class="w-3/4 aspect-[4/3] flex items-center justify-center gap-8 p-8 bg-gradient-to-r from-blue-50 to-orange-50 rounded-2xl shadow-lg"
+                  <div class="w-full max-w-md lg:max-w-lg aspect-[4/3] flex items-center justify-center gap-8 p-8 lg:p-12 bg-gradient-to-r from-blue-50 to-orange-50 rounded-2xl shadow-lg"
                        [ngClass]="{ 'mr-auto': i % 2 === 0, 'ml-auto': i % 2 === 1 }">
                     <app-lazy-image
                       src="assets/logos/snednotext.png"
@@ -62,9 +63,8 @@ interface Section {
                   <app-lazy-image
                     [src]="section.image"
                     [alt]="section.title"
-                    imageClass="rounded-2xl shadow-lg w-3/4 h-auto object-contain"
-                    [class]="{ 'mr-auto': i % 2 === 0, 'ml-auto': i % 2 === 1 }"
-                    width="75%"
+                    imageClass="rounded-2xl shadow-lg w-full max-w-md lg:max-w-lg h-auto object-contain"
+                    width="100%"
                     height="auto">
                   </app-lazy-image>
                 }
@@ -73,11 +73,11 @@ interface Section {
 
           <!-- Texte -->
           <div class="flex items-center">
-            <div>
-              <h2 class="text-3xl font-bold text-primary mb-6">
+            <div class="w-full">
+              <h2 class="text-3xl lg:text-4xl xl:text-5xl font-bold text-primary mb-6 lg:mb-8">
                 {{ section.title }}
               </h2>
-              <p class="text-gray-700 mb-6 line-clamp-3">
+              <p class="text-base lg:text-lg text-gray-700 mb-6 lg:mb-8 line-clamp-3 leading-relaxed">
                 {{ section.short }}
               </p>
               <app-read-more
@@ -127,7 +127,7 @@ interface Section {
     <div class=" pb-16">
       <!-- Organigramme -->
       <!-- Organigramme -->
-      <div id="organigramme" class="w-3/4 mx-auto">
+      <div id="organigramme" class="w-3/4 mx-auto" appScrollAnimation [animationType]="'fadeUp'">
         <div class="flex justify-between items-center mb-6">
           <h2 class="text-3xl font-bold text-primary">
             Organigramme
@@ -181,7 +181,7 @@ interface Section {
 
 
       <!-- Intervenants -->
-      <section id="conseil-administration-section" class="mt-16">
+      <section id="conseil-administration-section" class="mt-16" appScrollAnimation [animationType]="'fadeUp'">
         <div class="w-3/4 mx-auto">
           <h2 class="text-3xl font-bold text-primary mb-6 text-left">
             {{ 'about.conseil_administration.title' | translate }}
