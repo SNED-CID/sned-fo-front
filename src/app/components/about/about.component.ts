@@ -24,20 +24,20 @@ interface Section {
     <div id="about-top"></div>
 
     <section class="py-16 pb-32">
-      <div class="w-full mx-auto px-6 sm:px-8 lg:px-16 xl:px-20 2xl:px-24 space-y-24 bg-white rounded-lg max-w-7xl lg:max-w-full 2xl:max-w-7xl">
+      <div class="w-full mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 space-y-24 lg:space-y-32 2xl:space-y-40 bg-white rounded-lg max-w-7xl lg:max-w-full 2xl:max-w-none">
         @for (section of sections; track section.id; let i = $index) {
           @defer (on viewport; prefetch on idle) {
-            <div class="grid md:grid-cols-2 gap-12 lg:gap-16">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-16 2xl:gap-20">
 
               <!-- Image -->
-              <div class="flex items-center justify-center relative"
+              <div class="flex items-center relative"
                    [id]="section.id"
-                   [ngClass]="{ 'order-first md:order-last': i % 2 === 1 }"
+                   [ngClass]="{ 'order-first md:order-last': i % 2 === 1, 'md:justify-start': i % 2 === 0, 'md:justify-end': i % 2 === 1 }"
                    appScrollAnimation [animationType]="'fadeUp'" [animationDelay]="i * 100">
 
                 <!-- Section SNED-SECEGSA avec logos côte à côte -->
                 @if (section.id === 'sned_secegsa') {
-                  <div class="w-full max-w-md lg:max-w-lg aspect-[4/3] flex items-center justify-center gap-8 p-8 lg:p-12 bg-gradient-to-r from-blue-50 to-orange-50 rounded-2xl shadow-lg"
+                  <div class="w-full max-w-md lg:max-w-lg 2xl:max-w-2xl aspect-[4/3] flex items-center justify-center gap-8 p-8 lg:p-12 bg-gradient-to-r from-blue-50 to-orange-50 rounded-2xl shadow-lg"
                        [ngClass]="{ 'mr-auto': i % 2 === 0, 'ml-auto': i % 2 === 1 }">
                     <app-lazy-image
                       src="assets/logos/snednotext.png"
@@ -64,7 +64,7 @@ interface Section {
                   <app-lazy-image
                     [src]="section.image"
                     [alt]="section.title"
-                    imageClass="rounded-2xl shadow-lg w-full max-w-md lg:max-w-lg h-auto object-contain"
+                    imageClass="rounded-2xl shadow-lg w-full max-w-md lg:max-w-lg 2xl:max-w-2xl h-auto object-contain"
                     width="100%"
                     height="auto">
                   </app-lazy-image>
@@ -73,7 +73,7 @@ interface Section {
               </div>
 
               <!-- Texte -->
-              <div class="flex flex-col justify-center">
+              <div class="flex flex-col items-center justify-center">
                 <div class="w-full" appScrollAnimation [animationType]="'fadeUp'" [animationDelay]="i * 100 + 50">
                   <h2 class="text-3xl lg:text-4xl xl:text-5xl font-bold text-primary mb-6 lg:mb-8">
                     {{ section.title }}
@@ -128,7 +128,7 @@ interface Section {
     <div class=" pb-16">
       <!-- Organigramme -->
       <!-- Organigramme -->
-      <div id="organigramme" class="w-3/4 mx-auto" appScrollAnimation [animationType]="'fadeUp'">
+      <div id="organigramme" class="w-3/4 lg:w-5/6 2xl:w-full mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20" appScrollAnimation [animationType]="'fadeUp'">
         <div class="flex justify-between items-center mb-6">
           <h2 class="text-3xl font-bold text-primary">
             Organigramme
@@ -152,7 +152,7 @@ interface Section {
           <div class="overflow-hidden transition-all duration-500 ease-in-out"
                [ngClass]="isOrganigrammeExpanded ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'">
             @defer (on viewport; prefetch on idle) {
-              <div class="p-10 text-center">
+              <div class="p-10 lg:p-12 2xl:p-16 text-center">
                 <app-lazy-image
                   src="assets/images/orga.png"
                   alt="organigramme"
@@ -162,11 +162,11 @@ interface Section {
                 </app-lazy-image>
               </div>
             } @placeholder {
-              <div class="p-10 text-center">
+              <div class="p-10 lg:p-12 2xl:p-16 text-center">
                 <div class="w-full h-96 bg-gray-200 rounded-lg animate-pulse"></div>
               </div>
             } @loading {
-              <div class="p-10 text-center">
+              <div class="p-10 lg:p-12 2xl:p-16 text-center">
                 <div class="flex items-center justify-center w-full h-96 bg-gray-100 rounded-lg">
                   <div class="text-center">
                     <div class="w-12 h-12 border-4 border-[var(--sned-blue)] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
@@ -182,8 +182,8 @@ interface Section {
 
 
       <!-- Intervenants -->
-      <section id="conseil-administration-section" class="mt-16" appScrollAnimation [animationType]="'fadeUp'">
-        <div class="w-3/4 mx-auto">
+      <section id="conseil-administration-section" class="mt-16 px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20" appScrollAnimation [animationType]="'fadeUp'">
+        <div class="w-3/4 lg:w-5/6 2xl:w-full mx-auto">
           <h2 class="text-3xl font-bold text-primary mb-6 text-left">
             {{ 'about.conseil_administration.title' | translate }}
           </h2>
@@ -192,7 +192,7 @@ interface Section {
             <!-- Trait coloré en haut -->
             <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 to-orange-500"></div>
 
-            <div class="p-10 space-y-6 text-left">
+            <div class="p-10 lg:p-12 2xl:p-16 space-y-6 text-left">
               <div class="space-y-4 text-gray-700 leading-relaxed">
                 <p class="adaptive-body mb-4">
                   {{ 'about.conseil_administration.short' | translate }}
