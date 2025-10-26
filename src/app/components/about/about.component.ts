@@ -5,6 +5,7 @@ import {NgClass} from '@angular/common';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
 import { ScrollAnimationDirective } from '../../directives/scroll-animation.directive';
+import { ActivatedRoute } from '@angular/router';
 
 interface Section {
   id: string;
@@ -237,7 +238,10 @@ export class AboutComponent implements OnInit {
   sections: Section[] = [];
   @ViewChildren(ReadMoreComponent) readMoreComponents!: QueryList<ReadMoreComponent>;
 
-  constructor(private translateService: TranslateService) {}
+  constructor(
+    private translateService: TranslateService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.initializeSections();
@@ -245,6 +249,16 @@ export class AboutComponent implements OnInit {
     // S'abonner aux changements de langue
     this.translateService.onLangChange.subscribe(() => {
       this.initializeSections();
+    });
+
+    // Écouter les changements du fragment dans l'URL
+    this.activatedRoute.fragment.subscribe((fragment) => {
+      if (fragment) {
+        // Délai pour laisser le DOM se charger et les éléments se rendre
+        setTimeout(() => {
+          this.scrollToFragment(fragment);
+        }, 100);
+      }
     });
   }
 
@@ -355,6 +369,20 @@ export class AboutComponent implements OnInit {
           }
         }, 800); // Délai pour laisser le scroll se terminer
       }
+    }
+  }
+
+  /**
+   * Scroller vers une section basée sur son ID (utilisé pour les fragments d'URL)
+   * Exemple: /about#contexte scrollera vers la section contexte
+   */
+  private scrollToFragment(fragmentId: string) {
+    const element = document.getElementById(fragmentId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
     }
   }
 }

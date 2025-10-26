@@ -9,6 +9,7 @@ export interface MenuItem {
   children?: MenuItem[];
   description?: string;
   isExternal?: boolean;
+  sectionId?: string;
 }
 
 export interface MenuSection {
@@ -30,7 +31,8 @@ export interface MenuSection {
               <!-- Menu item simple -->
               @if (!item.children) {
                 <a
-                  [routerLink]="item.route || '/'"
+                  [routerLink]="getNavigationLink(item)"
+                  [fragment]="item.sectionId"
                   routerLinkActive="active-link"
                   [routerLinkActiveOptions]="{ exact: true }"
                   (click)="onMenuItemClick()"
@@ -49,7 +51,8 @@ export interface MenuSection {
               @if (item.children) {
                 <div class="relative group z-70">
                   <button
-                    [routerLink]="item.route || '/'"
+                    [routerLink]="getNavigationLink(item)"
+                    [fragment]="item.sectionId"
                     routerLinkActive="active-link"
                     [routerLinkActiveOptions]="{ exact: true }"
                     class="relative px-2 lg:px-2.5 py-2 font-medium text-xs lg:text-sm rounded-lg inline-flex items-center gap-1 whitespace-nowrap transition-all duration-200 group text-[var(--sned-orange-dark)] hover:text-[var(--sned-blue)] hover:bg-[var(--sned-orange)]/5 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/20 cursor-pointer"
@@ -77,7 +80,8 @@ export interface MenuSection {
                     <div class="relative bg-white rounded-xl p-2">
                       @for (child of item.children; track child.route || child.label) {
                         <a
-                          [routerLink]="child.route || '/'"
+                          [routerLink]="getNavigationLink(child)"
+                          [fragment]="child.sectionId"
                           routerLinkActive="active-sublink"
                           [routerLinkActiveOptions]="{ exact: true }"
                           (click)="onMenuItemClick()"
@@ -193,5 +197,18 @@ export class NavigationMenuComponent {
 
   onMenuItemClick() {
     this.menuItemClick.emit();
+  }
+
+  /**
+   * Construit l'URL de navigation avec fragment si nécessaire
+   * Exemple: /about#contexte pour scroller vers la section contexte
+   */
+  getNavigationLink(item: MenuItem): any {
+    if (item.sectionId) {
+      // Si un sectionId est défini, naviguer vers la page avec le fragment
+      const basePath = item.route?.split('#')[0] || '/';
+      return [basePath];
+    }
+    return item.route || '/';
   }
 }

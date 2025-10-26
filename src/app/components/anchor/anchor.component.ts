@@ -29,16 +29,6 @@ export class AnchorComponent implements OnInit {
     { id: 'sned_secegsa', label: 'SNED & SECEG SA' }
   ];
 
-  // Mapping for different menu sections
-  private menuMappings: Record<string, Record<string, string>> = {
-    'Projet de liaison fixe': {
-      'Composante ingénierie': 'ingenierie',
-      'Composante milieu physique': 'milieu-physique',
-      'Composante socio-économique': 'socio-economique',
-      'Composante promotion du projet': 'promotion',
-      'Galerie de reconnaissance': 'galerie'
-    }
-  };
 
   constructor(private router: Router) {}
 

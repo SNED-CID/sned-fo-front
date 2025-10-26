@@ -101,13 +101,13 @@ export class HeaderComponent implements OnInit{
           label: 'Découvrez la SNED',
           route: '/about',
           children: [
-            { label: 'Nous connaitre', route: '/about' },
-            { label: 'Contexte stratégique', route: '/about/contexte' },
-            { label: 'Missions et valeurs', route: '/about/missions' },
-            { label: 'Cadre institutionnel', route: '/about/cadre' },
-            { label: 'Mot du PDG', route: '/about/pdg' },
-            { label: 'Organisation', route: '/about/organisation' },
-            { label: 'SNED & SECEG SA', route: '/about/seceg' }
+            { label: 'Nous connaitre', route: '/about', sectionId: 'apropos' },
+            { label: 'Contexte stratégique', route: '/about', sectionId: 'contexte' },
+            { label: 'Missions et valeurs', route: '/about', sectionId: 'missions' },
+            { label: 'Cadre institutionnel', route: '/about', sectionId: 'cadre' },
+            { label: 'Mot du PDG', route: '/about', sectionId: 'apropos' },
+            { label: 'Organisation', route: '/about', sectionId: 'organigramme' },
+            { label: 'SNED & SECEG SA', route: '/about', sectionId: 'sned_secegsa' }
           ]
         },
         {

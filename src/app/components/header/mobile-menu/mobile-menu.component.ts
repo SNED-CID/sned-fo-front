@@ -11,6 +11,7 @@ export interface MenuItem {
   isExternal?: boolean;
   hasModal?: boolean;
   hasPagination?: boolean;
+  sectionId?: string;
 }
 
 export interface MenuSection {
@@ -117,7 +118,8 @@ export interface Language {
 
               <!-- Simple menu item -->
               <div *ngIf="!item.children" class="relative overflow-hidden rounded-lg">
-                <a [routerLink]="item.route || '/'"
+                <a [routerLink]="getNavigationLink(item)"
+                   [fragment]="item.sectionId"
                    (click)="onMenuItemClick()"
                    routerLinkActive="active-mobile"
                    class="flex items-center px-4 py-3.5 text-base font-medium text-[var(--sned-blue-dark)] hover:bg-gradient-to-r hover:from-[var(--sned-orange)]/8 hover:to-[var(--sned-blue)]/4 hover:text-[var(--sned-blue)] rounded-lg transition-all duration-200 group relative">
@@ -151,7 +153,8 @@ export interface Language {
                      [@expandCollapse]
                      class="mt-1 ml-4 pl-6 border-l-2 border-[var(--sned-orange)]/20 space-y-1">
                   <a *ngFor="let child of item.children; trackBy: trackByChild"
-                     [routerLink]="child.route || '/'"
+                     [routerLink]="getNavigationLink(child)"
+                     [fragment]="child.sectionId"
                      (click)="onMenuItemClick()"
                      routerLinkActive="active-mobile-sub"
                      class="flex items-start px-4 py-2.5 text-sm text-[var(--sned-blue-dark)] hover:bg-gradient-to-r hover:from-[var(--sned-orange)]/8 hover:to-[var(--sned-blue)]/4 hover:text-[var(--sned-blue)] rounded-lg transition-all duration-200 group/sub">
@@ -257,5 +260,18 @@ export class MobileMenuComponent {
 
   trackByChild(index: number, child: MenuItem): string {
     return child.route || child.label;
+  }
+
+  /**
+   * Construit l'URL de navigation avec fragment si nécessaire
+   * Exemple: /about#contexte pour scroller vers la section contexte
+   */
+  getNavigationLink(item: MenuItem): any {
+    if (item.sectionId) {
+      // Si un sectionId est défini, naviguer vers la page avec le fragment
+      const basePath = item.route?.split('#')[0] || '/';
+      return [basePath];
+    }
+    return item.route || '/';
   }
 }
