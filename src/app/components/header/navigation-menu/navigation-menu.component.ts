@@ -21,9 +21,9 @@ export interface MenuSection {
   standalone: true,
   imports: [CommonModule, RouterModule, TranslatePipe],
   template: `
-    <nav class="hidden lg:flex items-center justify-center space-x-0.5 rtl:space-x-reverse h-full flex-1 px-2 rtl:px-2">
+    <nav class="hidden lg:flex items-center justify-center space-x-3 rtl:space-x-reverse h-full flex-1">
       @for (section of menuSections; track section.title) {
-        <div class="flex items-center space-x-0.5 rtl:space-x-reverse">
+        <div class="flex items-center space-x-3 rtl:space-x-reverse">
           @for (item of section.items; track item.route || item.label) {
             <div class="relative group flex items-center">
 

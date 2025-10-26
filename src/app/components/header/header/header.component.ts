@@ -7,8 +7,6 @@ import {LocaleService} from '../../../services/locale.service';
 import {TranslatePipe} from '@ngx-translate/core';
 import { LanguageSelectorComponent, Language } from '../language-selector/language-selector.component';
 import { NavigationMenuComponent, MenuSection } from '../navigation-menu/navigation-menu.component';
-import { LazyImageComponent } from '../../shared/lazy-image/lazy-image.component';
-// Les interfaces sont maintenant importées des composants
 
 @Component({
   selector: 'app-header',
@@ -19,7 +17,7 @@ import { LazyImageComponent } from '../../shared/lazy-image/lazy-image.component
     LoaderComponent,
     TranslatePipe,
     NavigationMenuComponent,
-    LazyImageComponent
+    LanguageSelectorComponent
   ],
   templateUrl: "./header.component.html",
   styleUrls: ['./header.component.scss']
@@ -81,10 +79,10 @@ export class HeaderComponent implements OnInit{
   }
 
   languages: Language[] = [
-    { code: 'fr', label: 'Français', flag: 'assets/flags/fr.svg' },
-    { code: 'en', label: 'English', flag: 'assets/flags/en.svg' },
-    { code: 'es', label: 'Español', flag: 'assets/flags/es.svg' },
-    { code: 'ar', label: 'العربية', flag: 'assets/flags/ar.svg' }
+    { code: 'fr', label: 'Français', initials: 'FR' },
+    { code: 'en', label: 'English', initials: 'EN' },
+    { code: 'es', label: 'Español', initials: 'ES' },
+    { code: 'ar', label: 'العربية', initials: 'AR' }
   ];
   isVideoPlaying = false;
 
@@ -100,54 +98,40 @@ export class HeaderComponent implements OnInit{
       title: 'Navigation Principale',
       items: [
         {
-          label: 'header.navigation.discover_project',
-          route: '/',
+          label: 'Découvrez la SNED',
+          route: '/about',
           children: [
-            { label: 'header.navigation.about', route: '/about' },
-            { label: 'header.navigation.mission', route: '/mission' },
-            { label: 'header.navigation.team', route: '/team' },
-            { label: 'header.navigation.contact', route: '/contact' }
+            { label: 'Nous connaitre', route: '/about' },
+            { label: 'Contexte stratégique', route: '/about/contexte' },
+            { label: 'Missions et valeurs', route: '/about/missions' },
+            { label: 'Cadre institutionnel', route: '/about/cadre' },
+            { label: 'Mot du PDG', route: '/about/pdg' },
+            { label: 'Organisation', route: '/about/organisation' },
+            { label: 'SNED & SECEG SA', route: '/about/seceg' }
           ]
         },
         {
-          label: 'header.navigation.project',
+          label: 'Projet de liaison fixe',
           route: '/projet',
           children: [
-            { label: 'header.navigation.engineering', route: '/projet/ingenierie' },
-            { label: 'header.navigation.history', route: '/projet/historique' },
-            { label: 'header.navigation.physical', route: '/projet/milieu-physique' },
-            { label: 'header.navigation.socioeconomic', route: '/projet/socio-economique' },
-            { label: 'header.navigation.promotion', route: '/projet/promotion' },
-            { label: 'header.navigation.legal', route: '/projet/geostrategie' },
+            { label: 'Composante ingénierie', route: '/projet/ingenierie' },
+            { label: 'Composante milieu physique', route: '/projet/milieu-physique' },
+            { label: 'Composante socio-économique', route: '/projet/socio-economique' },
+            { label: 'Composante promotion du projet', route: '/projet/promotion' },
+            { label: 'Galerie de reconnaissance', route: '/galerie' }
           ]
         },
         {
-          label: 'header.navigation.gallery',
-          route: '/galerie',
-          children: [
-            { label: 'header.navigation.engineering', route: '/galerie/ingenierie' },
-            { label: 'header.navigation.physical', route: '/galerie/milieu-physique' },
-            { label: 'header.navigation.socioeconomic', route: '/galerie/socio-economique' },
-            { label: 'header.navigation.promotion', route: '/galerie/promotion' },
-          ]
-        },
-        {
-          label: 'header.navigation.news',
+          label: 'Actualités',
           route: '/actualite'
         },
         {
-          label: 'header.navigation.partnerships',
+          label: 'Partenaires',
           route: '/partenariat'
         },
         {
-          label: 'header.navigation.work',
-          route: '/travail',
-          children: [
-            { label: 'header.navigation.congress', route: '/travail/congres' },
-            { label: 'header.navigation.communication', route: '/travail/communication' },
-            { label: 'header.navigation.video', route: '/travail/video' },
-            { label: 'header.navigation.statistics', route: '/travail/statistiques' }
-          ]
+          label: 'Appel d\'offres',
+          route: '/appels-offres'
         }
       ]
     }
