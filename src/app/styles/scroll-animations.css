@@ -6,6 +6,12 @@
   will-change: transform, opacity;
 }
 
+/* Ne pas appliquer les animations aux éléments fixed ou absolute */
+.scroll-animated[style*="position: fixed"],
+.scroll-animated[style*="position: absolute"] {
+  will-change: opacity;
+}
+
 /* Animation Fade Up (par défaut) */
 .scroll-animated.animation-fadeUp {
   transform: translateY(30px);

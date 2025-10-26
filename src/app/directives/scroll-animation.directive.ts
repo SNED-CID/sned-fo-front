@@ -18,6 +18,9 @@ export class ScrollAnimationDirective implements OnInit {
     element.classList.add(`animation-${this.animationType}`);
     element.style.animationDelay = `${this.animationDelay}ms`;
 
+    // Ne pas créer de contexte de stacking qui affecterait les éléments fixed enfants
+    element.style.isolation = 'auto';
+
     // Créer l'Intersection Observer
     const observer = new IntersectionObserver(
       (entries) => {

@@ -27,12 +27,13 @@ interface Section {
       <div class="w-full mx-auto px-6 sm:px-8 lg:px-16 xl:px-20 2xl:px-24 space-y-24 bg-white rounded-lg max-w-7xl lg:max-w-full 2xl:max-w-7xl">
         @for (section of sections; track section.id; let i = $index) {
           @defer (on viewport; prefetch on idle) {
-            <div class="grid md:grid-cols-2 gap-12 lg:gap-16" appScrollAnimation [animationType]="'fadeUp'" [animationDelay]="i * 100">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-16">
 
               <!-- Image -->
               <div class="flex items-center justify-center relative"
                    [id]="section.id"
-                   [ngClass]="{ 'order-first md:order-last': i % 2 === 1 }">
+                   [ngClass]="{ 'order-first md:order-last': i % 2 === 1 }"
+                   appScrollAnimation [animationType]="'fadeUp'" [animationDelay]="i * 100">
 
                 <!-- Section SNED-SECEGSA avec logos côte à côte -->
                 @if (section.id === 'sned_secegsa') {
@@ -71,28 +72,28 @@ interface Section {
 
               </div>
 
-          <!-- Texte -->
-          <div class="flex items-center">
-            <div class="w-full">
-              <h2 class="text-3xl lg:text-4xl xl:text-5xl font-bold text-primary mb-6 lg:mb-8">
-                {{ section.title }}
-              </h2>
-              <p class="text-base lg:text-lg text-gray-700 mb-6 lg:mb-8 line-clamp-3 leading-relaxed">
-                {{ section.short }}
-              </p>
-              <app-read-more
-                [imageUrl]="section.image"
-                [label]="'Lire la suite'"
-                [title]="section.title"
-                [paragraphs]="section.paragraphs"
-                [sectionId]="section.id"
-                [nextSectionId]="getNextSection(i)?.id || null"
-                [nextSectionTitle]="getNextSection(i)?.title || null"
-                (navigateToSection)="onNavigateToSection($event)">
-              </app-read-more>
-            </div>
-          </div>
-          </div>
+              <!-- Texte -->
+              <div class="flex flex-col justify-center">
+                <div class="w-full" appScrollAnimation [animationType]="'fadeUp'" [animationDelay]="i * 100 + 50">
+                  <h2 class="text-3xl lg:text-4xl xl:text-5xl font-bold text-primary mb-6 lg:mb-8">
+                    {{ section.title }}
+                  </h2>
+                  <p class="text-base lg:text-lg text-gray-700 mb-6 lg:mb-8 line-clamp-3 leading-relaxed">
+                    {{ section.short }}
+                  </p>
+                </div>
+                <app-read-more
+                    [imageUrl]="section.image"
+                    [label]="'Lire la suite'"
+                    [title]="section.title"
+                    [paragraphs]="section.paragraphs"
+                    [sectionId]="section.id"
+                    [nextSectionId]="getNextSection(i)?.id || null"
+                    [nextSectionTitle]="getNextSection(i)?.title || null"
+                    (navigateToSection)="onNavigateToSection($event)">
+                  </app-read-more>
+              </div>
+              </div>
           } @placeholder {
             <div class="grid md:grid-cols-2 gap-10 animate-pulse">
               <div class="w-3/4 h-64 bg-gray-200 rounded-2xl mx-auto"></div>

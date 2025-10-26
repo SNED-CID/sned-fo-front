@@ -23,7 +23,7 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
     <!-- Bouton -->
     <button
       (click)="openSidebar()"
-      class="cursor-pointer group flex items-center gap-2 px-5 py-2 rounded-full bg-[var(--sned-orange)] text-white font-medium transition-all duration-300 hover:translate-y-[-2px] hover:bg-sned-blue"
+      class="cursor-pointer group flex items-center gap-2 px-5 py-2 rounded-full bg-[var(--sned-orange)] text-white font-medium transition-all duration-300 hover:translate-y-[-2px] hover:bg-sned-blue whitespace-nowrap"
     >
       <span>{{ label | translate }}</span>
       <span class="transition-transform duration-300 group-hover:translate-x-1">➔</span>
@@ -188,7 +188,7 @@ export class ReadMoreComponent {
     this.loading.set(true);
     setTimeout(() => {
       this.loading.set(false);
-    }, 1000);
+    }, 500);
   }
 
   async shareContent() {
