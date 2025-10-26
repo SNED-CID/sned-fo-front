@@ -7,14 +7,10 @@
         <!-- Logo - Toujours visible et non-compressible -->
         <a routerLink="/"
            class="flex-shrink-0 flex items-center justify-center h-full space-x-2 rtl:space-x-reverse group transition-transform duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/20 rounded-lg p-1">
-          <app-lazy-image
+          <img
             [src]="getLogoPath()"
             alt="SNED Logo"
-            imageClass="h-10 sm:h-12 lg:h-16 xl:h-20 w-auto object-contain transition-all duration-300 filter drop-shadow-sm group-hover:drop-shadow-md"
-            width="auto"
-            height="auto"
-            [priority]="true">
-          </app-lazy-image>
+            class="h-10 sm:h-12 lg:h-16 xl:h-20 w-auto object-contain transition-all duration-300 filter drop-shadow-sm group-hover:drop-shadow-md">
         </a>
 
         <!-- Navigation Desktop et Sélecteur de langues -->
@@ -34,14 +30,10 @@
             <!-- Langue active -->
             <div class="relative group">
               <button class="cursor-pointer p-1 rounded-full shadow-md bg-white flex items-center justify-center hover:ring-2 hover:ring-[var(--sned-orange)] transition">
-                <app-lazy-image
+                <img
                   [src]="currentLangData().flag"
                   [alt]="currentLangData().label"
-                  imageClass="w-8 h-8 rounded-full"
-                  width="2rem"
-                  height="2rem"
-                  [priority]="true">
-                </app-lazy-image>
+                  class="w-8 h-8 rounded-full object-cover">
               </button>
               <!-- Tooltip langue active -->
               <span
@@ -73,13 +65,10 @@
                   <button
                     (click)="onLanguageChange(lang)"
                     class="cursor-pointer p-1 rounded-full shadow-md bg-white hover:bg-[var(--sned-orange-light)] flex items-center justify-center transition">
-                    <app-lazy-image
+                    <img
                       [src]="lang.flag"
                       [alt]="lang.label"
-                      imageClass="w-8 h-8 rounded-full"
-                      width="2rem"
-                      height="2rem">
-                    </app-lazy-image>
+                      class="w-8 h-8 rounded-full object-cover">
                   </button>
                   <!-- Tooltip langues secondaires -->
                   <span
