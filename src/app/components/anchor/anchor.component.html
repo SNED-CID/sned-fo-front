@@ -1,7 +1,7 @@
-@if (isHomeRoute()) {
+@if (showAnchor()) {
   <div #anchorNav class="bg-white shadow-md">
     <nav class="max-w-6xl mx-auto flex flex-wrap lg:flex-nowrap justify-center gap-2 sm:gap-4 md:gap-6 lg:gap-8 rtl:space-x-reverse p-2 sm:py-4">
-      @for (link of links; track link.id) {
+      @for (link of links(); track link.id) {
         <button (click)="scrollTo(link.id)"
                 class="relative text-[var(--sned-blue-dark)] font-medium px-1 sm:px-2 py-1 text-xs sm:text-sm md:text-base transition group whitespace-nowrap">
           {{ link.label }}
