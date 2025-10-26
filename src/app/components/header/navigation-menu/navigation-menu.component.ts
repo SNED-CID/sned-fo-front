@@ -21,69 +21,96 @@ export interface MenuSection {
   standalone: true,
   imports: [CommonModule, RouterModule, TranslatePipe],
   template: `
-    <nav class="hidden lg:flex items-center justify-center space-x-6 rtl:space-x-reverse h-full">
-      <div *ngFor="let section of menuSections" class="flex items-center space-x-6 rtl:space-x-reverse">
-        <div *ngFor="let item of section.items" class="relative group flex items-center">
+    <nav class="hidden lg:flex items-center justify-center space-x-0.5 rtl:space-x-reverse h-full flex-1 px-2 rtl:px-2">
+      @for (section of menuSections; track section.title) {
+        <div class="flex items-center space-x-0.5 rtl:space-x-reverse">
+          @for (item of section.items; track item.route || item.label) {
+            <div class="relative group flex items-center">
 
-          <!-- Menu item simple -->
-          <a *ngIf="!item.children"
-             [routerLink]="item.route || '/'"
-             routerLinkActive="active-link"
-             [routerLinkActiveOptions]="{ exact: true }"
-             (click)="onMenuItemClick()"
-             class="relative px-4 py-2.5 font-medium text-sm xl:text-base rounded-lg inline-flex items-center transition-all duration-200 group text-[var(--sned-orange-dark)] hover:text-[var(--sned-blue)] hover:bg-[var(--sned-orange)]/5 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/20 cursor-pointer">
-            {{ item.label | translate }}
+              <!-- Menu item simple -->
+              @if (!item.children) {
+                <a
+                  [routerLink]="item.route || '/'"
+                  routerLinkActive="active-link"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                  (click)="onMenuItemClick()"
+                  class="relative px-2 lg:px-2.5 py-2 font-medium text-xs lg:text-sm rounded-lg inline-flex items-center gap-1.5 whitespace-nowrap transition-all duration-200 group text-[var(--sned-orange-dark)] hover:text-[var(--sned-blue)] hover:bg-[var(--sned-orange)]/5 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/20 cursor-pointer"
+                >
+                  {{ item.label | translate }}
 
-            <!-- Trait animé sous le lien -->
-            <span class="absolute left-0 right-0 -bottom-1 h-0.5 bg-gradient-to-r from-[var(--sned-blue)] to-[var(--sned-orange)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left group-[.active-link]:scale-x-100 rounded-full"></span>
-          </a>
-
-          <!-- Menu item avec dropdown -->
-          <div *ngIf="item.children" class="relative group z-70">
-            <button
-              [routerLink]="item.route || '/'"
-              routerLinkActive="active-link"
-              [routerLinkActiveOptions]="{ exact: true }"
-              class="relative px-4 py-2.5 font-medium text-sm xl:text-base rounded-lg inline-flex items-center gap-2 transition-all duration-200 group text-[var(--sned-orange-dark)] hover:text-[var(--sned-blue)] hover:bg-[var(--sned-orange)]/5 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/20 cursor-pointer">
-              {{ item.label | translate }}
-              <i class="fas fa-chevron-down w-4 h-4 transition-transform duration-200 group-hover:rotate-180"></i>
-
-              <!-- Trait animé sous le lien -->
-              <span class="absolute left-0 right-0 -bottom-1 h-0.5 bg-gradient-to-r from-[var(--sned-blue)] to-[var(--sned-orange)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left group-[.active-link]:scale-x-100 rounded-full"></span>
-            </button>
-
-            <!-- Sous-menu dropdown -->
-            <div class="absolute left-0 rtl:right-0 rtl:left-auto mt-2 min-w-[280px] bg-white backdrop-blur-sm rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out transform translate-y-2 group-hover:translate-y-0 z-70 overflow-hidden">
-              <!-- Arrow pointer -->
-              <div class="absolute -top-2 left-6 w-4 h-4 bg-white rotate-45 border-l border-t border-gray-100"></div>
-
-              <div class="relative bg-white rounded-xl p-2">
-                <a *ngFor="let child of item.children; trackBy: trackByRoute"
-                   [routerLink]="child.route || '/'"
-                   routerLinkActive="active-sublink"
-                   [routerLinkActiveOptions]="{ exact: true }"
-                   (click)="onMenuItemClick()"
-                   class="flex items-center px-4 py-3 text-sm font-medium text-[var(--sned-orange-dark)] hover:bg-gradient-to-r hover:from-[var(--sned-orange)]/8 hover:to-[var(--sned-blue)]/4 hover:text-[var(--sned-blue)] rounded-lg transition-all duration-200 whitespace-nowrap rtl:text-right group/item relative overflow-hidden cursor-pointer">
-
-                  <!-- Icône animée -->
-                  <i class="fas fa-chevron-right w-4 h-4 mr-3 text-[var(--sned-orange)] opacity-0 group-hover/item:opacity-100 transition-all duration-200 transform -translate-x-2 group-hover/item:translate-x-0"></i>
-
-                  <div class="flex-1">
-                    <div class="font-medium">{{ child.label | translate }}</div>
-                    <div *ngIf="child.description" class="text-xs text-gray-500 mt-0.5">{{ child.description | translate }}</div>
-                  </div>
-
-                  <div class="flex items-center space-x-1 ml-2">
-                    <span *ngIf="child.isExternal" class="inline-flex items-center px-1.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
-                      <i class="fas fa-external-link-alt w-3 h-3"></i>
-                    </span>
-                  </div>
+                  <!-- Trait animé sous le lien -->
+                  <span
+                    class="absolute left-0 right-0 -bottom-1 h-0.5 bg-gradient-to-r from-[var(--sned-blue)] to-[var(--sned-orange)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left group-[.active-link]:scale-x-100 rounded-full"
+                  ></span>
                 </a>
-              </div>
+              }
+
+              <!-- Menu item avec dropdown -->
+              @if (item.children) {
+                <div class="relative group z-70">
+                  <button
+                    [routerLink]="item.route || '/'"
+                    routerLinkActive="active-link"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                    class="relative px-2 lg:px-2.5 py-2 font-medium text-xs lg:text-sm rounded-lg inline-flex items-center gap-1 whitespace-nowrap transition-all duration-200 group text-[var(--sned-orange-dark)] hover:text-[var(--sned-blue)] hover:bg-[var(--sned-orange)]/5 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/20 cursor-pointer"
+                  >
+                    {{ item.label | translate }}
+                    <i
+                      class="fas fa-chevron-down w-3 h-3 transition-transform duration-200 group-hover:rotate-180"
+                    ></i>
+
+                    <!-- Trait animé sous le lien -->
+                    <span
+                      class="absolute left-0 right-0 -bottom-1 h-0.5 bg-gradient-to-r from-[var(--sned-blue)] to-[var(--sned-orange)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left group-[.active-link]:scale-x-100 rounded-full"
+                    ></span>
+                  </button>
+
+                  <!-- Sous-menu dropdown -->
+                  <div
+                    class="absolute left-0 rtl:right-0 rtl:left-auto mt-2 min-w-[280px] bg-white backdrop-blur-sm rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out transform translate-y-2 group-hover:translate-y-0 z-70 overflow-hidden"
+                  >
+                    <!-- Arrow pointer -->
+                    <div
+                      class="absolute -top-2 left-6 w-4 h-4 bg-white rotate-45 border-l border-t border-gray-100"
+                    ></div>
+
+                    <div class="relative bg-white rounded-xl p-2">
+                      @for (child of item.children; track child.route || child.label) {
+                        <a
+                          [routerLink]="child.route || '/'"
+                          routerLinkActive="active-sublink"
+                          [routerLinkActiveOptions]="{ exact: true }"
+                          (click)="onMenuItemClick()"
+                          class="flex items-center px-4 py-3 text-sm font-medium text-[var(--sned-orange-dark)] hover:bg-gradient-to-r hover:from-[var(--sned-orange)]/8 hover:to-[var(--sned-blue)]/4 hover:text-[var(--sned-blue)] rounded-lg transition-all duration-200 whitespace-nowrap rtl:text-right group/item relative overflow-hidden cursor-pointer"
+                        >
+                          <!-- Icône animée -->
+                          <i
+                            class="fas fa-chevron-right w-4 h-4 mr-3 text-[var(--sned-orange)] opacity-0 group-hover/item:opacity-100 transition-all duration-200 transform -translate-x-2 group-hover/item:translate-x-0"
+                          ></i>
+
+                          <div class="flex-1">
+                            {{ child.label | translate }}
+                          </div>
+
+                          <div class="flex items-center space-x-1 ml-2">
+                            @if (child.isExternal) {
+                              <span
+                                class="inline-flex items-center px-1.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800"
+                              >
+                            <i class="fas fa-external-link-alt w-3 h-3"></i>
+                          </span>
+                            }
+                          </div>
+                        </a>
+                      }
+                    </div>
+                  </div>
+                </div>
+              }
             </div>
-          </div>
+          }
         </div>
-      </div>
+      }
     </nav>
   `,
   styles: [`
@@ -166,9 +193,5 @@ export class NavigationMenuComponent {
 
   onMenuItemClick() {
     this.menuItemClick.emit();
-  }
-
-  trackByRoute(index: number, item: MenuItem): string {
-    return item.route || item.label;
   }
 }

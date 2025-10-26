@@ -103,32 +103,32 @@ export class HeaderComponent implements OnInit{
           label: 'header.navigation.discover_project',
           route: '/',
           children: [
-            { label: 'header.navigation.about', route: '/about', description: 'header.navigation.about_desc' },
-            { label: 'header.navigation.mission', route: '/mission', description: 'header.navigation.mission_desc' },
-            { label: 'header.navigation.team', route: '/team', description: 'header.navigation.team_desc' },
-            { label: 'header.navigation.contact', route: '/contact', description: 'header.navigation.contact_desc' }
+            { label: 'header.navigation.about', route: '/about' },
+            { label: 'header.navigation.mission', route: '/mission' },
+            { label: 'header.navigation.team', route: '/team' },
+            { label: 'header.navigation.contact', route: '/contact' }
           ]
         },
         {
           label: 'header.navigation.project',
           route: '/projet',
           children: [
-            { label: 'header.navigation.engineering', route: '/projet/ingenierie', description: 'header.navigation.engineering_desc' },
-            { label: 'header.navigation.history', route: '/projet/historique', description: 'header.navigation.history_desc' },
-            { label: 'header.navigation.physical', route: '/projet/milieu-physique', description: 'header.navigation.physical_desc' },
-            { label: 'header.navigation.socioeconomic', route: '/projet/socio-economique', description: 'header.navigation.socioeconomic_desc' },
-            { label: 'header.navigation.promotion', route: '/projet/socio-economique', description: 'header.navigation.promotion_desc' },
-            { label: 'header.navigation.legal', route: '/projet/geostrategie', description: 'header.navigation.legal_desc' },
+            { label: 'header.navigation.engineering', route: '/projet/ingenierie' },
+            { label: 'header.navigation.history', route: '/projet/historique' },
+            { label: 'header.navigation.physical', route: '/projet/milieu-physique' },
+            { label: 'header.navigation.socioeconomic', route: '/projet/socio-economique' },
+            { label: 'header.navigation.promotion', route: '/projet/promotion' },
+            { label: 'header.navigation.legal', route: '/projet/geostrategie' },
           ]
         },
         {
           label: 'header.navigation.gallery',
           route: '/galerie',
           children: [
-            { label: 'header.navigation.engineering', route: '/galerie/ingenierie', description: 'header.navigation.engineering_desc' },
-            { label: 'header.navigation.physical', route: '/galerie/milieu-physique', description: 'header.navigation.physical_desc' },
-            { label: 'header.navigation.socioeconomic', route: '/galerie/socio-economique', description: 'header.navigation.socioeconomic_desc' },
-            { label: 'header.navigation.promotion', route: '/galerie/socio-economique', description: 'header.navigation.promotion_desc' },
+            { label: 'header.navigation.engineering', route: '/galerie/ingenierie' },
+            { label: 'header.navigation.physical', route: '/galerie/milieu-physique' },
+            { label: 'header.navigation.socioeconomic', route: '/galerie/socio-economique' },
+            { label: 'header.navigation.promotion', route: '/galerie/promotion' },
           ]
         },
         {
@@ -143,10 +143,10 @@ export class HeaderComponent implements OnInit{
           label: 'header.navigation.work',
           route: '/travail',
           children: [
-            { label: 'header.navigation.congress', route: '/travail/congres', description: 'header.navigation.congress_desc' },
-            { label: 'header.navigation.communication', route: '/travail/communication', description: 'header.navigation.communication_desc' },
-            { label: 'header.navigation.video', route: '/travail/video', description: 'header.navigation.video_desc' },
-            { label: 'header.navigation.statistics', route: '/travail/statistiques', description: 'header.navigation.statistics_desc' }
+            { label: 'header.navigation.congress', route: '/travail/congres' },
+            { label: 'header.navigation.communication', route: '/travail/communication' },
+            { label: 'header.navigation.video', route: '/travail/video' },
+            { label: 'header.navigation.statistics', route: '/travail/statistiques' }
           ]
         }
       ]
