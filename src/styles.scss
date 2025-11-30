@@ -292,6 +292,50 @@ body::after {
   to   { background-position: 800px 0px; }
 }
 
+/* Animation readmore push page left */
+body.readmore-open {
+  transition: margin-right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-right: 50vw;
+}
+
+@media (max-width: 768px) {
+  body.readmore-open {
+    margin-right: 0; /* Sur mobile, le readmore prend toute la largeur */
+  }
+}
+
+/* Padding responsive pour app-about */
+app-about {
+  display: block;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  @media (min-width: 640px) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  @media (min-width: 1280px) {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  @media (min-width: 1536px) {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
 
 
 

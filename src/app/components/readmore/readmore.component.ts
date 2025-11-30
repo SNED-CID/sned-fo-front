@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, signal, inject } from '@angular/core';
+import { Component, Input, Output, EventEmitter, signal, inject, HostListener } from '@angular/core';
 import { trigger, style, transition, animate } from '@angular/animations';
 import { LoaderComponent } from '../loader/loader.component';
 import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
@@ -20,14 +20,16 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
     ])
   ],
   template: `
-    <!-- Bouton -->
-    <button
-      (click)="openSidebar()"
-      class="cursor-pointer group flex items-center gap-2 px-5 py-2 rounded-full bg-[var(--sned-orange)] text-white font-medium transition-all duration-300 hover:translate-y-[-2px] hover:bg-sned-blue whitespace-nowrap"
-    >
-      <span>{{ label | translate }}</span>
-      <span class="transition-transform duration-300 group-hover:translate-x-1">➔</span>
-    </button>
+    <div class="flex justify-center w-full">
+      <!-- Bouton -->
+      <button
+        (click)="openSidebar()"
+        class="cursor-pointer group flex items-center gap-2 px-5 py-2 rounded-full bg-[var(--sned-orange)] text-white font-medium transition-all duration-300 hover:translate-y-[-2px] hover:bg-sned-blue whitespace-nowrap"
+      >
+        <span>{{ label | translate }}</span>
+        <span class="transition-transform duration-300 group-hover:translate-x-1">➔</span>
+      </button>
+    </div>
 
     <!-- Overlay -->
     @if (sidebarOpen()) {
@@ -42,8 +44,8 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
     @if (sidebarOpen()) {
       <aside
         @slideInOut
-        class="fixed top-0 right-0 w-full md:w-[600px] h-full bg-white shadow-2xl flex flex-col"
-        style="z-index: 9999;"
+        class="fixed top-0 right-0 w-1/2 h-full bg-white shadow-2xl flex flex-col"
+        style="z-index: 99999;"
       >
       <!-- Header -->
       <div class="flex justify-between items-center p-4 border-b">
@@ -127,8 +129,7 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
         @if (!loading()) {
           <div>
             @for (paragraph of paragraphs; track paragraph) {
-              <p class="text-gray-700 leading-relaxed mb-4 adaptive-body">
-                {{ paragraph }}
+              <p class="m-10 text-gray-700 leading-relaxed mb-4 adaptive-body" [innerHTML]="paragraph">
               </p>
             }
           </div>
@@ -170,18 +171,25 @@ export class ReadMoreComponent {
   openSidebar() {
     this.sidebarOpen.set(true);
     document.documentElement.classList.add('overflow-hidden');
-    document.body.classList.add('overflow-hidden');
+    document.body.classList.add('overflow-hidden', 'readmore-open');
     this.loadContent();
   }
 
   closeSidebar() {
     this.sidebarOpen.set(false);
     document.documentElement.classList.remove('overflow-hidden');
-    document.body.classList.remove('overflow-hidden');
+    document.body.classList.remove('overflow-hidden', 'readmore-open');
   }
 
   openSidebarFromExternal() {
     this.openSidebar();
+  }
+
+  @HostListener('document:keydown.escape')
+  onEscapePress() {
+    if (this.sidebarOpen()) {
+      this.closeSidebar();
+    }
   }
 
   private loadContent() {

@@ -60,12 +60,13 @@ export class HeaderComponent implements OnInit{
   }
 
   getBackgroundForUrl(url: string): string | null {
-    // si c'est exactement la home
-    if (url === '/' && this.menuBackgrounds['/']) {
+    const urlWithoutFragment = url.split('#')[0];
+
+    if ((urlWithoutFragment === '/' || urlWithoutFragment === '') && this.menuBackgrounds['/']) {
       return this.menuBackgrounds['/'];
     }
 
-    const segments = url.split('/').filter(Boolean); // ex: "/projet/ingenierie" → ["projet","ingenierie"]
+    const segments = urlWithoutFragment.split('/').filter(Boolean);
 
     while (segments.length > 0) {
       const candidate = '/' + segments.join('/');
@@ -105,9 +106,9 @@ export class HeaderComponent implements OnInit{
             { label: 'Contexte stratégique', route: '/about', sectionId: 'contexte' },
             { label: 'Missions et valeurs', route: '/about', sectionId: 'missions' },
             { label: 'Cadre institutionnel', route: '/about', sectionId: 'cadre' },
-            { label: 'Mot du PDG', route: '/about', sectionId: 'apropos' },
+            { label: 'Mot du PDG', route: '/about', sectionId: 'pdg' },
+            { label: 'SNED & SECEG SA', route: '/about', sectionId: 'sned_secegsa' },
             { label: 'Organisation', route: '/about', sectionId: 'organigramme' },
-            { label: 'SNED & SECEG SA', route: '/about', sectionId: 'sned_secegsa' }
           ]
         },
         {

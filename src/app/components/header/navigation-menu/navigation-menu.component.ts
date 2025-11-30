@@ -78,7 +78,7 @@ export interface MenuSection {
                     ></div>
 
                     <div class="relative bg-white rounded-xl p-2">
-                      @for (child of item.children; track child.route || child.label) {
+                      @for (child of item.children; track $index) {
                         <a
                           [routerLink]="getNavigationLink(child)"
                           [fragment]="child.sectionId"

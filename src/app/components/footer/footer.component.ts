@@ -183,7 +183,7 @@ import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div class="flex flex-col md:flex-row justify-between items-center gap-4">
             <p class="text-sm text-slate-600 text-center md:text-left">
-              {{ 'footer.legal.copyright' | translate : {year: currentYear} }}
+              {{ 'footer.legal.copyright' | translate : {year: currentYear()} }}
             </p>
             <nav class="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-2 text-sm">
               <a href="/legal" class="text-slate-500 hover:text-[var(--sned-orange)] transition-colors">

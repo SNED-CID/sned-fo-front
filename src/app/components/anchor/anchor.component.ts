@@ -25,8 +25,8 @@ export class AnchorComponent implements OnInit {
     { id: 'missions', label: 'Missions et valeurs' },
     { id: 'cadre', label: 'Cadre institutionnel' },
     { id: 'pdg', label: 'Mot du PDG' },
-    { id: 'organigramme', label: 'Organisation' },
-    { id: 'sned_secegsa', label: 'SNED & SECEG SA' }
+    { id: 'sned_secegsa', label: 'SNED & SECEG SA' },
+    { id: 'organigramme', label: 'Organisation' }
   ];
 
 

@@ -26,7 +26,7 @@ interface Section {
 
     <section class="py-16 pb-32">
       <div class="w-full mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 space-y-24 lg:space-y-32 2xl:space-y-40 bg-white rounded-lg max-w-7xl lg:max-w-full 2xl:max-w-none">
-        @for (section of sections; track section.id; let i = $index) {
+        @for (section of sections; track $index; let i = $index) {
           @defer (on viewport; prefetch on idle) {
             <div class="grid md:grid-cols-2 gap-12 lg:gap-16 2xl:gap-20">
 
@@ -126,78 +126,28 @@ interface Section {
       </div>
     </section>
 
-    <div class=" pb-16">
-      <!-- Organigramme -->
-      <!-- Organigramme -->
-      <div id="organigramme" class="w-3/4 lg:w-5/6 2xl:w-full mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20" appScrollAnimation [animationType]="'fadeUp'">
-        <div class="flex justify-between items-center mb-6">
-          <h2 class="text-3xl font-bold text-primary">
-            Organigramme
-          </h2>
+    <div class="pb-16">
+      <!-- Conteneur unique avec barre colorée -->
+      <div class="w-3/4 lg:w-5/6 2xl:w-full mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 relative bg-white rounded-2xl shadow-lg overflow-hidden">
+        <!-- Trait coloré unique en haut -->
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[var(--sned-blue)] to-[var(--sned-orange)] rounded-t-2xl"></div>
 
-          <!-- Bouton agrandir/réduire -->
-          <button
-            (click)="toggleOrganigramme()"
-            class="cursor-pointer flex items-center gap-2 text-lg font-semibold text-primary hover:text-[var(--sned-orange)] transition"
-            [title]="isOrganigrammeExpanded ? 'Réduire' : 'Agrandir'">
-            <i class="fas"
-               [class.fa-compress-alt]="isOrganigrammeExpanded" [class.fa-expand-alt]="!isOrganigrammeExpanded"></i>
-          </button>
-        </div>
+        <!-- Grid intérieur -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
 
-        <div class="relative bg-white rounded-2xl shadow-lg overflow-hidden">
-          <!-- Trait coloré en haut -->
-          <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[var(--sned-blue)] to-[var(--sned-orange)]"></div>
+          <!-- Conseil d'Administration à gauche -->
+          <div id="conseil-administration-section" class="flex flex-col items-center justify-center pt-6 pb-6">
+            <h2 class="text-3xl font-bold text-primary mb-6 text-center">
+              {{ 'about.conseil_administration.title' | translate }}
+            </h2>
 
-          <!-- Contenu collapsible -->
-          <div class="overflow-hidden transition-all duration-500 ease-in-out"
-               [ngClass]="isOrganigrammeExpanded ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'">
-            @defer (on viewport; prefetch on idle) {
-              <div class="p-10 lg:p-12 2xl:p-16 text-center">
-                <app-lazy-image
-                  src="assets/images/orga.png"
-                  alt="organigramme"
-                  imageClass="rounded-lg shadow-md w-full h-auto transition-transform duration-300 hover:scale-105 cursor-pointer"
-                  width="100%"
-                  height="auto">
-                </app-lazy-image>
-              </div>
-            } @placeholder {
-              <div class="p-10 lg:p-12 2xl:p-16 text-center">
-                <div class="w-full h-96 bg-gray-200 rounded-lg animate-pulse"></div>
-              </div>
-            } @loading {
-              <div class="p-10 lg:p-12 2xl:p-16 text-center">
-                <div class="flex items-center justify-center w-full h-96 bg-gray-100 rounded-lg">
-                  <div class="text-center">
-                    <div class="w-12 h-12 border-4 border-[var(--sned-blue)] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-                    <p class="text-gray-600">Chargement de l'organigramme...</p>
-                  </div>
-                </div>
-              </div>
-            }
-          </div>
-        </div>
-      </div>
-
-
-
-      <!-- Intervenants -->
-      <section id="conseil-administration-section" class="mt-16 px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20" appScrollAnimation [animationType]="'fadeUp'">
-        <div class="w-3/4 lg:w-5/6 2xl:w-full mx-auto">
-          <h2 class="text-3xl font-bold text-primary mb-6 text-left">
-            {{ 'about.conseil_administration.title' | translate }}
-          </h2>
-
-          <div class="relative bg-white rounded-2xl shadow-lg overflow-hidden">
-            <!-- Trait coloré en haut -->
-            <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 to-orange-500"></div>
-
-            <div class="p-10 lg:p-12 2xl:p-16 space-y-6 text-left">
-              <div class="space-y-4 text-gray-700 leading-relaxed">
+            <div class="space-y-6 max-w-md">
+              <div class="space-y-4 text-gray-700 leading-relaxed text-center">
                 <p class="adaptive-body mb-4">
                   {{ 'about.conseil_administration.short' | translate }}
                 </p>
+              </div>
+              <div style="isolation: auto;">
                 <app-read-more
                   [imageUrl]="null"
                   [label]="'Lire la suite'"
@@ -206,13 +156,65 @@ interface Section {
                   [sectionId]="'conseil_administration'"
                   [nextSectionId]="getNextSectionForConseilAdmin()?.id || null"
                   [nextSectionTitle]="getNextSectionForConseilAdmin()?.title || null"
-                  (navigateToSection)="onNavigateToSection($event)">
+                  (navigateToSection)="onNavigateToSection($event)"
+                  style="position: relative">
                 </app-read-more>
               </div>
             </div>
           </div>
+
+          <!-- Organigramme à droite -->
+          <div id="organigramme">
+            <div class="flex items-center justify-center mb-6 pt-6 gap-4">
+              <h2 class="text-3xl font-bold text-primary">
+                Organisation
+              </h2>
+
+              <!-- Bouton agrandir/réduire -->
+              <button
+                (click)="toggleOrganigramme()"
+                class="cursor-pointer flex items-center gap-2 text-lg font-semibold text-primary hover:text-[var(--sned-orange)] transition"
+                [title]="isOrganigrammeExpanded ? 'Réduire' : 'Agrandir'">
+                <i class="fas"
+                   [class.fa-compress-alt]="isOrganigrammeExpanded" [class.fa-expand-alt]="!isOrganigrammeExpanded"></i>
+              </button>
+            </div>
+
+            <!-- Contenu collapsible -->
+            <div class="overflow-hidden transition-all duration-500 ease-in-out"
+                 [ngClass]="isOrganigrammeExpanded ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'">
+              @defer (on viewport; prefetch on idle) {
+                <div class="p-6 text-center group">
+                  <app-lazy-image
+                    src="assets/images/orga.png"
+                    alt="organigramme"
+                    imageClass="rounded-lg shadow-md w-full max-w-3xl h-auto object-contain transition-all duration-500 ease-out hover:scale-110 hover:shadow-2xl cursor-pointer group-hover:opacity-100"
+                    width="100%"
+                    height="auto">
+                  </app-lazy-image>
+                </div>
+              } @placeholder {
+                <div class="p-6 text-center">
+                  <div class="w-full h-64 bg-gray-200 rounded-lg animate-pulse"></div>
+                </div>
+              } @loading {
+                <div class="p-6 text-center">
+                  <div class="flex items-center justify-center w-full h-64 bg-gray-100 rounded-lg">
+                    <div class="text-center">
+                      <div class="w-12 h-12 border-4 border-[var(--sned-blue)] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                      <p class="text-gray-600">Chargement de l'organigramme...</p>
+                    </div>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+
         </div>
-      </section>
+
+        <!-- Padding inférieur du conteneur -->
+        <div class="pb-6 lg:pb-8"></div>
+      </div>
     </div>
 
     <!-- Bouton Retour en haut amélioré -->
