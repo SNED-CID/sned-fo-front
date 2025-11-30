@@ -4,6 +4,93 @@
     "discover": {
       "title": "Découvrez le projet SNED",
       "desc": "Une liaison fixe pour rapprocher les continents"
+    },
+    "sections": {
+      "default": {
+        "title": "Découvrez le projet SNED",
+        "desc": "Une liaison fixe pour rapprocher les continents",
+        "subtitle": "Liaison Fixe"
+      },
+      "apropos": {
+        "title": "Qui sommes-nous",
+        "desc": "La Société Nationale d'Études du Détroit",
+        "subtitle": "À Propos de la SNED"
+      },
+      "contexte": {
+        "title": "Contexte Stratégique",
+        "desc": "Le Détroit de Gibraltar, un carrefour stratégique pivot entre l'Europe et l'Afrique",
+        "subtitle": "Contexte Stratégique"
+      },
+      "missions": {
+        "title": "Missions et Valeurs",
+        "desc": "Nos objectifs et notre engagement pour la liaison fixe Europe-Afrique",
+        "subtitle": "Nos Missions"
+      },
+      "cadre": {
+        "title": "Cadre Institutionnel et Légal",
+        "desc": "Une gouvernance transparente régie par les accords franco-marocains",
+        "subtitle": "Cadre Légal"
+      },
+      "pdg": {
+        "title": "Message du PDG",
+        "desc": "Les orientations stratégiques et la vision de la SNED",
+        "subtitle": "Leadership SNED"
+      },
+      "sned_secegsa": {
+        "title": "SNED et SECEGSA",
+        "desc": "La coopération institutionnelle entre le Maroc et l'Espagne",
+        "subtitle": "Coopération"
+      },
+      "organigramme": {
+        "title": "Organisation de la SNED",
+        "desc": "La structure des pôles d'activité et responsabilités",
+        "subtitle": "Notre Structure"
+      },
+      "ingenierie": {
+        "title": "Composante Ingénierie",
+        "desc": "Les études techniques du tunnel ferroviaire sous-marin à travers le Détroit",
+        "subtitle": "Études Techniques"
+      },
+      "milieu_physique": {
+        "title": "Composante Milieu Physique",
+        "desc": "Les études géologiques, océanographiques et environnementales du site",
+        "subtitle": "Milieu Physique"
+      },
+      "socio_economique": {
+        "title": "Composante Socio-Économique",
+        "desc": "L'impact économique et les bénéfices pour la région méditerranéenne",
+        "subtitle": "Impact Économique"
+      },
+      "promotion": {
+        "title": "Composante Promotion du Projet",
+        "desc": "La valorisation et la communication du projet à l'international",
+        "subtitle": "Promotion"
+      },
+      "galerie": {
+        "title": "Galerie de Reconnaissance",
+        "desc": "Les acteurs, contributeurs et partenaires du projet de liaison fixe",
+        "subtitle": "Galerie Photo"
+      },
+      "actualite": {
+        "title": "Actualités du Projet SNED",
+        "desc": "Les dernières informations, événements et évolutions du projet",
+        "subtitle": "Actualités"
+      },
+      "partenariat": {
+        "title": "Nos Partenaires",
+        "desc": "Les institutions, entreprises et organisations partenaires du projet",
+        "subtitle": "Partenaires"
+      },
+      "travail": {
+        "title": "Notre Travail",
+        "desc": "Les congrès, communications, vidéos et statistiques du projet",
+        "subtitle": "Nos Activités"
+      },
+      "appels_offres": {
+        "title": "Appels d'Offres",
+        "desc": "Les opportunités de marché et d'engagement dans le projet SNED",
+        "subtitle": "Appels d'Offres"
+      }
     }
   },
   "footer": {

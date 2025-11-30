@@ -292,9 +292,13 @@ body::after {
   to   { background-position: 800px 0px; }
 }
 
-/* Animation readmore push page left */
-body.readmore-open {
+/* Animation readmore push page left with smooth transition */
+body {
   transition: margin-right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-right: 0;
+}
+
+body.readmore-open {
   margin-right: 50vw;
 }
 

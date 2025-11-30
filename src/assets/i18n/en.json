@@ -4,6 +4,93 @@
     "discover": {
       "title": "Discover SNED project",
       "desc": "A fixed link to bring continents closer together"
+    },
+    "sections": {
+      "default": {
+        "title": "Discover SNED project",
+        "desc": "A fixed link to bring continents closer together",
+        "subtitle": "Fixed Link"
+      },
+      "apropos": {
+        "title": "Who Are We",
+        "desc": "The National Company for the Study of the Strait",
+        "subtitle": "About SNED"
+      },
+      "contexte": {
+        "title": "Strategic Context",
+        "desc": "The Strait of Gibraltar, a pivotal strategic crossroads between Europe and Africa",
+        "subtitle": "Strategic Context"
+      },
+      "missions": {
+        "title": "Missions and Values",
+        "desc": "Our objectives and commitment to the Europe-Africa fixed link",
+        "subtitle": "Our Missions"
+      },
+      "cadre": {
+        "title": "Institutional and Legal Framework",
+        "desc": "Transparent governance regulated by Franco-Spanish agreements",
+        "subtitle": "Legal Framework"
+      },
+      "pdg": {
+        "title": "CEO's Message",
+        "desc": "SNED's strategic direction and vision",
+        "subtitle": "SNED Leadership"
+      },
+      "sned_secegsa": {
+        "title": "SNED and SECEGSA",
+        "desc": "Institutional cooperation between Morocco and Spain",
+        "subtitle": "Cooperation"
+      },
+      "organigramme": {
+        "title": "SNED Organization",
+        "desc": "The structure of activity divisions and responsibilities",
+        "subtitle": "Our Structure"
+      },
+      "ingenierie": {
+        "title": "Engineering Component",
+        "desc": "Technical studies of the underwater railway tunnel through the Strait",
+        "subtitle": "Technical Studies"
+      },
+      "milieu_physique": {
+        "title": "Physical Environment Component",
+        "desc": "Geological, oceanographic and environmental site studies",
+        "subtitle": "Physical Environment"
+      },
+      "socio_economique": {
+        "title": "Socio-Economic Component",
+        "desc": "Economic impact and benefits for the Mediterranean region",
+        "subtitle": "Economic Impact"
+      },
+      "promotion": {
+        "title": "Project Promotion Component",
+        "desc": "Project enhancement and international communication",
+        "subtitle": "Promotion"
+      },
+      "galerie": {
+        "title": "Recognition Gallery",
+        "desc": "Actors, contributors and partners of the fixed link project",
+        "subtitle": "Photo Gallery"
+      },
+      "actualite": {
+        "title": "SNED Project News",
+        "desc": "Latest information, events and project developments",
+        "subtitle": "News"
+      },
+      "partenariat": {
+        "title": "Our Partners",
+        "desc": "Institutions, companies and organizations partnering on the project",
+        "subtitle": "Partners"
+      },
+      "travail": {
+        "title": "Our Work",
+        "desc": "Congresses, communications, videos and project statistics",
+        "subtitle": "Our Activities"
+      },
+      "appels_offres": {
+        "title": "Call for Tenders",
+        "desc": "Market opportunities and engagement in the SNED project",
+        "subtitle": "Call for Tenders"
+      }
     }
   },
   "footer": {

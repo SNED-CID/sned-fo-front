@@ -23,9 +23,10 @@ export const routes: Routes = [
 
   // Actualités
   { path: 'actualite', component: HomeComponent },
-
   // Partenariats
   { path: 'partenariat', component: PartnersComponent },
+  // Appels d'offres
+  { path: 'appels-offres', component: HomeComponent },
 
   // Travail
   { path: 'travail', component: HomeComponent },
@@ -33,6 +34,7 @@ export const routes: Routes = [
   { path: 'travail/communication', component: HomeComponent },
   { path: 'travail/video', component: HomeComponent },
   { path: 'travail/statistiques', component: HomeComponent },
+
 
   // Alias
   { path: 'sned', redirectTo: '', pathMatch: 'full' },

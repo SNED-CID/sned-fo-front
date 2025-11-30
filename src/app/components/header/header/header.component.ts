@@ -31,6 +31,36 @@ export class HeaderComponent implements OnInit{
   mobileDropdowns = signal<Set<string>>(new Set());
   showLangDropdown = signal(false);
   showMobileLangDropdown = false;
+  currentSection = signal<string>('default');
+
+  // Mappe les routes et fragments sur les clés de traduction
+  routeToSectionMap: Record<string, Record<string, string>> = {
+    // Routes principales
+    'routes': {
+      '': 'default',
+      '/': 'default',
+      '/projet': 'ingenierie',
+      '/galerie': 'galerie',
+      '/actualite': 'actualite',
+      '/partenariat': 'partenariat',
+      '/travail': 'travail',
+      '/appels-offres': 'appels_offres'
+    },
+    // Fragments (ancres)
+    'fragments': {
+      'apropos': 'apropos',
+      'contexte': 'contexte',
+      'missions': 'missions',
+      'cadre': 'cadre',
+      'pdg': 'pdg',
+      'sned_secegsa': 'sned_secegsa',
+      'organigramme': 'organigramme',
+      'ingenierie': 'ingenierie',
+      'milieu-physique': 'milieu_physique',
+      'socio-economique': 'socio_economique',
+      'promotion': 'promotion'
+    }
+  };
 
   menuBackgrounds: Record<string, string> = {
     '/': 'assets/images/tunnel.png',
@@ -38,8 +68,10 @@ export class HeaderComponent implements OnInit{
     '/galerie': 'assets/images/galerie_services.png',
     '/actualite': 'assets/images/actualites.png',
     '/partenariat': 'assets/images/partenariats.png',
-    '/travail': 'assets/images/notre_travail.png'
+    '/travail': 'assets/images/notre_travail.png',
+    '/appels-offres': 'assets/images/liaison_fixe.png'
   };
+
   currentBackground: string | null = null;
   isBackgroundLoading = signal(false);
 
@@ -58,7 +90,31 @@ export class HeaderComponent implements OnInit{
         } else {
           this.currentBackground = newBackground;
         }
+
+        // Mettre à jour la section actuelle
+        this.updateCurrentSection(url);
       });
+  }
+
+  private updateCurrentSection(url: string): void {
+    const parts = url.split('#');
+    const route = parts[0];
+    const fragment = parts[1] || '';
+
+    // Chercher la section via le fragment d'abord (prioritaire pour les ancres)
+    if (fragment && this.routeToSectionMap['fragments'][fragment]) {
+      this.currentSection.set(this.routeToSectionMap['fragments'][fragment]);
+      return;
+    }
+
+    // Sinon, chercher la section via la route
+    if (this.routeToSectionMap['routes'][route]) {
+      this.currentSection.set(this.routeToSectionMap['routes'][route]);
+      return;
+    }
+
+    // Par défaut
+    this.currentSection.set('default');
   }
 
   getBackgroundForUrl(url: string): string | null {
@@ -269,5 +325,29 @@ export class HeaderComponent implements OnInit{
     } else {
       return 'assets/logos/frstdr.png';
     }
+  }
+
+  getTitleTranslationKey(): string {
+    const section = this.currentSection();
+    if (section === 'default') {
+      return 'home.discover.title';
+    }
+    return `home.sections.${section}.title`;
+  }
+
+  getDescTranslationKey(): string {
+    const section = this.currentSection();
+    if (section === 'default') {
+      return 'home.discover.desc';
+    }
+    return `home.sections.${section}.desc`;
+  }
+
+  getSubtitleTranslationKey(): string {
+    const section = this.currentSection();
+    if (section === 'default') {
+      return '';
+    }
+    return `home.sections.${section}.subtitle`;
   }
 }
