@@ -6,8 +6,15 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {provideTranslateService, TranslateService} from '@ngx-translate/core';
 import {provideTranslateHttpLoader} from '@ngx-translate/http-loader';
-import {provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
+import {provideHttpClient, withInterceptorsFromDi, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { PreviewTokenInterceptor } from './interceptors/preview-token.interceptor';
+import { PreviewTokenService } from './services/preview-token.service';
 
+function initializePreviewToken(previewTokenService: PreviewTokenService): () => void {
+  return () => {
+   previewTokenService.hasToken();
+  };
+}
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }),
     provideHttpClient(withInterceptorsFromDi()),
@@ -20,7 +27,17 @@ export const appConfig: ApplicationConfig = {
         suffix: '.json',
       }),
     }),
-    // Utilisation du provider classique APP_INITIALIZER pour plus de clart� et une meilleure testabilit�
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: PreviewTokenInterceptor,
+      multi: true,
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializePreviewToken,
+      deps: [PreviewTokenService],
+      multi: true,
+    },
     {
       provide: APP_INITIALIZER,
       useFactory: (translate: TranslateService) => () => {

@@ -230,7 +230,6 @@ export class FooterComponent {
       this.isSubmitting = true;
       const email = this.newsletterForm.get('email')?.value;
 
-      console.log('Newsletter subscription:', email);
 
       setTimeout(() => {
         this.isSubmitting = false;
