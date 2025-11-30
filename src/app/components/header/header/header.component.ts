@@ -7,6 +7,7 @@ import {LocaleService} from '../../../services/locale.service';
 import {TranslatePipe} from '@ngx-translate/core';
 import { LanguageSelectorComponent, Language } from '../language-selector/language-selector.component';
 import { NavigationMenuComponent, MenuSection } from '../navigation-menu/navigation-menu.component';
+import { BackgroundParticleAnimationDirective } from '../../../directives/background-particle-animation.directive';
 
 @Component({
   selector: 'app-header',
@@ -17,7 +18,8 @@ import { NavigationMenuComponent, MenuSection } from '../navigation-menu/navigat
     LoaderComponent,
     TranslatePipe,
     NavigationMenuComponent,
-    LanguageSelectorComponent
+    LanguageSelectorComponent,
+    BackgroundParticleAnimationDirective
   ],
   templateUrl: "./header.component.html",
   styleUrls: ['./header.component.scss']

@@ -152,7 +152,8 @@
 
 <!-- HERO Section -->
 <section class="relative min-h-screen text-white flex items-center bg-cover bg-center overflow-hidden"
-         [style.background-image]="!isVideoPlaying && currentBackground ? 'url(' + currentBackground + ')' : ''">
+         [style.background-image]="!isVideoPlaying && currentBackground ? 'url(' + currentBackground + ')' : ''"
+         appBackgroundParticleAnimation>
 
   <!-- Vidéo -->
   @if (isVideoPlaying) {
