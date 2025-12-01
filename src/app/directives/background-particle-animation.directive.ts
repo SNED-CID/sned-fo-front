@@ -23,6 +23,8 @@ export class BackgroundParticleAnimationDirective implements OnInit, OnDestroy {
   private mouseX: number = -1000;
   private mouseY: number = -1000;
   private isAnimating = false;
+  private colorTime: number = 0;
+  private colorCycle: number = 4000; // 4 secondes pour un cycle complet
 
   constructor(private elementRef: ElementRef<HTMLElement>) {}
 
@@ -83,6 +85,28 @@ export class BackgroundParticleAnimationDirective implements OnInit, OnDestroy {
     }
   }
 
+  private getAnimatedColor(): { r: number; g: number; b: number; opacity: number } {
+    // Alterner entre bleu (#139dcc) et orange (#f89851)
+    const progress = (this.colorTime % this.colorCycle) / this.colorCycle;
+    let r: number, g: number, b: number;
+
+    if (progress < 0.5) {
+      // Transition de bleu vers orange (0 à 0.5)
+      const t = progress * 2;
+      r = Math.round(19 + (248 - 19) * t);
+      g = Math.round(157 + (152 - 157) * t);
+      b = Math.round(204 + (81 - 204) * t);
+    } else {
+      // Transition d'orange vers bleu (0.5 à 1)
+      const t = (progress - 0.5) * 2;
+      r = Math.round(248 + (19 - 248) * t);
+      g = Math.round(152 + (157 - 152) * t);
+      b = Math.round(81 + (204 - 81) * t);
+    }
+
+    return { r, g, b, opacity: 0.6 };
+  }
+
   private startAnimation(): void {
     if (this.isAnimating) return;
     this.isAnimating = true;
@@ -90,8 +114,13 @@ export class BackgroundParticleAnimationDirective implements OnInit, OnDestroy {
     const animate = () => {
       if (!this.ctx || !this.canvas) return;
 
+      // Mettre à jour le temps pour l'animation des couleurs
+      this.colorTime += 16; // ~60 FPS
+
       // Effacer le canvas
       this.ctx.clearRect(0, 0, this.canvas!.width, this.canvas!.height);
+
+      const color = this.getAnimatedColor();
 
       // Mettre à jour et dessiner les particules
       this.particles.forEach((particle, index) => {
@@ -144,7 +173,7 @@ export class BackgroundParticleAnimationDirective implements OnInit, OnDestroy {
         // Dessiner la particule
         this.ctx!.beginPath();
         this.ctx!.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-        this.ctx!.fillStyle = 'rgba(52, 152, 219, 0.6)';
+        this.ctx!.fillStyle = `rgba(${color.r}, ${color.g}, ${color.b}, ${color.opacity})`;
         this.ctx!.fill();
 
         // Dessiner les lignes vers les particules voisines
@@ -156,7 +185,7 @@ export class BackgroundParticleAnimationDirective implements OnInit, OnDestroy {
 
           if (lineDistance < 120) {
             const opacity = (1 - lineDistance / 120) * 0.4;
-            this.ctx!.strokeStyle = `rgba(52, 152, 219, ${opacity})`;
+            this.ctx!.strokeStyle = `rgba(${color.r}, ${color.g}, ${color.b}, ${opacity})`;
             this.ctx!.lineWidth = 1;
             this.ctx!.beginPath();
             this.ctx!.moveTo(particle.x, particle.y);
