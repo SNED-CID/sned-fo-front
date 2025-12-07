@@ -107,6 +107,74 @@ export class BackgroundParticleAnimationDirective implements OnInit, OnDestroy {
     return { r, g, b, opacity: 0.6 };
   }
 
+  private drawCursorEffect(color: { r: number; g: number; b: number; opacity: number }): void {
+    if (!this.ctx) return;
+
+    const radius = 2;
+    const lightningCount = 0;
+
+    // Dessiner le cercle central
+    this.ctx.beginPath();
+    this.ctx.arc(this.mouseX, this.mouseY, radius, 0, Math.PI * 2);
+    this.ctx.strokeStyle = `rgba(${color.r}, ${color.g}, ${color.b}, 0.6)`;
+    this.ctx.lineWidth = 2;
+    this.ctx.stroke();
+
+    // Dessiner les éclairs autour du cercle
+    for (let i = 0; i < lightningCount; i++) {
+      const angle = (i / lightningCount) * Math.PI * 2;
+      const startX = this.mouseX + Math.cos(angle) * radius;
+      const startY = this.mouseY + Math.sin(angle) * radius;
+
+      // Longueur et nombre de segments pour les éclairs
+      const lightningLength = 20 + Math.sin(this.colorTime / 100 + i) * 10;
+      const segmentCount = 4;
+
+      let currentX = startX;
+      let currentY = startY;
+
+      this.ctx.strokeStyle = `rgba(${color.r}, ${color.g}, ${color.b}, 0.8)`;
+      this.ctx.lineWidth = 1.5;
+      this.ctx.beginPath();
+      this.ctx.moveTo(startX, startY);
+
+      for (let j = 0; j < segmentCount; j++) {
+        const progress = (j + 1) / segmentCount;
+        const targetX = this.mouseX + Math.cos(angle) * (radius + lightningLength * progress);
+        const targetY = this.mouseY + Math.sin(angle) * (radius + lightningLength * progress);
+
+        // Ajouter une légère déviation pour l'effet zigzag
+        const deviation = (Math.random() - 0.5) * 8;
+        const perpAngle = angle + Math.PI / 2;
+        const deviatedX = targetX + Math.cos(perpAngle) * deviation;
+        const deviatedY = targetY + Math.sin(perpAngle) * deviation;
+
+        this.ctx.lineTo(deviatedX, deviatedY);
+        currentX = deviatedX;
+        currentY = deviatedY;
+      }
+
+      this.ctx.stroke();
+    }
+
+    // Ajouter un glow autour du curseur
+    const gradient = this.ctx.createRadialGradient(
+      this.mouseX, this.mouseY, 0,
+      this.mouseX, this.mouseY, radius + 15
+    );
+    gradient.addColorStop(0, `rgba(${color.r}, ${color.g}, ${color.b}, 0.4)`);
+    gradient.addColorStop(0.5, `rgba(${color.r}, ${color.g}, ${color.b}, 0.1)`);
+    gradient.addColorStop(1, `rgba(${color.r}, ${color.g}, ${color.b}, 0)`);
+
+    this.ctx.fillStyle = gradient;
+    this.ctx.fillRect(
+      this.mouseX - (radius + 15),
+      this.mouseY - (radius + 15),
+      (radius + 15) * 2,
+      (radius + 15) * 2
+    );
+  }
+
   private startAnimation(): void {
     if (this.isAnimating) return;
     this.isAnimating = true;
@@ -194,6 +262,11 @@ export class BackgroundParticleAnimationDirective implements OnInit, OnDestroy {
           }
         }
       });
+
+      // Dessiner l'effet de rond avec éclairs autour du curseur
+      if (this.mouseX > -1000 && this.mouseY > -1000) {
+        this.drawCursorEffect(color);
+      }
 
       this.animationId = requestAnimationFrame(animate);
     };
