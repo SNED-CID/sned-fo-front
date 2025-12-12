@@ -1,5 +1,5 @@
-import {Component, HostListener, signal, OnInit, inject} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {Component, HostListener, signal, OnInit, inject, PLATFORM_ID} from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import {NavigationEnd, Router, RouterModule} from '@angular/router';
 import {LoaderComponent} from '../../loader/loader.component';
 import {filter} from 'rxjs';
@@ -32,6 +32,7 @@ export class HeaderComponent implements OnInit{
   showLangDropdown = signal(false);
   showMobileLangDropdown = false;
   currentSection = signal<string>('default');
+  private isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
   // Mappe les routes et fragments sur les clés de traduction
   routeToSectionMap: Record<string, Record<string, string>> = {
@@ -198,11 +199,13 @@ export class HeaderComponent implements OnInit{
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
+    if (!this.isBrowser) return;
     this.isScrolled.set(window.pageYOffset > 50);
   }
 
   @HostListener('window:resize', [])
   onWindowResize() {
+    if (!this.isBrowser) return;
     if (window.innerWidth >= 1024) {
       this.isMobileMenuOpen.set(false);
       this.mobileDropdowns.set(new Set());
@@ -239,17 +242,21 @@ export class HeaderComponent implements OnInit{
     }
 
     // Prevent body scroll when mobile menu is open
-    if (this.isMobileMenuOpen()) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
+    if (this.isBrowser) {
+      if (this.isMobileMenuOpen()) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
     }
   }
 
   closeMobileMenu() {
     this.isMobileMenuOpen.set(false);
     this.mobileDropdowns.set(new Set());
-    document.body.style.overflow = '';
+    if (this.isBrowser) {
+      document.body.style.overflow = '';
+    }
   }
 
   toggleMobileDropdown(itemLabel: string) {
@@ -303,6 +310,11 @@ export class HeaderComponent implements OnInit{
   }
 
   private loadBackgroundImage(imagePath: string) {
+    if (!this.isBrowser) {
+      this.currentBackground = imagePath;
+      return;
+    }
+
     this.isBackgroundLoading.set(true);
 
     const img = new Image();

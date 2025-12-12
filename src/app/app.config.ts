@@ -45,5 +45,5 @@ export const appConfig: ApplicationConfig = {
       },
       deps: [TranslateService],
       multi: true,
-    },]
+    }, provideClientHydration(withEventReplay()),]
 };

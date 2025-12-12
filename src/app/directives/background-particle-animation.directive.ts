@@ -1,4 +1,5 @@
-import { Directive, ElementRef, OnInit, OnDestroy, HostListener } from '@angular/core';
+import { Directive, ElementRef, OnInit, OnDestroy, HostListener, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 interface Particle {
   x: number;
@@ -25,10 +26,15 @@ export class BackgroundParticleAnimationDirective implements OnInit, OnDestroy {
   private isAnimating = false;
   private colorTime: number = 0;
   private colorCycle: number = 4000; // 4 secondes pour un cycle complet
+  private isBrowser: boolean;
 
-  constructor(private elementRef: ElementRef<HTMLElement>) {}
+  constructor(private elementRef: ElementRef<HTMLElement>) {
+    this.isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+  }
 
   ngOnInit(): void {
+    if (!this.isBrowser) return;
+
     this.initializeCanvas();
     this.startAnimation();
   }

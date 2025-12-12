@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -10,11 +11,16 @@ export class PreviewTokenService {
   private readonly PREVIEW_SESSION_DURATION = 15 * 60 * 1000;
   private previewTokenSubject = new BehaviorSubject<string | null>(this.getStoredToken());
   private tokenTimeoutHandle: any;
+  private isBrowser: boolean;
 
 
   constructor() {
-    this.initializeTokenFromUrl();
-    this.checkAndCleanExpiredToken();
+    this.isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+
+    if (this.isBrowser) {
+      this.initializeTokenFromUrl();
+      this.checkAndCleanExpiredToken();
+    }
   }
 
   private initializeTokenFromUrl(): void {
@@ -37,6 +43,8 @@ export class PreviewTokenService {
    * Check if stored token has expired
    */
   private checkAndCleanExpiredToken(): void {
+    if (!this.isBrowser) return;
+
     const storedTimeout = localStorage.getItem(this.PREVIEW_TOKEN_TIMEOUT_KEY);
     if (storedTimeout) {
       const expiresAt = parseInt(storedTimeout, 10);
@@ -72,6 +80,8 @@ export class PreviewTokenService {
    * Store the preview token with expiration timeout
    */
   setToken(token: string): void {
+    if (!this.isBrowser) return;
+
     localStorage.setItem(this.PREVIEW_TOKEN_KEY, token);
 
     // Calculate expiration time (30 minutes from now)
@@ -88,6 +98,8 @@ export class PreviewTokenService {
    * Clear the preview token
    */
   clearToken(): void {
+    if (!this.isBrowser) return;
+
     localStorage.removeItem(this.PREVIEW_TOKEN_KEY);
     localStorage.removeItem(this.PREVIEW_TOKEN_TIMEOUT_KEY);
 
@@ -109,7 +121,7 @@ export class PreviewTokenService {
    * Get stored token from localStorage
    */
   private getStoredToken(): string | null {
-    if (typeof localStorage === 'undefined') {
+    if (!isPlatformBrowser(inject(PLATFORM_ID))) {
       return null;
     }
     return localStorage.getItem(this.PREVIEW_TOKEN_KEY);
