@@ -19,7 +19,7 @@ export interface PartnerReadDTO {
 })
 export class PartnerService {
 
-  BASE_URL : string = `${environment.apiUrl}/partners`;
+  BASE_URL : string = `${environment.apiUrl}/v1/partners`;
 
   constructor(
     private http : HttpClient,
