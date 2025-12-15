@@ -189,6 +189,10 @@ export class HeaderComponent implements OnInit{
           route: '/partenariat'
         },
         {
+          label: 'Communiqués de presse',
+          route: '/communique'
+        },
+        {
           label: 'Appel d\'offres',
           route: '/appels-offres'
         }

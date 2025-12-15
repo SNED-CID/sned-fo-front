@@ -1,0 +1,3 @@
+<app-filter></app-filter>
+<app-communique-list [communiques]="filteredCommuniques"></app-communique-list>
+<p-paginator (onPageChange)="onPageChange($event)" [first]="currentPage * rows" [rows]="rows" [totalRecords]="totalRecords" [rowsPerPageOptions]="[5, 10, 20, 30]"> </p-paginator>

@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import {HomeComponent} from './components/home/home.component';
 import {PartnersComponent} from './components/partners/partners.component';
+import { CommuniquePage } from './components/communique/communique-page/communique-page';
 
 
 export const routes: Routes = [
@@ -25,6 +26,8 @@ export const routes: Routes = [
   { path: 'actualite', component: HomeComponent },
   // Partenariats
   { path: 'partenariat', component: PartnersComponent },
+  // Communiqués de presse
+  { path: 'communique', component: CommuniquePage },
   // Appels d'offres
   { path: 'appels-offres', component: HomeComponent },
 
