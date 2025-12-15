@@ -191,7 +191,7 @@ export class HeaderComponent implements OnInit{
         {
           label: 'Appel d\'offres',
           route: '/appels-offres'
-        }
+        },
       ]
     }
   ];

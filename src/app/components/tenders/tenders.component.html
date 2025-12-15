@@ -1,0 +1,79 @@
+<div
+  id="tenders"
+  class="w-3/4 lg:w-5/6 2xl:w-full mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20"
+  appScrollAnimation
+  [animationType]="'fadeUp'"
+>
+  <div class="flex justify-between items-center mb-6">
+    <h2 class="text-3xl font-bold text-primary"></h2>
+  </div>
+
+  <div class="relative bg-white rounded-2xl shadow-lg overflow-hidden">
+    <div
+      class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[var(--sned-blue)] to-[var(--sned-orange)] rounded-t-2xl"
+    ></div>
+
+    <div
+      class="overflow-hidden transition-all duration-500 ease-in-out max-h-screen opacity-100"
+    >
+      <div class="tenders-header">
+        <h1>Appels d'offres</h1>
+        <p>
+          Consultez nos {{ tenders().length }} appels d'offres en cours et à
+          venir.
+        </p>
+      </div>
+
+      @if (tenders().length === 0) {
+      <div class="empty-state">
+        <svg
+          class="empty-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+          />
+        </svg>
+        <p>Aucun appel d'offres disponible pour le moment</p>
+      </div>
+      } @else { @for (tender of tenders(); track tender.id) {
+      <div class="tender-card-wrapper ">
+        <div class="tender-card-inner min-w-0">
+          <h5 class="tender-number">
+            {{ tender.number }}
+          </h5>
+          <p class="tender-date">
+            {{ tender.datePosting | date : "dd/MM/yyyy" }}
+          </p>
+          <p class="tender-content break-words break-all">
+            {{ stripHtml(tender.content) }}
+          </p>
+          <button
+            class="cursor-pointer group flex items-center gap-2 px-5 py-2 rounded-full bg-[var(--sned-orange)] text-white font-medium transition-all duration-300 hover:translate-y-[-2px] hover:bg-sned-blue whitespace-normal"
+            (click)="openTenderDetails(tender)"
+          >
+            <span>Détailles</span>
+            <span
+              class="transition-transform duration-300 group-hover:translate-x-1"
+              >➔</span
+            >
+          </button>
+        </div>
+      </div>
+      } }
+
+
+    </div>
+  </div>
+</div>
+<app-tender-read-more
+
+  #tenderReadMore
+  (navigateToTender)="onNavigateToTender($event)"
+>
+</app-tender-read-more>

@@ -13,7 +13,7 @@ interface PartnerWithLogo extends PartnerReadDTO {
 
 @Component({
   selector: 'app-partners',
-  imports: [CommonModule, LazyImageComponent, ScrollAnimationDirective],
+  imports: [CommonModule, ScrollAnimationDirective],
   templateUrl: './partners.component.html',
   standalone: true,
   styleUrl: './partners.component.scss'
@@ -35,6 +35,7 @@ export class PartnersComponent implements OnInit{
   }
 
   private loadPartners(): void {
+
     const currentLang = this.translateService.getCurrentLang();
     this.service.getAllLocalizedPartners(currentLang).subscribe(partnersList => {
 
@@ -56,6 +57,7 @@ export class PartnersComponent implements OnInit{
         });
       }
     });
+    
   }
 
 }

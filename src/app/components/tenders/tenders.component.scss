@@ -1,0 +1,189 @@
+:host ::ng-deep .overflow-hidden {
+  overflow: visible !important;
+  max-height: none !important;
+}
+
+.tenders-header {
+  padding: 2rem 80px;
+  text-align: center;
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0 0 1rem 0;
+  }
+
+  p {
+    font-size: 1.125rem;
+    color: #666;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem 20px;
+
+    h1 {
+      font-size: 1.75rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem 16px;
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 0.875rem;
+    }
+  }
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  color: #999;
+
+  .empty-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1.5rem;
+    opacity: 0.4;
+  }
+
+  p {
+    font-size: 1.125rem;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    padding: 3rem 1.5rem;
+
+    .empty-icon {
+      width: 60px;
+      height: 60px;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+}
+
+.tender-card-wrapper {
+  background: white;
+  border-radius: 24px;
+  margin: 2rem 4rem;
+  max-width: 800px;
+  border: 3px solid transparent;
+  background-image: linear-gradient(white, white),
+    linear-gradient(
+      135deg,
+      var(--sned-blue, #667eea) 0%,
+      var(--sned-orange, #f59e0b) 100%
+    );
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  @media (max-width: 768px) {
+    margin: 2rem 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    margin: 1.5rem 1rem;
+    border-radius: 16px;
+  }
+}
+
+.tender-card-inner {
+  padding: 2rem 2.5rem;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem 2rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.25rem 1.5rem;
+  }
+}
+
+.tender-number {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 1rem 0;
+  line-height: 1.3;
+
+  @media (max-width: 768px) {
+    font-size: 1.25rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.125rem;
+  }
+}
+
+.tender-date {
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: linear-gradient(
+    135deg,
+    var(--sned-blue, #667eea) 0%,
+    var(--sned-orange, #f59e0b) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 1.25rem 0;
+  line-height: 1.4;
+
+  @media (max-width: 768px) {
+    font-size: 0.875rem;
+    margin: 0 0 1rem 0;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+  }
+}
+
+.tender-content {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #555;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+}
