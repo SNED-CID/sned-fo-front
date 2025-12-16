@@ -23,9 +23,8 @@ LABEL maintainer="SNED Team" \
 RUN apk add --no-cache curl && \
     rm -rf /usr/share/nginx/html/* /etc/nginx/conf.d/default.conf
 
-# Copier configurations
-COPY --chown=nginx:nginx nginx.conf /etc/nginx/nginx.conf
-COPY --chown=nginx:nginx nginx-default.conf /etc/nginx/conf.d/default.conf
+# Note: nginx.conf et nginx-default.conf sont montés via volumes depuis infra/configs/nginx/fo/
+# Voir docker-compose-fo.yml pour la configuration des volumes
 
 # Copier app buildée
 COPY --from=build --chown=nginx:nginx /app/dist/sned-fo-front /usr/share/nginx/html
