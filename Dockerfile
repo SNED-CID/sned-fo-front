@@ -35,7 +35,7 @@ RUN chmod 644 /etc/nginx/ssl/server.crt && \
     chmod 600 /etc/nginx/ssl/server.key
 
 # Copier app buildée
-COPY --from=build --chown=nginx:nginx /app/dist/sned-fo-front/browser /usr/share/nginx/html
+COPY --from=build --chown=nginx:nginx /app/dist/sned-fo-front /usr/share/nginx/html
 
 # Permissions et dossiers temporaires
 RUN mkdir -p /var/cache/nginx/{client,proxy,fastcgi,uwsgi,scgi}_temp && \
