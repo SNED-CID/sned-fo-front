@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommuniqueList } from '../components/communique-list/communique-list';
-import { AppFilterComponent } from '../components/app-filter/app-filter.component';
+import { AppFilterComponent, FilterCriteria } from '../components/app-filter/app-filter.component';
 import { CommuniqueService, CommuniqueFilterClass, CommuniqueReadDTO } from '../../../services/communique.service';
 import { PaginatorModule } from 'primeng/paginator';
 import {TranslateService} from '@ngx-translate/core';
@@ -57,7 +57,7 @@ export class CommuniquePage implements OnInit {
         });
     }
 
-    onFilter(event: CommuniqueFilterClass) {
+    onFilter(event: FilterCriteria) {
         this.currentPage = 0;
         this.fetchCommuniques(event, 0, this.rows);
     }

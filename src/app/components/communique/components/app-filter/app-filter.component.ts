@@ -10,7 +10,7 @@ export interface FilterCriteria {
   selector: 'app-filter',
   imports: [FormsModule],
   templateUrl: './app-filter.component.html',
-  styleUrl: './app-filter.component.scss'
+  styleUrls: ['./app-filter.component.scss']
 })
 export class AppFilterComponent {
   searchText: string = '';
