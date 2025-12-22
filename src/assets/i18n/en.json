@@ -109,7 +109,8 @@
       "gallery": "Recognition Gallery",
       "news": "News",
       "partnerships": "Partnerships",
-      "work": "Our Work"
+      "work": "Our Work",
+      "appels-offres": "Call for Tenders"
     },
     "project": {
       "title": "The Project",
@@ -156,6 +157,188 @@
       "terms": "Terms of Use",
       "cookies": "Cookie Policy",
       "legal": "Legal Notice"
+    }
+  },
+  "shared": {
+    "lazy_image": {
+      "image_unavailable": "Image unavailable"
+    },
+    "readmore": {
+      "read_more": "Read more",
+      "details": "Details",
+      "share": "Share",
+      "close": "Close",
+      "next_section": "Next section:",
+      "loading": "Loading...",
+      "share_success": "✅ Shared successfully!",
+      "share_error": "❌ Share cancelled or error:",
+      "link_copied": "📋 Link copied to clipboard"
+    },
+    "loading": {
+      "loading": "Loading...",
+      "footer_loading": "Loading footer..."
+    }
+  },
+  "header": {
+    "navigation": {
+      "discover_project": "Discover Us",
+      "about": "About",
+      "about_desc": "Who we are",
+      "mission": "Mission",
+      "mission_desc": "Our mission and vision",
+      "team": "Team",
+      "team_desc": "Our team",
+      "contact": "Contact",
+      "contact_desc": "Contact us",
+      "project": "Fixed Link Project",
+      "engineering": "Engineering Component",
+      "engineering_desc": "Technical aspects",
+      "history": "History",
+      "history_desc": "Design and studies",
+      "physical": "Physical Environment Component",
+      "physical_desc": "Environmental studies",
+      "socioeconomic": "Socio-Economic Component",
+      "socioeconomic_desc": "Economic impact",
+      "promotion": "Project Promotion Component",
+      "promotion_desc": "Economic impact",
+      "legal": "Legal Notice",
+      "legal_desc": "Legal and strategic aspects",
+      "gallery": "Recognition Gallery",
+      "news": "News",
+      "partnerships": "Partnerships",
+      "work": "Our Work",
+      "congress": "Congress",
+      "congress_desc": "Events and conferences",
+      "communication": "Communication Activities",
+      "communication_desc": "Awareness actions",
+      "video": "SNED Physical Link Video",
+      "video_desc": "Multimedia presentation",
+      "statistics": "Statistics",
+      "statistics_desc": "Data and indicators"
+    }
+  },
+  "about": {
+    "sned": {
+      "title": "About SNED",
+      "short": "The National Company for the Studies of the Strait of Gibraltar (SNED) was created in 1980 following an agreement between Morocco and Spain for the study of a fixed link between Europe and Africa.",
+      "paragraphs": [
+        "The National Company for the Studies of the Strait of Gibraltar, abbreviated as \"SNED,\" is a joint-stock company created in 1980 following the \"supplementary cooperation agreement between the Kingdom of Morocco and the Kingdom of Spain for the study of a fixed link between Europe and Africa across the Strait of Gibraltar.\" An additional agreement was signed in 1989 between the Kingdom of Morocco and the Kingdom of Spain for the \"study of a fixed link between Europe and Africa across the Strait of Gibraltar,\" detailing the responsibilities of the various stakeholders in particular.",
+        "<strong>The official launch of the studies of the fixed link project across the Strait of Gibraltar was jointly decided by His Majesty Hassan II of Morocco and His Majesty Juan Carlos I of Spain in June 1979.</strong> The Royal resolution was materialized on October 24, 1980, during the signing of an Agreement between the two governments, thus creating, on the one hand, a Moroccan-Spanish Joint Committee which constitutes the governing body of the project, and on the other hand, two state-owned study companies, responsible for carrying out the work plans approved by the Joint Committee: SNED in Rabat, and the Sociedad Española de Estudios para la Comunicación Fija a través del Estrecho de Gibraltar, S.A. (SECEGSA) in Madrid.",
+        "SNED is located in Rabat (Souissi) – No. 11, Antar Ibn Chaddad Street, Avenue Mohamed VI, Km 8.",
+        "<strong>The share capital of SNED is set at the sum of TWO MILLION SEVEN HUNDRED AND FIFTY THOUSAND (2,750,000) dirhams.</strong> <em>The Moroccan State is the majority shareholder, holding 99.9% of the capital, while 11 shares are held by various directors.</em>",
+        "<strong>SNED is under the supervision of the Ministry of Equipment and Water.</strong>"
+      ]
+    },
+    "contexte": {
+      "title": "Strategic Context",
+      "short": "The Strait of Gibraltar is a strategic zone linking Europe and Africa, and a crossroads between the Atlantic and the Mediterranean.",
+      "paragraphs": [
+        "<strong>The Strait of Gibraltar is part of a strategic zone of major importance due to its geographical position between Europe and Africa, and as a crossroads of communication routes between the Atlantic and the Mediterranean, it constitutes a decisive passage for maritime navigation.</strong>",
+        "Morocco and Spain have decided to set up a study of a fixed link across this stretch of sea, in order to consolidate their cooperation relationship and to make the Western Mediterranean a hub of vital exchanges between Europe and Africa. <em>Once completed, this project would constitute one of the essential links of the Euro-Mediterranean transport network.</em>",
+        "<strong>The importance of the project is undeniable for the economic and social development of the entire area concerned, as it is a possibility for integrated development.</strong> The flow of exchanges of people, goods, and services should mark the starting point of a qualitative evolution, opening the way for new territorial planning and the development of transport networks on both shores of the Strait.",
+        "<em>In a forward-looking vision, and once the new transport infrastructures are put into operation, the riparian countries will be able to access a privileged position within the Western Mediterranean.</em>"
+      ]
+    },
+    "missions": {
+      "title": "Missions and Values",
+      "short": "SNED's main mission is to conduct studies related to the Europe-Africa fixed link and promote the project.",
+      "paragraphs": [
+        "<strong>SNED's corporate purpose is:</strong>",
+        "The execution of studies of a fixed link between Europe and Africa across the Strait of Gibraltar focused on the design, means, and modalities of its construction and operation.",
+        "The promotion of the project at the national and international level, as well as the implementation of any operations of any kind that may support its development or realization in Morocco, in Spain, or abroad;",
+        "And generally, all operations are directly or indirectly related to the above purposes.",
+        "<strong>Thus, the scope of the mission entrusted to SNED focuses on studies, design, and proposals for the promotion of the fixed link.</strong> <em>The actual realization of this fixed link is not within SNED's scope of responsibilities.</em>",
+        "Since its creation, SNED has continuously played its role as defined by the corporate purpose and the terms of the supplementary and additional cooperation agreements between the Kingdom of Morocco and Spain. Indeed, it has contributed to various works during the main phases of the project:",
+        "• <strong>Preliminary phase from 1980 to 1982:</strong> acquisition of basic data;",
+        "• <strong>Pre-feasibility phase, from 1982 to 1990:</strong> development of studies in five main fields, namely, the physical environment, technical studies, the socio-economic environment, legal and institutional studies, and external relations;",
+        "• <strong>Feasibility phase, from 1990 to the present:</strong> deepening of the studies initiated during the pre-feasibility phase up to the choice of a technical solution associated with a corridor and the evaluation of its relevance.",
+        "<strong>SNED has entered a new dynamic since 2017 with the objective of collecting, exploiting, and analyzing the socio-economic and commercial data of railway infrastructures in the Strait region.</strong> <em>A three-year work plan was requested to formalize the activities to meet the ambitions of this new dynamic.</em>"
+      ]
+    },
+    "cadre": {
+      "title": "Institutional and Legal Framework",
+      "short": "SNED is a Moroccan public limited company governed by a set of legislative and regulatory texts.",
+      "paragraphs": [
+        "<strong>General legal and regulatory framework inherent to the legal status of SNED:</strong>",
+        "<strong>Reminder of the legal status of SNED; SNED is a Joint-Stock Company (SA) whose capital is divided into 27,500 shares with a nominal value of 100 Dirhams each, distributed as follows:</strong> • 27,489 shares are held by Public Bodies [1], i.e., 99.96%; • 11 shares are held by various directors.",
+        "The legal characteristics of SNED, as presented above and in the section \"Presentation of SNED,\" correspond to the legal form \"Public Subsidiary [2] with majority direct participation of the State\" within the meaning of Articles 1 and 15 of Law 69-00 relating to the financial control of the State over public enterprises and other bodies, as well as Article 3 of Law No. 82-20 establishing the National Agency for the Strategic Management of State Holdings and the Monitoring of SOEs' Performance.",
+        "<strong>Legislative and regulatory texts applicable to SNED:</strong> • Statutes of SNED revised by the Mixed General Assembly of June 21, 2023; • Dahir No. 1-03-195 of 16 Ramadan 1424 (November 11, 2003) promulgating Law No. 69-00 relating to the financial control of the State over public enterprises and other bodies (A new draft law reforming Law 69-00 was examined on January 24, 2023 by the Finance Committee of the House of Representatives; this draft had already been adopted by the Council of Government in December 2022);",
+        "• Dahir No. 1.21.96 of 15 Dou Al-Hijja 1442 (July 26, 2021) promulgating Law No. 82-20 establishing the National Agency for the Strategic Management of State Holdings and the Monitoring of the Performance of Public Establishments and Enterprises (ANGSPE); • Framework Law No. 50-21 relating to the reform of public establishments and enterprises;",
+        "• Dahir No. 1-11-147 of 16 Ramadan 1432 (August 17, 2011) promulgating Law No. 32-10, completing Law No. 15-95, forming the Commercial Code; • Dahir No. 1-96-124 of August 30, 1996, promulgating Law No. 17-95 relating to joint-stock companies as amended and supplemented; • Law No. 69-21 amending Law No. 15-95, forming the Commercial Code, and enacting specific provisions relating to payment deadlines;",
+        "• General Accounting Standardization Code (C.G.N.C); • Dahir No. 1-92-138 (30 Joumada II 1413) promulgating Law No. 9-88 relating to the accounting obligations of traders (O.G. December 30, 1992); • The General Tax Code; • Dahir No. 1-07-195 of 19 Kaada 1428 (November 30, 2007) promulgating Law No. 47-06 relating to local taxation;",
+        "• International tax treaties signed and ratified by Morocco to avoid double taxation and tax evasion; • Law No. 65-99 relating to the Labor Code; • Dahir No. 1-02-296 of 25 Rejeb 1423 (October 3, 2002) promulgating Law No. 65-00 relating to compulsory basic health insurance;",
+        "• Dahir No. 1-09-15 of 22 Safar 1430 (February 18, 2009) promulgating Law No. 09-08 relating to the protection of individuals with regard to the processing of personal data; • Law No. 86-12 relating to PPP contracts as amended by Law 46-18 of March 6, 2020;",
+        "• Dahir No. 1-15-62 of 14 Chaabane 1436 (June 2, 2015) promulgating Organic Law No. 130-13 relating to the Finance Law; [1] \"Public Bodies: the State, local authorities and public establishments\" – Article 1 of Law 69-00. [2] \"Public subsidiaries: companies whose capital is more than half-owned by public bodies\" – Article 1 of Law 69-00. Decree No. 2-15-426 of 28 Ramadan 1436 (July 15, 2015) relating to the preparation and execution of finance laws as amended and supplemented;",
+        "• Dahir No. 1-02-25 of 19 Muharram 1423 promulgating Law No. 61-99 relating to the responsibility of authorizing officers, controllers, and public accountants; • Law No. 62-99 forming the Financial Jurisdictions Code; • Dahir No. 1-59-269 of 17 Shawwal 1379 (April 14, 1960) relating to the General Finance Inspectorate.",
+        "<strong>Other circulars applicable to SNED:</strong> • Circulars from the Head of Government and the Minister of Economy and Finance relating to the budgets of Public Establishments and Enterprises (PEEs); • Circular from the Head of Government addressed on March 19, 2012, to members of the Government, inviting them to ensure the generalization and implementation of the content of the Moroccan Code of Good Governance Practices for PEEs under their supervision.",
+        "<strong>Main agreements signed or structuring conventions related to SNED:</strong> • Scientific and technical cooperation agreement signed on November 8, 1979, between the Kingdom of Morocco and the Kingdom of Spain; • Supplementary cooperation agreement signed on October 24, 1980, between the Kingdom of Morocco and the Kingdom of Spain for the study of a fixed link between Europe and Africa across the Strait of Gibraltar, published by Decree No. 1.91.43 of August 2, 2011;",
+        "• Additional agreement signed on September 27, 1989, between the Kingdom of Morocco and the Kingdom of Spain for the study of a fixed link between Europe and Africa across the Strait of Gibraltar, published by Decree No. 1.91.43 of August 2, 2011; • SNED-SECEGSA cooperation agreement for the launch and monitoring of the economic feasibility study of the fixed link;",
+        "<em>• \"MoU\" agreement signed by the Minister of Equipment and Water, Nizar Baraka, and the Spanish Minister of Transport, Mobility and Urban Programs, Raquel Sánchez Jiménez during the 12th High-Level Meeting between the two countries, co-chaired on Thursday, February 2, 2023 in Rabat by the Head of Government Mr. Aziz Akhannouch and the President of the Spanish Government Mr. Pedro Sanchez;</em>",
+        "• SNED-SECEGSA regulation for joint procurement of services in \"A\" modalities approved by the Board of Directors in 2017 and validated by the Joint Committee during its meeting on April 10, 2023.",
+        "<strong>Specific Legal and Regulatory Framework for Environmental Protection:</strong> <em>The execution of studies for the fixed link connecting Europe to Africa across the Strait of Gibraltar presents environmental aspects concerning the marine environment, the coastal area, and the interior of the tunnel. The ecological impact thus carries legal implications for the project at both national and international levels.</em>",
+        "<strong>Legislative and regulatory texts relating to the protection of nature and the environment in Morocco [3]:</strong> • Constitution of Morocco, July 2011 (Articles 31, 35, 88, 71, 151); • Dahir No. 1-14-09 of 4 Joumada I 1435 (March 6, 2014) promulgating Framework Law No. 99-12 establishing the National Charter for the Environment and Sustainable Development;",
+        "• Dahir No. 1-03-59 of 10 Rabi I 1424 (May 12, 2003) promulgating Law No. 11-03 relating to the protection and enhancement of the environment; • Dahir No. 1-20-78 of 18 Hija 1441 (August 8, 2020) promulgating Law No. 49-17 relating to environmental assessment; • Dahir No. 1-03-60 of 10 Rabi I 1424 (May 12, 2003) promulgating Law No. 12-03 relating to environmental impact studies; • Dahir on the conservation and exploitation of forests of October 10, 1917;",
+        "[3] Sources: Official website of the Ministry of Energy Transition and Sustainable Development https://www.environnement.gov.ma; Environmental Impact Assessment Study of the fixed link project across the Strait of Gibraltar, Reference: APP-GIB-F-DP-GR-RD-002-1-AP",
+        "• Dahir on hunting regulations of July 21, 1923; • Dahir on the extension to forestry operations of the Dahir of June 25, 1927, on work accidents of April 24, 1931; • Order regulating reserved hunting of May 6, 1931; • Dahir created the National Forestry Fund on September 12, 1949; • Dahir relating to private forest guards of December 10, 1951;",
+        "• Dahir extending certain provisions of the forestry legislation of July 30, 1957, to the northern zone; • Dahir relating to the organization of population participation in the development of the forestry economy of September 20, 1976; • Dahir on the protection and delimitation of argan forests of March 4, 1925; • Dahir determining the legal regime of water tables of August 15, 1928; • Dahir relating to the conservation and exploitation of walnut trees of September 8, 1928;",
+        "• Dahir relating to the protection of dwarf palm groves and regulating the production and marketing of vegetable fiber of October 24, 1962; • Dahir on the creation of national parks of September 11, 1934; • Dahir on soil protection and restoration of July 25, 1969; • Dahir relating to the creation of pastoral improvement perimeters of July 25, 1969;",
+        "• Dahir of June 8, 1948, modifying the Dahir of September 23, 1946, increasing the fines imposed under the Dahirs of October 10, 1917, on the conservation and exploitation of forests, hunting regulations, and river fishing; • Order of November 14, 1949, setting the conditions for subjecting woods, forests, and non-state lands to the forestry regime;",
+        "• Order of February 20, 1960, making applicable in the province of Tangier certain legislative and regulatory provisions relating to merchant shipping and maritime fishing in the southern zone; • Dahir of January 8, 1974, publishing the International Plant Protection Convention made in Rome on December 6, 1951 (O.G. of March 27, 1974);",
+        "• Dahir of December 17, 1980, publishing the Convention on International Trade in Endangered Species of Wild Fauna and Flora, and its annexes, made in Washington on March 3, 1973 (O.G. No. 3553 of December 3, 1980); • Dahir No. 1-85-160 of May 28, 1993, promulgating Law No. 25-85 approving in principle the ratification of the Convention on the Conservation of Migratory Species of Wild Animals, made in Rome on June 23, 1979;",
+        "• Order of December 24, 1951, creating perimeters for soil defense and restoration (January 18, 1952, P.91); • Decree of August 20, 1957, creating perimeters for soil defense and restoration (O.G. No. 2341 of September 6, 1957, P.1170); • Dahir of July 25, 1969, on soil defense and restoration (O.G. No. 2960 bis of July 29, 1969, P.802);",
+        "• Decree No. 2-69-311 of July 25, 1969, implementing the Dahir of July 25, 1969, on soil defense and restoration (O.G. No. 2960 bis July 29, 1969, P.807 and correction (O.G. of November 19, 1969, P.1417)); • Interministerial Order of July 23, 1980 on soil defense and restoration (O.G. No. 3540 of September 3, 1980, P.621);",
+        "• Order of August 31, 1995, from the Minister of Agriculture and Agricultural Development for the application of the Dahir of July 25, 1969, on soil defense and restoration (O.G. No. 4340 of January 3, 1996, P.9); <strong>International Conventions Relating to Wild Flora and Fauna [4]</strong> • United Nations (UN) Convention on the Law of the Sea, Montego Bay, December 10, 1982. Ratified on May 31, 2007;",
+        "[4] Sources: Official website of the Ministry of Energy Transition and Sustainable Development https://www.environnement.gov.ma; Environmental Impact Assessment Study of the fixed link project across the Strait of Gibraltar, Reference: APP-GIB-F-DP-GR-RD-002-1-AP; https://treaties.un.org/",
+        "• United Nations (UN) Convention to Combat Desertification. Paris, 1994; • Conventions of the International Maritime Organization (IMO) relating to the prevention of marine pollution: o The Convention on the International Maritime Organization (IMO), ratified in 1962; o Convention for the Prevention of Marine Pollution by Dumping of Wastes and Other Matter, ratified in 1977; o International Convention on Oil Pollution Preparedness, Response and Cooperation, ratified in 2003;",
+        "• International Convention for the Protection of Birds. Paris, 1950; • Convention for the Establishment of the European and Mediterranean Plant Protection Organization. Paris, 1951; • International Convention for the Protection of Plants. Rome, 1951; • African Convention for the Conservation of Nature and Natural Resources. Algiers, 1968;",
+        "• Convention on Wetlands of International Importance Especially as Waterfowl Habitat. Ramsar, 1971; • Protocol Amending the Convention on Wetlands of International Importance Especially as Waterfowl Habitat. Paris, 1982; • Amendment to Articles 6 and 7 of the Convention on Wetlands of International Importance Especially as Waterfowl Habitat. Canada, 1987;",
+        "• Convention Concerning the Protection of the World Cultural and Natural Heritage. Paris, 1972; • CITES: Convention on International Trade in Endangered Species of Wild Fauna and Flora. Washington, 1973; • Amendment to Paragraph A, Article 11 of the Convention on International Trade in Endangered Species of Wild Fauna and Flora. Bonn, 1979;",
+        "• Amendment to Article 21 of the CITES Convention. Gaborone, 1983; • Barcelona Convention: Convention for the Protection of the Mediterranean Sea Against Pollution, 1976; • New Protocol on Cooperation in Combating Pollution of the Mediterranean Sea by Hydrocarbons and Other Harmful Substances. Malta, 2002;",
+        "• Protocol on Cooperation between North African Countries in Combating Desertification. Cairo, 1977; • Convention on the Conservation of Migratory Species of Wild Animals. Bonn, 1979; • Amendment to the International Convention for the Protection of Plants. Rome, 1979; • Protocol Concerning Specially Protected Areas in the Mediterranean. Geneva, 1982;",
+        "• International Convention on Oil Pollution Preparedness, Response and Cooperation. London, 1990; • United Nations Framework Convention on Climate Change. New York, 1992; • Convention on Biological Diversity. Rio de Janeiro, 1992; • Maghreb Charter on Environmental Protection and Sustainable Development. Nouakchott, 1992;",
+        "• Protocol on Specially Protected Areas and Biological Diversity in the Mediterranean and its annexes. Barcelona, 1995; • Agreement on the Conservation of Cetaceans of the Black Sea, the Mediterranean Sea, and Contiguous Atlantic Area. Monaco, 1996; • Kyoto Protocol to the United Nations Framework Convention on Climate Change. Kyoto, 1997."
+      ]
+    },
+    "sned_secegsa": {
+      "title": "SNED and SECEGSA",
+      "short": "Cooperation between SNED (Morocco) and SECEGSA (Spain) under the supervision of the Intergovernmental Joint Committee for the fixed link project.",
+      "paragraphs": [
+        "• <strong>Intergovernmental Joint Committee:</strong>",
+        "<strong>This committee was created following the supplementary cooperation agreement signed in 1980 between Morocco and Spain, initiating studies for the fixed link project between Europe and Africa across the Strait of Gibraltar.</strong> <em>It constitutes the highest governance body of the fixed link project.</em> It provides general directives for carrying out the corporate purpose of the two state-owned companies, namely SNED and SECEGSA.",
+        "• <strong>SECEGSA:</strong>",
+        "<em>SECEGSA is to be considered as the \"twin sister\" of SNED, both acting jointly in all their activities and missions.</em>"
+      ]
+    },
+    "conseil_administration": {
+      "title": "Board of Directors",
+      "short": "SNED organization and governance: Board of Directors, specialized committees, general management and operational structure by activity divisions.",
+      "paragraphs": [
+        "• <strong>Board of Directors of SNED:</strong>",
+        "<strong>SNED is governed by a board of directors composed of three to twelve members, chosen among the shareholders.</strong> The Board of Directors determines the orientations of SNED's activities and ensures their implementation. It also carries out the checks and verifications it deems appropriate. Furthermore, it chooses the governance mode and appoints the Chairman, the Chief Executive Officer, and the Deputy Chief Executives.",
+        "<strong>o Audit Committee:</strong> <em>SNED, being subject to accompanying control, must establish an audit committee.</em> The audit committee is empowered, through audit operations, to assess the regularity of operations, the quality of the organization, the reliability and proper application of the information system, as well as the organization's performance.",
+        "Its mission is to order and carry out, at the expense of the organization, internal and external audits and evaluations it deems necessary. It may also invite any independent expert to participate in its work. <em>The audit committee reports directly to the organization's director, detailing the results of each intervention and recommendations deemed useful for improving management and controlling the organization's economic and financial risks.</em> This report is submitted to the board of directors or the deliberative body.",
+        "The audit committee must consist of, in addition to the State Controller, two to four members appointed by the board of directors or by the deliberative body from non-executive members or representatives specifically designated for this purpose. <strong>The SNED Board of Directors, at its meeting on June 21, 2023, decided to appoint the members of the Audit Committee (one chairman and two members).</strong>",
+        "<strong>o Governance, Nomination and Remuneration Committee:</strong> This committee ensures the application of good practices set at the level of the Governance Body and its specialized committees. Additionally, it assists the Governance Body in implementing an appropriate, incentive-based, and transparent compensation policy for SNED's executive managers and employees. <strong>The SNED Board of Directors, at its meeting on June 21, 2023, decided to appoint the members of the Governance, Nomination, and Remuneration Committee (one chairman and two members).</strong>",
+        "• <strong>Chairman and Chief Executive Officer (CEO):</strong>",
+        "<strong>The general management of SNED is assumed by its Chairman and CEO.</strong> He represents the company in its dealings with third parties and coordinates all of its activities.",
+        "<strong>o Secretariat:</strong> The secretariat is responsible for office management, communication, drafting, and organization on behalf of the General Management.",
+        "• <strong>Deputy Chief Executive Officer:</strong>",
+        "The Deputy CEO complements the general management of SNED. <em>Regarding the company, the Deputy CEO is vested with the powers determined by the Board of Directors, upon proposal of the CEO, specifying the scope and duration. Regarding third parties, he has the same powers as the CEO.</em>",
+        "<strong>o Registry Office:</strong> The registry office is responsible for the categorization process of incoming/outgoing mail. This may include digitized written correspondence or electronic communication.",
+        "• <strong>Technical Studies Division:</strong>",
+        "<strong>The Technical Studies Division is responsible for collecting and using site data, project engineering studies, and more generally, all activities requiring SNED's technical expertise (partnerships, events, etc.).</strong> This division consists of two departments:",
+        "<strong>o Design Department:</strong> <em>Modeling studies of the technical solution choice (construction of a railway tunnel excavated under the seabed) for the connection across the Strait of Gibraltar.</em>",
+        "<strong>o Physical Environment Survey Department:</strong> Studies (geological, oceanographic, seismic, and meteorological) to understand the site challenges of the future construction area.",
+        "• <strong>Project Promotion and Cooperation Division:</strong>",
+        "<strong>This division is responsible for formulating communication proposals to make the project known worldwide, develop it through cooperation with various organizations, and communicate it effectively to the public.</strong>",
+        "• <strong>Economic, Social, and Environmental Impact Studies Division:</strong>",
+        "<strong>This division is responsible for studies on the project's impacts on the different areas concerned (particularly the coastline) and, more generally, all activities requiring SNED's socioeconomic expertise (partnerships, events, etc.).</strong>",
+        "• <strong>Support Division:</strong>",
+        "<strong>The Support Division is responsible for all management activities, ensuring the smooth operation of SNED.</strong> This division consists of three departments:",
+        "<strong>o Human Resources Department:</strong> Responsible for personnel management, payroll, assignments, and travel.",
+        "<strong>o General Affairs Department:</strong> Responsible for administrative aspects regarding the management of documentary assets and archiving (including technical, legal, and financial documentation), intellectual property rights management, procurement and supply management, and inventory and fixed assets management. <em>Additionally, the legal studies related to the fixed link project across the Strait of Gibraltar are also covered by this department.</em>",
+        "<strong>o Accounting and Finance Department:</strong> Responsible for accounting, financial closing, budgeting and budget control, cash management, and internal and external auditing."
+      ]
     }
   }
 }

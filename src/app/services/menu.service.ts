@@ -49,7 +49,7 @@ export class MenuService {
           { label: 'Composante ingénierie', route: '/projet/ingenierie' },
           { label: 'Composante milieu physique', route: '/projet/milieu-physique' },
           { label: 'Composante socio-économique', route: '/projet/socio-economique' },
-          { label: 'Composante promotion du projet', route: '/projet/promotion' },
+          { label: 'Composante promotion du projet', route: '/projet/ingenierie' },
           { label: 'Galerie de reconnaissance', route: '/galerie' }
         ]
       }

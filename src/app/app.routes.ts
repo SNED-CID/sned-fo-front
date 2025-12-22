@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import {HomeComponent} from './components/home/home.component';
 import {PartnersComponent} from './components/partners/partners.component';
+import { TendersComponent } from './components/tenders/tenders.component';
 
 
 export const routes: Routes = [
@@ -26,7 +27,7 @@ export const routes: Routes = [
   // Partenariats
   { path: 'partenariat', component: PartnersComponent },
   // Appels d'offres
-  { path: 'appels-offres', component: HomeComponent },
+  { path: 'appels-offres', component: TendersComponent },
 
   // Travail
   { path: 'travail', component: HomeComponent },

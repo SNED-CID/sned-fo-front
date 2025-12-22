@@ -62,17 +62,14 @@ import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
               <a routerLink="/projet" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
                 {{ 'footer.navigation.project' | translate }}
               </a>
-              <a routerLink="/galerie" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
-                {{ 'footer.navigation.gallery' | translate }}
-              </a>
               <a routerLink="/actualite" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
                 {{ 'footer.navigation.news' | translate }}
               </a>
               <a routerLink="/partenariat" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
                 {{ 'footer.navigation.partnerships' | translate }}
               </a>
-              <a routerLink="/travail" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
-                {{ 'footer.navigation.work' | translate }}
+              <a routerLink="/appels-offres" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
+                {{ 'footer.navigation.appels-offres' | translate }}
               </a>
             </nav>
           </div>
@@ -84,29 +81,17 @@ import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
               <a routerLink="/projet/ingenierie" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
                 {{ 'footer.project.engineering' | translate }}
               </a>
-              <a routerLink="/projet/historique" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
-                {{ 'footer.project.history' | translate }}
-              </a>
               <a routerLink="/projet/milieu-physique" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
                 {{ 'footer.project.physical' | translate }}
               </a>
-              <a routerLink="/galerie" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
-                {{ 'footer.gallery.title' | translate }}
+              <a routerLink="/projet/socio-economique" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
+                {{ 'footer.project.socioeconomic' | translate }}
+              </a>
+              <a routerLink="/projet/promotion" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
+                {{ 'footer.project.promotion' | translate }}
               </a>
             </nav>
 
-            <h4 class="text-md font-semibold text-slate-800 mb-3 mt-6">{{ 'footer.work.title' | translate }}</h4>
-            <nav class="space-y-2">
-              <a routerLink="/travail/congres" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
-                {{ 'footer.work.congress' | translate }}
-              </a>
-              <a routerLink="/travail/communication" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
-                {{ 'footer.work.communication' | translate }}
-              </a>
-              <a routerLink="/travail/video" class="block text-sm text-slate-600 hover:text-[var(--sned-orange)] transition-colors py-1">
-                {{ 'footer.work.video' | translate }}
-              </a>
-            </nav>
           </div>
 
           <!-- Newsletter & Social -->
@@ -185,20 +170,6 @@ import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
             <p class="text-sm text-slate-600 text-center md:text-left">
               {{ 'footer.legal.copyright' | translate : {year: currentYear()} }}
             </p>
-            <nav class="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-2 text-sm">
-              <a href="/legal" class="text-slate-500 hover:text-[var(--sned-orange)] transition-colors">
-                {{ 'footer.legal.legal' | translate }}
-              </a>
-              <a href="/privacy" class="text-slate-500 hover:text-[var(--sned-orange)] transition-colors">
-                {{ 'footer.legal.privacy' | translate }}
-              </a>
-              <a href="/terms" class="text-slate-500 hover:text-[var(--sned-orange)] transition-colors">
-                {{ 'footer.legal.terms' | translate }}
-              </a>
-              <a href="/cookies" class="text-slate-500 hover:text-[var(--sned-orange)] transition-colors">
-                {{ 'footer.legal.cookies' | translate }}
-              </a>
-            </nav>
           </div>
         </div>
       </div>
