@@ -42,7 +42,7 @@
         <p>Aucun appel d'offres disponible pour le moment</p>
       </div>
       } @else { @for (tender of tenders(); track tender.id) {
-      <div class="tender-card-wrapper ">
+      <div class="tender-card-wrapper">
         <div class="tender-card-inner min-w-0">
           <h5 class="tender-number">
             {{ tender.number }}
@@ -67,12 +67,23 @@
       </div>
       } }
 
-
+      <!-- Pagination -->
+      <!-- Bouton Afficher la suite -->
+      @if (currentPage() < totalPages() - 1) {
+      <div class="flex justify-center mt-8">
+        <button
+          class="px-6 py-3 rounded-lg border text-sm font-medium transition hover:bg-gray-100"
+          (click)="loadMore()"
+        >
+          Afficher la suite
+        </button>
+      </div>
+      }
+      
     </div>
   </div>
 </div>
 <app-tender-read-more
-
   #tenderReadMore
   (navigateToTender)="onNavigateToTender($event)"
 >

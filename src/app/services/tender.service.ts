@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
@@ -31,12 +31,37 @@ export class TenderService {
     private previewTokenService: PreviewTokenService
   ) {}
 
-  getAllLocalizedTenders(lang? : string) : Observable<Page<TenderReadDTO>> {
-      const hasPreviewToken = this.previewTokenService.hasToken();
-      const endpoint = hasPreviewToken ? '/preview' : '/localized';
-      const url : string = this.BASE_URL + endpoint + (lang != null ? '?lang=' + lang : '');
-      return this.http.get<Page<TenderReadDTO>>(url);
+  // getAllLocalizedTenders(lang? : string) : Observable<Page<TenderReadDTO>> {
+  //     const hasPreviewToken = this.previewTokenService.hasToken();
+  //     const endpoint = hasPreviewToken ? '/preview' : '/localized';
+  //     const url : string = this.BASE_URL + endpoint + (lang != null ? '?lang=' + lang : '');
+  //     return this.http.get<Page<TenderReadDTO>>(url);
+  // }
+
+  getAllLocalizedTenders(
+  lang: string | undefined,
+  page: number,
+  size: number
+): Observable<Page<TenderReadDTO>> {
+
+  const hasPreviewToken = this.previewTokenService.hasToken();
+  const endpoint = hasPreviewToken ? '/preview' : '/localized';
+
+  let params = new HttpParams()
+    .set('page', page)
+    .set('size', size);
+
+  if (lang) {
+    params = params.set('lang', lang);
   }
+
+  return this.http.get<Page<TenderReadDTO>>(
+    this.BASE_URL + endpoint,
+    { params }
+  );
+}
+
+
 
 
 }
