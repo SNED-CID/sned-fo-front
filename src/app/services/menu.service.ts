@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 export interface MenuItem {
   label: string;
@@ -17,46 +18,56 @@ export interface MenuSection {
   providedIn: 'root'
 })
 export class MenuService {
+  private readonly translateService = inject(TranslateService);
 
-  // Menu: Découvrez la SNED
-  snedMenu: MenuSection = {
-    label: 'Découvrez la SNED',
-    items: [
-      {
-        label: 'Découvrez la SNED',
-        route: '/',
-        children: [
-          { label: 'Nous connaitre', route: '/' },
-          { label: 'Contexte stratégique', route: '/' },
-          { label: 'Missions et valeurs', route: '/' },
-          { label: 'Cadre institutionnel', route: '/' },
-          { label: 'Mot du PDG', route: '/' },
-          { label: 'Organisation', route: '/' },
-          { label: 'SNED & SECEG SA', route: '/' }
-        ]
-      }
-    ]
-  };
+  constructor() {
+    // S'abonner aux changements de langue pour rafraîchir les menus
+    this.translateService.onLangChange.subscribe(() => {
+      // Les menus seront regénérés à la prochaine demande
+    });
+  }
 
-  // Menu: Projet de liaison fixe
-  projetMenu: MenuSection = {
-    label: 'Projet de liaison fixe',
-    items: [
-      {
-        label: 'Projet de liaison fixe',
-        route: '/projet',
-        children: [
-          { label: 'Composante ingénierie', route: '/projet/ingenierie' },
-          { label: 'Composante milieu physique', route: '/projet/milieu-physique' },
-          { label: 'Composante socio-économique', route: '/projet/socio-economique' },
-          { label: 'Composante promotion du projet', route: '/projet/ingenierie' },
-          { label: 'Galerie de reconnaissance', route: '/galerie' }
-        ]
-      }
-    ]
-  };
+  // Générer le menu SNED de manière dynamique
+  private get snedMenu(): MenuSection {
+    return {
+      label: this.translateService.instant('header.menu.discover_sned'),
+      items: [
+        {
+          label: this.translateService.instant('header.menu.discover_sned'),
+          route: '/',
+          children: [
+            { label: this.translateService.instant('header.menu.know_us'), route: '/' },
+            { label: this.translateService.instant('header.menu.strategic_context'), route: '/' },
+            { label: this.translateService.instant('header.menu.missions_values'), route: '/' },
+            { label: this.translateService.instant('header.menu.institutional_framework'), route: '/' },
+            { label: this.translateService.instant('header.menu.ceo_message'), route: '/' },
+            { label: this.translateService.instant('header.menu.organization'), route: '/' },
+            { label: this.translateService.instant('header.menu.sned_secegsa'), route: '/' }
+          ]
+        }
+      ]
+    };
+  }
 
-  constructor() { }
+  // Générer le menu Projet de manière dynamique
+  private get projetMenu(): MenuSection {
+    return {
+      label: this.translateService.instant('header.menu.fixed_link_project'),
+      items: [
+        {
+          label: this.translateService.instant('header.menu.fixed_link_project'),
+          route: '/projet',
+          children: [
+            { label: this.translateService.instant('header.menu.engineering_component'), route: '/projet/ingenierie' },
+            { label: this.translateService.instant('header.menu.physical_environment_component'), route: '/projet/milieu-physique' },
+            { label: this.translateService.instant('header.menu.socioeconomic_component'), route: '/projet/socio-economique' },
+            { label: this.translateService.instant('header.menu.project_promotion_component'), route: '/projet/ingenierie' },
+            { label: this.translateService.instant('header.menu.recognition_gallery'), route: '/galerie' }
+          ]
+        }
+      ]
+    };
+  }
 
   /**
    * Récupère le menu actif basé sur la route

@@ -1,13 +1,14 @@
-import { Component, Input, Output, EventEmitter, signal, inject, HostListener } from '@angular/core';
+import { Component, Input, Output, EventEmitter, signal, inject, HostListener, OnInit } from '@angular/core';
 import { trigger, style, transition, animate } from '@angular/animations';
 import { LoaderComponent } from '../loader/loader.component';
 import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-read-more',
   standalone: true,
-  imports: [LoaderComponent, LazyImageComponent, TranslatePipe],
+  imports: [LoaderComponent, LazyImageComponent, TranslatePipe, CommonModule],
   animations: [
     trigger('slideInOut', [
       transition(':enter', [
@@ -27,7 +28,9 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
         class="cursor-pointer group flex items-center gap-2 px-5 py-2 rounded-full bg-[var(--sned-orange)] text-white font-medium transition-all duration-300 hover:translate-y-[-2px] hover:bg-sned-blue whitespace-nowrap"
       >
         <span>{{ label | translate }}</span>
-        <span class="transition-transform duration-300 group-hover:translate-x-1">➔</span>
+        <span [class]="currentLang() === 'ar' ? 'transition-transform duration-300 group-hover:-translate-x-1' : 'transition-transform duration-300 group-hover:translate-x-1'">
+          {{ currentLang() === 'ar' ? '←' : '➔' }}
+        </span>
       </button>
     </div>
 
@@ -146,7 +149,7 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
               <span class="text-gray-600">{{ 'shared.readmore.next_section' | translate }}</span>
               <span class="font-semibold text-gray-800">{{ nextSectionTitle }}</span>
             </div>
-            <i class="fas fa-arrow-right text-[var(--sned-orange)] group-hover:translate-x-1 transition-transform duration-200"></i>
+            <i [class]="currentLang() === 'ar' ? 'fas fa-arrow-left text-[var(--sned-orange)] group-hover:-translate-x-1 transition-transform duration-200' : 'fas fa-arrow-right text-[var(--sned-orange)] group-hover:translate-x-1 transition-transform duration-200'"></i>
           </button>
         </div>
       }
@@ -154,9 +157,20 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
     }
   `
 })
-export class ReadMoreComponent {
+export class ReadMoreComponent implements OnInit {
   private translate = inject(TranslateService);
+  currentLang = signal('fr');
   @Input() label = 'shared.readmore.read_more';
+
+  ngOnInit() {
+    // Initialiser la langue courante
+    this.currentLang.set(this.translate.currentLang || this.translate.defaultLang || 'fr');
+
+    // S'abonner aux changements de langue
+    this.translate.onLangChange.subscribe((event) => {
+      this.currentLang.set(event.lang);
+    });
+  }
   @Input() title = 'shared.readmore.details';
   @Input() paragraphs: string[] | undefined = [];
   @Input() imageUrl: string | null = null;

@@ -4,7 +4,7 @@
       @for (link of links(); track link.id) {
         <button (click)="scrollTo(link.id)"
                 class="relative text-[var(--sned-blue-dark)] font-medium px-1 sm:px-2 py-1 text-xs sm:text-sm md:text-base transition group whitespace-nowrap">
-          {{ link.label }}
+          {{ link.labelKey | translate }}
           <!-- Trait animé -->
           <span class="absolute left-0 right-0 -bottom-1 h-[2px] sm:h-[3px] bg-[var(--sned-orange)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
         </button>

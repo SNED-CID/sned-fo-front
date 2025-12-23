@@ -2,12 +2,12 @@ import {Component, ElementRef, OnInit, signal, ViewChild, Input} from '@angular/
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MenuItem } from '../../services/menu.service';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-anchor',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslatePipe],
   templateUrl: './anchor.component.html',
   styleUrls: ['./anchor.component.scss']
 })
@@ -17,18 +17,18 @@ export class AnchorComponent implements OnInit {
   @Input() menuItems: MenuItem[] = [];
   @Input() menuTitle: string = '';
 
-  links = signal<Array<{ id: string; label: string }>>([]);
+  links = signal<Array<{ id: string; labelKey: string }>>([]);
 
   // Default links for home/about page
   private getDefaultLinks() {
     return [
-      { id: 'apropos', label: this.translateService.instant('header.menu.know_us') },
-      { id: 'contexte', label: this.translateService.instant('header.menu.strategic_context') },
-      { id: 'missions', label: this.translateService.instant('header.menu.missions_values') },
-      { id: 'cadre', label: this.translateService.instant('header.menu.institutional_framework') },
-      { id: 'pdg', label: this.translateService.instant('header.menu.ceo_message') },
-      { id: 'sned_secegsa', label: this.translateService.instant('header.menu.sned_secegsa') },
-      { id: 'organigramme', label: this.translateService.instant('header.menu.organization') }
+      { id: 'apropos', labelKey: 'header.menu.know_us' },
+      { id: 'contexte', labelKey: 'header.menu.strategic_context' },
+      { id: 'missions', labelKey: 'header.menu.missions_values' },
+      { id: 'cadre', labelKey: 'header.menu.institutional_framework' },
+      { id: 'pdg', labelKey: 'header.menu.ceo_message' },
+      { id: 'sned_secegsa', labelKey: 'header.menu.sned_secegsa' },
+      { id: 'organigramme', labelKey: 'header.menu.organization' }
     ];
   }
 
@@ -72,10 +72,30 @@ export class AnchorComponent implements OnInit {
       this.links.set(
         children.map((child) => ({
           id: this.mapLabelToId(child.label, this.menuTitle),
-          label: child.label
+          labelKey: this.getLabelKeyFromLabel(child.label)
         }))
       );
     }
+  }
+
+  private getLabelKeyFromLabel(label: string): string {
+    // Créer un mapping simple basé sur la langue actuelle
+    const labelToKeyMap: Record<string, string> = {
+      [this.translateService.instant('header.menu.know_us')]: 'header.menu.know_us',
+      [this.translateService.instant('header.menu.strategic_context')]: 'header.menu.strategic_context',
+      [this.translateService.instant('header.menu.missions_values')]: 'header.menu.missions_values',
+      [this.translateService.instant('header.menu.institutional_framework')]: 'header.menu.institutional_framework',
+      [this.translateService.instant('header.menu.ceo_message')]: 'header.menu.ceo_message',
+      [this.translateService.instant('header.menu.sned_secegsa')]: 'header.menu.sned_secegsa',
+      [this.translateService.instant('header.menu.organization')]: 'header.menu.organization',
+      [this.translateService.instant('header.menu.engineering_component')]: 'header.menu.engineering_component',
+      [this.translateService.instant('header.menu.physical_environment_component')]: 'header.menu.physical_environment_component',
+      [this.translateService.instant('header.menu.socioeconomic_component')]: 'header.menu.socioeconomic_component',
+      [this.translateService.instant('header.menu.project_promotion_component')]: 'header.menu.project_promotion_component',
+      [this.translateService.instant('header.menu.recognition_gallery')]: 'header.menu.recognition_gallery'
+    };
+
+    return labelToKeyMap[label] || label;
   }
 
   private mapLabelToId(label: string, menuTitle: string = ''): string {

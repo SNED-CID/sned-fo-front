@@ -204,7 +204,7 @@
 
         <button routerLink="/projet"
                 class="group flex items-center justify-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-full border-2 border-white/30 hover:bg-white/20 hover:border-white/50 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/20">
-          <i class="fas fa-arrow-right w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+          <i [class]="currentLang() === 'ar' ? 'fas fa-arrow-left w-5 h-5 group-hover:-translate-x-1 transition-transform' : 'fas fa-arrow-right w-5 h-5 group-hover:translate-x-1 transition-transform'"></i>
           <span>{{ 'header.navigation.discover_project_button' | translate }}</span>
         </button>
       </div>
