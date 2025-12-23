@@ -6,6 +6,7 @@ import {
   HostListener,
   inject,
   OnDestroy,
+  OnInit,
   signal,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -138,7 +139,7 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
                   </svg>
                   {{ 'tenders.tender_object' | translate }}
                 </h3>
-                <div class="content-text" [innerHTML]="trustedContent"></div>
+                <div class="content-text break-words whitespace-normal" [innerHTML]="trustedContent"></div>
               </div>
             </div>
 
@@ -177,7 +178,7 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
             }}</span>
           </div>
           <i
-            class="fas fa-arrow-right text-blue-600 group-hover:translate-x-1 transition-transform duration-200"
+            [class]="currentLang() === 'ar' ? 'fas fa-arrow-left text-blue-600 group-hover:-translate-x-1 transition-transform duration-200' : 'fas fa-arrow-right text-blue-600 group-hover:translate-x-1 transition-transform duration-200'"
           ></i>
         </button>
       </div>
@@ -629,7 +630,7 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
     `,
   ],
 })
-export class TenderReadMoreComponent implements OnDestroy {
+export class TenderReadMoreComponent implements OnInit, OnDestroy {
   private translate = inject(TranslateService);
   private sanitizer = inject(DomSanitizer);
 
@@ -645,6 +646,17 @@ export class TenderReadMoreComponent implements OnDestroy {
   sidebarOpen = signal(false);
   loading = signal(false);
   trustedContent: SafeHtml | null = null;
+  currentLang = signal('fr');
+
+  ngOnInit() {
+    // Initialiser la langue courante
+    this.currentLang.set(this.translate.currentLang || this.translate.defaultLang || 'fr');
+
+    // S'abonner aux changements de langue
+    this.translate.onLangChange.subscribe((event) => {
+      this.currentLang.set(event.lang);
+    });
+  }
 
   get tenderNumberDisplay() {
     return this.numberText || `${this.tenderId ?? ''}`;

@@ -1,7 +1,8 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { AnalyticsService } from '../../../services/analytics.service';
 
 export interface MenuItem {
   label: string;
@@ -35,7 +36,7 @@ export interface MenuSection {
                   [fragment]="item.sectionId"
                   routerLinkActive="active-link"
                   [routerLinkActiveOptions]="{ exact: true }"
-                  (click)="onMenuItemClick()"
+                  (click)="onMenuItemClick(item)"
                   class="relative px-2 lg:px-2.5 py-2 font-medium text-xs lg:text-sm rounded-lg inline-flex items-center gap-1.5 whitespace-nowrap transition-all duration-200 group text-[var(--sned-orange-dark)] hover:text-[var(--sned-blue)] hover:bg-[var(--sned-orange)]/5 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/20 cursor-pointer"
                 >
                   {{ item.label | translate }}
@@ -84,12 +85,12 @@ export interface MenuSection {
                           [fragment]="child.sectionId"
                           routerLinkActive="active-sublink"
                           [routerLinkActiveOptions]="{ exact: true }"
-                          (click)="onMenuItemClick()"
+                          (click)="onMenuItemClick(child, item.label)"
                           class="flex items-center px-4 py-3 text-sm font-medium text-[var(--sned-orange-dark)] hover:bg-gradient-to-r hover:from-[var(--sned-orange)]/8 hover:to-[var(--sned-blue)]/4 hover:text-[var(--sned-blue)] rounded-lg transition-all duration-200 whitespace-nowrap rtl:text-right group/item relative overflow-hidden cursor-pointer"
                         >
                           <!-- Icône animée -->
                           <i
-                            class="fas fa-chevron-right w-4 h-4 mr-3 text-[var(--sned-orange)] opacity-0 group-hover/item:opacity-100 transition-all duration-200 transform -translate-x-2 group-hover/item:translate-x-0"
+                            [class]="currentLang() === 'ar' ? 'fas fa-chevron-left w-4 h-4 mr-3 rtl:ml-3 text-[var(--sned-orange)] opacity-0 group-hover/item:opacity-100 transition-all duration-200 transform translate-x-2 group-hover/item:translate-x-0' : 'fas fa-chevron-right w-4 h-4 mr-3 rtl:ml-3 text-[var(--sned-orange)] opacity-0 group-hover/item:opacity-100 transition-all duration-200 transform -translate-x-2 group-hover/item:translate-x-0'"
                           ></i>
 
                           <div class="flex-1">
@@ -131,11 +132,32 @@ export interface MenuSection {
     }
   `]
 })
-export class NavigationMenuComponent {
+export class NavigationMenuComponent implements OnInit {
+  private translateService = inject(TranslateService);
+  private analytics = inject(AnalyticsService);
+
   @Input({ required: true }) menuSections: MenuSection[] = [];
   @Output() menuItemClick = new EventEmitter<void>();
 
-  onMenuItemClick() {
+  currentLang = signal('fr');
+
+  ngOnInit() {
+    this.currentLang.set(this.translateService.currentLang || this.translateService.defaultLang || 'fr');
+    this.translateService.onLangChange.subscribe((event) => {
+      this.currentLang.set(event.lang);
+    });
+  }
+
+  onMenuItemClick(item?: MenuItem, parentLabel?: string) {
+    if (item) {
+      if (parentLabel) {
+        // C'est un sous-menu
+        this.analytics.trackSubmenuClick(parentLabel, item.label, item.route || '');
+      } else {
+        // C'est un menu principal
+        this.analytics.trackMenuClick(item.label, item.route || '', !!item.children);
+      }
+    }
     this.menuItemClick.emit();
   }
 

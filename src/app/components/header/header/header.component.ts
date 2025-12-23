@@ -8,6 +8,7 @@ import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import { LanguageSelectorComponent, Language } from '../language-selector/language-selector.component';
 import { NavigationMenuComponent, MenuSection } from '../navigation-menu/navigation-menu.component';
 import { BackgroundParticleAnimationDirective } from '../../../directives/background-particle-animation.directive';
+import { AnalyticsService } from '../../../services/analytics.service';
 
 @Component({
   selector: 'app-header',
@@ -77,6 +78,7 @@ export class HeaderComponent implements OnInit{
 
   constructor(private router: Router, private translateService: TranslateService) {}
   private readonly localeService = inject(LocaleService);
+  private readonly analytics = inject(AnalyticsService);
 
   ngOnInit() {
     // Charger les menus traduits
@@ -250,6 +252,9 @@ export class HeaderComponent implements OnInit{
       this.mobileDropdowns.set(new Set());
     }
 
+    // Track mobile menu toggle
+    this.analytics.trackMobileMenuToggle(this.isMobileMenuOpen() ? 'open' : 'close');
+
     // Prevent body scroll when mobile menu is open
     if (this.isMobileMenuOpen()) {
       document.body.style.overflow = 'hidden';
@@ -265,6 +270,8 @@ export class HeaderComponent implements OnInit{
   }
 
   toggleMobileDropdown(itemLabel: string) {
+    const isCurrentlyOpen = this.mobileDropdowns().has(itemLabel);
+
     this.mobileDropdowns.update(dropdowns => {
       const newDropdowns = new Set(dropdowns);
       if (newDropdowns.has(itemLabel)) {
@@ -274,6 +281,8 @@ export class HeaderComponent implements OnInit{
       }
       return newDropdowns;
     });
+
+    this.analytics.trackMobileDropdownToggle(itemLabel, isCurrentlyOpen ? 'close' : 'open');
   }
 
   isMobileDropdownOpen(itemLabel: string): boolean {
@@ -361,5 +370,88 @@ export class HeaderComponent implements OnInit{
       return '';
     }
     return `home.sections.${section}.subtitle`;
+  }
+
+  /**
+   * Obtient tous les éléments de menu principaux (sans enfants, ou les parents avec enfants)
+   */
+  private getMainMenuItems() {
+    if (!this.menuSections || this.menuSections.length === 0) {
+      return [];
+    }
+    // Retourne tous les items du premier menuSection
+    return this.menuSections[0].items || [];
+  }
+
+  /**
+   * Trouve l'index du menu courant basé sur la route actuelle
+   */
+  private getCurrentMenuIndex(): number {
+    const currentUrl = this.router.url.split('#')[0].split('?')[0];
+    const mainItems = this.getMainMenuItems();
+
+    for (let i = 0; i < mainItems.length; i++) {
+      const item = mainItems[i];
+      if (item.route === currentUrl) {
+        return i;
+      }
+      // Vérifier aussi si l'URL correspond au début de la route (pour les sous-routes)
+      if (currentUrl.startsWith(item.route || '')) {
+        return i;
+      }
+    }
+
+    // Si on est sur la home page, retourner l'index de "Découvrez la SNED"
+    if (currentUrl === '/' || currentUrl === '' || currentUrl === '/about') {
+      return 0;
+    }
+
+    return -1;
+  }
+
+  /**
+   * Obtient le menu suivant (avec boucle)
+   */
+  getNextMenuItem() {
+    const mainItems = this.getMainMenuItems();
+    if (mainItems.length === 0) {
+      return null;
+    }
+
+    const currentIndex = this.getCurrentMenuIndex();
+    const nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % mainItems.length;
+
+    return mainItems[nextIndex];
+  }
+
+  /**
+   * Obtient le titre du menu suivant (pour l'afficher dans le bouton)
+   */
+  getNextMenuTitle(): string {
+    const nextItem = this.getNextMenuItem();
+    if (!nextItem) {
+      return this.translateService.instant('header.navigation.discover_project_button');
+    }
+    return nextItem.label;
+  }
+
+  /**
+   * Navigue vers le menu suivant
+   */
+  navigateToNextMenu() {
+    const currentIndex = this.getCurrentMenuIndex();
+    const mainItems = this.getMainMenuItems();
+    const currentItem = mainItems[currentIndex] || null;
+
+    const nextItem = this.getNextMenuItem();
+    if (nextItem && nextItem.route) {
+      // Track dynamic navigation
+      this.analytics.trackDynamicNavigation(
+        currentItem?.label || 'Unknown',
+        nextItem.label
+      );
+
+      this.router.navigate([nextItem.route]);
+    }
   }
 }
