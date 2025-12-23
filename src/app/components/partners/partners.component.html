@@ -9,9 +9,9 @@
     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[var(--sned-blue)] to-[var(--sned-orange)] rounded-t-2xl"></div>
     <div class="overflow-hidden transition-all duration-500 ease-in-out max-h-screen opacity-100">
       <div class="partners-header">
-        <h1>Un champ d’action clairement défini</h1>
-        <p>Les {{ partners().length }} Établissements et Entreprises Publics concernés pilotent des projets structurants pour le pays.</p>
-        <h2>Présentation cartographique des {{ partners().length }} EEP</h2>
+        <h1>{{ 'partners.title' | translate }}</h1>
+        <p>{{ 'partners.description' | translate:{ count: partners().length } }}</p>
+        <h2>{{ 'partners.cartographic_title' | translate:{ count: partners().length } }}</h2>
       </div>
 
       <div class="partners-container">
@@ -20,7 +20,7 @@
             <img [src]="partner.logoUrl" [alt]="partner.name" class="partner-logo">
             <div class="partner-tooltip">
               <h3><b>{{ partner.name }}</b></h3>
-              <p>{{ partner.partnerType === 'NATIONAL' ? 'Partenaire national' : 'Partenaire international' }}</p>
+              <p>{{ partner.partnerType === 'NATIONAL' ? ('partners.national_partner' | translate) : ('partners.international_partner' | translate) }}</p>
             </div>
           </div>
         }

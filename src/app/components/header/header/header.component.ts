@@ -4,7 +4,7 @@ import {NavigationEnd, Router, RouterModule} from '@angular/router';
 import {LoaderComponent} from '../../loader/loader.component';
 import {filter} from 'rxjs';
 import {LocaleService} from '../../../services/locale.service';
-import {TranslatePipe} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import { LanguageSelectorComponent, Language } from '../language-selector/language-selector.component';
 import { NavigationMenuComponent, MenuSection } from '../navigation-menu/navigation-menu.component';
 import { BackgroundParticleAnimationDirective } from '../../../directives/background-particle-animation.directive';
@@ -75,10 +75,18 @@ export class HeaderComponent implements OnInit{
   currentBackground: string | null = null;
   isBackgroundLoading = signal(false);
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private translateService: TranslateService) {}
   private readonly localeService = inject(LocaleService);
 
   ngOnInit() {
+    // Charger les menus traduits
+    this.loadTranslatedMenus();
+
+    // S'abonner aux changements de langue
+    this.translateService.onLangChange.subscribe(() => {
+      this.loadTranslatedMenus();
+    });
+
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: any) => {
@@ -94,6 +102,52 @@ export class HeaderComponent implements OnInit{
         // Mettre à jour la section actuelle
         this.updateCurrentSection(url);
       });
+  }
+
+  private loadTranslatedMenus() {
+    this.menuSections = [
+      {
+        title: this.translateService.instant('header.menu.main_navigation'),
+        items: [
+          {
+            label: this.translateService.instant('header.menu.discover_sned'),
+            route: '/about',
+            children: [
+              { label: this.translateService.instant('header.menu.know_us'), route: '/about', sectionId: 'apropos' },
+              { label: this.translateService.instant('header.menu.strategic_context'), route: '/about', sectionId: 'contexte' },
+              { label: this.translateService.instant('header.menu.missions_values'), route: '/about', sectionId: 'missions' },
+              { label: this.translateService.instant('header.menu.institutional_framework'), route: '/about', sectionId: 'cadre' },
+              { label: this.translateService.instant('header.menu.ceo_message'), route: '/about', sectionId: 'pdg' },
+              { label: this.translateService.instant('header.menu.sned_secegsa'), route: '/about', sectionId: 'sned_secegsa' },
+              { label: this.translateService.instant('header.menu.organization'), route: '/about', sectionId: 'organigramme' },
+            ]
+          },
+          {
+            label: this.translateService.instant('header.menu.fixed_link_project'),
+            route: '/projet',
+            children: [
+              { label: this.translateService.instant('header.menu.engineering_component'), route: '/projet/ingenierie' },
+              { label: this.translateService.instant('header.menu.physical_environment_component'), route: '/projet/milieu-physique' },
+              { label: this.translateService.instant('header.menu.socioeconomic_component'), route: '/projet/socio-economique' },
+              { label: this.translateService.instant('header.menu.project_promotion_component'), route: '/projet/ingenierie' },
+              { label: this.translateService.instant('header.menu.recognition_gallery'), route: '/galerie' }
+            ]
+          },
+          {
+            label: this.translateService.instant('header.menu.news'),
+            route: '/actualite'
+          },
+          {
+            label: this.translateService.instant('header.menu.partners'),
+            route: '/partenariat'
+          },
+          {
+            label: this.translateService.instant('header.menu.call_for_tenders'),
+            route: '/appels-offres'
+          }
+        ]
+      }
+    ];
   }
 
   private updateCurrentSection(url: string): void {
@@ -152,49 +206,7 @@ export class HeaderComponent implements OnInit{
     this.localeService.setLanguage(langCode);
   }
 
-  menuSections: MenuSection[] = [
-    {
-      title: 'Navigation Principale',
-      items: [
-        {
-          label: 'Découvrez la SNED',
-          route: '/about',
-          children: [
-            { label: 'Nous connaitre', route: '/about', sectionId: 'apropos' },
-            { label: 'Contexte stratégique', route: '/about', sectionId: 'contexte' },
-            { label: 'Missions et valeurs', route: '/about', sectionId: 'missions' },
-            { label: 'Cadre institutionnel', route: '/about', sectionId: 'cadre' },
-            { label: 'Mot du PDG', route: '/about', sectionId: 'pdg' },
-            { label: 'SNED & SECEG SA', route: '/about', sectionId: 'sned_secegsa' },
-            { label: 'Organisation', route: '/about', sectionId: 'organigramme' },
-          ]
-        },
-        {
-          label: 'Projet de liaison fixe',
-          route: '/projet',
-          children: [
-            { label: 'Composante ingénierie', route: '/projet/ingenierie' },
-            { label: 'Composante milieu physique', route: '/projet/milieu-physique' },
-            { label: 'Composante socio-économique', route: '/projet/socio-economique' },
-            { label: 'Composante promotion du projet', route: '/projet/ingenierie' },
-            { label: 'Galerie de reconnaissance', route: '/galerie' }
-          ]
-        },
-        {
-          label: 'Actualités',
-          route: '/actualite'
-        },
-        {
-          label: 'Partenaires',
-          route: '/partenariat'
-        },
-        {
-          label: 'Appel d\'offres',
-          route: '/appels-offres'
-        }
-      ]
-    }
-  ];
+  menuSections: MenuSection[] = [];
 
   @HostListener('window:scroll', [])
   onWindowScroll() {

@@ -5,7 +5,7 @@ import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import {forkJoin, map} from 'rxjs';
 import {LazyImageComponent} from '../shared/lazy-image/lazy-image.component';
 import {ScrollAnimationDirective} from '../../directives/scroll-animation.directive';
-import {TranslateService} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 
 interface PartnerWithLogo extends PartnerReadDTO {
   logoUrl: SafeUrl;
@@ -13,7 +13,7 @@ interface PartnerWithLogo extends PartnerReadDTO {
 
 @Component({
   selector: 'app-partners',
-  imports: [CommonModule, LazyImageComponent, ScrollAnimationDirective],
+  imports: [CommonModule, LazyImageComponent, ScrollAnimationDirective, TranslatePipe],
   templateUrl: './partners.component.html',
   standalone: true,
   styleUrl: './partners.component.scss'

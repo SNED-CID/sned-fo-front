@@ -17,10 +17,9 @@
       class="overflow-hidden transition-all duration-500 ease-in-out max-h-screen opacity-100"
     >
       <div class="tenders-header">
-        <h1>Appels d'offres</h1>
+        <h1>{{ 'tenders.title' | translate }}</h1>
         <p>
-          Consultez nos {{ tenders().length }} appels d'offres en cours et à
-          venir.
+          {{ 'tenders.description' | translate:{ count: tenders().length } }}
         </p>
       </div>
 
@@ -39,7 +38,7 @@
             d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
           />
         </svg>
-        <p>Aucun appel d'offres disponible pour le moment</p>
+        <p>{{ 'tenders.empty_state' | translate }}</p>
       </div>
       } @else {
       <div class="tenders-list">
@@ -60,7 +59,7 @@
                   d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                 />
               </svg>
-              <span class="badge-text">Appel d'offre</span>
+              <span class="badge-text">{{ 'tenders.badge' | translate }}</span>
             </div>
             <div class="tender-date-wrapper">
               <svg
@@ -97,7 +96,7 @@
               class="tender-details-btn"
               (click)="openTenderDetails(tender)"
             >
-              <span>Voir les détails</span>
+              <span>{{ 'tenders.view_details' | translate }}</span>
               <svg
                 class="btn-arrow"
                 viewBox="0 0 20 20"

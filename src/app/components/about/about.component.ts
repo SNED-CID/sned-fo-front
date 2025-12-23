@@ -85,7 +85,7 @@ interface Section {
                 </div>
                 <app-read-more
                     [imageUrl]="section.image"
-                    [label]="'Lire la suite'"
+                    [label]="'shared.readmore.read_more' | translate"
                     [title]="section.title"
                     [paragraphs]="section.paragraphs"
                     [sectionId]="section.id"
@@ -150,7 +150,7 @@ interface Section {
               <div style="isolation: auto;">
                 <app-read-more
                   [imageUrl]="null"
-                  [label]="'Lire la suite'"
+                  [label]="'shared.readmore.read_more' | translate"
                   [title]="'about.conseil_administration.title' | translate"
                   [paragraphs]="'about.conseil_administration.paragraphs' | translate"
                   [sectionId]="'conseil_administration'"
@@ -167,7 +167,7 @@ interface Section {
           <div id="organigramme">
             <div class="flex items-center justify-center mb-6 pt-6 gap-4">
               <h2 class="text-3xl font-bold text-primary">
-                Organisation
+                {{ 'header.menu.organization' | translate }}
               </h2>
 
               <!-- Bouton agrandir/réduire -->

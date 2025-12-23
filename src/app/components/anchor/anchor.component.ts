@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, signal, ViewChild, Input} from '@angular/
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MenuItem } from '../../services/menu.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-anchor',
@@ -19,20 +20,27 @@ export class AnchorComponent implements OnInit {
   links = signal<Array<{ id: string; label: string }>>([]);
 
   // Default links for home/about page
-  private defaultLinks = [
-    { id: 'apropos', label: 'Nous connaitre' },
-    { id: 'contexte', label: 'Contexte stratégique' },
-    { id: 'missions', label: 'Missions et valeurs' },
-    { id: 'cadre', label: 'Cadre institutionnel' },
-    { id: 'pdg', label: 'Mot du PDG' },
-    { id: 'sned_secegsa', label: 'SNED & SECEG SA' },
-    { id: 'organigramme', label: 'Organisation' }
-  ];
+  private getDefaultLinks() {
+    return [
+      { id: 'apropos', label: this.translateService.instant('header.menu.know_us') },
+      { id: 'contexte', label: this.translateService.instant('header.menu.strategic_context') },
+      { id: 'missions', label: this.translateService.instant('header.menu.missions_values') },
+      { id: 'cadre', label: this.translateService.instant('header.menu.institutional_framework') },
+      { id: 'pdg', label: this.translateService.instant('header.menu.ceo_message') },
+      { id: 'sned_secegsa', label: this.translateService.instant('header.menu.sned_secegsa') },
+      { id: 'organigramme', label: this.translateService.instant('header.menu.organization') }
+    ];
+  }
 
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private translateService: TranslateService) {}
 
   ngOnInit() {
+    // S'abonner aux changements de langue
+    this.translateService.onLangChange.subscribe(() => {
+      this.updateAnchorVisibility();
+    });
+
     this.router.events.subscribe(() => {
       this.updateAnchorVisibility();
     });
@@ -53,7 +61,7 @@ export class AnchorComponent implements OnInit {
       this.isHomeRoute.set(url === '/' || url === '/sned');
       this.showAnchor.set(url === '/' || url === '/sned');
       if (this.showAnchor()) {
-        this.links.set(this.defaultLinks);
+        this.links.set(this.getDefaultLinks());
       }
     }
   }
@@ -71,27 +79,28 @@ export class AnchorComponent implements OnInit {
   }
 
   private mapLabelToId(label: string, menuTitle: string = ''): string {
-    // Pour "Découvrez la SNED"
+    // Créer des mappings dynamiques basés sur les traductions actuelles
     const snedMapping: Record<string, string> = {
-      'Nous connaitre': 'apropos',
-      'Contexte stratégique': 'contexte',
-      'Missions et valeurs': 'missions',
-      'Cadre institutionnel': 'cadre',
-      'Mot du PDG': 'pdg',
-      'Organisation': 'organigramme',
-      'SNED & SECEG SA': 'sned_secegsa'
+      [this.translateService.instant('header.menu.know_us')]: 'apropos',
+      [this.translateService.instant('header.menu.strategic_context')]: 'contexte',
+      [this.translateService.instant('header.menu.missions_values')]: 'missions',
+      [this.translateService.instant('header.menu.institutional_framework')]: 'cadre',
+      [this.translateService.instant('header.menu.ceo_message')]: 'pdg',
+      [this.translateService.instant('header.menu.organization')]: 'organigramme',
+      [this.translateService.instant('header.menu.sned_secegsa')]: 'sned_secegsa'
     };
 
     // Pour "Projet de liaison fixe"
     const projetMapping: Record<string, string> = {
-      'Composante ingénierie': 'ingenierie',
-      'Composante milieu physique': 'milieu-physique',
-      'Composante socio-économique': 'socio-economique',
-      'Composante promotion du projet': 'promotion',
-      'Galerie de reconnaissance': 'galerie'
+      [this.translateService.instant('header.menu.engineering_component')]: 'ingenierie',
+      [this.translateService.instant('header.menu.physical_environment_component')]: 'milieu-physique',
+      [this.translateService.instant('header.menu.socioeconomic_component')]: 'socio-economique',
+      [this.translateService.instant('header.menu.project_promotion_component')]: 'promotion',
+      [this.translateService.instant('header.menu.recognition_gallery')]: 'galerie'
     };
 
-    if (menuTitle === 'Projet de liaison fixe') {
+    const fixedLinkProjectTranslation = this.translateService.instant('header.menu.fixed_link_project');
+    if (menuTitle === fixedLinkProjectTranslation) {
       return projetMapping[label] || label.toLowerCase().replace(/\s+/g, '-');
     }
 

@@ -91,7 +91,9 @@
         "desc": "Les opportunités de marché et d'engagement dans le projet SNED",
         "subtitle": "Appels d'Offres"
       }
-    }
+    },
+    "loading_content": "Chargement du contenu...",
+    "loading_about": "Préparation de la section À propos..."
   },
   "footer": {
     "company": {
@@ -214,8 +216,51 @@
       "video": "Vidéo de lien Physique SNED",
       "video_desc": "Présentation multimédia",
       "statistics": "Statistiques",
-      "statistics_desc": "Données et indicateurs"
+      "statistics_desc": "Données et indicateurs",
+      "open_menu": "Ouvrir le menu",
+      "close_menu": "Fermer le menu",
+      "discover_project_button": "Découvrir le projet"
+    },
+    "menu": {
+      "main_navigation": "Navigation Principale",
+      "discover_sned": "Découvrez la SNED",
+      "know_us": "Nous connaître",
+      "strategic_context": "Contexte stratégique",
+      "missions_values": "Missions et valeurs",
+      "institutional_framework": "Cadre institutionnel",
+      "ceo_message": "Mot du PDG",
+      "sned_secegsa": "SNED & SECEG SA",
+      "organization": "Organisation",
+      "fixed_link_project": "Projet de liaison fixe",
+      "engineering_component": "Composante ingénierie",
+      "physical_environment_component": "Composante milieu physique",
+      "socioeconomic_component": "Composante socio-économique",
+      "project_promotion_component": "Composante promotion du projet",
+      "recognition_gallery": "Galerie de reconnaissance",
+      "news": "Actualités",
+      "partners": "Partenaires",
+      "call_for_tenders": "Appel d'offres"
     }
+  },
+  "partners": {
+    "title": "Un champ d'action clairement défini",
+    "description": "Les {{ count }} Établissements et Entreprises Publics concernés pilotent des projets structurants pour le pays.",
+    "cartographic_title": "Présentation cartographique des {{ count }} EEP",
+    "national_partner": "Partenaire national",
+    "international_partner": "Partenaire international"
+  },
+  "tenders": {
+    "title": "Appels d'offres",
+    "description": "Consultez nos {{ count }} appels d'offres en cours et à venir.",
+    "empty_state": "Aucun appel d'offres disponible pour le moment",
+    "badge": "Appel d'offre",
+    "view_details": "Voir les détails",
+    "official_document": "Document Officiel",
+    "public_tender": "Appel d'Offres Public",
+    "reference": "Référence :",
+    "publication_date": "Date de publication :",
+    "tender_object": "Objet de l'appel d'offres",
+    "footer_notice": "Ce document est fourni à titre informatif. Pour toute soumission officielle, veuillez vous référer au cahier des charges complet."
   },
   "about": {
     "sned": {

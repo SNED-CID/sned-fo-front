@@ -91,7 +91,9 @@
         "desc": "Market opportunities and engagement in the SNED project",
         "subtitle": "Call for Tenders"
       }
-    }
+    },
+    "loading_content": "Loading content...",
+    "loading_about": "Preparing the About section..."
   },
   "footer": {
     "company": {
@@ -214,8 +216,51 @@
       "video": "SNED Physical Link Video",
       "video_desc": "Multimedia presentation",
       "statistics": "Statistics",
-      "statistics_desc": "Data and indicators"
+      "statistics_desc": "Data and indicators",
+      "open_menu": "Open menu",
+      "close_menu": "Close menu",
+      "discover_project_button": "Discover the project"
+    },
+    "menu": {
+      "main_navigation": "Main Navigation",
+      "discover_sned": "Discover SNED",
+      "know_us": "Get to Know Us",
+      "strategic_context": "Strategic Context",
+      "missions_values": "Missions and Values",
+      "institutional_framework": "Institutional Framework",
+      "ceo_message": "CEO's Message",
+      "sned_secegsa": "SNED & SECEG SA",
+      "organization": "Organization",
+      "fixed_link_project": "Fixed Link Project",
+      "engineering_component": "Engineering Component",
+      "physical_environment_component": "Physical Environment Component",
+      "socioeconomic_component": "Socio-Economic Component",
+      "project_promotion_component": "Project Promotion Component",
+      "recognition_gallery": "Recognition Gallery",
+      "news": "News",
+      "partners": "Partners",
+      "call_for_tenders": "Call for Tenders"
     }
+  },
+  "partners": {
+    "title": "A clearly defined field of action",
+    "description": "The {{ count }} Public Establishments and Companies concerned are leading structural projects for the country.",
+    "cartographic_title": "Cartographic presentation of {{ count }} Public Establishments and Companies",
+    "national_partner": "National partner",
+    "international_partner": "International partner"
+  },
+  "tenders": {
+    "title": "Call for Tenders",
+    "description": "Browse our {{ count }} ongoing and upcoming call for tenders.",
+    "empty_state": "No call for tenders available at the moment",
+    "badge": "Call for tenders",
+    "view_details": "View details",
+    "official_document": "Official Document",
+    "public_tender": "Public Call for Tenders",
+    "reference": "Reference:",
+    "publication_date": "Publication date:",
+    "tender_object": "Call for tenders object",
+    "footer_notice": "This document is provided for informational purposes. For any official submission, please refer to the complete specifications."
   },
   "about": {
     "sned": {

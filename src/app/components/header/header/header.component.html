@@ -71,7 +71,7 @@
           <button
             (click)="toggleMobileMenu()"
             [attr.aria-expanded]="isMobileMenuOpen()"
-            [attr.aria-label]="isMobileMenuOpen() ? 'Fermer le menu' : 'Ouvrir le menu'"
+            [attr.aria-label]="isMobileMenuOpen() ? ('header.navigation.close_menu' | translate) : ('header.navigation.open_menu' | translate)"
             class="relative flex items-center justify-center w-10 h-10 rounded-lg bg-white/90 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/50 group">
 
             <!-- Animated hamburger icon -->
@@ -191,7 +191,7 @@
         <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
           <span class="block">{{ getTitleTranslationKey() | translate }}</span>
           <span class="block text-transparent bg-gradient-to-r from-[var(--sned-orange)] to-[var(--sned-blue)] bg-clip-text mt-2">
-            {{ getSubtitleTranslationKey() ? (getSubtitleTranslationKey() | translate) : 'Liaison Fixe' }}
+            {{ getSubtitleTranslationKey() ? (getSubtitleTranslationKey() | translate) : ('home.sections.default.subtitle' | translate) }}
           </span>
         </h1>
         <p class="text-lg sm:text-xl lg:text-2xl text-gray-200 leading-relaxed max-w-3xl mx-auto lg:mx-0">
@@ -205,7 +205,7 @@
         <button routerLink="/projet"
                 class="group flex items-center justify-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-full border-2 border-white/30 hover:bg-white/20 hover:border-white/50 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/20">
           <i class="fas fa-arrow-right w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
-          <span>Découvrir le projet</span>
+          <span>{{ 'header.navigation.discover_project_button' | translate }}</span>
         </button>
       </div>
 

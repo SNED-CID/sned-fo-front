@@ -91,7 +91,9 @@
         "desc": "فرص السوق والمشاركة في مشروع SNED",
         "subtitle": "طلبات العروض"
       }
-    }
+    },
+    "loading_content": "جاري تحميل المحتوى...",
+    "loading_about": "جاري تحضير قسم 'عن'..."
   },
   "footer": {
     "company": {
@@ -214,8 +216,51 @@
       "video": "فيديو الربط الطبيعي SNED",
       "video_desc": "عرض تقديمي متعدد الوسائط",
       "statistics": "الإحصاءات",
-      "statistics_desc": "البيانات والمؤشرات"
+      "statistics_desc": "البيانات والمؤشرات",
+      "open_menu": "فتح القائمة",
+      "close_menu": "إغلاق القائمة",
+      "discover_project_button": "اكتشف المشروع"
+    },
+    "menu": {
+      "main_navigation": "التنقل الرئيسي",
+      "discover_sned": "اكتشف SNED",
+      "know_us": "تعرف علينا",
+      "strategic_context": "السياق الاستراتيجي",
+      "missions_values": "المهام والقيم",
+      "institutional_framework": "الإطار المؤسسي",
+      "ceo_message": "كلمة المدير العام",
+      "sned_secegsa": "SNED و SECEG SA",
+      "organization": "التنظيم",
+      "fixed_link_project": "مشروع الربط الثابت",
+      "engineering_component": "مكون الهندسة",
+      "physical_environment_component": "مكون البيئة الطبيعية",
+      "socioeconomic_component": "المكون الاجتماعي والاقتصادي",
+      "project_promotion_component": "مكون الترويج للمشروع",
+      "recognition_gallery": "معرض الاعتراف",
+      "news": "الأخبار",
+      "partners": "الشركاء",
+      "call_for_tenders": "طلب عروض"
     }
+  },
+  "partners": {
+    "title": "مجال عمل محدد بوضوح",
+    "description": "تقود المؤسسات والشركات العامة البالغ عددها {{ count }} مشاريع هيكلية للبلاد.",
+    "cartographic_title": "العرض الخرائطي لـ {{ count }} مؤسسة وشركة عامة",
+    "national_partner": "شريك وطني",
+    "international_partner": "شريك دولي"
+  },
+  "tenders": {
+    "title": "طلبات العروض",
+    "description": "استعرض طلبات العروض الـ {{ count }} الجارية والقادمة.",
+    "empty_state": "لا توجد طلبات عروض متاحة في الوقت الحالي",
+    "badge": "طلب عرض",
+    "view_details": "عرض التفاصيل",
+    "official_document": "وثيقة رسمية",
+    "public_tender": "طلب عروض عام",
+    "reference": "المرجع:",
+    "publication_date": "تاريخ النشر:",
+    "tender_object": "موضوع طلب العروض",
+    "footer_notice": "يتم توفير هذه الوثيقة لأغراض إعلامية. للتقديم الرسمي، يرجى الرجوع إلى دفتر الشروط الكامل."
   },
   "about": {
     "sned": {

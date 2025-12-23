@@ -98,8 +98,8 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
                   </svg>
                 </div>
                 <div class="banner-text">
-                  <div class="banner-title">Document Officiel</div>
-                  <div class="banner-subtitle">Appel d'Offres Public</div>
+                  <div class="banner-title">{{ 'tenders.official_document' | translate }}</div>
+                  <div class="banner-subtitle">{{ 'tenders.public_tender' | translate }}</div>
                 </div>
               </div>
             </div>
@@ -107,11 +107,11 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
             <!-- Informations principales -->
             <div class="document-header">
               <div class="header-row">
-                <div class="info-label">Référence :</div>
+                <div class="info-label">{{ 'tenders.reference' | translate }}</div>
                 <div class="info-value">{{ tenderNumberDisplay }}</div>
               </div>
               <div class="header-row" *ngIf="formattedDate">
-                <div class="info-label">Date de publication :</div>
+                <div class="info-label">{{ 'tenders.publication_date' | translate }}</div>
                 <div class="info-value">{{ formattedDate }}</div>
               </div>
             </div>
@@ -136,7 +136,7 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                       d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  Objet de l'appel d'offres
+                  {{ 'tenders.tender_object' | translate }}
                 </h3>
                 <div class="content-text" [innerHTML]="trustedContent"></div>
               </div>
@@ -149,7 +149,7 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                 </svg>
-                <span>Ce document est fourni à titre informatif. Pour toute soumission officielle, veuillez vous référer au cahier des charges complet.</span>
+                <span>{{ 'tenders.footer_notice' | translate }}</span>
               </div>
             </div>
           </div>

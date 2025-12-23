@@ -3,13 +3,13 @@ import {TenderService, TenderReadDTO} from '../../services/tender.service';
 import {CommonModule, DatePipe} from '@angular/common';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import {ScrollAnimationDirective} from '../../directives/scroll-animation.directive';
-import {TranslateService} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import { map } from 'rxjs';
 import { TenderReadMoreComponent } from '../readmore/TenderReadMore.component';
 
 @Component({
   selector: 'app-tenders',
-  imports: [CommonModule, ScrollAnimationDirective, DatePipe, TenderReadMoreComponent],
+  imports: [CommonModule, ScrollAnimationDirective, DatePipe, TenderReadMoreComponent, TranslatePipe],
   providers: [DatePipe],
   templateUrl: './tenders.component.html',
   standalone: true,

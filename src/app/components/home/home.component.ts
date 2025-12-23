@@ -3,10 +3,11 @@ import {AnchorComponent} from '../anchor/anchor.component';
 import {AboutComponent} from '../about/about.component';
 import { Router } from '@angular/router';
 import { MenuService, MenuItem } from '../../services/menu.service';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
-  imports: [AnchorComponent, AboutComponent],
+  imports: [AnchorComponent, AboutComponent, TranslatePipe],
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'

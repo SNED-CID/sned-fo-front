@@ -10,14 +10,14 @@
   <div class="flex items-center justify-center py-32">
     <div class="text-center">
       <div class="w-12 h-12 border-4 border-[var(--sned-orange)] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-      <p class="text-gray-500">Chargement du contenu...</p>
+      <p class="text-gray-500">{{ 'home.loading_content' | translate }}</p>
     </div>
   </div>
 } @loading (minimum 500ms) {
   <div class="flex items-center justify-center py-32">
     <div class="text-center">
       <div class="w-12 h-12 border-4 border-[var(--sned-blue)] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-      <p class="text-gray-600">Préparation de la section À propos...</p>
+      <p class="text-gray-600">{{ 'home.loading_about' | translate }}</p>
     </div>
   </div>
 }
