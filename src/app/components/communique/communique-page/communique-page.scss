@@ -1,0 +1,35 @@
+:root {
+  --page-bg: #f9fafe;
+  --card-bg: #ffffff;
+  --accent: #0b76ff;
+  --muted: #6b7280;
+  --border: #e6e9ee;
+  --shadow: 0 8px 24px rgba(15,23,42,0.06);
+  --radius: 12px;
+  --gap: 16px;
+  --font-family: "Inter", system-ui, Arial, sans-serif;
+}
+
+/* Conteneur global */
+.page {
+  padding: 24px;
+  background: var(--page-bg);
+  font-family: var(--font-family);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.actions-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0;
+  padding: 12px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  flex-wrap: wrap;
+
+}

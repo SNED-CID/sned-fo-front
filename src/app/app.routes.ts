@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import {HomeComponent} from './components/home/home.component';
 import {PartnersComponent} from './components/partners/partners.component';
+import { CommuniquePage } from './components/communique/communique-page/communique-page';
 import { TendersComponent } from './components/tenders/tenders.component';
 
 
@@ -23,7 +24,7 @@ export const routes: Routes = [
   { path: 'galerie/socio-economique', component: HomeComponent },
 
   // Actualités
-  { path: 'actualite', component: HomeComponent },
+  { path: 'actualite', component: CommuniquePage },
   // Partenariats
   { path: 'partenariat', component: PartnersComponent },
   // Appels d'offres

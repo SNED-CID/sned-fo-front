@@ -47,7 +47,7 @@ import { CommonModule } from '@angular/common';
     @if (sidebarOpen()) {
       <aside
         @slideInOut
-        class="fixed top-0 right-0 w-1/2 h-full bg-white shadow-2xl flex flex-col"
+        class="fixed top-0 right-0 w-full md:w-3/4 h-full bg-white shadow-2xl flex flex-col"
         style="z-index: 99999;"
       >
       <!-- Header -->

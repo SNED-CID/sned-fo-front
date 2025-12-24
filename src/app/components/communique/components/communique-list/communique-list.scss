@@ -1,0 +1,95 @@
+/* Styles minimaux - uniquement ce que Tailwind ne peut pas faire */
+.html-truncate {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word; /* ← Important */
+    max-width: 100%; /* ← Important */
+}
+
+.html-truncate * {
+    display: inline !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: inherit !important;
+}
+
+/* Supprimer les <br>, <div>, <p> qui cassent la ligne */
+.html-truncate br,
+.html-truncate div,
+.html-truncate p {
+    display: none !important;
+}
+
+/* Forcer l'espacement entre les lignes du tableau */
+::ng-deep .communique-elegant-table .p-datatable-tbody {
+    display: block;
+}
+
+::ng-deep .communique-elegant-table .p-datatable-tbody > tr {
+    display: table;
+    width: 100%;
+    margin-bottom: 1.25rem;
+}
+
+::ng-deep .communique-elegant-table .p-datatable-thead {
+    display: table;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+/* Supprimer les bordures par défaut de PrimeNG */
+::ng-deep .communique-elegant-table .p-datatable-tbody > tr > td,
+::ng-deep .communique-elegant-table .p-datatable-thead > tr > th {
+    border: none !important;
+}
+
+/* Style du header du dialog */
+::ng-deep .communique-dialog .p-dialog-header {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    padding: 1.75rem 2rem;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
+::ng-deep .communique-dialog .p-dialog-content {
+    padding: 0;
+    overflow: hidden;
+}
+
+::ng-deep .p-dialog .p-dialog-content {
+    max-height: 70vh; /* 70% de la hauteur de l’écran */
+    overflow-y: auto; /* active le scroll vertical */
+}
+
+::ng-deep .communique-dialog .p-dialog-footer {
+    padding: 0;
+}
+
+/* Transition smooth pour le hover du tableau */
+::ng-deep .communique-elegant-table .p-datatable-tbody > tr {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+    ::ng-deep .communique-elegant-table .p-datatable-tbody > tr > td {
+        display: block;
+        width: 100%;
+    }
+
+    ::ng-deep .communique-elegant-table .p-datatable-thead {
+        display: none;
+    }
+}
+
+::ng-deep .communique-dialog .p-dialog-content {
+  overflow-y: auto !important;
+  max-height: 80vh;
+}
+
+
+
+

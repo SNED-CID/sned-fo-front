@@ -211,33 +211,37 @@ export class HeaderComponent implements OnInit {
             children: [
               {
                 label: this.translateService.instant(
-                  'header.menu.engineering_component'
+                  'header.menu.project_history'
                 ),
                 route: '/projet/ingenierie',
               },
               {
                 label: this.translateService.instant(
-                  'header.menu.physical_environment_component'
+                  'header.menu.physical_environment'
                 ),
                 route: '/projet/milieu-physique',
               },
               {
+                label: this.translateService.instant('header.menu.engineering'),
+                route: '/projet/ingenierie',
+              },
+              {
                 label: this.translateService.instant(
-                  'header.menu.socioeconomic_component'
+                  'header.menu.legal_aspect'
+                ),
+                route: '/projet/ingenierie',
+              },
+              {
+                label: this.translateService.instant(
+                  'header.menu.socioeconomic_aspect'
                 ),
                 route: '/projet/socio-economique',
               },
               {
                 label: this.translateService.instant(
-                  'header.menu.project_promotion_component'
+                  'header.menu.geostrategic_component'
                 ),
                 route: '/projet/ingenierie',
-              },
-              {
-                label: this.translateService.instant(
-                  'header.menu.recognition_gallery'
-                ),
-                route: '/galerie',
               },
             ],
           },
