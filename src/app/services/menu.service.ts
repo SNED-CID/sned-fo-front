@@ -36,13 +36,12 @@ export class MenuService {
           label: this.translateService.instant('header.menu.discover_sned'),
           route: '/',
           children: [
-            { label: this.translateService.instant('header.menu.know_us'), route: '/' },
-            { label: this.translateService.instant('header.menu.strategic_context'), route: '/' },
-            { label: this.translateService.instant('header.menu.missions_values'), route: '/' },
             { label: this.translateService.instant('header.menu.institutional_framework'), route: '/' },
-            { label: this.translateService.instant('header.menu.ceo_message'), route: '/' },
+            { label: this.translateService.instant('header.menu.missions_values'), route: '/' },
+            { label: this.translateService.instant('header.menu.sned_secegsa'), route: '/' },
             { label: this.translateService.instant('header.menu.organization'), route: '/' },
-            { label: this.translateService.instant('header.menu.sned_secegsa'), route: '/' }
+            { label: this.translateService.instant('header.menu.partners'), route: '/partenaires' }
+            
           ]
         }
       ]

@@ -1,127 +1,164 @@
 <div
   id="tenders"
-  class="w-3/4 lg:w-5/6 2xl:w-full mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20"
+  class="tenders-container"
   appScrollAnimation
   [animationType]="'fadeUp'"
 >
-  <div class="flex justify-between items-center mb-6">
-    <h2 class="text-3xl font-bold text-primary"></h2>
-  </div>
+  <div class="tenders-wrapper">
+    <!-- Header Section -->
+    <div class="tenders-hero">
+      <div class="hero-content">
+        <h1 class="hero-title">{{ "tenders.title" | translate }}</h1>
+        <div class="hero-search">
+          <div class="search-wrapper">
+            <div class="search-input-container">
+              <svg
+                class="search-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <circle cx="11" cy="11" r="8" stroke-width="2" />
+                <path
+                  d="M21 21l-4.35-4.35"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+              <input
+                #numberInput
+                type="text"
+                placeholder="Rechercher..."
+                class="search-input"
+                (input)="onSearchNumber(numberInput.value)"
+              />
+            </div>
 
-  <div class="relative bg-white rounded-2xl shadow-lg overflow-hidden">
-    <div
-      class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[var(--sned-blue)] to-[var(--sned-orange)] rounded-t-2xl"
-    ></div>
+            <select
+              id="sortOrder" 
+              class="sort-select"
+              (change)="onSortChange($event)"
+            >
+              <option value="desc">Plus récents</option>
+              <option value="asc">Plus anciens</option>
+            </select>
 
-    <div
-      class="overflow-hidden transition-all duration-500 ease-in-out max-h-screen opacity-100"
-    >
-      <div class="tenders-header">
-        <h1>{{ 'tenders.title' | translate }}</h1>
-        <p>
-          {{ 'tenders.description' | translate:{ count: tenders().length } }}
-        </p>
+          </div>
+        </div>
       </div>
+    </div>
 
+    <!-- Content Section -->
+    <div class="tenders-content">
       @if (tenders().length === 0) {
       <div class="empty-state">
-        <svg
-          class="empty-icon"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-          />
-        </svg>
-        <p>{{ 'tenders.empty_state' | translate }}</p>
+        <div class="empty-illustration">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+            />
+          </svg>
+        </div>
+        <h3 class="empty-title">{{ "tenders.empty_state" | translate }}</h3>
+        <p class="empty-description">
+          Aucun appel d'offres ne correspond à votre recherche
+        </p>
       </div>
       } @else {
       <div class="tenders-list">
         @for (tender of tenders(); track tender.id) {
-        <div class="tender-card">
-          <div class="tender-card-header">
-            <div class="tender-badge">
-              <svg
-                class="tender-icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                />
-              </svg>
-              <span class="badge-text">{{ 'tenders.badge' | translate }}</span>
-            </div>
-            <div class="tender-date-wrapper">
-              <svg
-                class="date-icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                />
-              </svg>
-              <span class="tender-date">{{
-                tender.datePosting | date : "dd/MM/yyyy"
-              }}</span>
-            </div>
-          </div>
+        <article class="tender-card">
+          <div class="card-accent"></div>
 
-          <div class="tender-card-body">
-            <h3 class="tender-number">
-              {{ tender.number }}
-            </h3>
-            <div
-              class="tender-content"
-              [innerHTML]="tender.content"
-            ></div>
-          </div>
+          <div class="card-container">
+            <div class="card-left">
+              <div class="tender-header-info">
+                <!-- Numéro à gauche -->
+                <h2 class="tender-number">{{ tender.number }}</h2>
 
-          <div class="tender-card-footer">
-            <button
-              class="tender-details-btn"
-              (click)="openTenderDetails(tender)"
-            >
-              <span>{{ 'tenders.view_details' | translate }}</span>
-              <svg
-                class="btn-arrow"
-                viewBox="0 0 20 20"
-                fill="currentColor"
+                <!-- Date à droite -->
+                <time class="tender-date">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <rect
+                      x="3"
+                      y="4"
+                      width="18"
+                      height="18"
+                      rx="2"
+                      ry="2"
+                      stroke-width="2"
+                    />
+                    <line
+                      x1="16"
+                      y1="2"
+                      x2="16"
+                      y2="6"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      x1="8"
+                      y1="2"
+                      x2="8"
+                      y2="6"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <line x1="3" y1="10" x2="21" y2="10" stroke-width="2" />
+                  </svg>
+                  <span>{{ tender.datePosting | date : "dd/MM/yyyy" }}</span>
+                </time>
+              </div>
+
+              <div class="card-body">
+                <div class="tender-excerpt" [innerHTML]="tender.content"></div>
+              </div>
+            </div>
+
+            <div class="card-right">
+              <button
+                class="btn-details"
+                (click)="openTenderDetails(tender)"
+                aria-label="Voir les détails de l'appel d'offres"
               >
-                <path
-                  fill-rule="evenodd"
-                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </button>
+                <span>{{ "tenders.view_details" | translate }}</span>
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path
+                    fill-rule="evenodd"
+                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
-        </div>
+        </article>
         }
       </div>
-      }
 
-
+      @if (currentPage() < totalPages()) {
+      <div class="load-more-container">
+        <button (click)="loadNextPage()" class="btn-load-more">
+          <span>Charger plus d'appels d'offres</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </button>
+      </div>
+      } }
     </div>
   </div>
 </div>
-<app-tender-read-more
 
+<app-tender-read-more
   #tenderReadMore
   (navigateToTender)="onNavigateToTender($event)"
->
-</app-tender-read-more>
+></app-tender-read-more>

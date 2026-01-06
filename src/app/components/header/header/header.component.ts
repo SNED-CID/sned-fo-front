@@ -1,12 +1,18 @@
-import {Component, HostListener, signal, OnInit, inject} from '@angular/core';
+import { Component, HostListener, signal, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {NavigationEnd, Router, RouterModule} from '@angular/router';
-import {LoaderComponent} from '../../loader/loader.component';
-import {filter} from 'rxjs';
-import {LocaleService} from '../../../services/locale.service';
-import {TranslatePipe, TranslateService} from '@ngx-translate/core';
-import { LanguageSelectorComponent, Language } from '../language-selector/language-selector.component';
-import { NavigationMenuComponent, MenuSection } from '../navigation-menu/navigation-menu.component';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
+import { LoaderComponent } from '../../loader/loader.component';
+import { filter } from 'rxjs';
+import { LocaleService } from '../../../services/locale.service';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import {
+  LanguageSelectorComponent,
+  Language,
+} from '../language-selector/language-selector.component';
+import {
+  NavigationMenuComponent,
+  MenuSection,
+} from '../navigation-menu/navigation-menu.component';
 import { BackgroundParticleAnimationDirective } from '../../../directives/background-particle-animation.directive';
 import { AnalyticsService } from '../../../services/analytics.service';
 
@@ -20,12 +26,12 @@ import { AnalyticsService } from '../../../services/analytics.service';
     TranslatePipe,
     NavigationMenuComponent,
     LanguageSelectorComponent,
-    BackgroundParticleAnimationDirective
+    BackgroundParticleAnimationDirective,
   ],
-  templateUrl: "./header.component.html",
-  styleUrls: ['./header.component.scss']
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent implements OnInit {
   isScrolled = signal(false);
   isMobileMenuOpen = signal(false);
   currentLang = signal('fr');
@@ -37,7 +43,7 @@ export class HeaderComponent implements OnInit{
   // Mappe les routes et fragments sur les clés de traduction
   routeToSectionMap: Record<string, Record<string, string>> = {
     // Routes principales
-    'routes': {
+    routes: {
       '': 'default',
       '/': 'default',
       '/projet': 'ingenierie',
@@ -45,22 +51,23 @@ export class HeaderComponent implements OnInit{
       '/actualite': 'actualite',
       '/partenariat': 'partenariat',
       '/travail': 'travail',
-      '/appels-offres': 'appels_offres'
+      '/appels-offres': 'appels_offres',
     },
     // Fragments (ancres)
-    'fragments': {
-      'apropos': 'apropos',
-      'contexte': 'contexte',
-      'missions': 'missions',
-      'cadre': 'cadre',
-      'pdg': 'pdg',
-      'sned_secegsa': 'sned_secegsa',
-      'organigramme': 'organigramme',
-      'ingenierie': 'ingenierie',
+    fragments: {
+      apropos: 'apropos',
+      contexte: 'contexte',
+      missions: 'missions',
+      cadre: 'cadre',
+      pdg: 'pdg',
+      sned_secegsa: 'sned_secegsa',
+      organigramme: 'organigramme',
+      partenaires: 'partenaires',
+      ingenierie: 'ingenierie',
       'milieu-physique': 'milieu_physique',
       'socio-economique': 'socio_economique',
-      'promotion': 'promotion'
-    }
+      promotion: 'promotion',
+    },
   };
 
   menuBackgrounds: Record<string, string> = {
@@ -70,13 +77,16 @@ export class HeaderComponent implements OnInit{
     '/actualite': 'assets/images/actualites.png',
     '/partenariat': 'assets/images/partenariats.png',
     '/travail': 'assets/images/notre_travail.png',
-    '/appels-offres': 'assets/images/liaison_fixe.png'
+    '/appels-offres': 'assets/images/liaison_fixe.png',
   };
 
   currentBackground: string | null = null;
   isBackgroundLoading = signal(false);
 
-  constructor(private router: Router, private translateService: TranslateService) {}
+  constructor(
+    private router: Router,
+    private translateService: TranslateService
+  ) {}
   private readonly localeService = inject(LocaleService);
   private readonly analytics = inject(AnalyticsService);
 
@@ -90,7 +100,7 @@ export class HeaderComponent implements OnInit{
     });
 
     this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
+      .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: any) => {
         const url = event.urlAfterRedirects || event.url;
         const newBackground = this.getBackgroundForUrl(url);
@@ -115,40 +125,99 @@ export class HeaderComponent implements OnInit{
             label: this.translateService.instant('header.menu.discover_sned'),
             route: '/about',
             children: [
-              { label: this.translateService.instant('header.menu.know_us'), route: '/about', sectionId: 'apropos' },
-              { label: this.translateService.instant('header.menu.strategic_context'), route: '/about', sectionId: 'contexte' },
-              { label: this.translateService.instant('header.menu.missions_values'), route: '/about', sectionId: 'missions' },
-              { label: this.translateService.instant('header.menu.institutional_framework'), route: '/about', sectionId: 'cadre' },
-              { label: this.translateService.instant('header.menu.ceo_message'), route: '/about', sectionId: 'pdg' },
-              { label: this.translateService.instant('header.menu.sned_secegsa'), route: '/about', sectionId: 'sned_secegsa' },
-              { label: this.translateService.instant('header.menu.organization'), route: '/about', sectionId: 'organigramme' },
-            ]
+              // { label: this.translateService.instant('header.menu.know_us'), route: '/about', sectionId: 'apropos' },
+              {
+                label: this.translateService.instant(
+                  'header.menu.institutional_framework'
+                ),
+                route: '/about',
+                sectionId: 'cadre',
+              },
+              {
+                label: this.translateService.instant(
+                  'header.menu.missions_values'
+                ),
+                route: '/about',
+                sectionId: 'missions',
+              },
+              {
+                label: this.translateService.instant(
+                  'header.menu.sned_secegsa'
+                ),
+                route: '/about',
+                sectionId: 'sned_secegsa',
+              },
+              {
+                label: this.translateService.instant(
+                  'header.menu.organization'
+                ),
+                route: '/about',
+                sectionId: 'organigramme',
+              },
+              {
+                label: this.translateService.instant('header.menu.partners'),
+                route: '/about',
+                sectionId: 'partenaires',
+              },
+              // { label: this.translateService.instant('header.menu.strategic_context'), route: '/about', sectionId: 'contexte' },
+
+              // { label: this.translateService.instant('header.menu.ceo_message'), route: '/about', sectionId: 'pdg' },
+            ],
           },
           {
-            label: this.translateService.instant('header.menu.fixed_link_project'),
+            label: this.translateService.instant(
+              'header.menu.fixed_link_project'
+            ),
             route: '/projet',
             children: [
-              { label: this.translateService.instant('header.menu.engineering_component'), route: '/projet/ingenierie' },
-              { label: this.translateService.instant('header.menu.physical_environment_component'), route: '/projet/milieu-physique' },
-              { label: this.translateService.instant('header.menu.socioeconomic_component'), route: '/projet/socio-economique' },
-              { label: this.translateService.instant('header.menu.project_promotion_component'), route: '/projet/ingenierie' },
-              { label: this.translateService.instant('header.menu.recognition_gallery'), route: '/galerie' }
-            ]
+              {
+                label: this.translateService.instant(
+                  'header.menu.engineering_component'
+                ),
+                route: '/projet/ingenierie',
+              },
+              {
+                label: this.translateService.instant(
+                  'header.menu.physical_environment_component'
+                ),
+                route: '/projet/milieu-physique',
+              },
+              {
+                label: this.translateService.instant(
+                  'header.menu.socioeconomic_component'
+                ),
+                route: '/projet/socio-economique',
+              },
+              {
+                label: this.translateService.instant(
+                  'header.menu.project_promotion_component'
+                ),
+                route: '/projet/ingenierie',
+              },
+              {
+                label: this.translateService.instant(
+                  'header.menu.recognition_gallery'
+                ),
+                route: '/galerie',
+              },
+            ],
           },
           {
             label: this.translateService.instant('header.menu.news'),
-            route: '/actualite'
+            route: '/actualite',
           },
+          // {
+          //   label: this.translateService.instant('header.menu.partners'),
+          //   route: '/partenariat',
+          // },
           {
-            label: this.translateService.instant('header.menu.partners'),
-            route: '/partenariat'
+            label: this.translateService.instant(
+              'header.menu.call_for_tenders'
+            ),
+            route: '/appels-offres',
           },
-          {
-            label: this.translateService.instant('header.menu.call_for_tenders'),
-            route: '/appels-offres'
-          }
-        ]
-      }
+        ],
+      },
     ];
   }
 
@@ -176,7 +245,10 @@ export class HeaderComponent implements OnInit{
   getBackgroundForUrl(url: string): string | null {
     const urlWithoutFragment = url.split('#')[0];
 
-    if ((urlWithoutFragment === '/' || urlWithoutFragment === '') && this.menuBackgrounds['/']) {
+    if (
+      (urlWithoutFragment === '/' || urlWithoutFragment === '') &&
+      this.menuBackgrounds['/']
+    ) {
       return this.menuBackgrounds['/'];
     }
 
@@ -197,10 +269,9 @@ export class HeaderComponent implements OnInit{
     { code: 'fr', label: 'Français', initials: 'FR' },
     { code: 'en', label: 'English', initials: 'EN' },
     { code: 'es', label: 'Español', initials: 'ES' },
-    { code: 'ar', label: 'العربية', initials: 'AR' }
+    { code: 'ar', label: 'العربية', initials: 'AR' },
   ];
   isVideoPlaying = false;
-
 
   switchLanguage(langCode: string) {
     this.currentLang.set(langCode);
@@ -247,13 +318,15 @@ export class HeaderComponent implements OnInit{
   }
 
   toggleMobileMenu() {
-    this.isMobileMenuOpen.update(value => !value);
+    this.isMobileMenuOpen.update((value) => !value);
     if (!this.isMobileMenuOpen()) {
       this.mobileDropdowns.set(new Set());
     }
 
     // Track mobile menu toggle
-    this.analytics.trackMobileMenuToggle(this.isMobileMenuOpen() ? 'open' : 'close');
+    this.analytics.trackMobileMenuToggle(
+      this.isMobileMenuOpen() ? 'open' : 'close'
+    );
 
     // Prevent body scroll when mobile menu is open
     if (this.isMobileMenuOpen()) {
@@ -272,7 +345,7 @@ export class HeaderComponent implements OnInit{
   toggleMobileDropdown(itemLabel: string) {
     const isCurrentlyOpen = this.mobileDropdowns().has(itemLabel);
 
-    this.mobileDropdowns.update(dropdowns => {
+    this.mobileDropdowns.update((dropdowns) => {
       const newDropdowns = new Set(dropdowns);
       if (newDropdowns.has(itemLabel)) {
         newDropdowns.delete(itemLabel);
@@ -282,13 +355,15 @@ export class HeaderComponent implements OnInit{
       return newDropdowns;
     });
 
-    this.analytics.trackMobileDropdownToggle(itemLabel, isCurrentlyOpen ? 'close' : 'open');
+    this.analytics.trackMobileDropdownToggle(
+      itemLabel,
+      isCurrentlyOpen ? 'close' : 'open'
+    );
   }
 
   isMobileDropdownOpen(itemLabel: string): boolean {
     return this.mobileDropdowns().has(itemLabel);
   }
-
 
   onMenuItemClick() {
     this.closeMobileMenu();
@@ -300,7 +375,7 @@ export class HeaderComponent implements OnInit{
   }
 
   currentLangData(): Language {
-    return this.languages.find(l => l.code === this.currentLang())!;
+    return this.languages.find((l) => l.code === this.currentLang())!;
   }
 
   toggleLangDropdown(open: boolean) {
@@ -419,7 +494,8 @@ export class HeaderComponent implements OnInit{
     }
 
     const currentIndex = this.getCurrentMenuIndex();
-    const nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % mainItems.length;
+    const nextIndex =
+      currentIndex === -1 ? 0 : (currentIndex + 1) % mainItems.length;
 
     return mainItems[nextIndex];
   }
@@ -430,7 +506,9 @@ export class HeaderComponent implements OnInit{
   getNextMenuTitle(): string {
     const nextItem = this.getNextMenuItem();
     if (!nextItem) {
-      return this.translateService.instant('header.navigation.discover_project_button');
+      return this.translateService.instant(
+        'header.navigation.discover_project_button'
+      );
     }
     return nextItem.label;
   }

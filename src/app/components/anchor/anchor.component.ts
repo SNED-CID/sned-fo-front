@@ -28,7 +28,8 @@ export class AnchorComponent implements OnInit {
       { id: 'cadre', labelKey: 'header.menu.institutional_framework' },
       { id: 'pdg', labelKey: 'header.menu.ceo_message' },
       { id: 'sned_secegsa', labelKey: 'header.menu.sned_secegsa' },
-      { id: 'organigramme', labelKey: 'header.menu.organization' }
+      { id: 'organigramme', labelKey: 'header.menu.organization' },
+      { id: 'partenaires', labelKey: 'header.menu.partners' },
     ];
   }
 
@@ -92,7 +93,8 @@ export class AnchorComponent implements OnInit {
       [this.translateService.instant('header.menu.physical_environment_component')]: 'header.menu.physical_environment_component',
       [this.translateService.instant('header.menu.socioeconomic_component')]: 'header.menu.socioeconomic_component',
       [this.translateService.instant('header.menu.project_promotion_component')]: 'header.menu.project_promotion_component',
-      [this.translateService.instant('header.menu.recognition_gallery')]: 'header.menu.recognition_gallery'
+      [this.translateService.instant('header.menu.recognition_gallery')]: 'header.menu.recognition_gallery',
+      [this.translateService.instant('header.menu.partners')]: 'header.menu.partners'
     };
 
     return labelToKeyMap[label] || label;
@@ -107,7 +109,8 @@ export class AnchorComponent implements OnInit {
       [this.translateService.instant('header.menu.institutional_framework')]: 'cadre',
       [this.translateService.instant('header.menu.ceo_message')]: 'pdg',
       [this.translateService.instant('header.menu.organization')]: 'organigramme',
-      [this.translateService.instant('header.menu.sned_secegsa')]: 'sned_secegsa'
+      [this.translateService.instant('header.menu.sned_secegsa')]: 'sned_secegsa',
+      [this.translateService.instant('header.menu.partners')]: 'partenaires'
     };
 
     // Pour "Projet de liaison fixe"

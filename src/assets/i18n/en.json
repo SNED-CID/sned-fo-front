@@ -22,14 +22,14 @@
         "subtitle": "Strategic Context"
       },
       "missions": {
-        "title": "Missions and Values",
+        "title": "Missions",
         "desc": "Our objectives and commitment to the Europe-Africa fixed link",
         "subtitle": "Our Missions"
       },
       "cadre": {
-        "title": "Institutional and Legal Framework",
+        "title": "Institutional Framework",
         "desc": "Transparent governance regulated by Franco-Spanish agreements",
-        "subtitle": "Legal Framework"
+        "subtitle": "Institutional Framework"
       },
       "pdg": {
         "title": "CEO's Message",
@@ -76,7 +76,7 @@
         "desc": "Latest information, events and project developments",
         "subtitle": "News"
       },
-      "partenariat": {
+      "partenaires": {
         "title": "Our Partners",
         "desc": "Institutions, companies and organizations partnering on the project",
         "subtitle": "Partners"
@@ -223,10 +223,10 @@
     },
     "menu": {
       "main_navigation": "Main Navigation",
-      "discover_sned": "Discover SNED",
+      "discover_sned": "About SNED",
       "know_us": "Get to Know Us",
       "strategic_context": "Strategic Context",
-      "missions_values": "Missions and Values",
+      "missions_values": "Missions",
       "institutional_framework": "Institutional Framework",
       "ceo_message": "CEO's Message",
       "sned_secegsa": "SNED & SECEG SA",
@@ -285,7 +285,7 @@
       ]
     },
     "missions": {
-      "title": "Missions and Values",
+      "title": "Missions",
       "short": "SNED's main mission is to conduct studies related to the Europe-Africa fixed link and promote the project.",
       "paragraphs": [
         "<strong>SNED's corporate purpose is:</strong>",
@@ -301,7 +301,7 @@
       ]
     },
     "cadre": {
-      "title": "Institutional and Legal Framework",
+      "title": "Institutional Framework",
       "short": "SNED is a Moroccan public limited company governed by a set of legislative and regulatory texts.",
       "paragraphs": [
         "<strong>General legal and regulatory framework inherent to the legal status of SNED:</strong>",

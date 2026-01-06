@@ -1,28 +1,43 @@
-<div id="partners" class="w-3/4 lg:w-5/6 2xl:w-full mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20" appScrollAnimation [animationType]="'fadeUp'">
-  <div class="flex justify-between items-center mb-6">
-    <h2 class="text-3xl font-bold text-primary">
-    </h2>
+<div
+  id="partners"
+  class="w-full"
+  appScrollAnimation
+  [animationType]="'fadeUp'"
+>
+  <div class="flex justify-between items-center mb-6"></div>
 
-  </div>
-
-  <div class="relative bg-white rounded-2xl shadow-lg overflow-hidden mb-3">
-    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[var(--sned-blue)] to-[var(--sned-orange)] rounded-t-2xl"></div>
-    <div class="overflow-hidden transition-all duration-500 ease-in-out max-h-screen opacity-100">
-      <div class="partners-header">
+  <div >
+    <div
+      class="overflow-hidden transition-all duration-500 ease-in-out max-h-screen opacity-100"
+    >
+      <!-- <div class="partners-header">
         <h1>{{ 'partners.title' | translate }}</h1>
         <p>{{ 'partners.description' | translate:{ count: partners().length } }}</p>
         <h2>{{ 'partners.cartographic_title' | translate:{ count: partners().length } }}</h2>
-      </div>
+        
+      </div> -->
 
       <div class="partners-container">
         @for (partner of partners(); track $index) {
-          <div class="partner-card">
-            <img [src]="partner.logoUrl" [alt]="partner.name" class="partner-logo">
-            <div class="partner-tooltip">
-              <h3><b>{{ partner.name }}</b></h3>
-              <p>{{ partner.partnerType === 'NATIONAL' ? ('partners.national_partner' | translate) : ('partners.international_partner' | translate) }}</p>
-            </div>
+        <div class="partner-card">
+          <img
+            [src]="partner.logoUrl"
+            [alt]="partner.name"
+            class="partner-logo"
+          />
+          <div class="partner-tooltip">
+            <h3>
+              <b>{{ partner.name }}</b>
+            </h3>
+            <p>
+              {{
+                partner.partnerType === "NATIONAL"
+                  ? ("partners.national_partner" | translate)
+                  : ("partners.international_partner" | translate)
+              }}
+            </p>
           </div>
+        </div>
         }
       </div>
     </div>

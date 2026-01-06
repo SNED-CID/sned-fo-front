@@ -22,14 +22,14 @@
         "subtitle": "Contexte Stratégique"
       },
       "missions": {
-        "title": "Missions et Valeurs",
+        "title": "Missions",
         "desc": "Nos objectifs et notre engagement pour la liaison fixe Europe-Afrique",
         "subtitle": "Nos Missions"
       },
       "cadre": {
-        "title": "Cadre Institutionnel et Légal",
+        "title": "Cadre Institutionnel",
         "desc": "Une gouvernance transparente régie par les accords franco-marocains",
-        "subtitle": "Cadre Légal"
+        "subtitle": "Cadre Institutionnel"
       },
       "pdg": {
         "title": "Message du PDG",
@@ -76,7 +76,7 @@
         "desc": "Les dernières informations, événements et évolutions du projet",
         "subtitle": "Actualités"
       },
-      "partenariat": {
+      "partenaires": {
         "title": "Nos Partenaires",
         "desc": "Les institutions, entreprises et organisations partenaires du projet",
         "subtitle": "Partenaires"
@@ -223,10 +223,10 @@
     },
     "menu": {
       "main_navigation": "Navigation Principale",
-      "discover_sned": "Découvrez la SNED",
+      "discover_sned": "À propos de la SNED",
       "know_us": "Nous connaître",
       "strategic_context": "Contexte stratégique",
-      "missions_values": "Missions et valeurs",
+      "missions_values": "Missions",
       "institutional_framework": "Cadre institutionnel",
       "ceo_message": "Mot du PDG",
       "sned_secegsa": "SNED & SECEG SA",
@@ -285,7 +285,7 @@
       ]
     },
     "missions": {
-      "title": "Missions et valeurs",
+      "title": "Missions",
       "short": "La SNED a pour mission principale de conduire les études relatives à la liaison fixe Europe-Afrique et de promouvoir le projet.",
       "paragraphs": [
         "<strong>La SNED a pour objet social :</strong>",
@@ -301,7 +301,7 @@
       ]
     },
     "cadre": {
-      "title": "Cadre institutionnel et légal",
+      "title": "Cadre institutionnel",
       "short": "La SNED est une société anonyme de droit marocain à majorité publique, régie par un ensemble de textes législatifs et réglementaires.",
       "paragraphs": [
         "<strong>Référentiel légal et réglementaire général inhérent au statut juridique de la SNED :</strong>",
@@ -343,7 +343,6 @@
         "• Convention internationale sur la préparation, la lutte et la coopération en matière de pollution par les hydrocarbures. Londres. 1990 ; • Convention sur les changements climatiques. New York. 1992 ; • Convention sur la diversité biologique. Rio de Janeiro. 1992 ; • Charte Maghrébine relative à la protection de l'environnement et du développement durable. Nouakchott. 1992 ;",
         "• Protocole relatif aux aires spécialement protégées de la Méditerranée et à la diversité biologique de la Méditerranée et ses annexes. Barcelone 1995 ; • Accord sur la conservation des Cétacés de la Mer Noire, de la Méditerranée et de la zone atlantique adjacente. Monaco.1996 ; • Protocole de Kyoto à la Convention sur les changements climatiques. Kyoto.1997."
       ]
-
     },
     "sned_secegsa": {
       "title": "SNED et SECEGSA",

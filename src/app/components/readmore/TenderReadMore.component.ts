@@ -14,6 +14,7 @@ import { trigger, style, transition, animate } from '@angular/animations';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { LoaderComponent } from '../loader/loader.component';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import DOMPurify from 'dompurify';
 
 @Component({
   selector: 'app-tender-read-more',
@@ -49,12 +50,12 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
     <aside
       *ngIf="sidebarOpen()"
       @slideInOut
-      class="fixed top-0 right-0 w-1/2 h-full bg-white shadow-2xl flex flex-col"
+      class="
+  fixed top-0 right-0 w-full md:w-[80%] lg:w-[60%] h-full bg-white shadow-2xl flex flex-col"
       style="z-index: 99999;"
     >
-      <!-- Header -->
-      <div class="flex justify-between items-center p-4 border-b">
-        <h2 class="text-2xl font-bold">{{ tenderNumberDisplay }}</h2>
+      <!-- Header avec boutons -->
+      <div class="flex justify-end items-center p-4 border-b bg-gray-50">
         <div class="flex items-center gap-3">
           <!-- Bouton partager -->
           <button
@@ -79,85 +80,39 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
       <!-- Contenu avec scroll -->
       <div
         class="flex-1 overflow-y-auto sidebar-scroll"
-        style="background-color: #f5f7fa;"
+        style="background-color: #e5e7eb;"
         data-lenis-prevent
       >
         <app-loader *ngIf="loading()"></app-loader>
 
-        <!-- Container du document -->
-        <div *ngIf="!loading()" class="document-container">
-          <!-- Document principal -->
-          <div class="official-document">
-            <!-- Bandeau officiel -->
-            <div class="official-banner">
-              <div class="banner-stripe"></div>
-              <div class="banner-content">
-                <div class="official-seal">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="seal-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
-                </div>
-                <div class="banner-text">
-                  <div class="banner-title">{{ 'tenders.official_document' | translate }}</div>
-                  <div class="banner-subtitle">{{ 'tenders.public_tender' | translate }}</div>
-                </div>
+        <!-- Container du document PDF -->
+        <div *ngIf="!loading()" class="pdf-container">
+          <!-- Page PDF -->
+          <div class="pdf-page">
+            <!-- Date en haut à droite -->
+            <div class="pdf-header">
+              <div class="pdf-date" *ngIf="formattedDate">
+                {{ formattedDate }}
               </div>
             </div>
 
-            <!-- Informations principales -->
-            <div class="document-header">
-              <div class="header-row">
-                <div class="info-label">{{ 'tenders.reference' | translate }}</div>
-                <div class="info-value">{{ tenderNumberDisplay }}</div>
-              </div>
-              <div class="header-row" *ngIf="formattedDate">
-                <div class="info-label">{{ 'tenders.publication_date' | translate }}</div>
-                <div class="info-value">{{ formattedDate }}</div>
-              </div>
+            <!-- Titre principal (Numéro) -->
+            <div class="pdf-title-section">
+              <h1 class="pdf-main-title">{{ tenderNumberDisplay }}</h1>
             </div>
 
-            <!-- Séparateur -->
-            <div class="section-divider">
-              <div class="divider-line"></div>
-              <div class="divider-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              </div>
-              <div class="divider-line"></div>
-            </div>
-
-            <!-- Contenu principal du document -->
-            <div class="document-body">
-              <div class="content-section">
-                <h3 class="section-title">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="title-icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  {{ 'tenders.tender_object' | translate }}
-                </h3>
-                <div class="content-text break-words whitespace-normal" [innerHTML]="trustedContent"></div>
-              </div>
-            </div>
-
-            <!-- Note de bas de page -->
-            <div class="document-footer">
-              <div class="footer-notice">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="notice-icon">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                </svg>
-                <span>{{ 'tenders.footer_notice' | translate }}</span>
-              </div>
+            <!-- Contenu du document -->
+            <div class="pdf-content">
+              <div
+                class="pdf-text whitespace-normal"
+                [innerHTML]="trustedContent"
+              ></div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Footer -->
+      <!-- Footer navigation -->
       <div
         class="border-t bg-white p-4 shadow-lg"
         *ngIf="nextTenderId !== null && nextTenderTitle"
@@ -178,7 +133,11 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
             }}</span>
           </div>
           <i
-            [class]="currentLang() === 'ar' ? 'fas fa-arrow-left text-blue-600 group-hover:-translate-x-1 transition-transform duration-200' : 'fas fa-arrow-right text-blue-600 group-hover:translate-x-1 transition-transform duration-200'"
+            [class]="
+              currentLang() === 'ar'
+                ? 'fas fa-arrow-left text-blue-600 group-hover:-translate-x-1 transition-transform duration-200'
+                : 'fas fa-arrow-right text-blue-600 group-hover:translate-x-1 transition-transform duration-200'
+            "
           ></i>
         </button>
       </div>
@@ -186,102 +145,53 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
   `,
   styles: [
     `
-      // Container principal du document
-      .document-container {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 2rem 1.5rem;
+      // Container PDF
+      .pdf-container {
+        padding: 2rem;
+        min-height: 100%;
+        display: flex;
+        justify-content: center;
+        overflow: visible;
+        box-sizing: border-box;
 
         @media (max-width: 768px) {
           padding: 1rem;
         }
       }
 
-      // Document officiel
-      .official-document {
+      // Page PDF style
+      .pdf-page {
+        width: 100%;
+        max-width: 210mm; // Largeur A4
         background: white;
-        border-radius: 12px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        overflow: hidden;
-      }
-
-      // Bandeau officiel
-      .official-banner {
-        position: relative;
-        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-        padding: 2rem 2.5rem;
-        color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding-top: 20mm; /* ← ici */
+        padding-right: 25mm;
+        padding-bottom: 40mm;
+        padding-left: 25mm;
+        min-height: calc(100vh - 4rem);
+        overflow: visible;
+        box-sizing: border-box;
 
         @media (max-width: 768px) {
-          padding: 1.5rem 1.25rem;
+          padding: 20mm 15mm;
         }
       }
 
-      .banner-stripe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(
-          90deg,
-          var(--sned-orange, #f59e0b) 0%,
-          var(--sned-blue, #667eea) 50%,
-          var(--sned-orange, #f59e0b) 100%
-        );
-      }
-
-      .banner-content {
+      // En-tête du document (date seulement)
+      .pdf-header {
         display: flex;
-        align-items: center;
-        gap: 1.5rem;
+        justify-content: flex-end;
+        margin-bottom: 3rem;
 
         @media (max-width: 768px) {
-          gap: 1rem;
+          margin-bottom: 2rem;
         }
       }
 
-      .official-seal {
-        background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(10px);
-        border-radius: 12px;
-        padding: 1rem;
-        border: 2px solid rgba(255, 255, 255, 0.3);
-
-        @media (max-width: 768px) {
-          padding: 0.75rem;
-        }
-      }
-
-      .seal-icon {
-        width: 48px;
-        height: 48px;
-        stroke-width: 2;
-
-        @media (max-width: 768px) {
-          width: 36px;
-          height: 36px;
-        }
-      }
-
-      .banner-text {
-        flex: 1;
-      }
-
-      .banner-title {
-        font-size: 1.5rem;
-        font-weight: 700;
-        letter-spacing: -0.02em;
-        margin-bottom: 0.25rem;
-
-        @media (max-width: 768px) {
-          font-size: 1.125rem;
-        }
-      }
-
-      .banner-subtitle {
-        font-size: 1rem;
-        opacity: 0.95;
+      .pdf-date {
+        font-size: 0.9375rem;
+        color: #6b7280;
         font-weight: 500;
 
         @media (max-width: 768px) {
@@ -289,147 +199,53 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
         }
       }
 
-      // En-tête du document
-      .document-header {
-        padding: 2rem 2.5rem;
-        background: linear-gradient(to bottom, #f8fafc 0%, #ffffff 100%);
-        border-bottom: 2px solid #e2e8f0;
+      // Section titre (numéro)
+      .pdf-title-section {
+        margin-bottom: 3rem;
 
         @media (max-width: 768px) {
-          padding: 1.5rem 1.25rem;
+          margin-bottom: 2rem;
         }
       }
 
-      .header-row {
-        display: grid;
-        grid-template-columns: 180px 1fr;
-        gap: 1rem;
-        padding: 0.75rem 0;
-
-        &:not(:last-child) {
-          border-bottom: 1px dashed #e2e8f0;
-        }
-
-        @media (max-width: 768px) {
-          grid-template-columns: 1fr;
-          gap: 0.25rem;
-        }
-      }
-
-      .info-label {
-        font-size: 0.9375rem;
-        font-weight: 600;
-        color: #475569;
-        display: flex;
-        align-items: center;
-
-        @media (max-width: 768px) {
-          font-size: 0.875rem;
-        }
-      }
-
-      .info-value {
-        font-size: 1rem;
+      .pdf-main-title {
+        font-size: 2.25rem;
         font-weight: 700;
-        color: #1e293b;
-        display: flex;
-        align-items: center;
+        color: #111827;
+        margin: 0;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        text-align: center;
 
         @media (max-width: 768px) {
-          font-size: 0.9375rem;
+          font-size: 1.75rem;
         }
       }
 
-      // Séparateur de section
-      .section-divider {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        padding: 1.5rem 2.5rem;
-        background: white;
-
-        @media (max-width: 768px) {
-          padding: 1rem 1.25rem;
-        }
+      // Contenu principal
+      .pdf-content {
+        margin-bottom: 3rem;
       }
 
-      .divider-line {
-        flex: 1;
-        height: 2px;
-        background: linear-gradient(
-          90deg,
-          transparent 0%,
-          #cbd5e1 50%,
-          transparent 100%
-        );
-      }
-
-      .divider-icon {
-        background: linear-gradient(135deg, var(--sned-blue, #667eea), var(--sned-orange, #f59e0b));
-        color: white;
-        border-radius: 50%;
-        padding: 0.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        svg {
-          width: 20px;
-          height: 20px;
-          stroke-width: 2.5;
-        }
-      }
-
-      // Corps du document
-      .document-body {
-        padding: 2rem 2.5rem;
-
-        @media (max-width: 768px) {
-          padding: 1.5rem 1.25rem;
-        }
-      }
-
-      .content-section {
+      .pdf-section {
         margin-bottom: 2rem;
       }
 
-      .section-title {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        font-size: 1.25rem;
-        font-weight: 700;
-        color: #1e293b;
-        margin: 0 0 1.5rem 0;
-        padding-bottom: 0.75rem;
-        border-bottom: 3px solid #e2e8f0;
-
-        @media (max-width: 768px) {
-          font-size: 1.125rem;
-        }
-      }
-
-      .title-icon {
-        width: 28px;
-        height: 28px;
-        stroke-width: 2;
-        color: var(--sned-blue, #667eea);
-        flex-shrink: 0;
-
-        @media (max-width: 768px) {
-          width: 24px;
-          height: 24px;
-        }
-      }
-
-      .content-text {
+      .pdf-text {
         font-size: 1rem;
-        line-height: 1.8;
-        color: #334155;
+        line-height: 1.75;
+        color: #374151;
+        text-align: justify;
+        // white-space: normal;
+        // word-break: normal;
+        // overflow-wrap: break-word;
+        white-space: normal !important;
+        word-break: normal !important;
+        overflow-wrap: break-word !important;
+        hyphens: none !important;
 
         ::ng-deep p {
           margin-bottom: 1rem;
-          text-align: justify;
 
           &:last-child {
             margin-bottom: 0;
@@ -441,24 +257,21 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
         ::ng-deep h3,
         ::ng-deep h4 {
           font-weight: 700;
-          color: #1e293b;
+          color: #111827;
           margin-top: 1.5rem;
-          margin-bottom: 1rem;
+          margin-bottom: 0.75rem;
           line-height: 1.3;
         }
 
         ::ng-deep h1 {
-          font-size: 1.75rem;
-        }
-
-        ::ng-deep h2 {
           font-size: 1.5rem;
         }
-
+        ::ng-deep h2 {
+          font-size: 1.375rem;
+        }
         ::ng-deep h3 {
           font-size: 1.25rem;
         }
-
         ::ng-deep h4 {
           font-size: 1.125rem;
         }
@@ -466,7 +279,7 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
         ::ng-deep strong,
         ::ng-deep b {
           font-weight: 700;
-          color: #1e293b;
+          color: #111827;
         }
 
         ::ng-deep em,
@@ -481,25 +294,23 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
           li {
             margin-bottom: 0.5rem;
-            line-height: 1.7;
+            line-height: 1.65;
           }
         }
 
         ::ng-deep ul {
           list-style-type: disc;
         }
-
         ::ng-deep ol {
           list-style-type: decimal;
         }
 
         ::ng-deep a {
-          color: var(--sned-blue, #667eea);
+          color: #2563eb;
           text-decoration: underline;
-          transition: color 0.2s;
 
           &:hover {
-            color: var(--sned-orange, #f59e0b);
+            color: #1d4ed8;
           }
         }
 
@@ -510,47 +321,47 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
           font-size: 0.9375rem;
 
           th {
-            background: #f1f5f9;
-            border: 1px solid #cbd5e1;
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
             padding: 0.75rem;
             text-align: left;
             font-weight: 600;
-            color: #1e293b;
+            color: #111827;
           }
 
           td {
-            border: 1px solid #e2e8f0;
+            border: 1px solid #e5e7eb;
             padding: 0.75rem;
-            color: #334155;
+            color: #374151;
           }
 
           tr:nth-child(even) {
-            background: #f8fafc;
+            background: #f9fafb;
           }
         }
 
         ::ng-deep blockquote {
           margin: 1.5rem 0;
           padding: 1rem 1.5rem;
-          border-left: 4px solid var(--sned-orange, #f59e0b);
-          background: #fef3c7;
+          border-left: 4px solid #3b82f6;
+          background: #eff6ff;
           font-style: italic;
-          color: #78350f;
+          color: #1e40af;
         }
 
         ::ng-deep code {
           font-family: 'Courier New', monospace;
-          background: #f1f5f9;
+          background: #f3f4f6;
           padding: 0.125rem 0.375rem;
-          border-radius: 4px;
+          border-radius: 3px;
           font-size: 0.875rem;
         }
 
         ::ng-deep pre {
-          background: #1e293b;
-          color: #e2e8f0;
+          background: #1f2937;
+          color: #f3f4f6;
           padding: 1rem;
-          border-radius: 8px;
+          border-radius: 6px;
           overflow-x: auto;
           margin: 1.5rem 0;
 
@@ -562,49 +373,47 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
         @media (max-width: 768px) {
           font-size: 0.9375rem;
+          line-height: 1.65;
         }
       }
 
-      // Pied de document
-      .document-footer {
-        padding: 1.5rem 2.5rem;
-        background: linear-gradient(to top, #fffbeb 0%, #ffffff 100%);
-        border-top: 2px solid #fde68a;
-
-        @media (max-width: 768px) {
-          padding: 1.25rem 1.25rem;
-        }
+      // Pied de page
+      .pdf-footer {
+        margin-top: 3rem;
+        padding-top: 1.5rem;
       }
 
-      .footer-notice {
+      .pdf-footer-line {
+        height: 1px;
+        background: #d1d5db;
+        margin-bottom: 1rem;
+      }
+
+      .pdf-footer-content {
         display: flex;
         align-items: flex-start;
-        gap: 1rem;
-        padding: 1rem;
-        background: white;
-        border: 2px solid #fbbf24;
-        border-radius: 8px;
-        font-size: 0.875rem;
-        line-height: 1.6;
-        color: #92400e;
+        gap: 0.75rem;
+        font-size: 0.8125rem;
+        line-height: 1.5;
+        color: #6b7280;
+        font-style: italic;
 
         @media (max-width: 768px) {
-          font-size: 0.8125rem;
-          padding: 0.875rem;
+          font-size: 0.75rem;
         }
       }
 
-      .notice-icon {
-        width: 24px;
-        height: 24px;
+      .pdf-footer-icon {
+        width: 18px;
+        height: 18px;
         stroke-width: 2;
-        color: #f59e0b;
+        color: #9ca3af;
         flex-shrink: 0;
-        margin-top: 2px;
+        margin-top: 1px;
 
         @media (max-width: 768px) {
-          width: 20px;
-          height: 20px;
+          width: 16px;
+          height: 16px;
         }
       }
 
@@ -615,15 +424,15 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
         }
 
         &::-webkit-scrollbar-track {
-          background: #f1f5f9;
+          background: #f3f4f6;
         }
 
         &::-webkit-scrollbar-thumb {
-          background: #cbd5e1;
+          background: #d1d5db;
           border-radius: 5px;
 
           &:hover {
-            background: #94a3b8;
+            background: #9ca3af;
           }
         }
       }
@@ -650,7 +459,9 @@ export class TenderReadMoreComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // Initialiser la langue courante
-    this.currentLang.set(this.translate.currentLang || this.translate.defaultLang || 'fr');
+    this.currentLang.set(
+      this.translate.currentLang || this.translate.defaultLang || 'fr'
+    );
 
     // S'abonner aux changements de langue
     this.translate.onLangChange.subscribe((event) => {
@@ -707,7 +518,18 @@ export class TenderReadMoreComponent implements OnInit, OnDestroy {
   }
 
   private sanitizeContent(raw: string): SafeHtml {
-    return this.sanitizer.bypassSecurityTrustHtml(raw || '');
+    // return this.sanitizer.bypassSecurityTrustHtml(raw || '');
+    if (!raw) return '';
+
+    // 1️⃣ remplacer les &nbsp; par des espaces normaux
+    const normalized = raw.replace(/&nbsp;/g, ' ').replace(/\u00A0/g, ' ');
+
+    // 2️⃣ nettoyer le HTML
+    const clean = DOMPurify.sanitize(normalized, {
+      FORBID_ATTR: ['style'],
+    });
+
+    return this.sanitizer.bypassSecurityTrustHtml(clean);
   }
 
   @HostListener('document:keydown.escape')
