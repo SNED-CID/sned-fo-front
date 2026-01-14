@@ -31,6 +31,7 @@ export class AnchorComponent implements OnInit {
       { id: 'sned_secegsa', labelKey: 'header.menu.sned_secegsa' },
       { id: 'organigramme', labelKey: 'header.menu.organization' },
       { id: 'partenaires', labelKey: 'header.menu.partners' },
+      { id: 'carrieres', labelKey: 'header.menu.careers' },
       { id: 'appels_offres', labelKey: 'header.menu.call_for_tenders' },
     ];
   }
@@ -112,7 +113,8 @@ export class AnchorComponent implements OnInit {
       [this.translateService.instant('header.menu.ceo_message')]: 'pdg',
       [this.translateService.instant('header.menu.organization')]: 'organigramme',
       [this.translateService.instant('header.menu.sned_secegsa')]: 'sned_secegsa',
-      [this.translateService.instant('header.menu.partners')]: 'partenaires'
+      [this.translateService.instant('header.menu.partners')]: 'partenaires',
+      [this.translateService.instant('header.menu.careers')]: 'carrieres'
     };
 
     // Pour "Projet de liaison fixe"

@@ -14,6 +14,7 @@ import { ScrollAnimationDirective } from '../../directives/scroll-animation.dire
 import { ActivatedRoute } from '@angular/router';
 import { PartnersComponent } from '../partners/partners.component';
 import { TendersComponent } from '../tenders/tenders.component';
+import { CareerComponent } from '../career/career.component';
 
 interface Section {
   id: string;
@@ -35,6 +36,7 @@ interface Section {
     ScrollAnimationDirective,
     PartnersComponent,
     TendersComponent,
+    CareerComponent,
   ],
   template: `
     <!-- Point de repère en haut -->
@@ -184,7 +186,9 @@ interface Section {
             id="conseil-administration-section"
             class="flex flex-col items-center justify-center pt-6 pb-6"
           >
-            <h2 class="text-3xl font-bold text-primary mb-6 text-center">
+            <h2
+              class="text-[clamp(1.5rem,4vw,3rem)] font-bold text-primary mt-10 text-center lg:mb-4"
+            >
               {{ 'about.conseil_administration.title' | translate }}
             </h2>
 
@@ -317,6 +321,25 @@ interface Section {
         ></div>
         <div id="appels_offres" class="pt-3 w-full">
           <app-tenders class="w-full"></app-tenders>
+          </div>
+      </div>
+      
+      <!-- Section Carrières -->
+      <div
+        class="w-3/4 lg:w-5/6 2xl:w-full mx-auto mt-16 px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 relative bg-white rounded-2xl shadow-lg overflow-hidden"
+      >
+        <div
+          class="absolute top-0 left-0 w-full h-5 sm:h-8 bg-gradient-to-r from-[var(--sned-blue)] to-[var(--sned-orange)] rounded-t-2xl"
+        ></div>
+
+        <h2
+          class="text-3xl lg:text-4xl xl:text-5xl font-bold text-primary  mt-10 text-left rtl:text-right lg:mb-4"
+        >
+          {{ 'header.menu.careers' | translate }}
+        </h2>
+
+        <div id="carrieres" class="py-4 w-full">
+          <app-career></app-career>
         </div>
       </div>
     </div>
@@ -375,20 +398,6 @@ export class AboutComponent implements OnInit {
 
   private initializeSections() {
     this.sections = [
-      // {
-      //   id: 'apropos',
-      //   title: this.translateService.instant('about.sned.title'),
-      //   short: this.translateService.instant('about.sned.short'),
-      //   paragraphs: this.translateService.instant('about.sned.paragraphs'),
-      //   image: 'assets/images/bridge_engineer.jpg'
-      // },
-      // {
-      //   id: 'contexte',
-      //   title: this.translateService.instant('about.contexte.title'),
-      //   short: this.translateService.instant('about.contexte.short'),
-      //   paragraphs: this.translateService.instant('about.contexte.paragraphs'),
-      //   image: 'assets/images/contexte.jpg'
-      // },
       {
         id: 'cadre',
         title: this.translateService.instant('about.cadre.title'),

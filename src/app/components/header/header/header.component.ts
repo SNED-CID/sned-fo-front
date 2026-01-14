@@ -156,7 +156,6 @@ export class HeaderComponent implements OnInit {
             label: this.translateService.instant('header.menu.discover_sned'),
             route: '/about',
             children: [
-              // { label: this.translateService.instant('header.menu.know_us'), route: '/about', sectionId: 'apropos' },
               {
                 label: this.translateService.instant(
                   'header.menu.institutional_framework'
@@ -191,16 +190,17 @@ export class HeaderComponent implements OnInit {
                 sectionId: 'partenaires',
               },
               {
+                label: this.translateService.instant('header.menu.careers'),
+                route: '/about',
+                sectionId: 'carrieres',
+              },
+              {
                 label: this.translateService.instant(
                   'header.menu.call_for_tenders'
                 ),
                 route: '/about',
                 sectionId: 'appels_offres',
               },
-
-              // { label: this.translateService.instant('header.menu.strategic_context'), route: '/about', sectionId: 'contexte' },
-
-              // { label: this.translateService.instant('header.menu.ceo_message'), route: '/about', sectionId: 'pdg' },
             ],
           },
           {
@@ -249,16 +249,6 @@ export class HeaderComponent implements OnInit {
             label: this.translateService.instant('header.menu.news'),
             route: '/actualite',
           },
-          // {
-          //   label: this.translateService.instant('header.menu.partners'),
-          //   route: '/partenariat',
-          // },
-          // {
-          //   label: this.translateService.instant(
-          //     'header.menu.call_for_tenders'
-          //   ),
-          //   route: '/appels-offres',
-          // },
         ],
       },
     ];

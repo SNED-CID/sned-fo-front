@@ -241,6 +241,7 @@
       "recognition_gallery": "Recognition Gallery",
       "news": "News",
       "partners": "Partners",
+      "careers": "Careers",
       "call_for_tenders": "Call for Tenders"
     }
   },
@@ -263,6 +264,9 @@
     "publication_date": "Publication date:",
     "tender_object": "Call for tenders object",
     "footer_notice": "This document is provided for informational purposes. For any official submission, please refer to the complete specifications."
+  },
+  "careers": {
+    "last_updated_on": "Last updated on"
   },
   "about": {
     "sned": {

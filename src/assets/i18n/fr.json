@@ -241,6 +241,7 @@
       "recognition_gallery": "Galerie de reconnaissance",
       "news": "Actualités",
       "partners": "Partenaires",
+      "careers": "Carrières",
       "call_for_tenders": "Appel d'offres"
     }
   },
@@ -263,6 +264,9 @@
     "publication_date": "Date de publication :",
     "tender_object": "Objet de l'appel d'offres",
     "footer_notice": "Ce document est fourni à titre informatif. Pour toute soumission officielle, veuillez vous référer au cahier des charges complet."
+  },
+  "careers": {
+    "last_updated_on": "Mise à jour le"
   },
   "about": {
     "sned": {

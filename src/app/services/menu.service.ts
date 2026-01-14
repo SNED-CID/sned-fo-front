@@ -36,16 +36,43 @@ export class MenuService {
           label: this.translateService.instant('header.menu.discover_sned'),
           route: '/',
           children: [
-            { label: this.translateService.instant('header.menu.institutional_framework'), route: '/' },
-            { label: this.translateService.instant('header.menu.missions_values'), route: '/' },
-            { label: this.translateService.instant('header.menu.sned_secegsa'), route: '/' },
-            { label: this.translateService.instant('header.menu.organization'), route: '/' },
-            { label: this.translateService.instant('header.menu.partners'), route: '/partenaires' },
-            { label: this.translateService.instant('header.menu.call_for_tenders'), route: '/' }
-            
-          ]
-        }
-      ]
+            {
+              label: this.translateService.instant(
+                'header.menu.institutional_framework'
+              ),
+              route: '/',
+            },
+            {
+              label: this.translateService.instant(
+                'header.menu.missions_values'
+              ),
+              route: '/',
+            },
+            {
+              label: this.translateService.instant('header.menu.sned_secegsa'),
+              route: '/',
+            },
+            {
+              label: this.translateService.instant('header.menu.organization'),
+              route: '/',
+            },
+            {
+              label: this.translateService.instant('header.menu.partners'),
+              route: '/partenaires',
+            },
+            {
+              label: this.translateService.instant('header.menu.careers'),
+              route: '/partenaires',
+            },
+            {
+              label: this.translateService.instant(
+                'header.menu.call_for_tenders'
+              ),
+              route: '/',
+            },
+          ],
+        },
+      ],
     };
   }
 

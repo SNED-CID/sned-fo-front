@@ -241,6 +241,7 @@
       "recognition_gallery": "معرض الاعتراف",
       "news": "الأخبار",
       "partners": "الشركاء",
+      "careers": "المسارات المهنية",
       "call_for_tenders": "طلب عروض"
     }
   },
@@ -263,6 +264,9 @@
     "publication_date": "تاريخ النشر:",
     "tender_object": "موضوع طلب العروض",
     "footer_notice": "يتم توفير هذه الوثيقة لأغراض إعلامية. للتقديم الرسمي، يرجى الرجوع إلى دفتر الشروط الكامل."
+  },
+  "careers": {
+    "last_updated_on": "آخر تحديث في"
   },
   "about": {
     "sned": {
