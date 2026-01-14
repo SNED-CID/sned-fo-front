@@ -22,14 +22,16 @@ export class AnchorComponent implements OnInit {
   // Default links for home/about page
   private getDefaultLinks() {
     return [
-      { id: 'apropos', labelKey: 'header.menu.know_us' },
-      { id: 'contexte', labelKey: 'header.menu.strategic_context' },
+      // { id: 'apropos', labelKey: 'header.menu.know_us' },
+      // { id: 'contexte', labelKey: 'header.menu.strategic_context' },
+       { id: 'cadre', labelKey: 'header.menu.institutional_framework' },
       { id: 'missions', labelKey: 'header.menu.missions_values' },
-      { id: 'cadre', labelKey: 'header.menu.institutional_framework' },
-      { id: 'pdg', labelKey: 'header.menu.ceo_message' },
+     
+      // { id: 'pdg', labelKey: 'header.menu.ceo_message' },
       { id: 'sned_secegsa', labelKey: 'header.menu.sned_secegsa' },
       { id: 'organigramme', labelKey: 'header.menu.organization' },
       { id: 'partenaires', labelKey: 'header.menu.partners' },
+      { id: 'appels_offres', labelKey: 'header.menu.call_for_tenders' },
     ];
   }
 

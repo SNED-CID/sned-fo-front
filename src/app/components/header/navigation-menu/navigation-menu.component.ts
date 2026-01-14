@@ -37,13 +37,13 @@ export interface MenuSection {
                   routerLinkActive="active-link"
                   [routerLinkActiveOptions]="{ exact: true }"
                   (click)="onMenuItemClick(item)"
-                  class="relative px-2 lg:px-2.5 py-2 font-medium text-xs lg:text-sm rounded-lg inline-flex items-center gap-1.5 whitespace-nowrap transition-all duration-200 group text-[var(--sned-orange-dark)] hover:text-[var(--sned-blue)] hover:bg-[var(--sned-orange)]/5 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/20 cursor-pointer"
-                >
+                  class="relative px-2 lg:px-2.5 py-2 font-medium text-xs lg:text-sm rounded-none inline-flex items-center gap-1.5 whitespace-nowrap transition-all duration-200 group text-black hover:text-black hover:bg-white focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/20 cursor-pointer"
+>
                   {{ item.label | translate }}
 
                   <!-- Trait animé sous le lien -->
                   <span
-                    class="absolute left-0 right-0 -bottom-1 h-0.5 bg-gradient-to-r from-[var(--sned-blue)] to-[var(--sned-orange)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left group-[.active-link]:scale-x-100 rounded-full"
+                    class="absolute left-0 right-0 -bottom-1 h-0.5 bg-[var(--sned-orange)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left group-[.active-link]:scale-x-100 rounded-full"
                   ></span>
                 </a>
               }
@@ -56,7 +56,7 @@ export interface MenuSection {
                     [fragment]="item.sectionId"
                     routerLinkActive="active-link"
                     [routerLinkActiveOptions]="{ exact: true }"
-                    class="relative px-2 lg:px-2.5 py-2 font-medium text-xs lg:text-sm rounded-lg inline-flex items-center gap-1 whitespace-nowrap transition-all duration-200 group text-[var(--sned-orange-dark)] hover:text-[var(--sned-blue)] hover:bg-[var(--sned-orange)]/5 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/20 cursor-pointer"
+                    class="relative px-2 lg:px-2.5 py-2 font-medium text-xs lg:text-sm rounded-lg inline-flex items-center gap-1 whitespace-nowrap transition-all duration-200 group text-bg-[var(--sned-orange)] hover:text-bg-[var(--sned-orange)] hover:bg-[var(--sned-orange)]/5 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/20 cursor-pointer"
                   >
                     {{ item.label | translate }}
                     <i
@@ -65,7 +65,7 @@ export interface MenuSection {
 
                     <!-- Trait animé sous le lien -->
                     <span
-                      class="absolute left-0 right-0 -bottom-1 h-0.5 bg-gradient-to-r from-[var(--sned-blue)] to-[var(--sned-orange)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left group-[.active-link]:scale-x-100 rounded-full"
+                      class="absolute left-0 right-0 -bottom-1 h-0.5 bg-[var(--sned-orange)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left group-[.active-link]:scale-x-100 rounded-full"
                     ></span>
                   </button>
 
@@ -86,7 +86,7 @@ export interface MenuSection {
                           routerLinkActive="active-sublink"
                           [routerLinkActiveOptions]="{ exact: true }"
                           (click)="onMenuItemClick(child, item.label)"
-                          class="flex items-center px-4 py-3 text-sm font-medium text-[var(--sned-orange-dark)] hover:bg-gradient-to-r hover:from-[var(--sned-orange)]/8 hover:to-[var(--sned-blue)]/4 hover:text-[var(--sned-blue)] rounded-lg transition-all duration-200 whitespace-nowrap rtl:text-right group/item relative overflow-hidden cursor-pointer"
+                          class="flex items-center px-4 py-3 text-sm font-medium text-bg-[var(--sned-orange)] hover:bg-gradient-to-r hover:from-[var(--sned-orange)]/8 hover:to-[var(--sned-blue)]/4 hover:text-bg-[var(--sned-orange)] rounded-lg transition-all duration-200 whitespace-nowrap rtl:text-right group/item relative overflow-hidden cursor-pointer"
                         >
                           <!-- Icône animée -->
                           <i

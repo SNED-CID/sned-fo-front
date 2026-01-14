@@ -13,6 +13,7 @@ import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
 import { ScrollAnimationDirective } from '../../directives/scroll-animation.directive';
 import { ActivatedRoute } from '@angular/router';
 import { PartnersComponent } from '../partners/partners.component';
+import { TendersComponent } from '../tenders/tenders.component';
 
 interface Section {
   id: string;
@@ -33,6 +34,7 @@ interface Section {
     LazyImageComponent,
     ScrollAnimationDirective,
     PartnersComponent,
+    TendersComponent,
   ],
   template: `
     <!-- Point de repère en haut -->
@@ -287,10 +289,12 @@ interface Section {
         class="w-3/4 lg:w-5/6 2xl:w-full mx-auto mt-16 px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 relative bg-white rounded-2xl shadow-lg overflow-hidden"
       >
         <div
-          class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[var(--sned-blue)] to-[var(--sned-orange)] rounded-t-2xl"
+          class="absolute top-0 left-0 w-full h-5 sm:h-8 bg-gradient-to-r from-[var(--sned-blue)] to-[var(--sned-orange)] rounded-t-2xl"
         ></div>
 
-        <h2 class="text-3xl lg:text-4xl xl:text-5xl font-bold text-primary  mt-6 text-center lg:mb-6">
+        <h2
+          class="text-3xl lg:text-4xl xl:text-5xl font-bold text-primary  mt-10 text-left lg:mb-6 rtl:text-right"
+        >
           {{ 'header.menu.partners' | translate }}
         </h2>
 
@@ -299,6 +303,22 @@ interface Section {
         </div>
       </div>
 
+      <!-- Section Appels d'offres -->
+      <div
+        class="w-3/4 lg:w-5/6 2xl:w-full mx-auto mt-16 px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 relative bg-white rounded-2xl shadow-lg overflow-hidden"
+      >
+        <h2
+          class="text-3xl lg:text-4xl xl:text-5xl font-bold text-primary  mt-10 text-left lg:mb-6 rtl:text-right"
+        >
+          {{ "tenders.title" | translate }}
+        </h2>
+        <div
+          class="absolute top-0 left-0 w-full h-5 sm:h-8 bg-gradient-to-r from-[var(--sned-blue)] to-[var(--sned-orange)] rounded-t-2xl"
+        ></div>
+        <div id="appels_offres" class="pt-3 w-full">
+          <app-tenders class="w-full"></app-tenders>
+        </div>
+      </div>
     </div>
 
     <!-- Bouton Retour en haut amélioré -->
@@ -476,7 +496,7 @@ export class AboutComponent implements OnInit {
     if (element) {
       element.scrollIntoView({
         behavior: 'smooth',
-        block: 'start',
+        block: 'center',
       });
     }
   }

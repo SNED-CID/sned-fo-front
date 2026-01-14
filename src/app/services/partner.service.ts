@@ -7,6 +7,7 @@ import { PreviewTokenService } from './preview-token.service';
 export interface PartnerReadDTO {
   id: number;
   partnerType: string;
+  urlPartner : string;
   name: string;
   description?: string;
   displayOrder?: number;

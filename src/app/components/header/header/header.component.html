@@ -1,32 +1,41 @@
-<header class="fixed top-0 left-0 right-0 z-50" [attr.dir]="currentLang() === 'ar' ? 'rtl' : 'ltr'">
+<header
+  class="fixed top-0 left-0 right-0 z-50"
+  [attr.dir]="currentLang() === 'ar' ? 'rtl' : 'ltr'"
+>
   <!-- Header principal -->
   <div [ngClass]="mainHeaderClasses()">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center h-full gap-2 lg:gap-6">
-
         <!-- Logo - Toujours visible et non-compressible -->
-        <a routerLink="/"
-           class="flex-shrink-0 flex items-center justify-center h-full space-x-2 rtl:space-x-reverse group transition-transform duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/20 rounded-lg p-1">
+        <a
+          routerLink="/"
+          class="flex-shrink-0 flex items-center justify-center h-full space-x-2 rtl:space-x-reverse group transition-transform duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/20 rounded-lg p-1"
+        >
           <img
             [src]="getLogoPath()"
             alt="SNED Logo"
-            class="h-10 sm:h-12 lg:h-16 xl:h-20 w-auto object-contain transition-all duration-300 filter drop-shadow-sm group-hover:drop-shadow-md">
+            class="h-10 sm:h-12 lg:h-16 xl:h-20 w-auto object-contain transition-all duration-300 filter drop-shadow-sm group-hover:drop-shadow-md"
+          />
         </a>
 
         <!-- Menu de navigation desktop - Centré -->
         <div class="hidden lg:flex items-center justify-center h-full flex-1">
           <app-navigation-menu
             [menuSections]="menuSections"
-            (menuItemClick)="onMenuItemClick()">
+            (menuItemClick)="onMenuItemClick()"
+          >
           </app-navigation-menu>
         </div>
 
         <!-- Sélecteur de langues desktop -->
-        <div class="hidden lg:flex items-center justify-end h-full flex-shrink-0">
+        <div
+          class="hidden lg:flex items-center justify-end h-full flex-shrink-0"
+        >
           <app-language-selector
             [languages]="languages"
             [currentLang]="currentLang"
-            (languageChange)="onLanguageChange($event)">
+            (languageChange)="onLanguageChange($event)"
+          >
           </app-language-selector>
         </div>
 
@@ -36,34 +45,43 @@
           <div class="relative">
             <button
               (click)="showMobileLangDropdown = !showMobileLangDropdown"
-              class="flex items-center justify-center w-10 h-10 rounded-lg bg-white/90 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/50">
+              class="flex items-center justify-center w-10 h-10 rounded-lg bg-white/90 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/50"
+            >
               <i class="fas fa-globe w-5 h-5 text-[var(--sned-orange)]"></i>
             </button>
 
             <!-- Dropdown langues mobile -->
             @if (showMobileLangDropdown) {
-              <div [ngClass]="{
-                     'right-0': currentLang() !== 'ar',
-                     'left-0': currentLang() === 'ar'
-                   }"
-                   class="absolute top-full mt-2 bg-white rounded-xl shadow-xl border border-gray-100 min-w-[160px] z-60 overflow-hidden">
-                <div class="p-2">
-                  @for (lang of languages; track lang.code) {
-                    <button (click)="selectMobileLanguage(lang)"
-                            [ngClass]="{
-                              'bg-gradient-to-r from-[var(--sned-orange)] to-[var(--sned-blue)] text-white shadow-md ring-2 ring-[var(--sned-orange)]/30': lang.code === currentLang(),
-                              'hover:bg-[var(--sned-orange)]/10 hover:text-[var(--sned-orange)]': lang.code !== currentLang()
-                            }"
-                            class="w-full flex items-center space-x-3 rtl:space-x-reverse px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 relative group">
-                      <span class="font-semibold">{{ lang.initials }}</span>
-                      <span class="flex-1 text-left rtl:text-right">{{ lang.label }}</span>
-                      @if (lang.code === currentLang()) {
-                        <i class="fas fa-check w-4 h-4 text-white animate-pulse"></i>
-                      }
-                    </button>
+            <div
+              [ngClass]="{
+                'right-0': currentLang() !== 'ar',
+                'left-0': currentLang() === 'ar'
+              }"
+              class="absolute top-full mt-2 bg-white rounded-xl shadow-xl border border-gray-100 min-w-[160px] z-60 overflow-hidden"
+            >
+              <div class="p-2">
+                @for (lang of languages; track lang.code) {
+                <button
+                  (click)="selectMobileLanguage(lang)"
+                  [ngClass]="{
+                    'bg-gradient-to-r from-[var(--sned-orange)] to-[var(--sned-blue)] text-white shadow-md ring-2 ring-[var(--sned-orange)]/30':
+                      lang.code === currentLang(),
+                    'hover:bg-[var(--sned-orange)]/10 hover:text-[var(--sned-orange)]':
+                      lang.code !== currentLang()
+                  }"
+                  class="w-full flex items-center space-x-3 rtl:space-x-reverse px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 relative group"
+                >
+                  <span class="font-semibold">{{ lang.initials }}</span>
+                  <span class="flex-1 text-left rtl:text-right">{{
+                    lang.label
+                  }}</span>
+                  @if (lang.code === currentLang()) {
+                  <i class="fas fa-check w-4 h-4 text-white animate-pulse"></i>
                   }
-                </div>
+                </button>
+                }
               </div>
+            </div>
             }
           </div>
 
@@ -71,145 +89,206 @@
           <button
             (click)="toggleMobileMenu()"
             [attr.aria-expanded]="isMobileMenuOpen()"
-            [attr.aria-label]="isMobileMenuOpen() ? ('header.navigation.close_menu' | translate) : ('header.navigation.open_menu' | translate)"
-            class="relative flex items-center justify-center w-10 h-10 rounded-lg bg-white/90 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/50 group">
-
+            [attr.aria-label]="
+              isMobileMenuOpen()
+                ? ('header.navigation.close_menu' | translate)
+                : ('header.navigation.open_menu' | translate)
+            "
+            class="relative flex items-center justify-center w-10 h-10 rounded-lg bg-white/90 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/50 group"
+          >
             <!-- Animated hamburger icon -->
-            <div class="relative w-5 h-5 flex flex-col justify-center items-center">
-              <span class="absolute w-5 h-0.5 bg-[var(--sned-blue-dark)] transform transition-all duration-300 ease-in-out"
-                    [ngClass]="isMobileMenuOpen() ? 'rotate-45 translate-y-0' : '-translate-y-1.5'"></span>
-              <span class="absolute w-5 h-0.5 bg-[var(--sned-blue-dark)] transform transition-all duration-300 ease-in-out"
-                    [ngClass]="isMobileMenuOpen() ? 'opacity-0' : 'opacity-100'"></span>
-              <span class="absolute w-5 h-0.5 bg-[var(--sned-blue-dark)] transform transition-all duration-300 ease-in-out"
-                    [ngClass]="isMobileMenuOpen() ? '-rotate-45 translate-y-0' : 'translate-y-1.5'"></span>
+            <div
+              class="relative w-5 h-5 flex flex-col justify-center items-center"
+            >
+              <span
+                class="absolute w-5 h-0.5 bg-[var(--sned-blue-dark)] transform transition-all duration-300 ease-in-out"
+                [ngClass]="
+                  isMobileMenuOpen()
+                    ? 'rotate-45 translate-y-0'
+                    : '-translate-y-1.5'
+                "
+              ></span>
+              <span
+                class="absolute w-5 h-0.5 bg-[var(--sned-blue-dark)] transform transition-all duration-300 ease-in-out"
+                [ngClass]="isMobileMenuOpen() ? 'opacity-0' : 'opacity-100'"
+              ></span>
+              <span
+                class="absolute w-5 h-0.5 bg-[var(--sned-blue-dark)] transform transition-all duration-300 ease-in-out"
+                [ngClass]="
+                  isMobileMenuOpen()
+                    ? '-rotate-45 translate-y-0'
+                    : 'translate-y-1.5'
+                "
+              ></span>
             </div>
           </button>
         </div>
 
         <!-- Mobile Menu Overlay -->
         @if (isMobileMenuOpen()) {
-          <div class="lg:hidden absolute top-full left-0 right-0 bg-white shadow-2xl border-t border-gray-100 z-40 max-h-[calc(100vh-5rem)] overflow-y-auto">
+        <div
+          class="lg:hidden absolute top-full left-0 right-0 bg-white shadow-2xl border-t border-gray-100 z-40 max-h-[calc(100vh-5rem)] overflow-y-auto"
+        >
+          <div class="px-4 py-4 space-y-2">
+            <!-- Menu Items -->
+            @for (section of menuSections; track section.title) { @for (item of
+            section.items; track item.route || item.label) {
+            <!-- Simple menu item -->
+            @if (!item.children) {
+            <a
+              [routerLink]="item.route || '/'"
+              (click)="closeMobileMenu()"
+              routerLinkActive="active-mobile"
+              class="flex items-center px-4 py-3 text-base font-medium text-[var(--sned-blue-dark)] hover:bg-[var(--sned-orange)]/10 hover:text-[var(--sned-blue)] rounded-lg transition-all duration-200 group relative"
+            >
+              <span>{{ item.label }}</span>
+            </a>
+            }
 
-            <div class="px-4 py-4 space-y-2">
+            <!-- Dropdown menu item -->
+            @if (item.children) {
+            <div class="relative">
+              <button
+                (click)="toggleMobileDropdown(item.label)"
+                class="w-full flex items-center justify-between px-4 py-3 text-base font-medium text-[var(--sned-blue-dark)] hover:bg-[var(--sned-orange)]/10 hover:text-[var(--sned-blue)] rounded-lg transition-all duration-200"
+              >
+                <span>{{ item.label }}</span>
 
-              <!-- Menu Items -->
-              @for (section of menuSections; track section.title) {
-                @for (item of section.items; track item.route || item.label) {
-                  <!-- Simple menu item -->
-                  @if (!item.children) {
-                    <a [routerLink]="item.route || '/'"
-                       (click)="closeMobileMenu()"
-                       routerLinkActive="active-mobile"
-                       class="flex items-center px-4 py-3 text-base font-medium text-[var(--sned-blue-dark)] hover:bg-[var(--sned-orange)]/10 hover:text-[var(--sned-blue)] rounded-lg transition-all duration-200 group relative">
-                      <span>{{ item.label }}</span>
-                    </a>
-                  }
+                <i
+                  class="fas fa-chevron-down w-4 h-4 transition-transform duration-300"
+                  [ngClass]="{ 'rotate-180': isMobileDropdownOpen(item.label) }"
+                ></i>
+              </button>
 
-                  <!-- Dropdown menu item -->
-                  @if (item.children) {
-                    <div class="relative">
-                      <button
-                        (click)="toggleMobileDropdown(item.label)"
-                        class="w-full flex items-center justify-between px-4 py-3 text-base font-medium text-[var(--sned-blue-dark)] hover:bg-[var(--sned-orange)]/10 hover:text-[var(--sned-blue)] rounded-lg transition-all duration-200">
-
-                        <span>{{ item.label }}</span>
-
-                        <i class="fas fa-chevron-down w-4 h-4 transition-transform duration-300"
-                             [ngClass]="{'rotate-180': isMobileDropdownOpen(item.label)}"></i>
-                      </button>
-
-                      <!-- Submenu -->
-                      @if (isMobileDropdownOpen(item.label)) {
-                        <div class="ml-4 pl-4 border-l-2 border-[var(--sned-orange)]/30 space-y-1 mt-1">
-                          @for (child of item.children; track child.route || child.label) {
-                            <a [routerLink]="child.route || '/'"
-                               (click)="closeMobileMenu()"
-                               routerLinkActive="active-mobile-sub"
-                               class="flex items-center px-4 py-2 text-sm text-[var(--sned-blue-dark)] hover:bg-[var(--sned-orange)]/10 hover:text-[var(--sned-blue)] rounded-lg transition-all duration-200">
-                              <span>{{ child.label }}</span>
-                            </a>
-                          }
-                        </div>
-                      }
-                    </div>
-                  }
+              <!-- Submenu -->
+              @if (isMobileDropdownOpen(item.label)) {
+              <div
+                class="ml-4 pl-4 border-l-2 border-[var(--sned-orange)]/30 space-y-1 mt-1"
+              >
+                @for (child of item.children; track child.route || child.label)
+                {
+                <a
+                  [routerLink]="child.route || '/'"
+                  (click)="closeMobileMenu()"
+                  routerLinkActive="active-mobile-sub"
+                  class="flex items-center px-4 py-2 text-sm text-[var(--sned-blue-dark)] hover:bg-[var(--sned-orange)]/10 hover:text-[var(--sned-blue)] rounded-lg transition-all duration-200"
+                >
+                  <span>{{ child.label }}</span>
+                </a>
                 }
+              </div>
               }
             </div>
+            } } }
           </div>
+        </div>
         }
 
         <!-- Backdrop -->
         @if (isMobileMenuOpen()) {
-          <div (click)="closeMobileMenu()"
-               class="fixed inset-0 bg-black/20 backdrop-blur-sm z-30 lg:hidden"></div>
+        <div
+          (click)="closeMobileMenu()"
+          class="fixed inset-0 bg-black/20 backdrop-blur-sm z-30 lg:hidden"
+        ></div>
         }
-
       </div>
     </div>
   </div>
 </header>
 
 <!-- HERO Section -->
-<section class="relative min-h-screen text-white flex items-center bg-cover bg-center overflow-hidden"
-         [style.background-image]="!isVideoPlaying && currentBackground ? 'url(' + currentBackground + ')' : ''"
-         appBackgroundParticleAnimation>
-
+<section
+  class="relative min-h-screen text-white flex items-center bg-cover bg-center overflow-hidden"
+  [style.background-image]="
+    !isVideoPlaying && currentBackground ? 'url(' + currentBackground + ')' : ''
+  "
+  appBackgroundParticleAnimation
+>
   <!-- Vidéo -->
   @if (isVideoPlaying) {
-    <video autoplay muted loop playsinline
-           class="absolute inset-0 w-full h-full object-cover z-0">
-      <source src="assets/videos/background.mp4" type="video/mp4"/>
-    </video>
+  <video
+    autoplay
+    muted
+    loop
+    playsinline
+    class="absolute inset-0 w-full h-full object-cover z-0"
+  >
+    <source src="assets/videos/background.mp4" type="video/mp4" />
+  </video>
   }
 
   <!-- Overlay dynamique -->
-  <div class="absolute inset-0 bg-gradient-to-br from-black/60 via-black/50 to-black/70 z-10"></div>
+  <div
+    class="absolute inset-0 bg-gradient-to-br from-black/60 via-black/50 to-black/70 z-10"
+  ></div>
 
   <!-- Particules flottantes animées -->
   <div class="absolute inset-0 overflow-hidden z-20 pointer-events-none">
-    <div class="absolute top-1/4 left-10 w-2 h-2 bg-[var(--sned-orange)]/30 rounded-full animate-pulse"></div>
-    <div class="absolute top-1/3 right-20 w-1 h-1 bg-[var(--sned-blue)]/40 rounded-full animate-ping"></div>
-    <div class="absolute bottom-1/4 left-1/4 w-3 h-3 bg-[var(--sned-orange)]/20 rounded-full animate-bounce"></div>
-    <div class="absolute top-2/3 right-1/3 w-1.5 h-1.5 bg-[var(--sned-blue)]/25 rounded-full animate-pulse delay-1000"></div>
+    <div
+      class="absolute top-1/4 left-10 w-2 h-2 bg-[var(--sned-orange)]/30 rounded-full animate-pulse"
+    ></div>
+    <div
+      class="absolute top-1/3 right-20 w-1 h-1 bg-[var(--sned-blue)]/40 rounded-full animate-ping"
+    ></div>
+    <div
+      class="absolute bottom-1/4 left-1/4 w-3 h-3 bg-[var(--sned-orange)]/20 rounded-full animate-bounce"
+    ></div>
+    <div
+      class="absolute top-2/3 right-1/3 w-1.5 h-1.5 bg-[var(--sned-blue)]/25 rounded-full animate-pulse delay-1000"
+    ></div>
   </div>
 
   <!-- Loader si aucune image ou pendant le chargement -->
   @if (!isVideoPlaying && (!currentBackground || isBackgroundLoading())) {
-    <div class="absolute inset-0 flex items-center justify-center z-30">
-      <app-loader></app-loader>
-    </div>
+  <div class="absolute inset-0 flex items-center justify-center z-30">
+    <app-loader></app-loader>
+  </div>
   }
 
   <!-- Contenu Hero optimisé et responsive -->
   <div class="relative z-30 w-full px-6 sm:px-8 lg:px-12">
     <div class="max-w-6xl mx-auto text-center lg:text-left">
-
-
       <!-- Titre principal -->
       <div class="space-y-3 mb-8 mt-6">
-        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
+        <h1
+          class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight"
+        >
           <span class="block">{{ getTitleTranslationKey() | translate }}</span>
-          <span class="block text-transparent bg-gradient-to-r from-[var(--sned-orange)] to-[var(--sned-blue)] bg-clip-text mt-2">
-            {{ getSubtitleTranslationKey() ? (getSubtitleTranslationKey() | translate) : ('home.sections.default.subtitle' | translate) }}
+          <span
+            class="block text-transparent bg-gradient-to-r from-[var(--sned-orange)] to-[var(--sned-blue)] bg-clip-text mt-2"
+          >
+            {{
+              getSubtitleTranslationKey()
+                ? (getSubtitleTranslationKey() | translate)
+                : ("home.sections.default.subtitle" | translate)
+            }}
           </span>
         </h1>
-        <p class="text-lg sm:text-xl lg:text-2xl text-gray-200 leading-relaxed max-w-3xl mx-auto lg:mx-0">
+        <p
+          class="text-lg sm:text-xl lg:text-2xl text-gray-200 leading-relaxed max-w-3xl mx-auto lg:mx-0"
+        >
           {{ getDescTranslationKey() | translate }}
         </p>
       </div>
 
       <!-- Boutons d'action -->
-      <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
-
-        <button (click)="navigateToNextMenu()"
-                class="group flex items-center justify-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-full border-2 border-white/30 hover:bg-white/20 hover:border-white/50 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/20">
-          <i [class]="currentLang() === 'ar' ? 'fas fa-arrow-left w-5 h-5 group-hover:-translate-x-1 transition-transform' : 'fas fa-arrow-right w-5 h-5 group-hover:translate-x-1 transition-transform'"></i>
+      <div
+        class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8"
+      >
+        <button
+          (click)="navigateToNextMenu()"
+          class="group flex items-center justify-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-full border-2 border-white/30 hover:bg-white/20 hover:border-white/50 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-white/20"
+        >
+          <i
+            [class]="
+              currentLang() === 'ar'
+                ? 'fas fa-arrow-left w-5 h-5 group-hover:-translate-x-1 transition-transform'
+                : 'fas fa-arrow-right w-5 h-5 group-hover:translate-x-1 transition-transform'
+            "
+          ></i>
           <span>{{ getNextMenuTitle() }}</span>
         </button>
       </div>
-
     </div>
-
   </div>
 </section>

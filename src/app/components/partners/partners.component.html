@@ -1,12 +1,7 @@
-<div
-  id="partners"
-  class="w-full"
-  appScrollAnimation
-  [animationType]="'fadeUp'"
->
+<div id="partners" class="w-full" appScrollAnimation [animationType]="'fadeUp'">
   <div class="flex justify-between items-center mb-6"></div>
 
-  <div >
+  <div>
     <div
       class="overflow-hidden transition-all duration-500 ease-in-out max-h-screen opacity-100"
     >
@@ -19,12 +14,24 @@
 
       <div class="partners-container">
         @for (partner of partners(); track $index) {
-        <div class="partner-card">
+
+        <div
+          class="partner-card"
+          [class.cursor-pointer]="partner.urlPartner"
+          [class.opacity-50]="!partner.urlPartner"
+          (click)="openPartnerUrl(partner.urlPartner)"
+        >
+          <!-- <div
+          class="partner-card cursor-pointer"
+          role="link"
+          (click)="openPartnerUrl(partner.urlPartner)"
+        > -->
           <img
             [src]="partner.logoUrl"
             [alt]="partner.name"
             class="partner-logo"
           />
+
           <div class="partner-tooltip">
             <h3>
               <b>{{ partner.name }}</b>

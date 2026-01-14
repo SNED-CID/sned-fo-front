@@ -39,6 +39,10 @@ export class TendersComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadNextPage();
+
+    this.translateService.onLangChange.subscribe(() => {
+      this.resetAndReload();
+    });
   }
 
   loadNextPage(): void {

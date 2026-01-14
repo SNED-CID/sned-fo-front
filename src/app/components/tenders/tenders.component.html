@@ -8,7 +8,6 @@
     <!-- Header Section -->
     <div class="tenders-hero">
       <div class="hero-content">
-        <h1 class="hero-title">{{ "tenders.title" | translate }}</h1>
         <div class="hero-search">
           <div class="search-wrapper">
             <div class="search-input-container">
@@ -39,8 +38,8 @@
               class="sort-select"
               (change)="onSortChange($event)"
             >
-              <option value="desc">Plus récents</option>
-              <option value="asc">Plus anciens</option>
+              <option value="desc" style="background-color: white; color: black;">Plus récents</option>
+              <option value="asc" style="background-color: white; color: black;">Plus anciens</option>
             </select>
 
           </div>
