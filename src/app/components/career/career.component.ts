@@ -11,6 +11,7 @@ import DOMPurify from 'dompurify';
   imports: [CommonModule, TranslatePipe],
   template: `
     <div class="w-full">
+      @if(career?.content){
       <!-- Date en haut à droite -->
       <div class="flex justify-end mb-6">
         <time
@@ -40,6 +41,14 @@ import DOMPurify from 'dompurify';
         class="text-base lg:text-lg text-gray-700 leading-relaxed whitespace-pre-wrap"
         [innerHTML]="sanitizedContent"
       ></div>
+      } @else{
+      <p
+        class="text-base lg:text-lg text-gray-700 leading-relaxed whitespace-pre-wrap"
+      >
+        Aucune offre n'est actuellement disponible. Nous vous invitons à
+        consulter cette rubrique ultérieurement.
+      </p>
+      }
     </div>
   `,
 })

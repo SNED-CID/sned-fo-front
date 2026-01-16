@@ -290,7 +290,7 @@ interface Section {
 
       <!-- Section Partenaires -->
       <div
-        class="w-3/4 lg:w-5/6 2xl:w-full mx-auto mt-16 px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 relative bg-white rounded-2xl shadow-lg overflow-hidden"
+        class="w-3/4 lg:w-5/6 2xl:w-full mx-auto mt-16 px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 py-2 sm:py-3 lg:py-5 xl:py-8 2xl:py-10 relative bg-white rounded-2xl shadow-lg overflow-hidden"
       >
         <div
           class="absolute top-0 left-0 w-full h-5 sm:h-8 bg-gradient-to-r from-[var(--sned-blue)] to-[var(--sned-orange)] rounded-t-2xl"
@@ -302,44 +302,44 @@ interface Section {
           {{ 'header.menu.partners' | translate }}
         </h2>
 
-        <div id="partenaires" class="pt-6 w-full">
+        <div id="partenaires" class="pt-2 w-full">
           <app-partners class="w-full"></app-partners>
         </div>
       </div>
 
-      <!-- Section Appels d'offres -->
-      <div
-        class="w-3/4 lg:w-5/6 2xl:w-full mx-auto mt-16 px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 relative bg-white rounded-2xl shadow-lg overflow-hidden"
-      >
-        <h2
-          class="text-3xl lg:text-4xl xl:text-5xl font-bold text-primary  mt-10 text-left lg:mb-6 rtl:text-right"
-        >
-          {{ "tenders.title" | translate }}
-        </h2>
-        <div
-          class="absolute top-0 left-0 w-full h-5 sm:h-8 bg-gradient-to-r from-[var(--sned-blue)] to-[var(--sned-orange)] rounded-t-2xl"
-        ></div>
-        <div id="appels_offres" class="pt-3 w-full">
-          <app-tenders class="w-full"></app-tenders>
-          </div>
-      </div>
-      
       <!-- Section Carrières -->
       <div
-        class="w-3/4 lg:w-5/6 2xl:w-full mx-auto mt-16 px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 relative bg-white rounded-2xl shadow-lg overflow-hidden"
+        class="w-3/4 lg:w-5/6 2xl:w-full mx-auto mt-16 px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 py-2 sm:py-3 lg:py-5 xl:py-8 2xl:py-10 relative bg-white rounded-2xl shadow-lg overflow-hidden"
       >
         <div
           class="absolute top-0 left-0 w-full h-5 sm:h-8 bg-gradient-to-r from-[var(--sned-blue)] to-[var(--sned-orange)] rounded-t-2xl"
         ></div>
 
         <h2
-          class="text-3xl lg:text-4xl xl:text-5xl font-bold text-primary  mt-10 text-left rtl:text-right lg:mb-4"
+          class="text-3xl lg:text-4xl xl:text-5xl font-bold text-primary  mt-10 text-left lg:mb-6 rtl:text-right"
         >
           {{ 'header.menu.careers' | translate }}
         </h2>
 
         <div id="carrieres" class="py-4 w-full">
           <app-career></app-career>
+        </div>
+      </div>
+
+      <!-- Section Appels d'offres -->
+      <div
+        class="w-3/4 lg:w-5/6 2xl:w-full mx-auto mt-16 px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20  relative bg-white rounded-2xl shadow-lg overflow-hidden"
+      >
+        <h2
+          class="text-3xl lg:text-4xl xl:text-5xl font-bold text-primary  mt-10 text-left lg:mb-6 rtl:text-right"
+        >
+          {{ 'tenders.title' | translate }}
+        </h2>
+        <div
+          class="absolute top-0 left-0 w-full h-5 sm:h-8 bg-gradient-to-r from-[var(--sned-blue)] to-[var(--sned-orange)] rounded-t-2xl"
+        ></div>
+        <div id="appels_offres" class="pt-3 w-full">
+          <app-tenders class="w-full"></app-tenders>
         </div>
       </div>
     </div>

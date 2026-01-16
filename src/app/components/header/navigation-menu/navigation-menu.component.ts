@@ -86,7 +86,7 @@ export interface MenuSection {
                           routerLinkActive="active-sublink"
                           [routerLinkActiveOptions]="{ exact: true }"
                           (click)="onMenuItemClick(child, item.label)"
-                          class="flex items-center px-4 py-3 text-sm font-medium text-bg-[var(--sned-orange)] hover:bg-gradient-to-r hover:from-[var(--sned-orange)]/8 hover:to-[var(--sned-blue)]/4 hover:text-bg-[var(--sned-orange)] rounded-lg transition-all duration-200 whitespace-nowrap rtl:text-right group/item relative overflow-hidden cursor-pointer"
+                          class="flex items-center px-4 py-3 text-sm font-medium text-[var(--sned-orange)] hover:bg-gradient-to-r hover:from-[var(--sned-orange)]/8 hover:to-[var(--sned-blue)]/4 hover:text-bg-[var(--sned-orange)] rounded-lg transition-all duration-200 whitespace-nowrap rtl:text-right group/item relative overflow-hidden cursor-pointer"
                         >
                           <!-- Icône animée -->
                           <i
