@@ -2,10 +2,14 @@ import {
   Component,
   ViewChild,
   Input,
+  OnInit,
   OnChanges,
   SimpleChanges,
+  inject,
+  signal,
 } from '@angular/core';
 import { DatePipe, NgIf, NgFor } from '@angular/common';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import {
   CommuniqueService,
   CommuniqueReadDTO,
@@ -16,11 +20,14 @@ import { parseLocalDateTimeToDate } from '../../../../utils/date-utils';
 
 @Component({
   selector: 'app-communique-list',
-  imports: [NgIf, NgFor, DatePipe, CommuniqueReadMoreComponent],
+  standalone: true,
+  imports: [NgIf, DatePipe, CommuniqueReadMoreComponent, TranslatePipe],
   templateUrl: './communique-list.html',
   styleUrls: ['./communique-list.scss'],
 })
-export class CommuniqueList implements OnChanges {
+export class CommuniqueList implements OnChanges, OnInit {
+  private translate = inject(TranslateService);
+  currentLang = signal('fr');
   @Input() communiques: CommuniqueReadDTO[] = [];
 
   constructor(public communiqueService: CommuniqueService) {}
@@ -31,6 +38,16 @@ export class CommuniqueList implements OnChanges {
 
   @ViewChild('readMore')
   readMore!: CommuniqueReadMoreComponent;
+
+  ngOnInit() {
+    this.currentLang.set(
+      this.translate.currentLang || this.translate.defaultLang || 'fr'
+    );
+
+    this.translate.onLangChange.subscribe((event) => {
+      this.currentLang.set(event.lang);
+    });
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['communiques'] && this.communiques?.length) {

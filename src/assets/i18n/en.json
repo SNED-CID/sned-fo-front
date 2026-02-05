@@ -71,10 +71,10 @@
         "desc": "Actors, contributors and partners of the fixed link project",
         "subtitle": "Photo Gallery"
       },
-      "actualite": {
-        "title": "SNED Project News",
+      "publication": {
+        "title": "SNED Project Publications",
         "desc": "Latest information, events and project developments",
-        "subtitle": "News"
+        "subtitle": "Publications"
       },
       "partenaires": {
         "title": "Our Partners",
@@ -109,7 +109,7 @@
       "home": "Discover the fixed link project",
       "project": "Fixed Link Project",
       "gallery": "Recognition Gallery",
-      "news": "News",
+      "publication": "Publications",
       "partnerships": "Partnerships",
       "work": "Our Work",
       "appels-offres": "Call for Tenders"
@@ -159,6 +159,11 @@
       "terms": "Terms of Use",
       "cookies": "Cookie Policy",
       "legal": "Legal Notice"
+    },
+    "links": {
+      "siteMap": "Site Map",
+      "legalNotice": "Legal Notice",
+      "contact": "Contact"
     }
   },
   "shared": {
@@ -176,9 +181,17 @@
       "share_error": "❌ Share cancelled or error:",
       "link_copied": "📋 Link copied to clipboard"
     },
+    "loadmore": {
+      "load_more": "Load more..."
+    },
+    "appfilter": {
+      "placeholder": "Search...",
+      "most_recent": "Most recent",
+      "oldest": "Oldest"
+    },
     "loading": {
       "loading": "Loading...",
-      "footer_loading": "Loading footer..."
+      "footer_loading": "Loading footer"
     }
   },
   "header": {
@@ -206,7 +219,7 @@
       "legal": "Legal Notice",
       "legal_desc": "Legal and strategic aspects",
       "gallery": "Recognition Gallery",
-      "news": "News",
+      "publication": "Publications",
       "partnerships": "Partnerships",
       "work": "Our Work",
       "congress": "Congress",
@@ -239,10 +252,11 @@
       "socioeconomic_aspect": "Socio-Economic Aspect",
       "geostrategic_component": "Geostrategic Component",
       "recognition_gallery": "Recognition Gallery",
-      "news": "News",
+      "publication": "Publications",
       "partners": "Partners",
       "careers": "Careers",
-      "call_for_tenders": "Call for Tenders"
+      "call_for_tenders": "Call for Tenders",
+      "contact": "Contact"
     }
   },
   "partners": {
@@ -391,5 +405,94 @@
         "<strong>o Accounting and Finance Department:</strong> Responsible for accounting, financial closing, budgeting and budget control, cash management, and internal and external auditing."
       ]
     }
+  },
+  "legalNotice": {
+    "title": "Legal Notice",
+
+    "editorTitle": "Website Publisher",
+    "editorContent": "National Company for Strait Studies (SNED)\n11, Antar Ibn Chaddad Street, Mohamed VI Avenue, Km 8\nSouissi – Rabat, Morocco\nPhone: +212 5 37 71 90 00\nEmail: contact@sned.ma",
+
+    "publicationTitle": "Publication Manager",
+    "publicationContent": "The publication manager is the legal representative of the National Company for Strait Studies (SNED).",
+
+    "hostingTitle": "Hosting",
+    "hostingContent": "The website is hosted by a professional hosting provider ensuring data security, availability, and confidentiality.",
+
+    "accessTitle": "Website Access",
+    "accessContent": "Access to the website is free of charge. Users acknowledge having the skills and resources required to access and use this website.",
+
+    "intellectualPropertyTitle": "Intellectual Property",
+    "intellectualPropertyContent1": "All content on this website (texts, images, graphics, logos, icons, videos, documents) is the exclusive property of SNED unless otherwise stated.",
+    "intellectualPropertyContent2": "Any reproduction or representation, in whole or in part, is prohibited without prior written authorization.",
+
+    "liabilityTitle": "Liability",
+    "liabilityContent": "SNED makes every effort to ensure the accuracy of the information published. However, it cannot be held liable for errors, omissions, or temporary unavailability.",
+
+    "personalDataTitle": "Personal Data",
+    "personalDataContent": "Personal data collected is used exclusively within the scope of the services offered. Users have the right to access, rectify, and delete their data by contacting: contact@sned.ma",
+
+    "cookiesTitle": "Cookies",
+    "cookiesContent": "The website may use cookies for statistical purposes and to improve user experience. Users may configure their browser to refuse cookies.",
+
+    "lawTitle": "Applicable Law",
+    "lawContent": "This website is governed by Moroccan law. In the event of a dispute, Moroccan courts shall have exclusive jurisdiction."
+  },
+  "siteMap": {
+    "title": "Site Map",
+
+    "aboutTitle": "About SNED",
+    "about": {
+      "institutional": "Institutional Framework",
+      "missions": "Missions",
+      "snedSeceg": "SNED & SECEG SA",
+      "organization": "Organization",
+      "partners": "Partners",
+      "careers": "Careers",
+      "purchases": "Procurement"
+    },
+
+    "projectTitle": "Fixed Link Project",
+    "project": {
+      "history": "Project History",
+      "environment": "Physical Environment",
+      "engineering": "Engineering",
+      "legal": "Legal Aspects",
+      "socioEconomic": "Socio-economic Component",
+      "geostrategic": "Geostrategic Component"
+    },
+
+    "publicationsTitle": "Publications",
+    "publicationsDescription": "View all project publications.",
+
+    "contactTitle": "Contact",
+    "contactDescription": "Access the Contact page to send us a message."
+  },
+  "contact": {
+    "title": "Contact Us",
+
+    "fields": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Your name",
+        "error": "Name is required"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Your email",
+        "error": "Please enter a valid email address"
+      },
+      "subject": {
+        "label": "Subject",
+        "placeholder": "Message subject",
+        "error": "Subject is required"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Your message",
+        "error": "Message is required"
+      }
+    },
+
+    "submit": "Send"
   }
 }

@@ -50,7 +50,7 @@ export class HeaderComponent implements OnInit {
       '/': 'default',
       '/projet': 'ingenierie',
       '/galerie': 'galerie',
-      '/actualite': 'actualite',
+      '/publication': 'publication',
       '/partenariat': 'partenariat',
       '/travail': 'travail',
       '/appels-offres': 'appels_offres',
@@ -72,21 +72,11 @@ export class HeaderComponent implements OnInit {
     },
   };
 
-  // menuBackgrounds: Record<string, string> = {
-  //   '/': 'assets/images/tunnel.png',
-  //   '/projet': 'assets/images/liaison_fixe.png',
-  //   '/galerie': 'assets/images/galerie_services.png',
-  //   '/actualite': 'assets/images/actualites.png',
-  //   '/partenariat': 'assets/images/partenariats.png',
-  //   '/travail': 'assets/images/notre_travail.png',
-  //   '/appels-offres': 'assets/images/liaison_fixe.png',
-  // };
-
   menuBackgrounds: Record<string, string> = {
     '/': 'assets/images/roi-mohammed-vi.jpg',
     '/projet': 'assets/images/norway-underwater-tunnel.jpg',
     '/galerie': 'assets/images/roi-mohammed-vi.jpg',
-    '/actualite': 'assets/images/m6_esp.jpg',
+    '/publication': 'assets/images/m6_esp.jpg',
     '/partenariat': 'assets/images/m6_esp.jpg',
     '/travail': 'assets/images/gibraltar05.gif',
     '/appels-offres': 'assets/images/gibraltar05.gif',
@@ -246,8 +236,12 @@ export class HeaderComponent implements OnInit {
             ],
           },
           {
-            label: this.translateService.instant('header.menu.news'),
-            route: '/actualite',
+            label: this.translateService.instant('header.menu.publication'),
+            route: '/publication',
+          },
+          {
+            label: this.translateService.instant('header.menu.contact'),
+            route: '/contact',
           },
         ],
       },

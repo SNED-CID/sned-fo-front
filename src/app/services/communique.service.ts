@@ -45,25 +45,31 @@ export enum SortDirection {
   providedIn: 'root',
 })
 export class CommuniqueService {
-  //BASE_URL: string = `${environment.apiUrl}/communique`;
+  BASE_URL: string = `${environment.apiUrl}/v1/communiques`;
 
-  BASE_URL: string = `http://localhost:8081/api/v1/communique`;
+  //BASE_URL: string = `http://localhost:8081/api/v1/communiques`;
 
   public communiqueImages: { [key: string]: string } = {};
 
   constructor(
     private http: HttpClient,
-    private previewTokenService: PreviewTokenService
+    private previewTokenService: PreviewTokenService,
   ) {}
 
-  getImageByUUID(imageUUID: string, publicationStatus: PublicationStatus = PublicationStatus.PUBLISHED): Observable<Blob> {
-        return this.http.get(`${this.BASE_URL}/${publicationStatus.toLowerCase()}/${imageUUID}/image`, { responseType: 'blob' });
-    }
+  getImageByUUID(
+    imageUUID: string,
+    publicationStatus: PublicationStatus = PublicationStatus.PUBLISHED,
+  ): Observable<Blob> {
+    return this.http.get(
+      `${this.BASE_URL}/${publicationStatus.toLowerCase()}/${imageUUID}/image`,
+      { responseType: 'blob' },
+    );
+  }
 
   getFilteredCommunique(
     communiqueFilter: CommuniqueFilterClass,
     page: number = 0,
-    size: number = 5
+    size: number = 5,
   ): Observable<Page<CommuniqueReadDTO>> {
     const hasPreviewToken = this.previewTokenService.hasToken();
     const endpoint = hasPreviewToken ? '/filter/preview' : '/filter';

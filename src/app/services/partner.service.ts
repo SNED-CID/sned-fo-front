@@ -18,7 +18,9 @@ export interface PartnerReadDTO {
   providedIn: 'root',
 })
 export class PartnerService {
-  BASE_URL: string = `http://localhost:8081/api/v1/partners`;
+  BASE_URL: string = `${environment.apiUrl}/v1/partners`;
+
+  //BASE_URL: string = `http://localhost:8081/api/v1/partners`;
 
   constructor(
     private http: HttpClient,

@@ -1,2 +1,13 @@
-<app-filter (filterChange)="onFilter($event)"></app-filter>
+<app-filter
+  (filterChange)="onFilter($event)"
+  [placeholder]="'shared.appfilter.placeholder' | translate"
+  [mostRecent]="'shared.appfilter.most_recent' | translate"
+  [oldest]="'shared.appfilter.oldest' | translate"
+></app-filter>
 <app-communique-list [communiques]="filteredCommuniques"></app-communique-list>
+<app-load-more-paginator
+  [currentPage]="currentPage"
+  [totalPages]="totalPages"
+  [label]="'shared.loadmore.load_more' | translate"
+  (loadNext)="fetchCommuniques({ size: this.rows + 5 })"
+></app-load-more-paginator>

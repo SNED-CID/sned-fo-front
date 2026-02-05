@@ -1,0 +1,79 @@
+<section class="bg-slate-50 py-12">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h1 class="text-2xl font-semibold text-slate-800 mb-8 text-center">
+      {{ "siteMap.title" | translate }}
+    </h1>
+
+    <div
+      class="bg-white border border-slate-200 rounded-xl shadow-sm p-6 sm:p-8 space-y-6"
+    >
+      <!-- À propos -->
+      <div>
+        <h2
+          class="text-lg font-semibold text-slate-800 mb-2 cursor-pointer"
+          [routerLink]="['/']"
+        >
+          {{ "siteMap.aboutTitle" | translate }}
+        </h2>
+        <ul class="list-disc list-inside space-y-1 text-slate-700 text-sm">
+          <li class="cursor-pointer hover:underline" [routerLink]="['/']" fragment="cadre">
+            {{ "siteMap.about.institutional" | translate }}
+          </li>
+          <li class="cursor-pointer hover:underline" [routerLink]="['/']" fragment="missions">
+            {{ "siteMap.about.missions" | translate }}
+          </li>
+          <li class="cursor-pointer hover:underline" [routerLink]="['/']" fragment="sned_secegsa">
+            {{ "siteMap.about.snedSeceg" | translate }}
+          </li>
+          <li class="cursor-pointer hover:underline" [routerLink]="['/']" fragment="organigramme">
+            {{ "siteMap.about.organization" | translate }}
+          </li>
+          <li class="cursor-pointer hover:underline" [routerLink]="['/']" fragment="partenaires">
+            {{ "siteMap.about.partners" | translate }}
+          </li>
+          <li class="cursor-pointer hover:underline" [routerLink]="['/']" fragment="carrieres">
+            {{ "siteMap.about.careers" | translate }}
+          </li>
+          <li class="cursor-pointer hover:underline" [routerLink]="['/']" fragment="appels_offres">
+            {{ "siteMap.about.purchases" | translate }}
+          </li>
+        </ul>
+      </div>
+
+      <!-- Projet -->
+      <div>
+        <h2 class="text-lg font-semibold text-slate-800 mb-2 cursor-pointer"  [routerLink]="['/projet']">
+          {{ "siteMap.projectTitle" | translate }}
+        </h2>
+        <ul class="list-disc list-inside space-y-1 text-slate-700 text-sm">
+          <li class="cursor-pointer hover:underline" [routerLink]="['/projet']" fragment="carrieres">{{ "siteMap.project.environment" | translate }}</li>
+          <li class="cursor-pointer hover:underline" [routerLink]="['/projet']" fragment="carrieres">{{ "siteMap.project.history" | translate }}</li>
+          <li class="cursor-pointer hover:underline" [routerLink]="['/projet']" fragment="carrieres">{{ "siteMap.project.engineering" | translate }}</li>
+          <li class="cursor-pointer hover:underline" [routerLink]="['/projet']" fragment="carrieres">{{ "siteMap.project.legal" | translate }}</li>
+          <li class="cursor-pointer hover:underline" [routerLink]="['/projet']" fragment="carrieres">{{ "siteMap.project.socioEconomic" | translate }}</li>
+          <li class="cursor-pointer hover:underline" [routerLink]="['/projet']" fragment="carrieres">{{ "siteMap.project.geostrategic" | translate }}</li>
+        </ul>
+      </div>
+
+      <!-- Publications -->
+      <div>
+        <h2 class="text-lg font-semibold text-slate-800 mb-2 cursor-pointer hover:underline" [routerLink]="['/publication']">
+          {{ "siteMap.publicationsTitle" | translate }}
+        </h2>
+        <p class="text-sm text-slate-700">
+          {{ "siteMap.publicationsDescription" | translate }}
+        </p>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h2 class="text-lg font-semibold text-slate-800 mb-2 cursor-pointer hover:underline" [routerLink]="['/contact']">
+          {{ "siteMap.contactTitle" | translate }}
+        </h2>
+        <p class="text-sm text-slate-700">
+          {{ "siteMap.contactDescription" | translate }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

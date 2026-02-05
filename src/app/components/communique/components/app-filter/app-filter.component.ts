@@ -1,4 +1,4 @@
-import { Component, output } from '@angular/core';
+import { Component, Input, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 export interface FilterCriteria {
@@ -15,6 +15,10 @@ export interface FilterCriteria {
 export class AppFilterComponent {
   searchText: string = '';
   sortOrder: 'recent' | 'oldest' = 'recent';
+
+  @Input() placeholder: string = "Rechercher...";
+  @Input() mostRecent: string = "Plus récents";
+  @Input() oldest: string = "Plus anciens";
   
   filterChange = output<FilterCriteria>();
 

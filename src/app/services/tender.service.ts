@@ -24,6 +24,8 @@ export interface Page<T> {
   providedIn: 'root',
 })
 export class TenderService {
+
+  
   BASE_URL: string = `${environment.apiUrl}/tenders`;
 
   constructor(

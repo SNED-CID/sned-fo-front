@@ -71,10 +71,10 @@
         "desc": "Les acteurs, contributeurs et partenaires du projet de liaison fixe",
         "subtitle": "Galerie Photo"
       },
-      "actualite": {
-        "title": "Actualités du Projet SNED",
+      "publication": {
+        "title": "Publications du Projet SNED",
         "desc": "Les dernières informations, événements et évolutions du projet",
-        "subtitle": "Actualités"
+        "subtitle": "Publications"
       },
       "partenaires": {
         "title": "Nos Partenaires",
@@ -109,7 +109,7 @@
       "home": "Découvrez le projet de liaison fixe",
       "project": "Projet de Liaison fixe",
       "gallery": "Galerie de reconnaissance",
-      "news": "Actualités",
+      "publication": "Publications",
       "partnerships": "Partenariats",
       "work": "Notre Travail",
       "appels-offres": "Appels d'offre"
@@ -159,6 +159,11 @@
       "terms": "Conditions d'utilisation",
       "cookies": "Politique des cookies",
       "legal": "Mentions légales"
+    },
+    "links": {
+      "siteMap": "Plan du site",
+      "legalNotice": "Mentions légales",
+      "contact": "Contact"
     }
   },
   "shared": {
@@ -175,6 +180,14 @@
       "share_success": "✅ Partagé avec succès !",
       "share_error": "❌ Partage annulé ou erreur :",
       "link_copied": "📋 Lien copié dans le presse-papier"
+    },
+    "loadmore": {
+      "load_more": "Charger plus"
+    },
+    "appfilter": {
+      "placeholder": "Rechercher...",
+      "most_recent": "Plus récents",
+      "oldest": "Plus anciens"
     },
     "loading": {
       "loading": "Chargement...",
@@ -206,7 +219,7 @@
       "legal": "Mentions légales",
       "legal_desc": "Aspects légaux et stratégiques",
       "gallery": "Galerie de reconnaissance",
-      "news": "Actualités",
+      "publication": "Publications",
       "partnerships": "Partenariats",
       "work": "Notre Travail",
       "congress": "Congrès",
@@ -232,17 +245,18 @@
       "sned_secegsa": "SNED & SECEG SA",
       "organization": "Organisation",
       "fixed_link_project": "Projet de liaison fixe",
-      "engineering_component": "Ingénierie",
+      "engineering": "Ingénierie",
       "legal_aspect": "Aspect juridique",
       "project_history": "Historique du projet",
-      "physical_environment_component": "Milieu physique",
+      "physical_environment": "Milieu physique",
       "socioeconomic_aspect": "Volet socio-économique",
       "geostrategic_component": "Composante géostratégique",
       "recognition_gallery": "Galerie de reconnaissance",
-      "news": "Actualités",
+      "pulication": "Publications",
       "partners": "Partenaires",
       "careers": "Carrières",
-      "call_for_tenders": "Appel d'offres"
+      "call_for_tenders": "Appel d'offres",
+      "contact": "Contact"
     }
   },
   "partners": {
@@ -391,5 +405,96 @@
         "<strong>o Service Comptabilité et Finance :</strong> Ce service est chargé de la tenue de la comptabilité, l'arrêté des comptes, la planification et contrôle budgétaire, la gestion de la trésorerie et l'audit interne et externe."
       ]
     }
+  },
+
+  "legalNotice": {
+    "title": "Mentions légales",
+
+    "editorTitle": "Éditeur du site",
+    "editorContent": "Société Nationale d'Études du Détroit (SNED)\n11, Rue Antar Ibn Chaddad, Avenue Mohamed VI, Km 8\nSouissi – Rabat, Maroc\nTéléphone : +212 5 37 71 90 00\nEmail : contact@sned.ma",
+
+    "publicationTitle": "Responsable de la publication",
+    "publicationContent": "Le responsable de la publication est le représentant légal de la Société Nationale d'Études du Détroit (SNED).",
+
+    "hostingTitle": "Hébergement",
+    "hostingContent": "Le site est hébergé par un prestataire d’hébergement professionnel garantissant la sécurité, la disponibilité et la confidentialité des données.",
+
+    "accessTitle": "Accès au site",
+    "accessContent": "L’accès au site est libre et gratuit. L’utilisateur reconnaît disposer des compétences et des moyens nécessaires pour accéder et utiliser ce site.",
+
+    "intellectualPropertyTitle": "Propriété intellectuelle",
+    "intellectualPropertyContent1": "L’ensemble du contenu du site (textes, images, graphismes, logos, icônes, vidéos, documents) est la propriété exclusive de la SNED, sauf mention contraire.",
+    "intellectualPropertyContent2": "Toute reproduction ou représentation, totale ou partielle, est interdite sans autorisation écrite préalable.",
+
+    "liabilityTitle": "Responsabilité",
+    "liabilityContent": "La SNED met tout en œuvre pour assurer l’exactitude des informations diffusées. Toutefois, elle ne saurait être tenue responsable des erreurs, omissions ou indisponibilités temporaires.",
+
+    "personalDataTitle": "Données personnelles",
+    "personalDataContent": "Les données personnelles collectées sont utilisées exclusivement dans le cadre des services proposés. L’utilisateur dispose d’un droit d’accès, de rectification et de suppression en contactant : contact@sned.ma",
+
+    "cookiesTitle": "Cookies",
+    "cookiesContent": "Le site peut utiliser des cookies à des fins statistiques et d’amélioration de l’expérience utilisateur. L’utilisateur peut configurer son navigateur pour refuser les cookies.",
+
+    "lawTitle": "Droit applicable",
+    "lawContent": "Le présent site est régi par la législation marocaine. En cas de litige, les tribunaux marocains sont seuls compétents."
+  },
+  "siteMap": {
+    "title": "Plan du site",
+
+    "aboutTitle": "À propos de la SNED",
+    "about": {
+      "institutional": "Cadre institutionnel",
+      "missions": "Missions",
+      "snedSeceg": "SNED & SECEG SA",
+      "organization": "Organisation",
+      "partners": "Partenaires",
+      "careers": "Carrières",
+      "purchases": "Achats"
+    },
+
+    "projectTitle": "Projet de liaison fixe",
+    "project": {
+      "history": "Historique du projet",
+      "environment": "Milieu physique",
+      "engineering": "Ingénierie",
+      "legal": "Aspect juridique",
+      "socioEconomic": "Volet socio-économique",
+      "geostrategic": "Composante géostratégique"
+    },
+
+    "publicationsTitle": "Publications",
+    "publicationsDescription": "Consultez toutes les publications du projet.",
+
+    "contactTitle": "Contact",
+    "contactDescription": "Accédez à la page Contact pour nous envoyer un message."
+  },
+
+  "contact": {
+    "title": "Contactez-nous",
+
+    "fields": {
+      "name": {
+        "label": "Nom",
+        "placeholder": "Votre nom",
+        "error": "Le nom est requis"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Votre email",
+        "error": "Veuillez entrer un email valide"
+      },
+      "subject": {
+        "label": "Sujet",
+        "placeholder": "Sujet du message",
+        "error": "Le sujet est requis"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Votre message",
+        "error": "Le message est requis"
+      }
+    },
+
+    "submit": "Envoyer"
   }
 }

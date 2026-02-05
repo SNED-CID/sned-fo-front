@@ -63,7 +63,7 @@ export class AppComponent implements AfterViewInit, OnInit{
       '/projet/milieu-physique': 'Composante Milieu Physique',
       '/projet/socio-economique': 'Composante Socio-économique',
       '/galerie': 'Galerie de reconnaissance',
-      '/actualite': 'Actualités',
+      '/publication': 'Publications',
       '/partenariat': 'Partenariats',
       '/appels-offres': 'Appels d\'offres'
     };

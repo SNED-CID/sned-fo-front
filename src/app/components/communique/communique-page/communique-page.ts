@@ -1,5 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommuniqueList } from '../components/communique-list/communique-list';
+import { LoadMorePaginatorComponent } from '../components/app-loadMore-paginator/app-loadMore-paginator';
 import {
   AppFilterComponent,
   FilterCriteria,
@@ -10,11 +11,16 @@ import {
   CommuniqueReadDTO,
   SortDirection,
 } from '../../../services/communique.service';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-communique-page',
-  imports: [CommuniqueList, AppFilterComponent],
+  imports: [
+    CommuniqueList,
+    AppFilterComponent,
+    LoadMorePaginatorComponent,
+    TranslatePipe,
+  ],
   templateUrl: './communique-page.html',
   styleUrl: './communique-page.scss',
 })
@@ -33,7 +39,7 @@ export class CommuniquePage implements OnInit {
 
   currentPage: number = 0; // page actuelle
   rows: number = 5; // nombre de lignes par page
-  totalRecords: number = 0; // total des communiqués , recuperer dans le backend
+  totalPages: number = 0; // total des communiqués , recuperer dans le backend
   currentFilter: CommuniqueFilterClass = {}; // filtre actif pour garder le filtre si je change la page
 
   isPublishing = false;
@@ -42,24 +48,29 @@ export class CommuniquePage implements OnInit {
 
   ngOnInit(): void {
     this.fetchCommuniques();
+    this.translateService.onLangChange.subscribe(() => {
+      this.fetchCommuniques();
+    });
   }
 
-  fetchCommuniques(
-    filter: CommuniqueFilterClass = this.currentFilter,
-    page: number = this.currentPage,
-    size: number = this.rows
-  ) {
+  fetchCommuniques(options?: {
+    filter?: CommuniqueFilterClass;
+    page?: number;
+    size?: number;
+  }) {
     const currentLang = this.translateService.getCurrentLang();
-    this.currentFilter = { ...filter, lang: currentLang };
-    this.currentPage = page;
-    this.rows = size;
+    this.currentFilter = options?.filter
+      ? { ...options?.filter, lang: currentLang }
+      : { ...this.currentFilter, lang: currentLang };
+    this.currentPage = options?.page ?? this.currentPage;
+    this.rows = options?.size ?? this.rows;
 
     this.communiqueService
       .getFilteredCommunique(this.currentFilter, this.currentPage, this.rows)
       .subscribe({
         next: (data: any) => {
           this.filteredCommuniques = data.content ?? [];
-          this.totalRecords = data.page?.totalElements ?? 0;
+          this.totalPages = data.totalPages ?? 0;
         },
         error: (err: any) => console.error('HTTP error', err),
       });
@@ -71,14 +82,18 @@ export class CommuniquePage implements OnInit {
       sortDirection:
         event.sortOrder === 'oldest' ? SortDirection.ASC : SortDirection.DESC,
     };
-    
+
     this.currentPage = 0;
 
-    this.fetchCommuniques(filter, 0, this.rows);
+    this.fetchCommuniques({ filter, page: 0, size: this.rows });
   }
 
   onPageChange(event: any) {
-    this.fetchCommuniques(this.currentFilter, event.page, event.rows);
+    this.fetchCommuniques({
+      filter: this.currentFilter,
+      page: event.page,
+      size: event.rows,
+    });
   }
 
   showDialog() {
@@ -88,6 +103,9 @@ export class CommuniquePage implements OnInit {
   handleClose() {
     this.visible = false;
     this.currentCommuniqueId = null;
-    this.fetchCommuniques(this.currentFilter, this.currentPage);
+    this.fetchCommuniques({
+      filter: this.currentFilter,
+      page: this.currentPage,
+    });
   }
 }

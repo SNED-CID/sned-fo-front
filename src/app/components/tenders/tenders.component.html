@@ -27,21 +27,27 @@
               <input
                 #numberInput
                 type="text"
-                placeholder="Rechercher..."
+                placeholder="{{ 'shared.appfilter.placeholder' | translate }}"
                 class="search-input"
                 (input)="onSearchNumber(numberInput.value)"
               />
             </div>
 
             <select
-              id="sortOrder" 
+              id="sortOrder"
               class="sort-select"
               (change)="onSortChange($event)"
             >
-              <option value="desc" style="background-color: white; color: black;">Plus récents</option>
-              <option value="asc" style="background-color: white; color: black;">Plus anciens</option>
+              <option
+                value="desc"
+                style="background-color: white; color: black"
+              >
+                {{ "shared.appfilter.most_recent" | translate }}
+              </option>
+              <option value="asc" style="background-color: white; color: black">
+                {{ "shared.appfilter.oldest" | translate }}
+              </option>
             </select>
-
           </div>
         </div>
       </div>
@@ -141,7 +147,7 @@
       @if (currentPage() < totalPages()) {
       <div class="load-more-container">
         <button (click)="loadNextPage()" class="btn-load-more">
-          <span>Charger plus d'appels d'offres</span>
+          <span>{{ "shared.loadmore.load_more" | translate }}</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path
               stroke-linecap="round"
