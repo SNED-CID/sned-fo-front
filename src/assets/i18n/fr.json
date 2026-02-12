@@ -430,7 +430,7 @@
     "liabilityContent": "La SNED met tout en œuvre pour assurer l’exactitude des informations diffusées. Toutefois, elle ne saurait être tenue responsable des erreurs, omissions ou indisponibilités temporaires.",
 
     "personalDataTitle": "Données personnelles",
-    "personalDataContent": "Les données personnelles collectées sont utilisées exclusivement dans le cadre des services proposés. L’utilisateur dispose d’un droit d’accès, de rectification et de suppression en contactant : contact@sned.ma",
+    "personalDataContent": "Les données personnelles collectées sont utilisées exclusivement dans le cadre des services proposés. L’utilisateur dispose d’un droit d’accès, de rectification et de suppression en contactant : ",
 
     "cookiesTitle": "Cookies",
     "cookiesContent": "Le site peut utiliser des cookies à des fins statistiques et d’amélioration de l’expérience utilisateur. L’utilisateur peut configurer son navigateur pour refuser les cookies.",
@@ -471,6 +471,7 @@
 
   "contact": {
     "title": "Contactez-nous",
+    "subtitle": "Nous sommes à votre écoute pour toute demande d’information.",
 
     "fields": {
       "name": {
@@ -494,6 +495,11 @@
         "error": "Le message est requis"
       }
     },
+    "addressTitle": "Adresse",
+    "phoneTitle": "Téléphone",
+    "emailTitle": "Email",
+    "hoursTitle": "Horaires d’ouverture",
+    "hours": "Lundi – Vendredi : 9h00 – 17h00",
 
     "submit": "Envoyer"
   }

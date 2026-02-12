@@ -30,12 +30,13 @@ import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
       <!-- Main Footer Content -->
       <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 py-6">
         <div
-          class="flex flex-col lg:flex-row
-             items-center lg:items-center
+          class="flex flex-col lg:flex-row lg:flex-nowrap
+             items-center
              justify-center lg:justify-between
-             gap-6 lg:gap-10 text-center lg:text-left"
+             gap-6 lg:gap-10
+             text-center lg:text-left"
         >
-          <!-- Logo + Nom -->
+          <!-- Logo -->
           <div class="flex flex-col items-center gap-2 flex-shrink-0">
             <a
               routerLink="/"
@@ -46,29 +47,38 @@ import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
                 alt="SNED Logo"
                 imageClass="h-10 w-auto"
                 [priority]="true"
-              ></app-lazy-image>
+              >
+              </app-lazy-image>
             </a>
           </div>
 
           <!-- Adresse -->
-          <address class="not-italic text-xs text-slate-600 max-w-md">
-            {{ 'footer.company.address' | translate }},
-            {{ 'footer.company.city' | translate }},
-            {{ 'footer.company.location' | translate }}
+          <address class="not-italic text-xs text-slate-600 flex-shrink-0">
+            <span class="whitespace-nowrap">
+              {{ 'footer.company.address' | translate }},
+            </span>
+
+            <span class="block lg:inline whitespace-nowrap">
+              {{ 'footer.company.city' | translate }},
+            </span>
+
+            <span class="whitespace-nowrap">
+              {{ 'footer.company.location' | translate }}
+            </span>
           </address>
 
           <!-- Contact -->
           <div
-            class="flex flex-col sm:flex-row
-               items-center gap-3 sm:gap-6
-               text-xs text-slate-600"
+            class="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 text-xs text-slate-600 flex-shrink-0"
           >
-            <span class="flex items-center gap-1">
+            <!-- Phone -->
+            <span class="flex items-center gap-1 whitespace-nowrap">
               <i class="fas fa-phone text-[var(--sned-orange)]"></i>
               {{ 'footer.company.phone' | translate }}
             </span>
 
-            <span class="flex items-center gap-1">
+            <!-- Email -->
+            <span class="flex items-center gap-1 whitespace-nowrap">
               <i class="fas fa-envelope text-[var(--sned-orange)]"></i>
               <a
                 href="mailto:contact@sned.ma"
@@ -81,9 +91,7 @@ import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
 
           <!-- Liens -->
           <nav
-            class="flex flex-wrap lg:flex-nowrap
-         justify-center lg:justify-end
-         items-center gap-4 lg:gap-6"
+            class="flex flex-wrap lg:flex-nowrap items-center gap-4 lg:gap-6 flex-shrink-0"
           >
             <a
               routerLink="/site-map"
@@ -91,12 +99,14 @@ import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
             >
               {{ 'footer.links.siteMap' | translate }}
             </a>
+
             <a
               routerLink="/mentions-legales"
               class="text-xs text-slate-600 hover:text-[var(--sned-orange)] transition-colors whitespace-nowrap"
             >
               {{ 'footer.links.legalNotice' | translate }}
             </a>
+
             <a
               routerLink="/contact"
               class="text-xs text-slate-600 hover:text-[var(--sned-orange)] transition-colors whitespace-nowrap"
@@ -111,7 +121,7 @@ import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
       <div class="border-t border-slate-200 bg-white/50 backdrop-blur-sm">
         <div class="max-w-7xl mx-auto px-4 py-3">
           <p class="text-xs text-slate-600 text-center">
-            {{ 'footer.legal.copyright' | translate : { year: currentYear() } }}
+            {{ 'footer.legal.copyright' | translate: { year: currentYear() } }}
           </p>
         </div>
       </div>

@@ -429,7 +429,7 @@
     "liabilityContent": "SNED makes every effort to ensure the accuracy of the information published. However, it cannot be held liable for errors, omissions, or temporary unavailability.",
 
     "personalDataTitle": "Personal Data",
-    "personalDataContent": "Personal data collected is used exclusively within the scope of the services offered. Users have the right to access, rectify, and delete their data by contacting: contact@sned.ma",
+    "personalDataContent": "Personal data collected is used exclusively within the scope of the services offered. Users have the right to access, rectify, and delete their data by contacting: ",
 
     "cookiesTitle": "Cookies",
     "cookiesContent": "The website may use cookies for statistical purposes and to improve user experience. Users may configure their browser to refuse cookies.",
@@ -469,6 +469,7 @@
   },
   "contact": {
     "title": "Contact Us",
+    "subtitle": "We are here to assist you with any inquiry.",
 
     "fields": {
       "name": {
@@ -492,6 +493,11 @@
         "error": "Message is required"
       }
     },
+    "addressTitle": "Address",
+    "phoneTitle": "Phone",
+    "emailTitle": "Email",
+    "hoursTitle": "Opening Hours",
+    "hours": "Monday – Friday: 9:00 AM – 5:00 PM",
 
     "submit": "Send"
   }
