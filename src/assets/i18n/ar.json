@@ -453,11 +453,16 @@
     "publicationsDescription": "الاطلاع على جميع منشورات المشروع.",
 
     "contactTitle": "اتصال",
-    "contactDescription": "الولوج إلى صفحة الاتصال لإرسال رسالة."
+    "contactDescription": "الولوج إلى صفحة الاتصال لإرسال رسالة.",
+
+    "downloadsTitle": "التنزيلات",
+    "downloads": {
+      "publications": "المنشورات",
+      "tenders": "طلبات العروض"
+    }
   },
   "contact": {
     "title": "اتصل بنا",
-    "subtitle": "نحن هنا لمساعدتكم والإجابة على جميع استفساراتكم.",
 
     "fields": {
       "name": {
@@ -484,8 +489,8 @@
     "addressTitle": "العنوان",
     "phoneTitle": "الهاتف",
     "emailTitle": "البريد الإلكتروني",
-    "hoursTitle": "ساعات العمل",
-    "hours": "من الاثنين إلى الجمعة: 9:00 صباحًا – 5:00 مساءً",
+    "locationTitle": "الموقع الجغرافي",
+    "openMaps": "فتح في خرائط Google",
 
     "submit": "إرسال"
   }

@@ -2,13 +2,6 @@ import { Component, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import {
-  FormsModule,
-  ReactiveFormsModule,
-  FormBuilder,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
 import { LocaleService } from '../../services/locale.service';
 import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
 
@@ -19,8 +12,6 @@ import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
     CommonModule,
     RouterLink,
     TranslateModule,
-    FormsModule,
-    ReactiveFormsModule,
     LazyImageComponent,
   ],
   template: `
@@ -129,16 +120,11 @@ import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
   `,
 })
 export class FooterComponent {
-  private fb = inject(FormBuilder);
   private translate = inject(TranslateService);
   private localeService = inject(LocaleService);
 
   currentYear = computed(() => new Date().getFullYear().toString());
   isSubmitting = false;
-
-  newsletterForm: FormGroup = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
-  });
 
   getLogoPath(): string {
     const currentLang = this.localeService.getCurrentLocaleId();
@@ -146,17 +132,5 @@ export class FooterComponent {
 
     // Pour le footer, on utilise toujours les logos sur fond sombre
     return isArabic ? 'assets/logos/arstdr.png' : 'assets/logos/frstdr.png';
-  }
-
-  onNewsletterSubmit() {
-    if (this.newsletterForm.valid && !this.isSubmitting) {
-      this.isSubmitting = true;
-      const email = this.newsletterForm.get('email')?.value;
-
-      setTimeout(() => {
-        this.isSubmitting = false;
-        this.newsletterForm.reset();
-      }, 1000);
-    }
   }
 }

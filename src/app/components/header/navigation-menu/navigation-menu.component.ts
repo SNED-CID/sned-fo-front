@@ -106,8 +106,12 @@ export interface MenuSection {
                             "
                           ></i>
 
-                          <div class="flex-1">
+                          <!-- Label avec trait en dessous -->
+                          <div class="relative font-bold">
                             {{ child.label | translate }}
+                            <span
+                              class="absolute left-0 right-0 -bottom-0.5 h-0.5 bg-[var(--sned-blue)] scale-x-0 group-hover/item:scale-x-100 transition-transform duration-300 ease-out origin-left group-[.active-sublink]:scale-x-100"
+                            ></span>
                           </div>
 
                           <div class="flex items-center space-x-1 ml-2">

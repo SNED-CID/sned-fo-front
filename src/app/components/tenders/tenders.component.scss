@@ -1,3 +1,5 @@
+@use "sass:color";
+
 // Variables
 $primary-blue: var(--sned-blue, #667eea);
 $primary-orange: var(--sned-orange, #f59e0b);
@@ -6,12 +8,17 @@ $text-secondary: #4a5568;
 $text-muted: #718096;
 $border-light: #e2e8f0;
 $bg-light: #f7fafc;
-$shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+$shadow-sm:
+  0 1px 3px 0 rgba(0, 0, 0, 0.1),
+  0 1px 2px 0 rgba(0, 0, 0, 0.06);
+$shadow-md:
+  0 4px 6px -1px rgba(0, 0, 0, 0.1),
   0 2px 4px -1px rgba(0, 0, 0, 0.06);
-$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+$shadow-lg:
+  0 10px 15px -3px rgba(0, 0, 0, 0.1),
   0 4px 6px -2px rgba(0, 0, 0, 0.05);
-$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+$shadow-xl:
+  0 20px 25px -5px rgba(0, 0, 0, 0.1),
   0 10px 10px -5px rgba(0, 0, 0, 0.04);
 
 // Container
@@ -47,20 +54,6 @@ $shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
 .hero-content {
   max-width: 800px;
   margin: 0 auto;
-}
-
-.hero-title {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
-  color: $text-primary;
-  margin: 2.5rem 0 2rem;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  text-align: left;
-
-  @media (max-width: 768px) {
-    margin-bottom: 1.5rem;
-  }
 }
 
 .hero-search {
@@ -119,7 +112,9 @@ $shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     &:focus {
       outline: none;
       border-color: $primary-orange;
-      box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.1), $shadow-md;
+      box-shadow:
+        0 0 0 4px rgba(245, 158, 11, 0.1),
+        $shadow-md;
     }
 
     @media (max-width: 768px) {
@@ -163,7 +158,9 @@ $shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
 
     &:focus {
       outline: none;
-      box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2), $shadow-md;
+      box-shadow:
+        0 0 0 4px rgba(102, 126, 234, 0.2),
+        $shadow-md;
     }
 
     @media (max-width: 768px) {
@@ -174,7 +171,6 @@ $shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     }
   }
 }
-
 
 // Content Section
 .tenders-content {
@@ -248,7 +244,7 @@ $shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
   }
 }
 
-// List Layout - Une card par ligne
+// List Layout
 .tenders-list {
   display: flex;
   flex-direction: column;
@@ -261,7 +257,7 @@ $shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
   }
 }
 
-// Tender Card - Full Width
+// Tender Card
 .tender-card {
   position: relative;
   display: flex;
@@ -291,7 +287,7 @@ $shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
       background: linear-gradient(
         135deg,
         $primary-blue 0%,
-        darken(#667eea, 8%) 100%
+        color.adjust(#667eea, $lightness: -8%) 100%
       );
       padding: 4px 8px;
       transform: translateX(4px);
@@ -328,7 +324,7 @@ $shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-// Card Container - Horizontal Layout
+// Card Container
 .card-container {
   display: flex;
   align-items: center;
@@ -365,10 +361,10 @@ $shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
   }
 }
 
-// Header Info - Badge et Date
+// Header Info
 .tender-header-info {
   display: flex;
-  justify-content: space-between; /* Numéro à gauche, date à droite */
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
 }
@@ -380,26 +376,7 @@ $shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
   margin: 0;
 }
 
-.tender-date {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.25rem 0.5rem;
-  background: $bg-light;
-  border: 1px solid $border-light;
-  border-radius: 8px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: $text-secondary;
-
-  svg {
-    width: 16px;
-    height: 16px;
-    color: $primary-orange;
-    stroke-width: 2;
-  }
-}
-
+// tender-date (bloc unique, fusionné)
 .tender-date {
   display: inline-flex;
   align-items: center;
@@ -456,13 +433,13 @@ $shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
 }
 
 .tender-excerpt {
-  display: -webkit-box; // nécessaire pour line-clamp
+  display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3; // limite à 3 lignes
-  overflow: hidden; // cache le reste du texte
-  text-overflow: ellipsis; // ajoute "..." si dépassé
-  line-height: 1.7rem; // correspond à la hauteur d'une ligne
-  word-break: break-word; // coupe les mots trop longs
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.7rem;
+  word-break: break-word;
 
   ::ng-deep {
     p,
@@ -513,7 +490,7 @@ $shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
   background: linear-gradient(
     135deg,
     $primary-orange 0%,
-    darken(#f59e0b, 5%) 100%
+    color.adjust(#f59e0b, $lightness: -5%) 100%
   );
   color: white;
   font-size: 0.9375rem;

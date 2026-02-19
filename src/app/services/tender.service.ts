@@ -24,13 +24,11 @@ export interface Page<T> {
   providedIn: 'root',
 })
 export class TenderService {
-
-  
-  BASE_URL: string = `${environment.apiUrl}/tenders`;
+  BASE_URL: string = `${environment.apiUrl}/v1/tenders`;
 
   constructor(
     private http: HttpClient,
-    private previewTokenService: PreviewTokenService
+    private previewTokenService: PreviewTokenService,
   ) {}
 
   // getAllLocalizedTenders(lang? : string) : Observable<TenderReadDTO[]> {
@@ -41,38 +39,32 @@ export class TenderService {
   // }
 
   getAllLocalizedTenders(
-  lang?: string,
-  number?: string,
-  page: number = 0,
-  size: number = 5,
-  order?: string
-): Observable<Page<TenderReadDTO>> {
+    lang?: string,
+    number?: string,
+    page: number = 0,
+    size: number = 5,
+    order?: string,
+  ): Observable<Page<TenderReadDTO>> {
+    let params = new HttpParams().set('page', page).set('size', size);
 
-  let params = new HttpParams()
-    .set('page', page)
-    .set('size', size);
+    if (lang) {
+      params = params.set('lang', lang);
+    }
 
-  if (lang) {
-    params = params.set('lang', lang);
+    if (number && number.trim().length > 0) {
+      params = params.set('number', number.trim());
+    }
+
+    if (order) {
+      params = params.set('order', order);
+    }
+
+    const endpoint = this.previewTokenService.hasToken()
+      ? '/preview'
+      : '/localized';
+
+    return this.http.get<Page<TenderReadDTO>>(`${this.BASE_URL}/${endpoint}`, {
+      params,
+    });
   }
-
-  if (number && number.trim().length > 0) {
-    params = params.set('number', number.trim());
-  }
-
-  if (order) {
-    params = params.set('order', order);
-  }
-
-  const endpoint = this.previewTokenService.hasToken()
-    ? '/preview'
-    : '/localized';
-
-  return this.http.get<Page<TenderReadDTO>>(
-    `http://localhost:8081/api/tenders${endpoint}`,
-    { params }
-  );
-}
-
-
 }

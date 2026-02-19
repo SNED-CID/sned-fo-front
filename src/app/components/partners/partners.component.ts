@@ -3,7 +3,6 @@ import { PartnerService, PartnerReadDTO } from '../../services/partner.service';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { forkJoin, map } from 'rxjs';
-import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
 import { ScrollAnimationDirective } from '../../directives/scroll-animation.directive';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
@@ -15,7 +14,6 @@ interface PartnerWithLogo extends PartnerReadDTO {
   selector: 'app-partners',
   imports: [
     CommonModule,
-    LazyImageComponent,
     ScrollAnimationDirective,
     TranslatePipe,
   ],

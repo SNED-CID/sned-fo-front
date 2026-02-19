@@ -147,6 +147,28 @@
           {{ "siteMap.contactDescription" | translate }}
         </p>
       </div>
+
+      <!-- Téléchargements -->
+      <div>
+        <h2 class="text-lg font-semibold text-slate-800 mb-2">
+          {{ "siteMap.downloadsTitle" | translate }}
+        </h2>
+        <ul class="list-disc list-inside space-y-1 text-slate-700 text-sm">
+          <li
+            class="cursor-pointer hover:underline"
+            [routerLink]="['/publication']"
+          >
+            {{ "siteMap.downloads.publications" | translate }}
+          </li>
+          <li
+            class="cursor-pointer hover:underline"
+            [routerLink]="['/']"
+            fragment="appels_offres"
+          >
+            {{ "siteMap.downloads.tenders" | translate }}
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>

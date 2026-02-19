@@ -247,7 +247,7 @@
       "fixed_link_project": "Fixed Link Project",
       "engineering": "Engineering",
       "legal_aspect": "Legal Aspect",
-      "project_history":"Project History",
+      "project_history": "Project History",
       "physical_environment": "Physical Environment",
       "socioeconomic_aspect": "Socio-Economic Aspect",
       "geostrategic_component": "Geostrategic Component",
@@ -465,11 +465,16 @@
     "publicationsDescription": "View all project publications.",
 
     "contactTitle": "Contact",
-    "contactDescription": "Access the Contact page to send us a message."
+    "contactDescription": "Access the Contact page to send us a message.",
+
+    "downloadsTitle": "Downloads",
+    "downloads": {
+      "publications": "Publications",
+      "tenders": "Tenders"
+    }
   },
   "contact": {
     "title": "Contact Us",
-    "subtitle": "We are here to assist you with any inquiry.",
 
     "fields": {
       "name": {
@@ -496,8 +501,8 @@
     "addressTitle": "Address",
     "phoneTitle": "Phone",
     "emailTitle": "Email",
-    "hoursTitle": "Opening Hours",
-    "hours": "Monday – Friday: 9:00 AM – 5:00 PM",
+    "locationTitle": "Location",
+    "openMaps": "Open in Google Maps",
 
     "submit": "Send"
   }

@@ -1,93 +1,120 @@
 <section class="bg-gradient-to-br from-slate-50 via-white to-slate-100 py-16">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-
     <!-- Titre -->
     <div class="text-center mb-12">
       <h1 class="text-3xl sm:text-4xl font-semibold text-slate-800 mb-3">
-        {{ 'contact.title' | translate }}
+        {{ "contact.title" | translate }}
       </h1>
-      <p class="text-slate-500 text-base">
-        {{ 'contact.subtitle' | translate }}
-      </p>
     </div>
 
     <!-- Carte -->
-    <div class="bg-white border border-slate-200 rounded-2xl shadow-sm p-8 sm:p-10">
-
+    <div
+      class="bg-white border border-slate-200 rounded-2xl shadow-sm p-8 sm:p-10"
+    >
       <div class="grid gap-8 sm:grid-cols-2">
-
         <!-- Adresse -->
         <div class="flex items-start gap-4">
-          <div class="bg-orange-50 text-[var(--sned-orange)] p-3 rounded-xl">
+          <div
+            class="bg-orange-50 text-[var(--sned-orange)] p-3 rounded-xl shrink-0"
+          >
             <i class="fas fa-map-marker-alt text-lg"></i>
           </div>
 
           <div>
             <h3 class="text-base font-semibold text-slate-800 mb-1">
-              {{ 'contact.addressTitle' | translate }}
+              {{ "contact.addressTitle" | translate }}
             </h3>
+
             <p class="text-slate-600 text-sm leading-relaxed">
-              {{ 'footer.company.address' | translate }}<br />
-              {{ 'footer.company.city' | translate }}<br />
-              {{ 'footer.company.location' | translate }}
+              {{ "footer.company.address" | translate }}<br />
+              {{ "footer.company.city" | translate }}<br />
+              {{ "footer.company.location" | translate }}
             </p>
           </div>
         </div>
 
         <!-- Téléphone -->
         <div class="flex items-start gap-4">
-          <div class="bg-orange-50 text-[var(--sned-orange)] p-3 rounded-xl">
+          <div
+            class="bg-orange-50 text-[var(--sned-orange)] p-3 rounded-xl shrink-0"
+          >
             <i class="fas fa-phone text-lg"></i>
           </div>
 
           <div>
             <h3 class="text-base font-semibold text-slate-800 mb-1">
-              {{ 'contact.phoneTitle' | translate }}
+              {{ "contact.phoneTitle" | translate }}
             </h3>
-            <p class="text-slate-600 text-sm">
-              {{ 'footer.company.phone' | translate }}
-            </p>
+
+            <a
+              href="tel:+212000000000"
+              class="text-slate-600 text-sm hover:text-[var(--sned-orange)] transition-colors"
+              aria-label="Call phone number"
+            >
+              {{ "footer.company.phone" | translate }}
+            </a>
           </div>
         </div>
 
         <!-- Email -->
         <div class="flex items-start gap-4">
-          <div class="bg-orange-50 text-[var(--sned-orange)] p-3 rounded-xl">
+          <div
+            class="bg-orange-50 text-[var(--sned-orange)] p-3 rounded-xl shrink-0"
+          >
             <i class="fas fa-envelope text-lg"></i>
           </div>
 
           <div>
             <h3 class="text-base font-semibold text-slate-800 mb-1">
-              {{ 'contact.emailTitle' | translate }}
+              {{ "contact.emailTitle" | translate }}
             </h3>
+
             <a
               href="mailto:contact@sned.ma"
               class="text-slate-600 text-sm hover:text-[var(--sned-orange)] transition-colors"
+              aria-label="Send email"
             >
-              {{ 'footer.company.email' | translate }}
+              {{ "footer.company.email" | translate }}
             </a>
           </div>
         </div>
 
-        <!-- Horaires -->
-        <div class="flex items-start gap-4">
-          <div class="bg-orange-50 text-[var(--sned-orange)] p-3 rounded-xl">
-            <i class="fas fa-clock text-lg"></i>
-          </div>
+        <!-- Map -->
+        <div class="flex flex-col">
+          <h3 class="text-base font-semibold text-slate-800 mb-3">
+            {{ "contact.locationTitle" | translate }}
+          </h3>
 
-          <div>
-            <h3 class="text-base font-semibold text-slate-800 mb-1">
-              {{ 'contact.hoursTitle' | translate }}
-            </h3>
-            <p class="text-slate-600 text-sm">
-              {{ 'contact.hours' | translate }}
-            </p>
-          </div>
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=SNED+Rabat+Maroc"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open map location"
+            class="block rounded-xl overflow-hidden border border-slate-200 hover:border-[var(--sned-orange)] transition-colors duration-300 group flex-1"
+          >
+            <div class="relative h-full min-h-[180px]">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3307!2d-6.8498!3d33.9716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDU4JzE3LjgiTiA2wrA1MCo1NC4zIlc!5e0!3m2!1sfr!2sma!4v1"
+                class="absolute inset-0 w-full h-full border-0 pointer-events-none"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+
+              <!-- Overlay -->
+              <div
+                class="absolute inset-0 bg-transparent group-hover:bg-[var(--sned-orange)]/5 transition-colors duration-300 flex items-center justify-center"
+              >
+                <span
+                  class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white text-[var(--sned-orange)] text-sm font-semibold px-4 py-2 rounded-full shadow-md"
+                >
+                  <i class="fas fa-external-link-alt mr-2"></i>
+                  {{ "contact.openMaps" | translate }}
+                </span>
+              </div>
+            </div>
+          </a>
         </div>
-
       </div>
-
     </div>
-
   </div>
 </section>

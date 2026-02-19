@@ -466,12 +466,17 @@
     "publicationsDescription": "Consultez toutes les publications du projet.",
 
     "contactTitle": "Contact",
-    "contactDescription": "Accédez à la page Contact pour nous envoyer un message."
+    "contactDescription": "Accédez à la page Contact pour nous envoyer un message.",
+
+    "downloadsTitle": "Téléchargements",
+    "downloads": {
+      "publications": "Publications",
+      "tenders": "Appels d'offres"
+    }
   },
 
   "contact": {
     "title": "Contactez-nous",
-    "subtitle": "Nous sommes à votre écoute pour toute demande d’information.",
 
     "fields": {
       "name": {
@@ -498,9 +503,8 @@
     "addressTitle": "Adresse",
     "phoneTitle": "Téléphone",
     "emailTitle": "Email",
-    "hoursTitle": "Horaires d’ouverture",
-    "hours": "Lundi – Vendredi : 9h00 – 17h00",
-
+    "locationTitle": "Localisation",
+    "openMaps": "Ouvrir dans Google Maps",
     "submit": "Envoyer"
   }
 }

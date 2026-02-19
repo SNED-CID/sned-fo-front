@@ -1,11 +1,5 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { PartnersComponent } from './components/partners/partners.component';
-import { CommuniquePage } from './components/communique/communique-page/communique-page';
-import { TendersComponent } from './components/tenders/tenders.component';
-import { SiteMapComponent } from './components/site-map/site-map.component';
-import { MentionsLegalesComponent } from './components/mentions-legales/mentions-legales.component';
-import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 export const routes: Routes = [
   // Home
@@ -26,11 +20,20 @@ export const routes: Routes = [
   { path: 'galerie/socio-economique', component: HomeComponent },
 
   // Publications
-  { path: 'publication', component: CommuniquePage },
+  { 
+  path: 'publication', 
+  loadComponent: () => import('./components/communique/communique-page/communique-page').then(m => m.CommuniquePage)
+},
   // Partenariats
-  { path: 'partenariat', component: PartnersComponent },
+  { 
+  path: 'partenariat', 
+  loadComponent: () => import('./components/partners/partners.component').then(m => m.PartnersComponent)
+},
   // Appels d'offres
-  { path: 'appels-offres', component: TendersComponent },
+  { 
+  path: 'appels-offres', 
+  loadComponent: () => import('./components/tenders/tenders.component').then(m => m.TendersComponent)
+},
 
   // Travail
   { path: 'travail', component: HomeComponent },
@@ -39,9 +42,18 @@ export const routes: Routes = [
   { path: 'travail/video', component: HomeComponent },
   { path: 'travail/statistiques', component: HomeComponent },
 
-  { path: 'site-map', component: SiteMapComponent },
-  { path: 'mentions-legales', component: MentionsLegalesComponent },
-  { path: 'contact', component: ContactUsComponent },
+  { 
+  path: 'site-map', 
+  loadComponent: () => import('./components/site-map/site-map.component').then(m => m.SiteMapComponent)
+},
+  { 
+  path: 'mentions-legales', 
+  loadComponent: () => import('./components/mentions-legales/mentions-legales.component').then(m => m.MentionsLegalesComponent)
+},
+  { 
+  path: 'contact', 
+  loadComponent: () => import('./components/contact-us/contact-us.component').then(m => m.ContactUsComponent)
+},
 
   // Alias
   { path: 'sned', redirectTo: '', pathMatch: 'full' },
