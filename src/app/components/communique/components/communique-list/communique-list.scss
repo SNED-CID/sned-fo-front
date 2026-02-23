@@ -90,6 +90,15 @@
   max-height: 80vh;
 }
 
+.language-link {
+  @apply text-sm font-medium text-slate-600 cursor-pointer transition-colors duration-200;
+}
+
+.language-link:hover {
+  @apply text-indigo-600 underline;
+}
+
+
 
 
 

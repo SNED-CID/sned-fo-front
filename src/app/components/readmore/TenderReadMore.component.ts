@@ -51,7 +51,7 @@ import DOMPurify from 'dompurify';
       *ngIf="sidebarOpen()"
       @slideInOut
       class="
-  fixed top-0 right-0 w-full md:w-[80%] lg:w-[60%] h-full bg-white shadow-2xl flex flex-col"
+  fixed top-0 right-0 w-full md:w-[80%] lg:w-[75%] h-full bg-white shadow-2xl flex flex-col"
       style="z-index: 99999;"
     >
       <!-- Header avec boutons -->

@@ -416,9 +416,6 @@
     "publicationTitle": "Responsable de la publication",
     "publicationContent": "Le responsable de la publication est le représentant légal de la Société Nationale d'Études du Détroit (SNED).",
 
-    "hostingTitle": "Hébergement",
-    "hostingContent": "Le site est hébergé par un prestataire d’hébergement professionnel garantissant la sécurité, la disponibilité et la confidentialité des données.",
-
     "accessTitle": "Accès au site",
     "accessContent": "L’accès au site est libre et gratuit. L’utilisateur reconnaît disposer des compétences et des moyens nécessaires pour accéder et utiliser ce site.",
 
@@ -426,8 +423,8 @@
     "intellectualPropertyContent1": "L’ensemble du contenu du site (textes, images, graphismes, logos, icônes, vidéos, documents) est la propriété exclusive de la SNED, sauf mention contraire.",
     "intellectualPropertyContent2": "Toute reproduction ou représentation, totale ou partielle, est interdite sans autorisation écrite préalable.",
 
-    "liabilityTitle": "Responsabilité",
-    "liabilityContent": "La SNED met tout en œuvre pour assurer l’exactitude des informations diffusées. Toutefois, elle ne saurait être tenue responsable des erreurs, omissions ou indisponibilités temporaires.",
+    "liabilityTitle": "Limitation de responsabilité",
+    "liabilityContent": "La SNED met tout en œuvre pour assurer l’exactitude et la mise à jour des informations diffusées sur le portail. Toutefois, les informations publiées peuvent être modifiées, mises à jour ou supprimées à tout moment et sans préavis. La SNED se réserve le droit d’apporter, à tout moment et sans notification préalable, des améliorations et/ou modifications au site. \n\nLa SNED ne saurait être tenue responsable des dommages directs ou indirects résultant de l’utilisation ou de l’impossibilité d’utiliser le site, notamment en cas d’indisponibilité, de dysfonctionnement, d’erreurs techniques ou de temps de réponse insuffisant. \n\nPour toute information complémentaire, demande de précision ou réclamation, l’utilisateur est invité à contacter directement la SNED via les coordonnées indiquées dans la section « Contact ».",
 
     "personalDataTitle": "Données personnelles",
     "personalDataContent": "Les données personnelles collectées sont utilisées exclusivement dans le cadre des services proposés. L’utilisateur dispose d’un droit d’accès, de rectification et de suppression en contactant : ",
