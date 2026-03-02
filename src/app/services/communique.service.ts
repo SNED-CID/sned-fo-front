@@ -9,6 +9,7 @@ export interface CommuniqueReadDTO {
   title: string;
   datePosting: Date | null;
   details: string;
+  // communiqueUrl: string;
   imageUUID: string;
   publicationStatus: PublicationStatus;
 }

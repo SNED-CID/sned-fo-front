@@ -49,7 +49,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
     <!-- Sidebar animée -->
     @if (sidebarOpen()) {
     <aside
-      class="fixed inset-y-0 right-0 w-[50vw] bg-white shadow-2xl flex flex-col"
+      class="fixed inset-y-0 right-0 w-[75vw] bg-white shadow-2xl flex flex-col"
       style="z-index: 99999;"
     >
       <!-- Header -->

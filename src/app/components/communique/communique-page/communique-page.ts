@@ -70,6 +70,7 @@ export class CommuniquePage implements OnInit {
       .subscribe({
         next: (data: any) => {
           this.filteredCommuniques = data.content ?? [];
+          console.log('Communiqués récupérés:', this.filteredCommuniques);
           this.totalPages = data.totalPages ?? 0;
         },
         error: (err: any) => console.error('HTTP error', err),
