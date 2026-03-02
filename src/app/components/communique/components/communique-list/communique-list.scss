@@ -10,6 +10,11 @@
     max-width: 100%; /* ← Important */
 }
 
+/* Hover sned-blue pour les boutons liens et lire la suite */
+.btn-lien:hover {
+  background-color: var(--sned-blue) !important;
+}
+
 .html-truncate * {
     display: inline !important;
     margin: 0 !important;
