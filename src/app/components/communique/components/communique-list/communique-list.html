@@ -6,7 +6,7 @@
       <thead>
         <tr>
           <th
-            class="w-full h-5 sm:h-8 bg-gradient-to-r from-[var(--sned-blue)] to-[var(--sned-orange)] rounded-t-2xl"
+            class="w-full h-5 sm:h-8 bg-gradient-to-r from-[var(--sned-blue)] to-[var(--sned-orange)] rounded-t-2xl text-3xl"
           >
             {{ 'header.menu.publication' | translate }}
           </th>
@@ -54,81 +54,73 @@
               </div>
 
               <!-- Groupe Date + Liens + Image à droite -->
-              <div class="flex items-stretch gap-4 flex-shrink-0">
+<div class="flex items-stretch gap-4 flex-shrink-0">
+  <!-- Date -->
+  <div class="flex items-center justify-center px-4 border-l border-r border-slate-200">
+    <div class="text-center">
+      <div class="text-3xl font-bold text-indigo-600">
+        {{ communique.datePosting | date: 'dd' }}
+      </div>
+      <div class="text-sm font-semibold text-slate-600 uppercase">
+        {{ communique.datePosting | date: 'MMM' }}
+      </div>
+      <div class="text-xs text-slate-400">
+        {{ communique.datePosting | date: 'yyyy' }}
+      </div>
+      <div class="mt-2 pt-2 border-t border-slate-200">
+        <div class="text-sm font-semibold text-indigo-500">
+          {{ communique.datePosting | date: 'HH:mm' }}
+        </div>
+      </div>
+    </div>
+  </div>
 
-                <!-- Date -->
-                <div
-                  class="flex items-center justify-center px-4 border-l border-slate-200"
-                >
-                  <div class="text-center">
-                    <div class="text-3xl font-bold text-indigo-600">
-                      {{ communique.datePosting | date: 'dd' }}
-                    </div>
-                    <div class="text-sm font-semibold text-slate-600 uppercase">
-                      {{ communique.datePosting | date: 'MMM' }}
-                    </div>
-                    <div class="text-xs text-slate-400">
-                      {{ communique.datePosting | date: 'yyyy' }}
-                    </div>
-                    <!-- Heure et minutes -->
-                    <div class="mt-2 pt-2 border-t border-slate-200">
-                      <div class="text-sm font-semibold text-indigo-500">
-                        {{ communique.datePosting | date: 'HH:mm' }}
-                      </div>
-                    </div>
-                  </div>
-                </div>
+  <!-- Image (déplacée avant les boutons) -->
+  <div
+    class="flex-shrink-0 w-40 h-30 overflow-hidden rounded-xl shadow-lg bg-slate-50 flex items-center justify-center "
+  >
+    <img
+      [src]="communiqueService.communiqueImages[communique.imageUUID]"
+      [alt]="communique.title"
+      class="w-full h-full object-cover transition-transform duration-400 hover:scale-110"
+    />
+  </div>
 
-                <!-- Boutons des liens langues (vertical, entre date et image) -->
-                <div class="flex flex-col justify-center gap-2 px-2 border-l border-r border-slate-200">
-
-                  @if (communique.frLink) {
-                    <a
-                      [href]="communique.frLink"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="btn-lien cursor-pointer flex items-center gap-2 px-5 py-2 rounded-full bg-[var(--sned-orange)] text-white font-medium transition-all duration-300 hover:translate-y-[-2px] whitespace-nowrap"
-                    >
-                      FR : Lien
-                    </a>
-                  }
-
-                  @if (communique.enLink) {
-                    <a
-                      [href]="communique.enLink"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="btn-lien cursor-pointer flex items-center gap-2 px-5 py-2 rounded-full bg-[var(--sned-orange)] text-white font-medium transition-all duration-300 hover:translate-y-[-2px] whitespace-nowrap"
-                    >
-                      EN : Lien
-                    </a>
-                  }
-
-                  @if (communique.esLink) {
-                    <a
-                      [href]="communique.esLink"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="btn-lien cursor-pointer flex items-center gap-2 px-5 py-2 rounded-full bg-[var(--sned-orange)] text-white font-medium transition-all duration-300 hover:translate-y-[-2px] whitespace-nowrap"
-                    >
-                      ES : Lien
-                    </a>
-                  }
-
-                </div>
-
-                <!-- Image à droite -->
-                <div
-                  class="flex-shrink-0 w-40 h-30 overflow-hidden rounded-xl shadow-lg bg-slate-50 flex items-center justify-center"
-                >
-                  <img
-                    [src]="communiqueService.communiqueImages[communique.imageUUID]"
-                    [alt]="communique.title"
-                    class="w-full h-full object-cover transition-transform duration-400 hover:scale-110"
-                  />
-                </div>
-
-              </div>
+  <!-- Boutons des liens langues (déplacés après l'image) -->
+  <div class="flex flex-col justify-center gap-2 px-2 border-l border-r border-slate-200">
+    @if (communique.frLink) {
+      <a
+        [href]="communique.frLink"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-lien cursor-pointer flex items-center gap-2 px-5 py-2 justify-center rounded-full bg-[var(--sned-orange)] text-white font-medium transition-all duration-300 hover:translate-y-[-2px] whitespace-nowrap"
+      >
+        FR : Lien
+      </a>
+    }
+    @if (communique.enLink) {
+      <a
+        [href]="communique.enLink"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-lien cursor-pointer flex items-center gap-2 px-5 py-2 justify-center rounded-full bg-[var(--sned-orange)] text-white font-medium transition-all duration-300 hover:translate-y-[-2px] whitespace-nowrap"
+      >
+        EN : Link
+      </a>
+    }
+    @if (communique.esLink) {
+      <a
+        [href]="communique.esLink"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-lien cursor-pointer flex items-center gap-2 px-5 py-2 justify-center rounded-full bg-[var(--sned-orange)] text-white font-medium transition-all duration-300 hover:translate-y-[-2px] whitespace-nowrap"
+      >
+        ES : Hipervínculo
+      </a>
+    }
+  </div>
+</div>
+              
             </div>
           </td>
         </tr>
