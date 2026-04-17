@@ -32,10 +32,10 @@ export interface Language {
             <button
               (click)="onLanguageChange(lang)"
               [ngClass]="{
-                'bg-gradient-to-r from-[var(--sned-orange)] to-[var(--sned-blue)] text-white shadow-lg': lang.code === currentLang(),
-                'bg-white hover:bg-[var(--sned-orange)]/10 text-[var(--sned-orange-dark)]': lang.code !== currentLang()
+                'bg-[var(--sned-orange)] text-white border-[var(--sned-orange)] shadow-lg': lang.code === currentLang(),
+                'bg-white text-[var(--sned-orange-dark)] hover:bg-[var(--sned-orange)] hover:text-white hover:border-[var(--sned-orange)] hover:shadow-[0_8px_24px_rgba(245,130,32,0.35)] hover:-translate-y-0.5': lang.code !== currentLang()
               }"
-              class="cursor-pointer px-3 py-2 rounded-lg shadow-md flex items-center justify-center transition-all duration-200 font-semibold text-sm min-w-[3rem] group relative"
+              class="cursor-pointer px-3 py-2 rounded-lg border border-transparent shadow-md flex items-center justify-center transition-all duration-300 ease-out font-semibold text-sm min-w-[3rem] group relative"
               [title]="lang.label">
               {{ lang.initials }}
 

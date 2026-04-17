@@ -1,4 +1,11 @@
-import { Component, HostListener, signal, OnInit, inject } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  signal,
+  OnInit,
+  OnDestroy,
+  inject,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { LoaderComponent } from '../../loader/loader.component';
@@ -31,7 +38,7 @@ import { AnalyticsService } from '../../../services/analytics.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   isScrolled = signal(false);
   isMobileMenuOpen = signal(false);
   currentLang = signal('fr');
@@ -39,6 +46,7 @@ export class HeaderComponent implements OnInit {
   showLangDropdown = signal(false);
   showMobileLangDropdown = false;
   currentSection = signal<string>('default');
+  showHero = signal(true);
 
   private currentImageIndex = 0;
 
@@ -90,7 +98,13 @@ export class HeaderComponent implements OnInit {
   ];
 
   currentBackground: string | null = null;
+  transitionBackground: string | null = null;
   isBackgroundLoading = signal(false);
+  isBackgroundTransitioning = signal(false);
+
+  private readonly transitionDurationMs = 900;
+  private heroRotationInterval: ReturnType<typeof setInterval> | null = null;
+  private transitionTimeout: ReturnType<typeof setTimeout> | null = null;
 
   constructor(
     private router: Router,
@@ -108,14 +122,21 @@ export class HeaderComponent implements OnInit {
       this.loadTranslatedMenus();
     });
 
+    const initialBackground = this.getBackgroundForUrl(this.router.url);
+    if (initialBackground) {
+      this.loadBackgroundImage(initialBackground, false);
+    }
+    this.showHero.set(this.shouldShowHeroForUrl(this.router.url));
+
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: any) => {
         const url = event.urlAfterRedirects || event.url;
+        this.showHero.set(this.shouldShowHeroForUrl(url));
         const newBackground = this.getBackgroundForUrl(url);
 
         if (newBackground && newBackground !== this.currentBackground) {
-          this.loadBackgroundImage(newBackground);
+          this.loadBackgroundImage(newBackground, true);
         } else {
           this.currentBackground = newBackground;
         }
@@ -127,13 +148,34 @@ export class HeaderComponent implements OnInit {
     this.startHeroImageRotation();
   }
 
+  private shouldShowHeroForUrl(url: string): boolean {
+    const urlWithoutFragment = (url || '').split('#')[0].split('?')[0];
+    return urlWithoutFragment !== '/contact';
+  }
+
+  ngOnDestroy() {
+    if (this.heroRotationInterval) {
+      clearInterval(this.heroRotationInterval);
+      this.heroRotationInterval = null;
+    }
+
+    if (this.transitionTimeout) {
+      clearTimeout(this.transitionTimeout);
+      this.transitionTimeout = null;
+    }
+  }
+
   private startHeroImageRotation(): void {
-    setInterval(() => {
+    if (this.heroRotationInterval) {
+      clearInterval(this.heroRotationInterval);
+    }
+
+    this.heroRotationInterval = setInterval(() => {
       this.currentImageIndex =
         (this.currentImageIndex + 1) % this.heroImages.length;
 
       const nextImage = this.heroImages[this.currentImageIndex];
-      this.loadBackgroundImage(nextImage);
+      this.loadBackgroundImage(nextImage, true);
     }, 3000);
   }
 
@@ -425,12 +467,35 @@ export class HeaderComponent implements OnInit {
     this.isVideoPlaying = true;
   }
 
-  private loadBackgroundImage(imagePath: string) {
+  private loadBackgroundImage(imagePath: string, withTransition = true) {
     // this.isBackgroundLoading.set(true);
 
     const img = new Image();
     img.onload = () => {
-      this.currentBackground = imagePath;
+      const shouldTransition =
+        withTransition &&
+        !!this.currentBackground &&
+        this.currentBackground !== imagePath;
+
+      if (!shouldTransition) {
+        this.currentBackground = imagePath;
+        this.transitionBackground = null;
+        this.isBackgroundTransitioning.set(false);
+        return;
+      }
+
+      this.transitionBackground = imagePath;
+      this.isBackgroundTransitioning.set(true);
+
+      if (this.transitionTimeout) {
+        clearTimeout(this.transitionTimeout);
+      }
+
+      this.transitionTimeout = setTimeout(() => {
+        this.currentBackground = imagePath;
+        this.transitionBackground = null;
+        this.isBackgroundTransitioning.set(false);
+      }, this.transitionDurationMs);
       // this.isBackgroundLoading.set(false);
     };
     img.onerror = () => {

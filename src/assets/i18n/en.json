@@ -269,6 +269,8 @@
   "tenders": {
     "title": "Call for Tenders",
     "description": "Browse our {{ count }} ongoing and upcoming call for tenders.",
+    "cta_text": "Discover current call for tenders",
+    "cta_button": "Discover more",
     "empty_state": "No call for tenders available at the moment",
     "badge": "Call for tenders",
     "view_details": "View details",
@@ -280,7 +282,9 @@
     "footer_notice": "This document is provided for informational purposes. For any official submission, please refer to the complete specifications."
   },
   "careers": {
-    "last_updated_on": "Last updated on"
+    "last_updated_on": "Last updated on",
+    "cta_text": "Join our team and contribute to the SNED project.",
+    "cta_button": "Join us"
   },
   "about": {
     "sned": {

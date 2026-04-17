@@ -11,10 +11,8 @@ import { NgClass } from '@angular/common';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
 import { ScrollAnimationDirective } from '../../directives/scroll-animation.directive';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PartnersComponent } from '../partners/partners.component';
-import { TendersComponent } from '../tenders/tenders.component';
-import { CareerComponent } from '../career/career.component';
 
 interface Section {
   id: string;
@@ -34,9 +32,8 @@ interface Section {
     TranslatePipe,
     LazyImageComponent,
     ScrollAnimationDirective,
+    RouterLink,
     PartnersComponent,
-    TendersComponent,
-    CareerComponent,
   ],
   template: `
     <!-- Point de repère en haut -->
@@ -288,58 +285,74 @@ interface Section {
         <div class="pb-6 lg:pb-8"></div>
       </div>
 
+      <!-- Section Appels d'offres -->
+      <div
+        class="w-3/4 lg:w-5/6 2xl:w-full mx-auto mt-16 px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20  relative bg-white rounded-2xl shadow-lg overflow-hidden"
+      >
+        <h2
+          class="text-3xl lg:text-4xl xl:text-5xl font-bold text-primary mt-20 text-center lg:mb-6"
+        >
+          {{ 'tenders.title' | translate }}
+        </h2>
+        <div
+          class="absolute top-0 left-0 w-full h-5 sm:h-8 rounded-t-2xl bg-[linear-gradient(90deg,rgba(248,152,81,0.72)_0%,rgba(255,147,88,0.94)_28%,rgba(255,102,84,1)_50%,rgba(239,68,68,0.92)_72%,rgba(220,38,38,0.74)_100%)]"
+        ></div>
+        <div id="appels_offres" class="pt-3 w-full">
+          <div class="pt-10 pb-8 lg:pt-12 lg:pb-10 text-center">
+            <p class="text-lg lg:text-xl text-gray-700 font-medium mb-6">
+              {{ 'tenders.cta_text' | translate }}
+            </p>
+            <a
+              routerLink="/appels-offres"
+              class="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white bg-[var(--sned-orange)] hover:bg-[var(--sned-orange-dark)] transition-colors duration-200"
+            >
+              {{ 'tenders.cta_button' | translate }}
+              <i class="fas fa-arrow-right text-sm"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section Carrières -->
+      <div
+        class="w-screen relative ltr:left-1/2 rtl:right-1/2 ltr:-translate-x-1/2 rtl:translate-x-1/2 mt-16 px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 py-2 sm:py-3 lg:py-5 xl:py-8 2xl:py-10 bg-gradient-to-r from-[var(--sned-blue)] via-[var(--sned-blue-dark)] to-[#004f94]"
+      >
+        <h2
+          class="text-3xl lg:text-4xl xl:text-5xl font-bold text-white mt-10 text-center lg:mb-6"
+        >
+          {{ 'header.menu.careers' | translate }}
+        </h2>
+
+        <div id="carrieres" class="py-8 lg:py-10 w-full text-center">
+          <p class="text-lg lg:text-xl text-white font-medium mb-6">
+            {{ 'careers.cta_text' | translate }}
+          </p>
+          <a
+            routerLink="/contact"
+            class="inline-flex items-center justify-center gap-2 min-w-[170px] px-6 py-3 rounded-full border-2 border-white font-semibold text-white bg-[#1D9DD9] hover:bg-[var(--sned-blue-dark)] transition-colors duration-200"
+          >
+            {{ 'careers.cta_button' | translate }}
+            <i class="fas fa-arrow-right text-sm rtl:rotate-180"></i>
+          </a>
+        </div>
+      </div>
+
       <!-- Section Partenaires -->
       <div
         class="w-3/4 lg:w-5/6 2xl:w-full mx-auto mt-16 px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 py-2 sm:py-3 lg:py-5 xl:py-8 2xl:py-10 relative bg-white rounded-2xl shadow-lg overflow-hidden"
       >
         <div
-          class="absolute top-0 left-0 w-full h-5 sm:h-8 bg-gradient-to-r from-[var(--sned-blue)] to-[var(--sned-orange)] rounded-t-2xl"
+          class="absolute top-0 left-0 w-full h-5 sm:h-8 rounded-t-2xl bg-gradient-to-r from-[var(--sned-blue)] via-[var(--sned-blue-dark)] to-[#004f94]"
         ></div>
 
         <h2
-          class="text-3xl lg:text-4xl xl:text-5xl font-bold text-primary  mt-10 text-left lg:mb-6 rtl:text-right"
+          class="text-3xl lg:text-4xl xl:text-5xl font-bold text-primary mt-10 text-center lg:mb-6"
         >
           {{ 'header.menu.partners' | translate }}
         </h2>
 
         <div id="partenaires" class="pt-2 w-full">
           <app-partners class="w-full"></app-partners>
-        </div>
-      </div>
-
-      <!-- Section Carrières -->
-      <div
-        class="w-3/4 lg:w-5/6 2xl:w-full mx-auto mt-16 px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 py-2 sm:py-3 lg:py-5 xl:py-8 2xl:py-10 relative bg-white rounded-2xl shadow-lg overflow-hidden"
-      >
-        <div
-          class="absolute top-0 left-0 w-full h-5 sm:h-8 bg-gradient-to-r from-[var(--sned-blue)] to-[var(--sned-orange)] rounded-t-2xl"
-        ></div>
-
-        <h2
-          class="text-3xl lg:text-4xl xl:text-5xl font-bold text-primary  mt-10 text-left lg:mb-6 rtl:text-right"
-        >
-          {{ 'header.menu.careers' | translate }}
-        </h2>
-
-        <div id="carrieres" class="py-4 w-full">
-          <app-career></app-career>
-        </div>
-      </div>
-
-      <!-- Section Appels d'offres -->
-      <div
-        class="w-3/4 lg:w-5/6 2xl:w-full mx-auto mt-16 px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20  relative bg-white rounded-2xl shadow-lg overflow-hidden"
-      >
-        <h2
-          class="text-3xl lg:text-4xl xl:text-5xl font-bold text-primary  mt-10 text-left lg:mb-6 rtl:text-right"
-        >
-          {{ 'tenders.title' | translate }}
-        </h2>
-        <div
-          class="absolute top-0 left-0 w-full h-5 sm:h-8 bg-gradient-to-r from-[var(--sned-blue)] to-[var(--sned-orange)] rounded-t-2xl"
-        ></div>
-        <div id="appels_offres" class="pt-3 w-full">
-          <app-tenders class="w-full"></app-tenders>
         </div>
       </div>
     </div>

@@ -269,6 +269,8 @@
   "tenders": {
     "title": "Appels d'offres",
     "description": "Consultez nos {{ count }} appels d'offres en cours et à venir.",
+    "cta_text": "Découvrez les appels d'offres en ce moment",
+    "cta_button": "Découvrir plus",
     "empty_state": "Aucun appel d'offres disponible pour le moment",
     "badge": "Appel d'offre",
     "view_details": "Voir les détails",
@@ -280,7 +282,9 @@
     "footer_notice": "Ce document est fourni à titre informatif. Pour toute soumission officielle, veuillez vous référer au cahier des charges complet."
   },
   "careers": {
-    "last_updated_on": "Mise à jour le"
+    "last_updated_on": "Mise à jour le",
+    "cta_text": "Rejoignez notre equipe et contribuez au projet SNED.",
+    "cta_button": "Nous rejoindre"
   },
   "about": {
     "sned": {

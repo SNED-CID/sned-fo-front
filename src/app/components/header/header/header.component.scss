@@ -11,6 +11,88 @@
   overflow: visible !important;
 }
 
+.hero-section {
+  background: #0f172a;
+}
+
+.hero-bg-layer {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  will-change: opacity, transform, filter;
+}
+
+.hero-bg-base {
+  z-index: 0;
+  transform: scale(1.04);
+}
+
+.hero-bg-next {
+  z-index: 1;
+  opacity: 0;
+  transform: scale(1.08);
+  filter: blur(8px) saturate(1.08);
+  transition: opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1000ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-bg-next-active {
+  opacity: 1;
+  transform: scale(1.04);
+  filter: blur(0) saturate(1);
+}
+
+.hero-fixed-strong {
+  color: #1ea9dd;
+  text-shadow: 0 0 14px rgba(30, 169, 221, 0.4);
+}
+
+.hero-link-strong {
+  color: #ff9f4a;
+  text-shadow: 0 0 14px rgba(255, 159, 74, 0.4);
+}
+
+.hero-vignette-bottom-left {
+  position: absolute;
+  inset: 0;
+  z-index: 11;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 56% 34% at 0% 100%,
+      rgba(19, 157, 204, 0.96) 0%,
+      rgba(19, 157, 204, 0.84) 16%,
+      rgba(19, 157, 204, 0.56) 34%,
+      rgba(19, 157, 204, 0.22) 50%,
+      rgba(19, 157, 204, 0) 66%
+    ),
+    radial-gradient(
+      ellipse 24% 20% at 0% 100%,
+      rgba(19, 157, 204, 0.9) 0%,
+      rgba(19, 157, 204, 0.5) 54%,
+      rgba(19, 157, 204, 0) 100%
+    ),
+    linear-gradient(
+      to right,
+      rgba(19, 157, 204, 0.78) 0%,
+      rgba(19, 157, 204, 0.58) 16%,
+      rgba(19, 157, 204, 0.34) 34%,
+      rgba(19, 157, 204, 0.14) 50%,
+      rgba(19, 157, 204, 0) 68%
+    ),
+    linear-gradient(
+      to top,
+      rgba(19, 157, 204, 0.22) 0%,
+      rgba(19, 157, 204, 0.08) 20%,
+      rgba(19, 157, 204, 0.02) 30%,
+      rgba(19, 157, 204, 0) 42%
+    );
+}
+
 // Header Background Transitions
 header {
   will-change: backdrop-filter;
@@ -36,6 +118,18 @@ header {
       transform: scale(1.05) translateZ(0);
     }
   }
+}
+
+.header-logo-link,
+.header-logo-link:visited,
+.header-logo-link:hover,
+.header-logo-link:focus,
+.header-logo-link:focus-visible,
+.header-logo-link:active {
+  text-decoration: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent;
 }
 
 // Active Link Styles (Global)

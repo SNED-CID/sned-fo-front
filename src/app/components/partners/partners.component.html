@@ -12,7 +12,37 @@
         
       </div> -->
 
-      <div class="partners-container">
+      <div
+        class="partners-viewport"
+        #partnersViewport
+        (mouseenter)="onPartnersHoverStart()"
+        (mouseleave)="onPartnersHoverEnd()"
+      >
+      <div
+        class="partners-container"
+        #partnersTrack
+        [style.transform]="trackTransform()"
+        [style.transition]="trackTransition()"
+      >
+        @if (partners().length === 0) { @for (image of pocCorporateImages; track
+        $index) {
+
+        <div class="partner-card partner-card--poc" aria-label="POC partner card">
+          <img
+            [src]="image.imageUrl"
+            [alt]="image.title"
+            class="partner-stock-image"
+            loading="lazy"
+          />
+
+          <div class="partner-tooltip">
+            <h3>
+              <b>{{ image.title }}</b>
+            </h3>
+            <p>POC Partner</p>
+          </div>
+        </div>
+        } } @else {
         @for (partner of partners(); track $index) {
 
         <div
@@ -46,6 +76,8 @@
           </div>
         </div>
         }
+        }
+      </div>
       </div>
     </div>
   </div>

@@ -43,17 +43,10 @@ export interface MenuSection {
                 <a
                   [routerLink]="getNavigationLink(item)"
                   [fragment]="item.sectionId"
-                  routerLinkActive="active-link"
-                  [routerLinkActiveOptions]="{ exact: true }"
                   (click)="onMenuItemClick(item)"
-                  class="relative px-2 lg:px-2.5 py-2 font-semibold text-base lg:text-lg rounded-none inline-flex items-center gap-1.5 whitespace-nowrap transition-all duration-200 group text-black hover:text-black hover:bg-white focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/20 cursor-pointer"
+                  class="nav-title relative px-2 lg:px-2.5 py-2 font-semibold text-base lg:text-lg rounded-none inline-flex items-center gap-1.5 whitespace-nowrap transition-colors duration-200 group text-black hover:text-black focus:outline-none cursor-pointer"
                 >
-                  {{ item.label | translate }}
-
-                  <!-- Trait animé sous le lien -->
-                  <span
-                    class="absolute left-0 right-0 -bottom-1 h-0.5 bg-[var(--sned-orange)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left group-[.active-link]:scale-x-100 rounded-full"
-                  ></span>
+                  <span class="nav-title-text">{{ item.label | translate }}</span>
                 </a>
               }
 
@@ -63,19 +56,12 @@ export interface MenuSection {
                   <button
                     [routerLink]="getNavigationLink(item)"
                     [fragment]="item.sectionId"
-                    routerLinkActive="active-link"
-                    [routerLinkActiveOptions]="{ exact: true }"
-                    class="relative px-2 lg:px-2.5 py-2 font-semibold text-base lg:text-lg rounded-lg inline-flex items-center gap-1 whitespace-nowrap transition-all duration-200 group text-bg-[var(--sned-orange)] hover:text-bg-[var(--sned-orange)] hover:bg-[var(--sned-orange)]/5 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/20 cursor-pointer"
+                    class="nav-title relative px-2 lg:px-2.5 py-2 font-semibold text-base lg:text-lg rounded-none inline-flex items-center gap-1 whitespace-nowrap transition-colors duration-200 group text-black hover:text-black focus:outline-none cursor-pointer"
                   >
-                    {{ item.label | translate }}
+                    <span class="nav-title-text">{{ item.label | translate }}</span>
                     <i
                       class="fas fa-chevron-down w-3 h-3 transition-transform duration-200 group-hover:rotate-180"
                     ></i>
-
-                    <!-- Trait animé sous le lien -->
-                    <span
-                      class="absolute left-0 right-0 -bottom-1 h-0.5 bg-[var(--sned-orange)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left group-[.active-link]:scale-x-100 rounded-full"
-                    ></span>
                   </button>
 
                   <!-- Sous-menu dropdown -->
@@ -95,29 +81,26 @@ export interface MenuSection {
                           routerLinkActive="active-sublink"
                           [routerLinkActiveOptions]="{ exact: true }"
                           (click)="onMenuItemClick(child, item.label)"
-                          class="flex items-center px-4 py-3 text-sm lg:text-base font-medium text-[var(--sned-orange)] hover:bg-gradient-to-r hover:from-[var(--sned-orange)]/8 hover:to-[var(--sned-blue)]/4 hover:text-bg-[var(--sned-orange)] rounded-lg transition-all duration-200 whitespace-nowrap rtl:text-right group/item relative overflow-hidden cursor-pointer"
+                          class="flex items-center px-4 py-3 text-sm lg:text-base font-medium text-black rounded-lg border border-transparent transition-all duration-300 ease-out whitespace-nowrap rtl:text-right group/item relative overflow-hidden cursor-pointer hover:bg-[var(--sned-orange)]/10 hover:text-black hover:border-[var(--sned-orange)] hover:shadow-[0_8px_24px_rgba(245,130,32,0.2)] hover:-translate-y-0.5"
                         >
                           <!-- Icône animée -->
                           <i
                             [class]="
                               currentLang() === 'ar'
-                                ? 'fas fa-chevron-left w-4 h-4 mr-3 rtl:ml-3 text-[var(--sned-orange)] opacity-0 group-hover/item:opacity-100 transition-all duration-200 transform translate-x-2 group-hover/item:translate-x-0'
-                                : 'fas fa-chevron-right w-4 h-4 mr-3 rtl:ml-3 text-[var(--sned-orange)] opacity-0 group-hover/item:opacity-100 transition-all duration-200 transform -translate-x-2 group-hover/item:translate-x-0'
+                                ? 'fas fa-chevron-left w-4 h-4 mr-3 rtl:ml-3 text-black opacity-0 group-hover/item:opacity-100 transition-all duration-200 transform translate-x-2 group-hover/item:translate-x-0 group-hover/item:text-black'
+                                : 'fas fa-chevron-right w-4 h-4 mr-3 rtl:ml-3 text-black opacity-0 group-hover/item:opacity-100 transition-all duration-200 transform -translate-x-2 group-hover/item:translate-x-0 group-hover/item:text-black'
                             "
                           ></i>
 
                           <!-- Label avec trait en dessous -->
                           <div class="relative font-bold">
                             {{ child.label | translate }}
-                            <span
-                              class="absolute left-0 right-0 -bottom-0.5 h-0.5 bg-[var(--sned-blue)] scale-x-0 group-hover/item:scale-x-100 transition-transform duration-300 ease-out origin-left group-[.active-sublink]:scale-x-100"
-                            ></span>
                           </div>
 
                           <div class="flex items-center space-x-1 ml-2">
                             @if (child.isExternal) {
                               <span
-                                class="inline-flex items-center px-1.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800"
+                                class="inline-flex items-center px-1.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 transition-colors duration-200 group-hover/item:bg-white/20 group-hover/item:text-white"
                               >
                                 <i class="fas fa-external-link-alt w-3 h-3"></i>
                               </span>
@@ -137,6 +120,42 @@ export interface MenuSection {
   `,
   styles: [
     `
+      .nav-title-text {
+        position: relative;
+        display: inline-block;
+      }
+
+      .nav-title-text::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: -0.28rem;
+        width: 100%;
+        height: 4px;
+        background: var(--sned-orange);
+        border-radius: 999px;
+        transform: translateX(-50%) scaleX(1) scaleY(0.22);
+        transform-origin: center;
+        opacity: 0;
+        transition: opacity 140ms ease-out;
+      }
+
+      .nav-title:hover .nav-title-text::after,
+      .nav-title:focus-visible .nav-title-text::after {
+        opacity: 1;
+        animation: nav-title-underline-grow 1050ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      }
+
+      @keyframes nav-title-underline-grow {
+        0% {
+          transform: translateX(-50%) scaleX(1) scaleY(0.22);
+        }
+
+        100% {
+          transform: translateX(-50%) scaleX(1) scaleY(1);
+        }
+      }
+
       /* Amélioration du dropdown container */
       .group:hover > div {
         backdrop-filter: blur(12px);

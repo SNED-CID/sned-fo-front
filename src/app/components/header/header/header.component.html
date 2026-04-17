@@ -9,7 +9,7 @@
         <!-- Logo - Toujours visible et non-compressible -->
         <a
           routerLink="/"
-          class="flex-shrink-0 flex items-center justify-center h-full space-x-2 rtl:space-x-reverse group transition-transform duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/20 rounded-lg p-1"
+          class="header-logo-link flex-shrink-0 flex items-center justify-center h-full space-x-2 rtl:space-x-reverse group transition-transform duration-200 hover:scale-105 rounded-lg p-1 no-underline"
         >
           <img
             [src]="getLogoPath()"
@@ -196,14 +196,29 @@
   </div>
 </header>
 
+@if (showHero()) {
 <!-- HERO Section -->
 <section
-  class="relative min-h-screen text-white flex items-center bg-cover bg-center overflow-hidden"
-  [style.background-image]="
-    !isVideoPlaying && currentBackground ? 'url(' + currentBackground + ')' : ''
-  "
+  class="hero-section relative min-h-screen text-white flex items-center overflow-hidden"
   appBackgroundParticleAnimation
 >
+  @if (!isVideoPlaying) {
+  <div
+    class="hero-bg-layer hero-bg-base"
+    [style.background-image]="
+      currentBackground ? 'url(' + currentBackground + ')' : 'none'
+    "
+  ></div>
+
+  <div
+    class="hero-bg-layer hero-bg-next"
+    [class.hero-bg-next-active]="isBackgroundTransitioning()"
+    [style.background-image]="
+      transitionBackground ? 'url(' + transitionBackground + ')' : 'none'
+    "
+  ></div>
+  }
+
   <!-- Vidéo -->
   @if (isVideoPlaying) {
   <video
@@ -221,6 +236,8 @@
   <div
     class="absolute inset-0 bg-gradient-to-br from-black/60 via-black/50 to-black/70 z-10"
   ></div>
+
+  <div class="hero-vignette-bottom-left" aria-hidden="true"></div>
 
   <!-- Particules flottantes animées -->
   <div class="absolute inset-0 overflow-hidden z-20 pointer-events-none">
@@ -255,13 +272,10 @@
         >
           <span class="block">{{ getTitleTranslationKey() | translate }}</span>
           <span
-            class="block text-transparent bg-gradient-to-r from-[var(--sned-orange)] to-[var(--sned-blue)] bg-clip-text mt-2"
+            class="block mt-2"
           >
-            {{
-              getSubtitleTranslationKey()
-                ? (getSubtitleTranslationKey() | translate)
-                : ("home.sections.default.subtitle" | translate)
-            }}
+            <span class="hero-fixed-strong">Lien</span>
+            <span class="hero-link-strong"> Fixe</span>
           </span>
         </h1>
         <p
@@ -292,3 +306,4 @@
     </div>
   </div>
 </section>
+}

@@ -16,7 +16,7 @@ import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
   ],
   template: `
     <footer
-      class="bg-gradient-to-br from-slate-50 to-slate-100 border-t border-slate-200 mt-auto"
+      class="bg-gradient-to-br from-slate-50 to-slate-100 mt-auto"
     >
       <!-- Main Footer Content -->
       <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 py-6">
@@ -44,7 +44,7 @@ import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
           </div>
 
           <!-- Adresse -->
-          <address class="not-italic text-xs text-slate-600 flex-shrink-0">
+          <address class="not-italic text-xs text-black flex-shrink-0">
             <span class="whitespace-nowrap">
               {{ 'footer.company.address' | translate }},
             </span>
@@ -60,7 +60,7 @@ import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
 
           <!-- Contact -->
           <div
-            class="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 text-xs text-slate-600 flex-shrink-0"
+            class="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 text-xs text-black flex-shrink-0"
           >
             <!-- Phone -->
             <span class="flex items-center gap-1 whitespace-nowrap">
@@ -86,21 +86,21 @@ import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
           >
             <a
               routerLink="/site-map"
-              class="text-xs text-slate-600 hover:text-[var(--sned-orange)] transition-colors whitespace-nowrap"
+              class="text-xs text-black hover:text-[var(--sned-orange)] transition-colors whitespace-nowrap"
             >
               {{ 'footer.links.siteMap' | translate }}
             </a>
 
             <a
               routerLink="/mentions-legales"
-              class="text-xs text-slate-600 hover:text-[var(--sned-orange)] transition-colors whitespace-nowrap"
+              class="text-xs text-black hover:text-[var(--sned-orange)] transition-colors whitespace-nowrap"
             >
               {{ 'footer.links.legalNotice' | translate }}
             </a>
 
             <a
               routerLink="/contact"
-              class="text-xs text-slate-600 hover:text-[var(--sned-orange)] transition-colors whitespace-nowrap"
+              class="text-xs text-black hover:text-[var(--sned-orange)] transition-colors whitespace-nowrap"
             >
               {{ 'footer.links.contact' | translate }}
             </a>
@@ -109,9 +109,9 @@ import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
       </div>
 
       <!-- Bottom Bar -->
-      <div class="border-t border-slate-200 bg-white/50 backdrop-blur-sm">
+      <div class="border-t border-slate-200 bg-black">
         <div class="max-w-7xl mx-auto px-4 py-3">
-          <p class="text-xs text-slate-600 text-center">
+          <p class="text-xs text-white text-center">
             {{ 'footer.legal.copyright' | translate: { year: currentYear() } }}
           </p>
         </div>
