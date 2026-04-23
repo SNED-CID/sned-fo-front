@@ -56,19 +56,25 @@ export class AppComponent implements AfterViewInit, OnInit{
     const pathWithoutFragment = path.split('#')[0].split('?')[0];
 
     const titleMap: Record<string, string> = {
-      '/': 'Accueil',
-      '/about': 'À propos - SNED',
-      '/projet': 'Projet de liaison fixe',
-      '/projet/ingenierie': 'Composante Ingénierie',
-      '/projet/milieu-physique': 'Composante Milieu Physique',
-      '/projet/socio-economique': 'Composante Socio-économique',
-      '/galerie': 'Galerie de reconnaissance',
-      '/publication': 'Publications',
-      '/partenariat': 'Partenariats',
-      '/appels-offres': 'Appels d\'offres'
+      '/': 'home.discover.title',
+      '/about': 'home.sections.apropos.title',
+      '/projet': 'header.menu.fixed_link_project',
+      '/projet/ingenierie': 'home.sections.ingenierie.title',
+      '/projet/milieu-physique': 'home.sections.milieu_physique.title',
+      '/projet/socio-economique': 'home.sections.socio_economique.title',
+      '/galerie': 'home.sections.galerie.title',
+      '/publication': 'home.sections.publication.title',
+      '/partenariat': 'home.sections.partenaires.title',
+      '/appels-offres': 'home.sections.appels_offres.title'
     };
 
-    return titleMap[pathWithoutFragment] || document.title || 'SNED';
+    const translationKey = titleMap[pathWithoutFragment];
+
+    if (translationKey) {
+      return this.translateService.instant(translationKey);
+    }
+
+    return document.title || 'SNED';
   }
 
   ngAfterViewInit() {

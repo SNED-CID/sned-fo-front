@@ -2,6 +2,7 @@
 
 // Variables
 $primary-blue: var(--sned-blue, #667eea);
+$logo-blue: #139dcc;
 $primary-orange: var(--sned-orange, #f59e0b);
 $text-primary: #1a202c;
 $text-secondary: #4a5568;
@@ -123,33 +124,51 @@ $shadow-xl:
     }
   }
 
-  .sort-select {
+  .sort-dropdown {
+    position: relative;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+
+    &.is-open .sort-trigger {
+      border-color: $primary-orange;
+      box-shadow:
+        0 0 0 4px rgba(248, 152, 81, 0.24),
+        $shadow-md;
+    }
+  }
+
+  .sort-trigger {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    width: 200px;
     padding: 0.875rem 1.5rem;
-    background: $primary-blue;
+    background: $logo-blue;
     color: white;
     font-size: 0.9375rem;
     font-weight: 600;
-    border: 2px solid $primary-blue;
+    border: 2px solid $logo-blue;
     border-radius: 12px;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: $shadow-sm;
     white-space: nowrap;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23667eea' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 0.75rem center;
-    padding-right: 2.5rem;
+    outline: none;
+
+    i {
+      transition: transform 0.2s ease;
+      font-size: 0.85rem;
+    }
 
     &:hover {
-      background-color: $primary-blue;
+      background-color: #117a9c;
+      border-color: #117a9c;
       color: white;
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      box-shadow: 0 6px 20px rgba(19, 157, 204, 0.3);
     }
 
     &:active {
@@ -158,16 +177,45 @@ $shadow-xl:
 
     &:focus {
       outline: none;
+      border-color: $primary-orange;
       box-shadow:
-        0 0 0 4px rgba(102, 126, 234, 0.2),
+        0 0 0 4px rgba(248, 152, 81, 0.24),
         $shadow-md;
     }
 
     @media (max-width: 768px) {
       width: 100%;
       padding: 0.75rem 1.25rem;
-      padding-right: 2.25rem;
       font-size: 0.875rem;
+    }
+  }
+
+  .sort-menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    right: 0;
+    z-index: 20;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    box-shadow: $shadow-lg;
+    overflow: hidden;
+  }
+
+  .sort-option {
+    width: 100%;
+    text-align: left;
+    padding: 0.75rem 1rem;
+    background: white;
+    color: #111827;
+    border: 0;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background: #f3f4f6;
     }
   }
 }

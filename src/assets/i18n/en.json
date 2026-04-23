@@ -272,14 +272,24 @@
     "cta_text": "Discover current call for tenders",
     "cta_button": "Discover more",
     "empty_state": "No call for tenders available at the moment",
+    "no_match_description": "No call for tenders matches your search",
     "badge": "Call for tenders",
     "view_details": "View details",
+    "view_details_aria": "View call for tenders details",
     "official_document": "Official Document",
     "public_tender": "Public Call for Tenders",
     "reference": "Reference:",
     "publication_date": "Publication date:",
     "tender_object": "Call for tenders object",
     "footer_notice": "This document is provided for informational purposes. For any official submission, please refer to the complete specifications."
+  },
+  "communique": {
+    "empty_state": "No publication available at the moment",
+    "links": {
+      "fr": "FR : Link",
+      "en": "EN : Link",
+      "es": "ES : Link"
+    }
   },
   "careers": {
     "last_updated_on": "Last updated on",

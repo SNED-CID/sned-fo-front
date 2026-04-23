@@ -434,6 +434,22 @@ header {
 
 // RTL Support Enhancements
 [dir="rtl"] {
+  .hero-content-wrap {
+    text-align: right;
+    padding-inline-start: 0.75rem;
+    padding-inline-end: 0;
+  }
+
+  .hero-desc {
+    margin-right: 0;
+    margin-left: auto;
+    text-align: right;
+  }
+
+  .hero-actions {
+    justify-content: flex-end;
+  }
+
   .navigation-menu {
     .dropdown-menu {
       left: auto;

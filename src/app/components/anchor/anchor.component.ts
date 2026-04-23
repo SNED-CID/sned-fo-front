@@ -30,9 +30,9 @@ export class AnchorComponent implements OnInit {
       // { id: 'pdg', labelKey: 'header.menu.ceo_message' },
       { id: 'sned_secegsa', labelKey: 'header.menu.sned_secegsa' },
       { id: 'organigramme', labelKey: 'header.menu.organization' },
-      { id: 'partenaires', labelKey: 'header.menu.partners' },
-      { id: 'carrieres', labelKey: 'header.menu.careers' },
       { id: 'appels_offres', labelKey: 'header.menu.call_for_tenders' },
+      { id: 'carrieres', labelKey: 'header.menu.careers' },
+      { id: 'partenaires', labelKey: 'header.menu.partners' },
     ];
   }
 

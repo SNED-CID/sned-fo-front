@@ -203,6 +203,7 @@
 @if (showHero()) {
 <!-- HERO Section -->
 <section
+  [attr.dir]="currentLang() === 'ar' ? 'rtl' : 'ltr'"
   class="hero-section relative min-h-screen text-white flex items-center overflow-hidden"
 >
   @if (!isVideoPlaying) {
@@ -251,22 +252,31 @@
 
   <!-- Contenu Hero optimisé et responsive -->
   <div class="relative z-30 w-full px-6 sm:px-8 lg:px-12">
-    <div class="max-w-6xl mx-auto text-center lg:text-left">
+    <div
+      class="max-w-6xl mx-auto hero-content-wrap"
+      [ngClass]="
+        currentLang() === 'ar'
+          ? 'text-right lg:text-right'
+          : 'text-center lg:text-left'
+      "
+    >
       <!-- Titre principal -->
       <div class="space-y-3 mb-8 mt-6">
         <h1
           class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight"
         >
           <span class="block">{{ getTitleTranslationKey() | translate }}</span>
-          <span
-            class="block mt-2"
-          >
-            <span class="hero-fixed-strong">Lien</span>
-            <span class="hero-link-strong"> Fixe</span>
-          </span>
+          @if (shouldShowSubtitle()) {
+          <span class="block mt-2 hero-fixed-strong">{{ getSubtitleTranslationKey() | translate }}</span>
+          }
         </h1>
         <p
-          class="text-lg sm:text-xl lg:text-2xl text-gray-200 leading-relaxed max-w-3xl mx-auto lg:mx-0"
+          class="text-lg sm:text-xl lg:text-2xl text-gray-200 leading-relaxed max-w-3xl hero-desc"
+          [ngClass]="
+            currentLang() === 'ar'
+              ? 'ml-auto mr-0 text-right'
+              : 'mx-auto lg:mx-0'
+          "
         >
           {{ getDescTranslationKey() | translate }}
         </p>

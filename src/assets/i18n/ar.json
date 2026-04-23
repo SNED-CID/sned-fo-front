@@ -272,14 +272,24 @@
     "cta_text": "اكتشف طلبات العروض المتاحة حاليا",
     "cta_button": "اكتشف المزيد",
     "empty_state": "لا توجد طلبات عروض متاحة في الوقت الحالي",
+    "no_match_description": "لا يوجد طلب عروض مطابق لبحثك",
     "badge": "طلب عرض",
     "view_details": "عرض التفاصيل",
+    "view_details_aria": "عرض تفاصيل طلب العروض",
     "official_document": "وثيقة رسمية",
     "public_tender": "طلب عروض عام",
     "reference": "المرجع:",
     "publication_date": "تاريخ النشر:",
     "tender_object": "موضوع طلب العروض",
     "footer_notice": "يتم توفير هذه الوثيقة لأغراض إعلامية. للتقديم الرسمي، يرجى الرجوع إلى دفتر الشروط الكامل."
+  },
+  "communique": {
+    "empty_state": "لا توجد منشورات متاحة في الوقت الحالي",
+    "links": {
+      "fr": "FR : رابط",
+      "en": "EN : رابط",
+      "es": "ES : رابط"
+    }
   },
   "careers": {
     "last_updated_on": "آخر تحديث في",

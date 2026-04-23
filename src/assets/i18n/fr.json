@@ -272,14 +272,24 @@
     "cta_text": "Découvrez les appels d'offres en ce moment",
     "cta_button": "Découvrir plus",
     "empty_state": "Aucun appel d'offres disponible pour le moment",
+    "no_match_description": "Aucun appel d'offres ne correspond à votre recherche",
     "badge": "Appel d'offre",
     "view_details": "Voir les détails",
+    "view_details_aria": "Voir les détails de l'appel d'offres",
     "official_document": "Document Officiel",
     "public_tender": "Appel d'Offres Public",
     "reference": "Référence :",
     "publication_date": "Date de publication :",
     "tender_object": "Objet de l'appel d'offres",
     "footer_notice": "Ce document est fourni à titre informatif. Pour toute soumission officielle, veuillez vous référer au cahier des charges complet."
+  },
+  "communique": {
+    "empty_state": "Aucune publication disponible pour le moment",
+    "links": {
+      "fr": "FR : Lien",
+      "en": "EN : Lien",
+      "es": "ES : Lien"
+    }
   },
   "careers": {
     "last_updated_on": "Mise à jour le",

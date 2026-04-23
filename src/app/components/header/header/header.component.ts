@@ -57,7 +57,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       '/projet': 'ingenierie',
       '/galerie': 'galerie',
       '/publication': 'publication',
-      '/partenariat': 'partenariat',
+      '/partenariat': 'partenaires',
       '/travail': 'travail',
       '/appels-offres': 'appels_offres',
     },
@@ -215,9 +215,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
                 sectionId: 'organigramme',
               },
               {
-                label: this.translateService.instant('header.menu.partners'),
+                label: this.translateService.instant(
+                  'header.menu.call_for_tenders'
+                ),
                 route: '/about',
-                sectionId: 'partenaires',
+                sectionId: 'appels_offres',
               },
               {
                 label: this.translateService.instant('header.menu.careers'),
@@ -225,11 +227,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
                 sectionId: 'carrieres',
               },
               {
-                label: this.translateService.instant(
-                  'header.menu.call_for_tenders'
-                ),
+                label: this.translateService.instant('header.menu.partners'),
                 route: '/about',
-                sectionId: 'appels_offres',
+                sectionId: 'partenaires',
               },
             ],
           },
@@ -535,6 +535,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
       return '';
     }
     return `home.sections.${section}.subtitle`;
+  }
+
+  shouldShowSubtitle(): boolean {
+    const section = this.currentSection();
+    return section !== 'default' && section !== 'appels_offres';
   }
 
   /**

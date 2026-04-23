@@ -9,14 +9,27 @@
       class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
     />
 
-    <!-- Select pour le tri -->
-    <select
-      [(ngModel)]="sortOrder"
-      (ngModelChange)="onFilterChange()"
-      class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none bg-white cursor-pointer"
-    >
-      <option value="recent">{{ this.mostRecent }}</option>
-      <option value="oldest">{{ this.oldest }}</option>
-    </select>
+    <div class="sort-dropdown" [class.is-open]="isSortMenuOpen">
+      <button
+        type="button"
+        class="sort-trigger"
+        [attr.aria-expanded]="isSortMenuOpen"
+        (click)="toggleSortMenu($event)"
+      >
+        <span>{{ sortOrder === 'recent' ? this.mostRecent : this.oldest }}</span>
+        <i class="fas fa-chevron-down" [class.rotate-180]="isSortMenuOpen"></i>
+      </button>
+
+      @if (isSortMenuOpen) {
+      <div class="sort-menu" role="listbox">
+        <button type="button" class="sort-option" (click)="selectSortOrder('recent')">
+          {{ this.mostRecent }}
+        </button>
+        <button type="button" class="sort-option" (click)="selectSortOrder('oldest')">
+          {{ this.oldest }}
+        </button>
+      </div>
+      }
+    </div>
   </div>
 </div>

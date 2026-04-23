@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal, ViewChild } from '@angular/core';
+import { Component, HostListener, inject, OnInit, signal, ViewChild } from '@angular/core';
 import { TenderService, TenderReadDTO } from '../../services/tender.service';
 import { CommonModule, DatePipe } from '@angular/common';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
@@ -31,6 +31,7 @@ export class TendersComponent implements OnInit {
   totalPages = signal(1);
   readonly PAGE_SIZE = 5;
   sortOrder = 'desc';
+  isSortMenuOpen = false;
 
   searchNumber = signal<string>('');
   private searchTimeout?: any;
@@ -84,6 +85,27 @@ export class TendersComponent implements OnInit {
         // this.currentPage.set(page.number ?? 0);
         this.currentPage.update((p) => p + 1);
       });
+  }
+
+  toggleSortMenu(event: MouseEvent): void {
+    event.stopPropagation();
+    this.isSortMenuOpen = !this.isSortMenuOpen;
+  }
+
+  selectSortOrder(order: 'desc' | 'asc'): void {
+    this.sortOrder = order;
+    this.isSortMenuOpen = false;
+    this.currentPage.set(0);
+    this.tenders.set([]);
+    this.loadNextPage();
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event): void {
+    const target = event.target as HTMLElement;
+    if (!target.closest('.sort-dropdown')) {
+      this.isSortMenuOpen = false;
+    }
   }
 
   onSearchNumber(value: string): void {

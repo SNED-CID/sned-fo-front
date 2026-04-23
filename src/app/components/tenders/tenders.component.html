@@ -33,21 +33,34 @@
               />
             </div>
 
-            <select
-              id="sortOrder"
-              class="sort-select"
-              (change)="onSortChange($event)"
-            >
-              <option
-                value="desc"
-                style="background-color: white; color: black"
+            <div class="sort-dropdown" [class.is-open]="isSortMenuOpen">
+              <button
+                type="button"
+                class="sort-trigger"
+                [attr.aria-expanded]="isSortMenuOpen"
+                (click)="toggleSortMenu($event)"
               >
-                {{ "shared.appfilter.most_recent" | translate }}
-              </option>
-              <option value="asc" style="background-color: white; color: black">
-                {{ "shared.appfilter.oldest" | translate }}
-              </option>
-            </select>
+                <span>
+                  {{
+                    sortOrder === 'desc'
+                      ? ("shared.appfilter.most_recent" | translate)
+                      : ("shared.appfilter.oldest" | translate)
+                  }}
+                </span>
+                <i class="fas fa-chevron-down" [class.rotate-180]="isSortMenuOpen"></i>
+              </button>
+
+              @if (isSortMenuOpen) {
+              <div class="sort-menu" role="listbox">
+                <button type="button" class="sort-option" (click)="selectSortOrder('desc')">
+                  {{ "shared.appfilter.most_recent" | translate }}
+                </button>
+                <button type="button" class="sort-option" (click)="selectSortOrder('asc')">
+                  {{ "shared.appfilter.oldest" | translate }}
+                </button>
+              </div>
+              }
+            </div>
           </div>
         </div>
       </div>
@@ -69,7 +82,7 @@
         </div>
         <h3 class="empty-title">{{ "tenders.empty_state" | translate }}</h3>
         <p class="empty-description">
-          Aucun appel d'offres ne correspond à votre recherche
+          {{ "tenders.no_match_description" | translate }}
         </p>
       </div>
       } @else {
@@ -127,7 +140,7 @@
               <button
                 class="btn-details sned-fluid-btn"
                 (click)="openTenderDetails(tender)"
-                aria-label="Voir les détails de l'appel d'offres"
+                [attr.aria-label]="'tenders.view_details_aria' | translate"
               >
                 <span>{{ "tenders.view_details" | translate }}</span>
                 <svg viewBox="0 0 20 20" fill="currentColor">

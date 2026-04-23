@@ -57,18 +57,18 @@ export class MenuService {
               route: '/',
             },
             {
-              label: this.translateService.instant('header.menu.partners'),
-              route: '/partenaires',
+              label: this.translateService.instant(
+                'header.menu.call_for_tenders'
+              ),
+              route: '/',
             },
             {
               label: this.translateService.instant('header.menu.careers'),
               route: '/partenaires',
             },
             {
-              label: this.translateService.instant(
-                'header.menu.call_for_tenders'
-              ),
-              route: '/',
+              label: this.translateService.instant('header.menu.partners'),
+              route: '/partenaires',
             },
           ],
         },
