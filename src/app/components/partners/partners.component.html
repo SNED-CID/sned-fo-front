@@ -30,7 +30,6 @@
             <div
               class="partner-card partner-card--poc cursor-pointer"
               aria-label="POC partner card"
-              [attr.data-partner-url]="getCardUrl($index, true)"
             >
               <img
                 [src]="image.imageUrl"
@@ -53,7 +52,7 @@
             <div
               class="partner-card"
               [class.cursor-pointer]="true"
-              [attr.data-partner-url]="getCardUrl($index, false)"
+              [attr.data-partner-url]="partner.urlPartner || null"
             >
               <img
                 [src]="partner.logoUrl"
@@ -84,7 +83,6 @@
             <div
               class="partner-card partner-card--poc cursor-pointer"
               aria-hidden="true"
-              [attr.data-partner-url]="getCardUrl($index, true)"
             >
               <img
                 [src]="image.imageUrl"
@@ -107,7 +105,7 @@
             <div
               class="partner-card cursor-pointer"
               aria-hidden="true"
-              [attr.data-partner-url]="getCardUrl($index, false)"
+              [attr.data-partner-url]="partner.urlPartner || null"
             >
               <img
                 [src]="partner.logoUrl"

@@ -98,31 +98,6 @@ export class PartnersComponent implements OnInit, AfterViewInit, OnDestroy {
   private currentOffset = 0;
   private singleSetWidth = 0;
   private readonly autoSpeedPxPerSec = 32;
-  private readonly defaultPartnerRedirectUrl = 'http://cid.co.ma/en/';
-  
-  // Edit these arrays to define a specific URL per partner card.
-  // If an index is missing, defaultPartnerRedirectUrl is used.
-  partnerUrls: string[] = [
-    'http://cid.co.ma/en/',
-    'https://www.youtube.com/',
-    'https://www.bottomupcs.com/',
-    'http://cid.co.ma/en/',
-    'http://cid.co.ma/en/',
-    'http://cid.co.ma/en/',
-    'http://cid.co.ma/en/',
-    'http://cid.co.ma/en/',
-  ];
-
-  pocPartnerUrls: string[] = [
-    'http://cid.co.ma/en/',
-    'https://www.youtube.com/',
-    'https://www.bottomupcs.com/',
-    'http://cid.co.ma/en/',
-    'http://cid.co.ma/en/',
-    'http://cid.co.ma/en/',
-    'http://cid.co.ma/en/',
-    'http://cid.co.ma/en/',
-  ];
 
   private isHovered = false;
   private pointerDown = false;
@@ -221,11 +196,6 @@ export class PartnersComponent implements OnInit, AfterViewInit, OnDestroy {
     event.stopPropagation();
   }
 
-  getCardUrl(index: number, isPoc: boolean): string {
-    const urls = isPoc ? this.pocPartnerUrls : this.partnerUrls;
-    return urls[index] ?? this.defaultPartnerRedirectUrl;
-  }
-
   onViewportMouseEnter(): void {
     this.isHovered = true;
   }
@@ -287,7 +257,7 @@ export class PartnersComponent implements OnInit, AfterViewInit, OnDestroy {
         this.lastPartnerPointerUpCard = partnerCard;
 
         if (isDoubleClick) {
-          const url = partnerCard.getAttribute('data-partner-url') ?? this.defaultPartnerRedirectUrl;
+          const url = partnerCard.getAttribute('data-partner-url') ?? undefined;
           this.openPartnerUrl(event, url);
           this.lastPartnerPointerUpTimestamp = 0;
           this.lastPartnerPointerUpCard = null;
