@@ -25,6 +25,7 @@ export class BackgroundParticleAnimationDirective implements OnInit, OnDestroy {
   private isAnimating = false;
   private colorTime: number = 0;
   private colorCycle: number = 4000; // 4 secondes pour un cycle complet
+  private waveTime: number = 0;
 
   constructor(private elementRef: ElementRef<HTMLElement>) {}
 
@@ -86,38 +87,42 @@ export class BackgroundParticleAnimationDirective implements OnInit, OnDestroy {
   }
 
   private getAnimatedColor(): { r: number; g: number; b: number; opacity: number } {
-    // Alterner entre bleu (#139dcc) et orange (#f89851)
-    const progress = (this.colorTime % this.colorCycle) / this.colorCycle;
-    let r: number, g: number, b: number;
+    // Nuances de bleu uniquement, avec une variation douce dans le temps
+    const progress = (Math.sin(this.colorTime / this.colorCycle * Math.PI * 2) + 1) / 2;
+    const r = Math.round(12 + (44 - 12) * progress);
+    const g = Math.round(118 + (182 - 118) * progress);
+    const b = Math.round(189 + (235 - 189) * progress);
 
-    if (progress < 0.5) {
-      // Transition de bleu vers orange (0 à 0.5)
-      const t = progress * 2;
-      r = Math.round(19 + (248 - 19) * t);
-      g = Math.round(157 + (152 - 157) * t);
-      b = Math.round(204 + (81 - 204) * t);
-    } else {
-      // Transition d'orange vers bleu (0.5 à 1)
-      const t = (progress - 0.5) * 2;
-      r = Math.round(248 + (19 - 248) * t);
-      g = Math.round(152 + (157 - 152) * t);
-      b = Math.round(81 + (204 - 81) * t);
-    }
-
-    return { r, g, b, opacity: 0.6 };
+    return { r, g, b, opacity: 0.68 };
   }
 
   private drawCursorEffect(color: { r: number; g: number; b: number; opacity: number }): void {
     if (!this.ctx) return;
 
-    const radius = 2;
+    const radius = 5 + Math.sin(this.waveTime * 7) * 1.2;
     const lightningCount = 0;
 
     // Dessiner le cercle central
     this.ctx.beginPath();
     this.ctx.arc(this.mouseX, this.mouseY, radius, 0, Math.PI * 2);
-    this.ctx.strokeStyle = `rgba(${color.r}, ${color.g}, ${color.b}, 0.6)`;
-    this.ctx.lineWidth = 2;
+    this.ctx.strokeStyle = `rgba(${color.r}, ${color.g}, ${color.b}, 0.72)`;
+    this.ctx.lineWidth = 2.2;
+    this.ctx.stroke();
+
+    // Anneaux d'onde pour renforcer l'interactivité visuelle
+    const ringA = 22 + ((this.waveTime * 45) % 28);
+    const ringB = 40 + ((this.waveTime * 52 + 14) % 34);
+
+    this.ctx.beginPath();
+    this.ctx.arc(this.mouseX, this.mouseY, ringA, 0, Math.PI * 2);
+    this.ctx.strokeStyle = `rgba(${color.r}, ${color.g}, ${color.b}, 0.2)`;
+    this.ctx.lineWidth = 1.2;
+    this.ctx.stroke();
+
+    this.ctx.beginPath();
+    this.ctx.arc(this.mouseX, this.mouseY, ringB, 0, Math.PI * 2);
+    this.ctx.strokeStyle = `rgba(${color.r}, ${color.g}, ${color.b}, 0.14)`;
+    this.ctx.lineWidth = 1;
     this.ctx.stroke();
 
     // Dessiner les éclairs autour du cercle
@@ -184,6 +189,7 @@ export class BackgroundParticleAnimationDirective implements OnInit, OnDestroy {
 
       // Mettre à jour le temps pour l'animation des couleurs
       this.colorTime += 16; // ~60 FPS
+      this.waveTime += 0.018;
 
       // Effacer le canvas
       this.ctx.clearRect(0, 0, this.canvas!.width, this.canvas!.height);
@@ -196,28 +202,35 @@ export class BackgroundParticleAnimationDirective implements OnInit, OnDestroy {
         const dx = this.mouseX - particle.x;
         const dy = this.mouseY - particle.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
-        const maxDistance = 200;
+        const maxDistance = 220;
+
+        // Retour permanent à la position d'origine + dérive douce type courant.
+        const returnDx = particle.originalX - particle.x;
+        const returnDy = particle.originalY - particle.y;
+        const driftX = Math.sin(this.waveTime * 1.35 + particle.originalY * 0.013) * 0.09;
+        const driftY = Math.cos(this.waveTime * 1.2 + particle.originalX * 0.013) * 0.09;
+
+        particle.vx += returnDx * 0.032 + driftX;
+        particle.vy += returnDy * 0.032 + driftY;
 
         if (distance < maxDistance && distance > 0) {
-          // Attraction vers la souris
-          const angle = Math.atan2(dy, dx);
-          const force = (1 - distance / maxDistance) * 4;
-          particle.vx += Math.cos(angle) * force;
-          particle.vy += Math.sin(angle) * force;
-        } else {
-          // Retour à la position originale avec oscillation
-          const returnDx = particle.originalX - particle.x;
-          const returnDy = particle.originalY - particle.y;
-          particle.vx += returnDx * 0.03;
-          particle.vy += returnDy * 0.03;
+          // Interaction opposée: répulsion douce depuis le curseur.
+          const nx = dx / distance;
+          const ny = dy / distance;
+          const proximity = 1 - distance / maxDistance;
+          const influence = proximity * proximity * 1.55;
+          const pulse = Math.sin(this.waveTime * 9 - distance * 0.06 + index * 0.05);
+
+          particle.vx -= nx * influence * (1 + pulse * 0.24);
+          particle.vy -= ny * influence * (1 + pulse * 0.24);
         }
 
         // Appliquer la friction
-        particle.vx *= 0.94;
-        particle.vy *= 0.94;
+        particle.vx *= 0.9;
+        particle.vy *= 0.9;
 
         // Limiter la vitesse maximale
-        const maxSpeed = 5;
+        const maxSpeed = 2.2;
         const speed = Math.sqrt(particle.vx * particle.vx + particle.vy * particle.vy);
         if (speed > maxSpeed) {
           particle.vx = (particle.vx / speed) * maxSpeed;
@@ -251,14 +264,39 @@ export class BackgroundParticleAnimationDirective implements OnInit, OnDestroy {
           const lineDy = other.y - particle.y;
           const lineDistance = Math.sqrt(lineDx * lineDx + lineDy * lineDy);
 
-          if (lineDistance < 120) {
-            const opacity = (1 - lineDistance / 120) * 0.4;
-            this.ctx!.strokeStyle = `rgba(${color.r}, ${color.g}, ${color.b}, ${opacity})`;
-            this.ctx!.lineWidth = 1;
+          if (lineDistance < 155) {
+            // Autour du curseur, les liens se cassent pour éviter l'effet vortex/réseau.
+            const distanceMouseA = Math.hypot(this.mouseX - particle.x, this.mouseY - particle.y);
+            const distanceMouseB = Math.hypot(this.mouseX - other.x, this.mouseY - other.y);
+            const disconnectRadius = 95;
+
+            if (distanceMouseA < disconnectRadius || distanceMouseB < disconnectRadius) {
+              continue;
+            }
+
+            const ratio = 1 - lineDistance / 155;
+            const opacity = 0.08 + ratio * 0.32;
+            const normalX = -lineDy / (lineDistance || 1);
+            const normalY = lineDx / (lineDistance || 1);
+            const midX = (particle.x + other.x) * 0.5;
+            const midY = (particle.y + other.y) * 0.5;
+            const midDistanceToMouse = Math.hypot(this.mouseX - midX, this.mouseY - midY);
+            const mouseWarp = Math.max(0, 1 - midDistanceToMouse / 220);
+            const curveOffset =
+              Math.sin(this.waveTime * 2.15 + index * 0.35 + j * 0.14) *
+              (6 + ratio * 10 + mouseWarp * 10);
+            const controlX = midX + normalX * curveOffset;
+            const controlY = midY + normalY * curveOffset;
+
+            this.ctx!.strokeStyle = `rgba(${color.r}, ${color.g}, ${color.b}, ${opacity + mouseWarp * 0.12})`;
+            this.ctx!.lineWidth = 0.85 + ratio * 1.25;
+            this.ctx!.shadowBlur = 6;
+            this.ctx!.shadowColor = `rgba(${color.r}, ${color.g}, ${color.b}, ${opacity * 0.55})`;
             this.ctx!.beginPath();
             this.ctx!.moveTo(particle.x, particle.y);
-            this.ctx!.lineTo(other.x, other.y);
+            this.ctx!.quadraticCurveTo(controlX, controlY, other.x, other.y);
             this.ctx!.stroke();
+            this.ctx!.shadowBlur = 0;
           }
         }
       });

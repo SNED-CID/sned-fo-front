@@ -125,7 +125,7 @@
 
             <div class="card-right">
               <button
-                class="btn-details"
+                class="btn-details sned-fluid-btn"
                 (click)="openTenderDetails(tender)"
                 aria-label="Voir les détails de l'appel d'offres"
               >
@@ -146,7 +146,7 @@
 
       @if (currentPage() < totalPages()) {
       <div class="load-more-container">
-        <button (click)="loadNextPage()" class="btn-load-more">
+        <button (click)="loadNextPage()" class="btn-load-more sned-fluid-btn">
           <span>{{ "shared.loadmore.load_more" | translate }}</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path

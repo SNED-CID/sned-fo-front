@@ -1,3 +1,15 @@
+:host {
+  --partners-blue-950: #083a63;
+  --partners-blue-900: #0b4c7c;
+  --partners-blue-800: #12639b;
+  --partners-blue-700: #1d7fbe;
+  --partners-blue-200: #a8ddfa;
+  --partners-blue-100: #d7f0ff;
+  --partners-surface: #ffffff;
+  --partners-text-strong: #1f3550;
+  --partners-text-soft: #4e6681;
+}
+
 .partners-header {
   padding: 2rem 80px;
   text-align: center;
@@ -5,13 +17,13 @@
   h1 {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #333;
+    color: var(--partners-text-strong);
     margin: 0 0 1.5rem 0;
   }
 
   p {
     font-size: 1.125rem;
-    color: #666;
+    color: var(--partners-text-soft);
     margin: 0 0 2rem 0;
     line-height: 1.6;
   }
@@ -19,7 +31,7 @@
   h2 {
     font-size: 1.75rem;
     font-weight: 600;
-    color: #333;
+    color: var(--partners-text-strong);
     margin: 2rem 0 0 0;
   }
 
@@ -57,8 +69,26 @@
 }
 
 .partners-viewport {
+  position: relative;
   width: 100%;
   overflow: hidden;
+  user-select: none;
+  cursor: grab;
+
+  &.is-dragging {
+    cursor: grabbing;
+  }
+}
+
+.partners-marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+
+  &:hover {
+    animation-play-state: paused;
+  }
 }
 
 .partners-container {
@@ -67,12 +97,10 @@
   gap: 1rem;
   padding: 25px 10px 2rem 10px;
   width: max-content;
-  min-width: 100%;
   margin: 0;
   justify-content: flex-start;
   align-items: stretch;
   overflow: visible;
-  will-change: transform;
 
   @media (max-width: 1200px) {
     padding: 25px 60px 2rem 60px;
@@ -97,9 +125,9 @@
   align-items: center;
   justify-content: center;
   padding: 0;
-  background: white;
+  background: var(--partners-surface);
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px color-mix(in srgb, var(--partners-blue-950) 10%, transparent);
   transition: all 0.3s ease;
   text-align: center;
   cursor: pointer;
@@ -110,7 +138,7 @@
 
   &:hover {
     transform: translateY(-8px) scale(1.015);
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 14px 30px color-mix(in srgb, var(--partners-blue-900) 22%, transparent);
   }
 
   .partner-logo {
@@ -119,6 +147,8 @@
     object-fit: contain;
     padding: 1.5rem;
     transition: transform 0.35s ease, filter 0.35s ease;
+    -webkit-user-drag: none;
+    user-drag: none;
   }
 
   &:hover .partner-logo {
@@ -132,8 +162,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.95);
-    color: white;
+    background: color-mix(in srgb, var(--partners-blue-950) 90%, transparent);
+    color: var(--partners-blue-100);
     padding: 1.5rem;
     border-radius: 12px;
     display: flex;
@@ -189,10 +219,18 @@
     height: 100%;
     object-fit: cover;
     transition: transform 0.35s ease, filter 0.35s ease;
+    -webkit-user-drag: none;
+    user-drag: none;
   }
 
   &:hover .partner-stock-image {
     transform: scale(1.06);
     filter: brightness(1.05) saturate(1.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .partners-marquee-track {
+    transform: none;
   }
 }

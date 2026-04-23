@@ -12,22 +12,19 @@ export interface Language {
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="relative flex-shrink-0"
+    <div class="relative h-full flex items-center justify-center flex-shrink-0"
          (mouseenter)="showDropdown.set(true)"
          (mouseleave)="showDropdown.set(false)">
 
       <!-- Globe icon button -->
-      <button class="cursor-pointer flex items-center gap-2 hover:opacity-75 transition-opacity duration-200 group">
-        <i class="fas fa-globe w-5 h-5 text-[var(--sned-orange)]"></i>
-        <span class="text-sm font-semibold text-[var(--sned-orange)]">{{ getCurrentLangInitials() }}</span>
-
-        <!-- Zone de tolérance (invisible) -->
-        <div class="absolute top-full right-0 w-12 h-3"></div>
+      <button class="no-fluid-btn cursor-pointer h-10 min-w-[64px] px-3 rounded-xl border border-[var(--sned-orange)]/35 bg-white/95 flex items-center justify-center gap-2 hover:opacity-80 transition-opacity duration-200 group shadow-sm">
+        <i class="fas fa-globe w-4 h-4 text-[var(--sned-orange)] leading-none"></i>
+        <span class="text-sm font-semibold text-[var(--sned-orange)] leading-none">{{ getCurrentLangInitials() }}</span>
       </button>
 
       <!-- Language dropdown -->
       @if (showDropdown()) {
-        <div class="absolute top-[calc(100%+0.5rem)] left-1/2 -translate-x-1/2 flex flex-col space-y-2 z-60">
+        <div class="absolute top-[calc(100%+0.15rem)] left-1/2 -translate-x-1/2 flex flex-col gap-1 z-60">
           @for (lang of languages; track lang.code) {
             <button
               (click)="onLanguageChange(lang)"
@@ -35,7 +32,7 @@ export interface Language {
                 'bg-[var(--sned-orange)] text-white border-[var(--sned-orange)] shadow-lg': lang.code === currentLang(),
                 'bg-white text-[var(--sned-orange-dark)] hover:bg-[var(--sned-orange)] hover:text-white hover:border-[var(--sned-orange)] hover:shadow-[0_8px_24px_rgba(245,130,32,0.35)] hover:-translate-y-0.5': lang.code !== currentLang()
               }"
-              class="cursor-pointer px-3 py-2 rounded-lg border border-transparent shadow-md flex items-center justify-center transition-all duration-300 ease-out font-semibold text-sm min-w-[3rem] group relative"
+              class="no-fluid-btn cursor-pointer px-2.5 py-1.5 rounded-lg border border-transparent shadow-md flex items-center justify-center transition-all duration-300 ease-out font-semibold text-sm min-w-[2.75rem] group relative focus:outline-none focus:ring-0"
               [title]="lang.label">
               {{ lang.initials }}
 

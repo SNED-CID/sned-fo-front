@@ -1,4 +1,13 @@
-import { Component, ElementRef, ViewChild, inject, OnInit, signal } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+  inject,
+  signal,
+} from '@angular/core';
 import { PartnerService, PartnerReadDTO } from '../../services/partner.service';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
@@ -17,28 +26,22 @@ interface PocCorporateImage {
 
 @Component({
   selector: 'app-partners',
+  standalone: true,
   imports: [
     CommonModule,
     ScrollAnimationDirective,
     TranslatePipe,
   ],
   templateUrl: './partners.component.html',
-  standalone: true,
-  styleUrl: './partners.component.scss',
+  styleUrls: ['./partners.component.scss'],
 })
-export class PartnersComponent implements OnInit {
+export class PartnersComponent implements OnInit, AfterViewInit, OnDestroy {
   private service: PartnerService = inject(PartnerService);
   private sanitizer: DomSanitizer = inject(DomSanitizer);
   private translateService: TranslateService = inject(TranslateService);
+
   partners = signal<PartnerWithLogo[]>([]);
-  trackTransform = signal('translateX(0px)');
-  trackTransition = signal('transform 500ms ease-out');
 
-  @ViewChild('partnersViewport')
-  partnersViewport?: ElementRef<HTMLDivElement>;
-
-  @ViewChild('partnersTrack')
-  partnersTrack?: ElementRef<HTMLDivElement>;
   pocCorporateImages: PocCorporateImage[] = [
     {
       title: 'Global Infrastructure Team',
@@ -82,6 +85,24 @@ export class PartnersComponent implements OnInit {
     },
   ];
 
+  @ViewChild('partnersViewport')
+  partnersViewport?: ElementRef<HTMLDivElement>;
+
+  @ViewChild('partnersTrack')
+  partnersTrack?: ElementRef<HTMLDivElement>;
+
+  isDragging = signal(false);
+
+  private animationFrameId: number | null = null;
+  private lastFrameTime = 0;
+  private currentOffset = 0;
+  private singleSetWidth = 0;
+  private readonly autoSpeedPxPerSec = 32;
+  private isHovered = false;
+  private pointerDown = false;
+  private dragStartX = 0;
+  private dragStartOffset = 0;
+
   ngOnInit(): void {
     this.loadPartners();
 
@@ -90,46 +111,56 @@ export class PartnersComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit(): void {
+    this.measureTrack();
+    this.startAutoScroll();
+  }
+
+  ngOnDestroy(): void {
+    if (this.animationFrameId !== null) {
+      cancelAnimationFrame(this.animationFrameId);
+      this.animationFrameId = null;
+    }
+  }
+
   private loadPartners(): void {
     const currentLang = this.translateService.getCurrentLang();
-    this.service
-      .getAllLocalizedPartners(currentLang)
-      .subscribe((partnersList) => {
-        console.log('Fetched partners:', partnersList);
-        const logoRequests = partnersList.map((partner) =>
-          this.service.getLogoByPartnerId(partner.logoUUID).pipe(
-            map((blob) => {
-              const blobUrl = URL.createObjectURL(blob);
-              return {
-                ...partner,
-                logoUrl: this.sanitizer.bypassSecurityTrustUrl(blobUrl),
-              } as PartnerWithLogo;
-            })
-          )
-        );
+    this.service.getAllLocalizedPartners(currentLang).subscribe((partnersList) => {
+      const logoRequests = partnersList.map((partner) =>
+        this.service.getLogoByPartnerId(partner.logoUUID).pipe(
+          map((blob) => {
+            const blobUrl = URL.createObjectURL(blob);
+            return {
+              ...partner,
+              logoUrl: this.sanitizer.bypassSecurityTrustUrl(blobUrl),
+            } as PartnerWithLogo;
+          })
+        )
+      );
 
-        if (logoRequests.length > 0) {
-          forkJoin(logoRequests).subscribe((partnersWithLogos) => {
-            this.partners.set(partnersWithLogos);
-          });
-        } else {
-          this.partners.set([]);
-        }
-      }, () => {
+      if (logoRequests.length > 0) {
+        forkJoin(logoRequests).subscribe((partnersWithLogos) => {
+          this.partners.set(partnersWithLogos);
+          requestAnimationFrame(() => this.measureTrack());
+        });
+      } else {
         this.partners.set([]);
-      });
+        requestAnimationFrame(() => this.measureTrack());
+      }
+    }, () => {
+      this.partners.set([]);
+      requestAnimationFrame(() => this.measureTrack());
+    });
   }
 
   private normalizeUrl(url: string): string | null {
     let formattedUrl = url.trim();
 
-    // Ajouter le protocole si absent
     if (!/^https?:\/\//i.test(formattedUrl)) {
       formattedUrl = 'https://' + formattedUrl;
     }
 
     try {
-      // Validation réelle de l’URL
       new URL(formattedUrl);
       return formattedUrl;
     } catch {
@@ -137,42 +168,134 @@ export class PartnersComponent implements OnInit {
     }
   }
 
-  openPartnerUrl(url?: string): void {
+  openPartnerUrl(event: MouseEvent, url?: string): void {
+    if (this.pointerDown) {
+      return;
+    }
+
     if (!url) {
-      console.warn('URL partenaire absente');
       return;
     }
 
     const normalizedUrl = this.normalizeUrl(url);
 
     if (!normalizedUrl) {
-      console.error('URL partenaire invalide :', url);
       return;
     }
 
     window.open(normalizedUrl, '_blank', 'noopener,noreferrer');
+
+    // Keep click behavior explicit and prevent accidental text selection side effects.
+    event.preventDefault();
+    event.stopPropagation();
   }
 
-  onPartnersHoverStart(): void {
-    const viewportEl = this.partnersViewport?.nativeElement;
-    const trackEl = this.partnersTrack?.nativeElement;
+  onViewportMouseEnter(): void {
+    this.isHovered = true;
+  }
 
-    if (!viewportEl || !trackEl) {
+  onViewportMouseLeave(): void {
+    if (!this.pointerDown) {
+      this.isHovered = false;
+    }
+  }
+
+  onPointerDown(event: PointerEvent): void {
+    if (event.button !== 0) {
       return;
     }
 
-    const maxShift = Math.max(0, trackEl.scrollWidth - viewportEl.clientWidth);
-    if (maxShift <= 0) {
+    const viewport = this.partnersViewport?.nativeElement;
+    if (!viewport) {
       return;
     }
 
-    const durationSeconds = Math.max(8, Math.min(24, maxShift / 90));
-    this.trackTransition.set(`transform ${durationSeconds}s linear`);
-    this.trackTransform.set(`translateX(-${maxShift}px)`);
+    viewport.setPointerCapture(event.pointerId);
+    this.pointerDown = true;
+    this.isHovered = true;
+    this.isDragging.set(true);
+    this.dragStartX = event.clientX;
+    this.dragStartOffset = this.currentOffset;
+    event.preventDefault();
   }
 
-  onPartnersHoverEnd(): void {
-    this.trackTransition.set('transform 550ms ease-out');
-    this.trackTransform.set('translateX(0px)');
+  onPointerMove(event: PointerEvent): void {
+    if (!this.pointerDown) {
+      return;
+    }
+
+    const deltaX = event.clientX - this.dragStartX;
+    this.currentOffset = this.normalizeOffset(this.dragStartOffset + deltaX);
+    this.applyTrackTransform();
+  }
+
+  onPointerUp(event: PointerEvent): void {
+    const viewport = this.partnersViewport?.nativeElement;
+    if (viewport?.hasPointerCapture(event.pointerId)) {
+      viewport.releasePointerCapture(event.pointerId);
+    }
+
+    this.pointerDown = false;
+    this.isDragging.set(false);
+  }
+
+  private startAutoScroll(): void {
+    const step = (timestamp: number) => {
+      if (this.lastFrameTime === 0) {
+        this.lastFrameTime = timestamp;
+      }
+
+      const elapsed = (timestamp - this.lastFrameTime) / 1000;
+      this.lastFrameTime = timestamp;
+
+      if (!this.isHovered && !this.pointerDown && this.singleSetWidth > 0) {
+        this.currentOffset = this.normalizeOffset(
+          this.currentOffset + this.autoSpeedPxPerSec * elapsed
+        );
+        this.applyTrackTransform();
+      }
+
+      this.animationFrameId = requestAnimationFrame(step);
+    };
+
+    this.animationFrameId = requestAnimationFrame(step);
+  }
+
+  private measureTrack(): void {
+    const track = this.partnersTrack?.nativeElement;
+    if (!track) {
+      return;
+    }
+
+    this.singleSetWidth = track.scrollWidth / 2;
+    this.currentOffset = this.normalizeOffset(this.currentOffset || -this.singleSetWidth);
+    this.applyTrackTransform();
+  }
+
+  private normalizeOffset(offset: number): number {
+    if (this.singleSetWidth <= 0) {
+      return offset;
+    }
+
+    let normalized = offset;
+
+    while (normalized >= 0) {
+      normalized -= this.singleSetWidth;
+    }
+
+    while (normalized < -this.singleSetWidth) {
+      normalized += this.singleSetWidth;
+    }
+
+    return normalized;
+  }
+
+  private applyTrackTransform(): void {
+    const track = this.partnersTrack?.nativeElement;
+    if (!track) {
+      return;
+    }
+
+    track.style.transform = `translate3d(${this.currentOffset}px, 0, 0)`;
   }
 }

@@ -122,14 +122,14 @@ export interface Language {
                    [fragment]="item.sectionId"
                    (click)="onMenuItemClick()"
                    routerLinkActive="active-mobile"
-                   class="flex items-center px-4 py-3.5 text-base font-medium text-[var(--sned-blue-dark)] hover:bg-gradient-to-r hover:from-[var(--sned-orange)]/8 hover:to-[var(--sned-blue)]/4 hover:text-[var(--sned-blue)] rounded-lg transition-all duration-200 group relative">
+                   class="flex items-center px-4 py-3.5 text-base font-medium text-[var(--sned-blue-dark)] hover:bg-black/5 hover:text-black rounded-lg transition-all duration-200 group relative">
 
-                  <i class="fas fa-chevron-right w-5 h-5 mr-3 text-[var(--sned-orange)] opacity-0 group-hover:opacity-100 transition-all duration-200 transform -translate-x-2 group-hover:translate-x-0"></i>
+                  <i class="fas fa-chevron-right w-5 h-5 mr-3 text-gray-500 opacity-0 group-hover:opacity-100 transition-all duration-200 transform -translate-x-2 group-hover:translate-x-0"></i>
 
                   <span>{{ item.label }}</span>
 
                   <!-- Active indicator -->
-                  <div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[var(--sned-orange)] to-[var(--sned-blue)] scale-y-0 group-[.active-mobile]:scale-y-100 transition-transform duration-300 origin-top rounded-r-full"></div>
+                  <div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-black/35 to-black/15 scale-y-0 group-[.active-mobile]:scale-y-100 transition-transform duration-300 origin-top rounded-r-full"></div>
                 </a>
               </div>
 
@@ -137,10 +137,10 @@ export interface Language {
               <div *ngIf="item.children" class="relative overflow-hidden rounded-lg">
                 <button
                   (click)="toggleMobileDropdown(item.label)"
-                  class="w-full flex items-center justify-between px-4 py-3.5 text-base font-medium text-[var(--sned-blue-dark)] hover:bg-gradient-to-r hover:from-[var(--sned-orange)]/8 hover:to-[var(--sned-blue)]/4 hover:text-[var(--sned-blue)] rounded-lg transition-all duration-200 group">
+                  class="w-full flex items-center justify-between px-4 py-3.5 text-base font-medium text-[var(--sned-blue-dark)] hover:bg-black/5 hover:text-black rounded-lg transition-all duration-200 group">
 
                   <div class="flex items-center">
-                    <i class="fas fa-bars w-5 h-5 mr-3 text-[var(--sned-orange)]"></i>
+                    <i class="fas fa-bars w-5 h-5 mr-3 text-gray-500"></i>
                     <span>{{ item.label }}</span>
                   </div>
 
@@ -182,7 +182,7 @@ export interface Language {
   `,
   styles: [`
     .active-mobile {
-      @apply bg-gradient-to-r from-[var(--sned-orange)]/10 to-[var(--sned-blue)]/5 text-[var(--sned-blue)];
+      @apply bg-black/5 text-[var(--sned-blue-dark)];
     }
 
     .active-mobile-sub {

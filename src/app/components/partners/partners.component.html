@@ -14,70 +14,115 @@
 
       <div
         class="partners-viewport"
+        [class.is-dragging]="isDragging()"
         #partnersViewport
-        (mouseenter)="onPartnersHoverStart()"
-        (mouseleave)="onPartnersHoverEnd()"
+        (mouseenter)="onViewportMouseEnter()"
+        (mouseleave)="onViewportMouseLeave()"
+        (pointerdown)="onPointerDown($event)"
+        (pointermove)="onPointerMove($event)"
+        (pointerup)="onPointerUp($event)"
+        (pointercancel)="onPointerUp($event)"
       >
-      <div
-        class="partners-container"
-        #partnersTrack
-        [style.transform]="trackTransform()"
-        [style.transition]="trackTransition()"
-      >
-        @if (partners().length === 0) { @for (image of pocCorporateImages; track
-        $index) {
+        <div class="partners-marquee-track" #partnersTrack>
+          <div class="partners-container" aria-label="Partners logos">
+            @if (partners().length === 0) { @for (image of pocCorporateImages;
+            track $index) {
+            <div class="partner-card partner-card--poc" aria-label="POC partner card">
+              <img
+                [src]="image.imageUrl"
+                [alt]="image.title"
+                class="partner-stock-image"
+                loading="lazy"
+                draggable="false"
+                (dragstart)="$event.preventDefault()"
+              />
 
-        <div class="partner-card partner-card--poc" aria-label="POC partner card">
-          <img
-            [src]="image.imageUrl"
-            [alt]="image.title"
-            class="partner-stock-image"
-            loading="lazy"
-          />
+              <div class="partner-tooltip">
+                <h3>
+                  <b>{{ image.title }}</b>
+                </h3>
+                <p>POC Partner</p>
+              </div>
+            </div>
+            } } @else {
+            @for (partner of partners(); track $index) {
+            <div
+              class="partner-card"
+              [class.cursor-pointer]="partner.urlPartner"
+              [class.opacity-50]="!partner.urlPartner"
+              (click)="openPartnerUrl($event, partner.urlPartner)"
+            >
+              <img
+                [src]="partner.logoUrl"
+                [alt]="partner.name"
+                class="partner-logo"
+                draggable="false"
+                (dragstart)="$event.preventDefault()"
+              />
 
-          <div class="partner-tooltip">
-            <h3>
-              <b>{{ image.title }}</b>
-            </h3>
-            <p>POC Partner</p>
+              <div class="partner-tooltip">
+                <h3>
+                  <b>{{ partner.name }}</b>
+                </h3>
+                <p>
+                  {{
+                    partner.partnerType === "NATIONAL"
+                      ? ("partners.national_partner" | translate)
+                      : ("partners.international_partner" | translate)
+                  }}
+                </p>
+              </div>
+            </div>
+            }
+            }
+
+            @if (partners().length === 0) { @for (image of pocCorporateImages;
+            track 'dup-poc-' + $index) {
+            <div class="partner-card partner-card--poc" aria-hidden="true">
+              <img
+                [src]="image.imageUrl"
+                [alt]="image.title"
+                class="partner-stock-image"
+                loading="lazy"
+                draggable="false"
+                (dragstart)="$event.preventDefault()"
+              />
+
+              <div class="partner-tooltip">
+                <h3>
+                  <b>{{ image.title }}</b>
+                </h3>
+                <p>POC Partner</p>
+              </div>
+            </div>
+            } } @else {
+            @for (partner of partners(); track 'dup-real-' + $index) {
+            <div class="partner-card" aria-hidden="true">
+              <img
+                [src]="partner.logoUrl"
+                [alt]="partner.name"
+                class="partner-logo"
+                draggable="false"
+                (dragstart)="$event.preventDefault()"
+              />
+
+              <div class="partner-tooltip">
+                <h3>
+                  <b>{{ partner.name }}</b>
+                </h3>
+                <p>
+                  {{
+                    partner.partnerType === "NATIONAL"
+                      ? ("partners.national_partner" | translate)
+                      : ("partners.international_partner" | translate)
+                  }}
+                </p>
+              </div>
+            </div>
+            }
+            }
           </div>
         </div>
-        } } @else {
-        @for (partner of partners(); track $index) {
-
-        <div
-          class="partner-card"
-          [class.cursor-pointer]="partner.urlPartner"
-          [class.opacity-50]="!partner.urlPartner"
-          (click)="openPartnerUrl(partner.urlPartner)"
-        >
-          <!-- <div
-          class="partner-card cursor-pointer"
-          role="link"
-          (click)="openPartnerUrl(partner.urlPartner)"
-        > -->
-          <img
-            [src]="partner.logoUrl"
-            [alt]="partner.name"
-            class="partner-logo"
-          />
-
-          <div class="partner-tooltip">
-            <h3>
-              <b>{{ partner.name }}</b>
-            </h3>
-            <p>
-              {{
-                partner.partnerType === "NATIONAL"
-                  ? ("partners.national_partner" | translate)
-                  : ("partners.international_partner" | translate)
-              }}
-            </p>
-          </div>
-        </div>
-        }
-        }
-      </div>
       </div>
     </div>
   </div>

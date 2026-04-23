@@ -120,14 +120,56 @@ p, span, div {
 }
 
 :root {
-  --sned-blue: #139dcc;
+  --sned-blue: #3f3f3f;
   --sned-orange: #f89851;
 
-  --sned-blue-light: #4bbbe0;
-  --sned-blue-dark: #0e6f94;
+  --sned-blue-light: #666666;
+  --sned-blue-dark: #2f2f2f;
 
   --sned-orange-light: #fbb98b;
   --sned-orange-dark: #d16d28;
+  --sned-black: #3f3f3f;
+  --sned-btn-height: 48px;
+  --sned-btn-min-width: 176px;
+}
+
+body {
+  color: var(--sned-black);
+}
+
+button:not(.no-fluid-btn),
+.sned-fluid-btn {
+  position: relative;
+  overflow: hidden;
+  background: var(--sned-orange);
+  color: #ffffff;
+  border: 1px solid var(--sned-orange-dark);
+  transition: transform 0.22s cubic-bezier(0.2, 0.85, 0.2, 1), box-shadow 0.24s ease, border-color 0.24s ease, background-color 0.24s ease;
+  box-shadow: 0 8px 20px rgba(248, 152, 81, 0.28);
+}
+
+button:not(.no-fluid-btn):hover,
+.sned-fluid-btn:hover {
+  background: var(--sned-orange-dark);
+  border-color: var(--sned-orange-dark);
+  box-shadow: 0 10px 24px rgba(209, 109, 40, 0.32);
+}
+
+button:not(.no-fluid-btn):active,
+.sned-fluid-btn:active {
+  transform: translateY(1px) scale(0.97);
+}
+
+.sned-fluid-btn {
+  min-height: var(--sned-btn-height);
+  min-width: var(--sned-btn-min-width);
+  padding: 0 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
 }
 
 .sidebar-scroll {

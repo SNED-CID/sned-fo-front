@@ -20,7 +20,6 @@ import {
   NavigationMenuComponent,
   MenuSection,
 } from '../navigation-menu/navigation-menu.component';
-import { BackgroundParticleAnimationDirective } from '../../../directives/background-particle-animation.directive';
 import { AnalyticsService } from '../../../services/analytics.service';
 
 @Component({
@@ -33,7 +32,6 @@ import { AnalyticsService } from '../../../services/analytics.service';
     TranslatePipe,
     NavigationMenuComponent,
     LanguageSelectorComponent,
-    BackgroundParticleAnimationDirective,
   ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],

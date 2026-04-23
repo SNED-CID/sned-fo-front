@@ -132,6 +132,107 @@ header {
   -webkit-tap-highlight-color: transparent;
 }
 
+.header-logo-link {
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+}
+
+.logo-water-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  height: max-content;
+}
+
+.logo-water-wrap img {
+  z-index: 1;
+}
+
+.hero-water-btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: linear-gradient(
+    135deg,
+    rgba(19, 157, 204, 0.34) 0%,
+    rgba(10, 110, 184, 0.3) 45%,
+    rgba(8, 84, 165, 0.38) 100%
+  );
+}
+
+.hero-water-btn::before,
+.hero-water-btn::after {
+  content: '';
+  position: absolute;
+  inset: -45% -30%;
+  pointer-events: none;
+}
+
+.hero-water-btn::before {
+  z-index: 0;
+  background:
+    radial-gradient(circle at 24% 50%, rgba(169, 231, 255, 0.33) 0%, rgba(169, 231, 255, 0) 48%),
+    radial-gradient(circle at 78% 56%, rgba(73, 186, 237, 0.28) 0%, rgba(73, 186, 237, 0) 50%);
+  transform: translateX(-6%) translateY(2%) rotate(0deg);
+  animation: hero-water-drift 4.2s ease-in-out infinite alternate;
+}
+
+.hero-water-btn::after {
+  z-index: 1;
+  background:
+    linear-gradient(
+      100deg,
+      rgba(255, 255, 255, 0) 20%,
+      rgba(191, 238, 255, 0.38) 44%,
+      rgba(255, 255, 255, 0) 68%
+    );
+  transform: translateX(-120%) skewX(-14deg);
+  opacity: 0.56;
+  animation: hero-water-shimmer 3.6s linear infinite;
+}
+
+.hero-water-btn > * {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-water-btn:hover {
+  border-color: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 10px 24px rgba(30, 169, 221, 0.28), 0 0 0 1px rgba(191, 238, 255, 0.28) inset;
+}
+
+.hero-water-btn:hover::before {
+  animation-duration: 2.8s;
+}
+
+.hero-water-btn:hover::after {
+  animation-duration: 2.1s;
+  opacity: 0.72;
+}
+
+@keyframes hero-water-drift {
+  0% {
+    transform: translateX(-8%) translateY(3%) rotate(-3deg) scale(1);
+  }
+
+  100% {
+    transform: translateX(8%) translateY(-4%) rotate(3deg) scale(1.04);
+  }
+}
+
+@keyframes hero-water-shimmer {
+  0% {
+    transform: translateX(-120%) skewX(-14deg);
+  }
+
+  100% {
+    transform: translateX(130%) skewX(-14deg);
+  }
+}
+
 // Active Link Styles (Global)
 :global(.active-link) {
   position: relative;
@@ -144,15 +245,15 @@ header {
 }
 
 :global(.active-mobile) {
-  background: linear-gradient(to right, rgba(248, 152, 81, 0.1), rgba(19, 157, 204, 0.05)) !important;
-  color: var(--sned-blue) !important;
-  border-left: 4px solid var(--sned-orange) !important;
+  background: rgba(0, 0, 0, 0.05) !important;
+  color: var(--sned-blue-dark) !important;
+  border-left: 4px solid rgba(0, 0, 0, 0.22) !important;
   padding-left: 12px !important;
 }
 
 :global(.active-mobile-sub) {
-  background: linear-gradient(to right, rgba(248, 152, 81, 0.08), rgba(19, 157, 204, 0.04)) !important;
-  color: var(--sned-blue) !important;
+  background: rgba(248, 152, 81, 0.1) !important;
+  color: #111111 !important;
 }
 
 // Responsive Design Improvements

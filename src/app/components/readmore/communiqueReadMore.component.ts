@@ -49,7 +49,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
     <!-- Sidebar animée -->
     @if (sidebarOpen()) {
     <aside
-      class="fixed inset-y-0 right-0 w-[75vw] bg-white shadow-2xl flex flex-col"
+      class="fixed inset-y-0 right-0 w-full md:w-[75vw] bg-white shadow-2xl flex flex-col"
       style="z-index: 99999;"
     >
       <!-- Header -->
@@ -64,7 +64,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
           <!-- Bouton partager -->
           <button
             (click)="shareContent()"
-            class="cursor-pointer text-gray-600 hover:text-blue-600 text-xl"
+            class="no-fluid-btn cursor-pointer bg-transparent border-0 shadow-none text-gray-600 hover:text-gray-700 text-xl p-1"
             [title]="'shared.readmore.share' | translate"
           >
             <i class="fas fa-share-alt"></i>
@@ -73,7 +73,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
           <!-- Bouton fermer -->
           <button
             (click)="closeSidebar()"
-            class="cursor-pointer text-gray-600 hover:text-black text-xl"
+            class="no-fluid-btn cursor-pointer bg-transparent border-0 shadow-none text-gray-600 hover:text-black text-xl p-1"
             [title]="'shared.readmore.close' | translate"
           >
             <i class="fas fa-times"></i>

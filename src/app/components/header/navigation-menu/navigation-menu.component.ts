@@ -32,10 +32,10 @@ export interface MenuSection {
   imports: [CommonModule, RouterModule, TranslatePipe],
   template: `
     <nav
-      class="hidden lg:flex items-center justify-center space-x-3 rtl:space-x-reverse h-full flex-1"
+      class="hidden lg:flex items-center justify-center gap-8 h-full flex-1"
     >
       @for (section of menuSections; track section.title) {
-        <div class="flex items-center space-x-3 rtl:space-x-reverse">
+        <div class="flex items-center gap-8">
           @for (item of section.items; track item.route || item.label) {
             <div class="relative group flex items-center">
               <!-- Menu item simple -->
@@ -44,7 +44,7 @@ export interface MenuSection {
                   [routerLink]="getNavigationLink(item)"
                   [fragment]="item.sectionId"
                   (click)="onMenuItemClick(item)"
-                  class="nav-title relative px-2 lg:px-2.5 py-2 font-semibold text-base lg:text-lg rounded-none inline-flex items-center gap-1.5 whitespace-nowrap transition-colors duration-200 group text-black hover:text-black focus:outline-none cursor-pointer"
+                  class="nav-title relative px-1 py-2 font-semibold text-base lg:text-lg rounded-none inline-flex items-center gap-2 whitespace-nowrap transition-colors duration-200 group text-black hover:text-black focus:outline-none cursor-pointer"
                 >
                   <span class="nav-title-text">{{ item.label | translate }}</span>
                 </a>
@@ -56,7 +56,7 @@ export interface MenuSection {
                   <button
                     [routerLink]="getNavigationLink(item)"
                     [fragment]="item.sectionId"
-                    class="nav-title relative px-2 lg:px-2.5 py-2 font-semibold text-base lg:text-lg rounded-none inline-flex items-center gap-1 whitespace-nowrap transition-colors duration-200 group text-black hover:text-black focus:outline-none cursor-pointer"
+                    class="nav-title no-fluid-btn relative px-1 py-2 font-semibold text-base lg:text-lg rounded-none inline-flex items-center gap-2 whitespace-nowrap transition-colors duration-200 group text-black hover:text-black focus:outline-none cursor-pointer"
                   >
                     <span class="nav-title-text">{{ item.label | translate }}</span>
                     <i
@@ -123,6 +123,79 @@ export interface MenuSection {
       .nav-title-text {
         position: relative;
         display: inline-block;
+        z-index: 2;
+      }
+
+      .water-nav-btn {
+        isolation: isolate;
+        overflow: hidden;
+        border-radius: 999px;
+        padding-inline: 0.95rem;
+        transition: color 240ms ease, box-shadow 280ms ease, transform 240ms ease;
+      }
+
+      .water-nav-btn::before,
+      .water-nav-btn::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .water-nav-btn::before {
+        z-index: 0;
+        background:
+          radial-gradient(95% 65% at 14% 38%, rgba(120, 226, 255, 0.34) 0%, rgba(120, 226, 255, 0) 62%),
+          radial-gradient(80% 55% at 84% 68%, rgba(35, 176, 244, 0.3) 0%, rgba(35, 176, 244, 0) 68%),
+          linear-gradient(120deg, rgba(15, 142, 201, 0.2), rgba(20, 163, 225, 0.24));
+        transform: translateX(-12%) scale(1.05);
+      }
+
+      .water-nav-btn::after {
+        z-index: 1;
+        background:
+          radial-gradient(75% 60% at 50% 120%, rgba(190, 245, 255, 0.42) 0%, rgba(190, 245, 255, 0) 72%),
+          linear-gradient(95deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.05));
+        transform: translateX(-115%);
+      }
+
+      .water-nav-btn:hover {
+        color: #06385a;
+        box-shadow: 0 6px 18px rgba(17, 123, 181, 0.28), inset 0 0 0 1px rgba(122, 218, 255, 0.44);
+      }
+
+      .water-nav-btn:hover::before,
+      .water-nav-btn:hover::after {
+        opacity: 1;
+      }
+
+      .water-nav-btn:hover::before {
+        animation: water-btn-flow 1.3s ease-in-out infinite alternate;
+      }
+
+      .water-nav-btn:hover::after {
+        animation: water-btn-gloss 1.7s cubic-bezier(0.35, 0.08, 0.25, 1) infinite;
+      }
+
+      @keyframes water-btn-flow {
+        0% {
+          transform: translateX(-12%) scale(1.05) translateY(0%);
+        }
+
+        100% {
+          transform: translateX(12%) scale(1.09) translateY(-3%);
+        }
+      }
+
+      @keyframes water-btn-gloss {
+        0% {
+          transform: translateX(-115%);
+        }
+
+        100% {
+          transform: translateX(115%);
+        }
       }
 
       .nav-title-text::after {

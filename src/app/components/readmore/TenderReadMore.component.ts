@@ -60,7 +60,7 @@ import DOMPurify from 'dompurify';
           <!-- Bouton partager -->
           <button
             (click)="shareContent()"
-            class="cursor-pointer text-gray-600 hover:text-blue-600 text-xl"
+            class="no-fluid-btn cursor-pointer bg-transparent border-0 shadow-none text-gray-600 hover:text-gray-700 text-xl p-1"
             [title]="'shared.readmore.share' | translate"
           >
             <i class="fas fa-share-alt"></i>
@@ -69,7 +69,7 @@ import DOMPurify from 'dompurify';
           <!-- Bouton fermer -->
           <button
             (click)="closeSidebar()"
-            class="cursor-pointer text-gray-600 hover:text-black text-xl"
+            class="no-fluid-btn cursor-pointer bg-transparent border-0 shadow-none text-gray-600 hover:text-black text-xl p-1"
             [title]="'shared.readmore.close' | translate"
           >
             <i class="fas fa-times"></i>
@@ -112,35 +112,7 @@ import DOMPurify from 'dompurify';
         </div>
       </div>
 
-      <!-- Footer navigation -->
-      <div
-        class="border-t bg-white p-4 shadow-lg"
-        *ngIf="nextTenderId !== null && nextTenderTitle"
-      >
-        <button
-          (click)="navigateToNextTender()"
-          class="cursor-pointer w-full flex items-center justify-between p-4 rounded-lg
-                       bg-gradient-to-r from-blue-50 to-blue-100
-                       hover:from-blue-100 hover:to-blue-200
-                       transition-all duration-200 group border border-blue-200"
-        >
-          <div class="flex items-center gap-3">
-            <span class="text-sm text-gray-600 font-medium">{{
-              'shared.readmore.next_section' | translate
-            }}</span>
-            <span class="font-semibold text-gray-900">{{
-              nextTenderTitle
-            }}</span>
-          </div>
-          <i
-            [class]="
-              currentLang() === 'ar'
-                ? 'fas fa-arrow-left text-blue-600 group-hover:-translate-x-1 transition-transform duration-200'
-                : 'fas fa-arrow-right text-blue-600 group-hover:translate-x-1 transition-transform duration-200'
-            "
-          ></i>
-        </button>
-      </div>
+
     </aside>
   `,
   styles: [

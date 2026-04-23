@@ -7,7 +7,7 @@ import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
-  imports: [AnchorComponent, AboutComponent, TranslatePipe],
+  imports: [AboutComponent, TranslatePipe],
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'

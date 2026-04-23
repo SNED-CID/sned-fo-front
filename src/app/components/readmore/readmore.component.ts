@@ -57,7 +57,7 @@ import { CommonModule } from '@angular/common';
           <!-- Bouton partager -->
           <button
             (click)="shareContent()"
-            class="cursor-pointer text-gray-600 hover:text-blue-600 text-xl"
+            class="no-fluid-btn cursor-pointer bg-transparent border-0 shadow-none text-gray-600 hover:text-gray-700 text-xl p-1"
             [title]="'shared.readmore.share' | translate"
           >
             <i class="fas fa-share-alt"></i>
@@ -67,7 +67,7 @@ import { CommonModule } from '@angular/common';
           <!-- Bouton fermer -->
           <button
             (click)="closeSidebar()"
-            class="cursor-pointer text-gray-600 hover:text-black text-xl"
+            class="no-fluid-btn cursor-pointer bg-transparent border-0 shadow-none text-gray-600 hover:text-black text-xl p-1"
             [title]="'shared.readmore.close' | translate"
           >
             <i class="fas fa-times"></i>
@@ -139,20 +139,7 @@ import { CommonModule } from '@angular/common';
         }
       </div>
 
-      <!-- Footer avec navigation vers section suivante -->
-      @if (nextSectionId && nextSectionTitle) {
-        <div class="border-t bg-gray-50 p-4">
-          <button
-            (click)="navigateToNextSection()"
-            class="cursor-pointer w-full flex items-center justify-between p-3 rounded-lg hover:bg-gray-100 transition-colors duration-200 group">
-            <div class="flex items-center gap-3">
-              <span class="text-gray-600">{{ 'shared.readmore.next_section' | translate }}</span>
-              <span class="font-semibold text-gray-800">{{ nextSectionTitle }}</span>
-            </div>
-            <i [class]="currentLang() === 'ar' ? 'fas fa-arrow-left text-[var(--sned-orange)] group-hover:-translate-x-1 transition-transform duration-200' : 'fas fa-arrow-right text-[var(--sned-orange)] group-hover:translate-x-1 transition-transform duration-200'"></i>
-          </button>
-        </div>
-      }
+
       </aside>
     }
   `

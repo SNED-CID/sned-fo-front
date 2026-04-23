@@ -508,8 +508,21 @@ $shadow-xl:
     transition: transform 0.3s ease;
   }
 
+  &:hover {
+    background: linear-gradient(
+      135deg,
+      $primary-blue 0%,
+      color.adjust(#0e6f94, $lightness: -4%) 100%
+    );
+    box-shadow: 0 8px 22px rgba(19, 157, 204, 0.35);
+
+    svg {
+      transform: translateX(4px);
+    }
+  }
+
   &:active {
-    transform: translateX(4px) scale(0.98);
+    transform: none;
   }
 
   @media (max-width: 768px) {
@@ -560,10 +573,11 @@ $shadow-xl:
   }
 
   &:hover {
-    background: $primary-orange;
+    background: $primary-blue;
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3);
+    border-color: $primary-blue;
+    box-shadow: 0 6px 20px rgba(19, 157, 204, 0.34);
 
     svg {
       transform: translateY(4px);

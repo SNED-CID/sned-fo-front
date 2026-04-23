@@ -16,7 +16,7 @@ import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
   ],
   template: `
     <footer
-      class="bg-gradient-to-br from-slate-50 to-slate-100 mt-auto"
+      class="bg-white border-t border-black/15 mt-auto"
     >
       <!-- Main Footer Content -->
       <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 py-6">
@@ -109,7 +109,7 @@ import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
       </div>
 
       <!-- Bottom Bar -->
-      <div class="border-t border-slate-200 bg-black">
+      <div class="bg-[#3F3F3F]">
         <div class="max-w-7xl mx-auto px-4 py-3">
           <p class="text-xs text-white text-center">
             {{ 'footer.legal.copyright' | translate: { year: currentYear() } }}

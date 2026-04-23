@@ -5,6 +5,7 @@ import {
   OnInit,
   ViewChildren,
   QueryList,
+  forwardRef,
 } from '@angular/core';
 import { ReadMoreComponent } from '../readmore/readmore.component';
 import { NgClass } from '@angular/common';
@@ -33,7 +34,7 @@ interface Section {
     LazyImageComponent,
     ScrollAnimationDirective,
     RouterLink,
-    PartnersComponent,
+    forwardRef(() => PartnersComponent),
   ],
   template: `
     <!-- Point de repère en haut -->
@@ -44,7 +45,7 @@ interface Section {
         class="w-full mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 space-y-24 lg:space-y-32 2xl:space-y-40 bg-white rounded-lg max-w-7xl lg:max-w-full 2xl:max-w-none"
       >
         @for (section of sections; track $index; let i = $index) { @defer (on
-        viewport; prefetch on idle) {
+        immediate; prefetch on idle) {
         <div class="grid md:grid-cols-2 gap-12 lg:gap-16 2xl:gap-20">
           <!-- Image -->
           <div
@@ -62,7 +63,7 @@ interface Section {
             <!-- Section SNED-SECEGSA avec logos côte à côte -->
             @if (section.id === 'sned_secegsa') {
             <div
-              class="w-full max-w-md lg:max-w-lg 2xl:max-w-2xl aspect-[4/3] flex items-center justify-center gap-8 p-8 lg:p-12 bg-gradient-to-r from-blue-50 to-orange-50 rounded-2xl shadow-lg"
+              class="w-full max-w-md lg:max-w-lg 2xl:max-w-2xl aspect-[16/10] max-h-[320px] lg:max-h-[360px] flex items-center justify-center gap-8 p-8 lg:p-12 bg-gradient-to-r from-blue-50 to-orange-50 rounded-2xl shadow-lg"
               [ngClass]="{ 'mr-auto': i % 2 === 0, 'ml-auto': i % 2 === 1 }"
             >
               <app-lazy-image
@@ -92,7 +93,7 @@ interface Section {
             <app-lazy-image
               [src]="section.image"
               [alt]="section.title"
-              imageClass="rounded-2xl shadow-lg w-full max-w-md lg:max-w-lg 2xl:max-w-2xl h-auto object-contain"
+              imageClass="rounded-2xl shadow-lg w-full max-w-md lg:max-w-lg 2xl:max-w-2xl aspect-[16/10] max-h-[320px] lg:max-h-[360px] object-cover"
               width="100%"
               height="auto"
             >
@@ -173,7 +174,7 @@ interface Section {
       >
         <!-- Trait coloré unique en haut -->
         <div
-          class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[var(--sned-blue)] to-[var(--sned-orange)] rounded-t-2xl"
+          class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#F89851] via-[#FDBA74] to-[#FDE047] rounded-t-2xl"
         ></div>
 
         <!-- Grid intérieur -->
@@ -251,7 +252,7 @@ interface Section {
                 <app-lazy-image
                   src="assets/images/orga.png"
                   alt="organigramme"
-                  imageClass="rounded-lg shadow-md w-full max-w-3xl h-auto object-contain transition-all duration-500 ease-out hover:scale-110 hover:shadow-2xl cursor-pointer group-hover:opacity-100"
+                  imageClass="rounded-lg shadow-md w-full max-w-md lg:max-w-lg 2xl:max-w-2xl aspect-[16/10] max-h-[320px] lg:max-h-[360px] object-cover transition-all duration-500 ease-out hover:scale-110 hover:shadow-2xl cursor-pointer group-hover:opacity-100"
                   width="100%"
                   height="auto"
                 >
@@ -290,21 +291,21 @@ interface Section {
         class="w-3/4 lg:w-5/6 2xl:w-full mx-auto mt-16 px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20  relative bg-white rounded-2xl shadow-lg overflow-hidden"
       >
         <h2
-          class="text-3xl lg:text-4xl xl:text-5xl font-bold text-primary mt-20 text-center lg:mb-6"
+          class="text-3xl lg:text-4xl xl:text-5xl font-bold text-primary mt-12 lg:mt-14 text-center mb-3 lg:mb-4"
         >
           {{ 'tenders.title' | translate }}
         </h2>
         <div
-          class="absolute top-0 left-0 w-full h-5 sm:h-8 rounded-t-2xl bg-[linear-gradient(90deg,rgba(248,152,81,0.72)_0%,rgba(255,147,88,0.94)_28%,rgba(255,102,84,1)_50%,rgba(239,68,68,0.92)_72%,rgba(220,38,38,0.74)_100%)]"
+          class="absolute top-0 left-0 w-full h-5 sm:h-8 rounded-t-2xl bg-gradient-to-r from-[#F89851] via-[#FDBA74] to-[#FDE047]"
         ></div>
         <div id="appels_offres" class="pt-3 w-full">
-          <div class="pt-10 pb-8 lg:pt-12 lg:pb-10 text-center">
+          <div class="pt-4 pb-8 lg:pt-6 lg:pb-10 text-center">
             <p class="text-lg lg:text-xl text-gray-700 font-medium mb-6">
               {{ 'tenders.cta_text' | translate }}
             </p>
             <a
               routerLink="/appels-offres"
-              class="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white bg-[var(--sned-orange)] hover:bg-[var(--sned-orange-dark)] transition-colors duration-200"
+              class="sned-fluid-btn inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white bg-[var(--sned-orange)] hover:bg-[var(--sned-orange-dark)] transition-colors duration-200"
             >
               {{ 'tenders.cta_button' | translate }}
               <i class="fas fa-arrow-right text-sm"></i>
@@ -315,21 +316,21 @@ interface Section {
 
       <!-- Section Carrières -->
       <div
-        class="w-screen relative ltr:left-1/2 rtl:right-1/2 ltr:-translate-x-1/2 rtl:translate-x-1/2 mt-16 px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 py-2 sm:py-3 lg:py-5 xl:py-8 2xl:py-10 bg-gradient-to-r from-[var(--sned-blue)] via-[var(--sned-blue-dark)] to-[#004f94]"
+        class="w-screen relative ltr:left-1/2 rtl:right-1/2 ltr:-translate-x-1/2 rtl:translate-x-1/2 mt-16 px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 py-2 sm:py-3 lg:py-5 xl:py-8 2xl:py-10 bg-gradient-to-r from-[#003f7a] via-[#0b63a8] to-[#44afe5]"
       >
         <h2
-          class="text-3xl lg:text-4xl xl:text-5xl font-bold text-white mt-10 text-center lg:mb-6"
+          class="text-3xl lg:text-4xl xl:text-5xl font-bold text-white mt-6 lg:mt-8 text-center mb-3 lg:mb-4"
         >
           {{ 'header.menu.careers' | translate }}
         </h2>
 
-        <div id="carrieres" class="py-8 lg:py-10 w-full text-center">
+        <div id="carrieres" class="pt-4 pb-8 lg:pt-6 lg:pb-10 w-full text-center">
           <p class="text-lg lg:text-xl text-white font-medium mb-6">
             {{ 'careers.cta_text' | translate }}
           </p>
           <a
             routerLink="/contact"
-            class="inline-flex items-center justify-center gap-2 min-w-[170px] px-6 py-3 rounded-full border-2 border-white font-semibold text-white bg-[#1D9DD9] hover:bg-[var(--sned-blue-dark)] transition-colors duration-200"
+            class="sned-fluid-btn inline-flex items-center justify-center gap-2 min-w-[170px] px-6 py-3 rounded-full border-2 border-white font-semibold text-white bg-[var(--sned-orange)] hover:bg-[var(--sned-orange-dark)] transition-colors duration-200"
           >
             {{ 'careers.cta_button' | translate }}
             <i class="fas fa-arrow-right text-sm rtl:rotate-180"></i>
@@ -342,7 +343,7 @@ interface Section {
         class="w-3/4 lg:w-5/6 2xl:w-full mx-auto mt-16 px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 py-2 sm:py-3 lg:py-5 xl:py-8 2xl:py-10 relative bg-white rounded-2xl shadow-lg overflow-hidden"
       >
         <div
-          class="absolute top-0 left-0 w-full h-5 sm:h-8 rounded-t-2xl bg-gradient-to-r from-[var(--sned-blue)] via-[var(--sned-blue-dark)] to-[#004f94]"
+          class="absolute top-0 left-0 w-full h-5 sm:h-8 rounded-t-2xl bg-gradient-to-r from-[#F89851] via-[#FDBA74] to-[#FDE047]"
         ></div>
 
         <h2
@@ -513,13 +514,21 @@ export class AboutComponent implements OnInit {
    * Scroller vers une section basée sur son ID (utilisé pour les fragments d'URL)
    * Exemple: /about#contexte scrollera vers la section contexte
    */
-  private scrollToFragment(fragmentId: string) {
+  private scrollToFragment(fragmentId: string, attempt = 0) {
     const element = document.getElementById(fragmentId);
     if (element) {
-      element.scrollIntoView({
+      // Offset keeps the section visible below the fixed header.
+      const headerOffset = 112;
+      const targetTop = element.getBoundingClientRect().top + window.scrollY - headerOffset;
+      window.scrollTo({
+        top: Math.max(targetTop, 0),
         behavior: 'smooth',
-        block: 'center',
       });
+      return;
+    }
+
+    if (attempt < 12) {
+      setTimeout(() => this.scrollToFragment(fragmentId, attempt + 1), 80);
     }
   }
 }
