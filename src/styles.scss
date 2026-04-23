@@ -381,6 +381,15 @@ app-about {
     padding-right: 5rem;
   }
 }
+// fix this
+  /* Fix horizontal overflow caused by animations or large content */
+  html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
+
+
 
 
 

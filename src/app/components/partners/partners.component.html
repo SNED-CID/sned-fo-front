@@ -27,7 +27,11 @@
           <div class="partners-container" aria-label="Partners logos">
             @if (partners().length === 0) { @for (image of pocCorporateImages;
             track $index) {
-            <div class="partner-card partner-card--poc" aria-label="POC partner card">
+            <div
+              class="partner-card partner-card--poc cursor-pointer"
+              aria-label="POC partner card"
+              [attr.data-partner-url]="getCardUrl($index, true)"
+            >
               <img
                 [src]="image.imageUrl"
                 [alt]="image.title"
@@ -48,9 +52,8 @@
             @for (partner of partners(); track $index) {
             <div
               class="partner-card"
-              [class.cursor-pointer]="partner.urlPartner"
-              [class.opacity-50]="!partner.urlPartner"
-              (click)="openPartnerUrl($event, partner.urlPartner)"
+              [class.cursor-pointer]="true"
+              [attr.data-partner-url]="getCardUrl($index, false)"
             >
               <img
                 [src]="partner.logoUrl"
@@ -78,7 +81,11 @@
 
             @if (partners().length === 0) { @for (image of pocCorporateImages;
             track 'dup-poc-' + $index) {
-            <div class="partner-card partner-card--poc" aria-hidden="true">
+            <div
+              class="partner-card partner-card--poc cursor-pointer"
+              aria-hidden="true"
+              [attr.data-partner-url]="getCardUrl($index, true)"
+            >
               <img
                 [src]="image.imageUrl"
                 [alt]="image.title"
@@ -97,7 +104,11 @@
             </div>
             } } @else {
             @for (partner of partners(); track 'dup-real-' + $index) {
-            <div class="partner-card" aria-hidden="true">
+            <div
+              class="partner-card cursor-pointer"
+              aria-hidden="true"
+              [attr.data-partner-url]="getCardUrl($index, false)"
+            >
               <img
                 [src]="partner.logoUrl"
                 [alt]="partner.name"
