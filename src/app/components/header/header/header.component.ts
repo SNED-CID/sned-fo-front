@@ -537,6 +537,21 @@ export class HeaderComponent implements OnInit, OnDestroy {
     return `home.sections.${section}.subtitle`;
   }
 
+  getDefaultSubtitlePrimaryWord(): string {
+    const subtitle = this.translateService.instant('home.sections.default.subtitle') || '';
+    const parts = subtitle.trim().split(/\s+/).filter(Boolean);
+    return parts[0] || '';
+  }
+
+  getDefaultSubtitleSecondaryWords(): string {
+    const subtitle = this.translateService.instant('home.sections.default.subtitle') || '';
+    const parts = subtitle.trim().split(/\s+/).filter(Boolean);
+    if (parts.length <= 1) {
+      return '';
+    }
+    return parts.slice(1).join(' ');
+  }
+
   shouldShowSubtitle(): boolean {
     const section = this.currentSection();
     return section !== 'default' && section !== 'appels_offres';

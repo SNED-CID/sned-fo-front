@@ -193,6 +193,11 @@ export class PartnersComponent implements OnInit, AfterViewInit, OnDestroy {
       return;
     }
 
+    const target = event.target as HTMLElement | null;
+    if (target?.closest('.partner-tooltip-link')) {
+      return;
+    }
+
     const viewport = this.partnersViewport?.nativeElement;
     if (!viewport) {
       return;
