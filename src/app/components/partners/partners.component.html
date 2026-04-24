@@ -51,8 +51,7 @@
             @for (partner of partners(); track $index) {
             <div
               class="partner-card"
-              [class.cursor-pointer]="true"
-              [attr.data-partner-url]="partner.urlPartner || null"
+              [class.cursor-pointer]="!!getPartnerHref(partner.urlPartner)"
             >
               <img
                 [src]="partner.logoUrl"
@@ -64,7 +63,19 @@
 
               <div class="partner-tooltip">
                 <h3>
+                  @if (getPartnerHref(partner.urlPartner); as partnerHref) {
+                  <a
+                    [href]="partnerHref"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="partner-tooltip-link"
+                    (click)="$event.stopPropagation()"
+                  >
+                    {{ partner.name }}
+                  </a>
+                  } @else {
                   <b>{{ partner.name }}</b>
+                  }
                 </h3>
                 <p>
                   {{
@@ -105,7 +116,7 @@
             <div
               class="partner-card cursor-pointer"
               aria-hidden="true"
-              [attr.data-partner-url]="partner.urlPartner || null"
+              [class.cursor-pointer]="!!getPartnerHref(partner.urlPartner)"
             >
               <img
                 [src]="partner.logoUrl"
@@ -117,7 +128,19 @@
 
               <div class="partner-tooltip">
                 <h3>
+                  @if (getPartnerHref(partner.urlPartner); as partnerHref) {
+                  <a
+                    [href]="partnerHref"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="partner-tooltip-link"
+                    (click)="$event.stopPropagation()"
+                  >
+                    {{ partner.name }}
+                  </a>
+                  } @else {
                   <b>{{ partner.name }}</b>
+                  }
                 </h3>
                 <p>
                   {{

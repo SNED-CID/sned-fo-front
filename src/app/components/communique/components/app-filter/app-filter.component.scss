@@ -45,8 +45,8 @@
     position: relative;
 
     &.is-open .sort-trigger {
-      border-color: var(--sned-orange);
-      box-shadow: 0 0 0 3px rgba(248, 152, 81, 0.24);
+      border-color: #117a9c;
+      box-shadow: 0 0 0 3px rgba(19, 157, 204, 0.2);
     }
   }
 
@@ -78,8 +78,8 @@
     }
 
     &:focus {
-      border-color: var(--sned-orange);
-      box-shadow: 0 0 0 3px rgba(248, 152, 81, 0.24);
+      border-color: #117a9c;
+      box-shadow: 0 0 0 3px rgba(19, 157, 204, 0.2);
     }
   }
 

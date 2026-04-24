@@ -192,6 +192,19 @@
 
   &:hover .partner-tooltip {
     opacity: 1;
+    pointer-events: auto;
+  }
+
+  .partner-tooltip-link {
+    color: var(--partners-blue-100);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 700;
+    cursor: pointer;
+
+    &:hover {
+      color: #ffffff;
+    }
   }
 
   @media (max-width: 768px) {

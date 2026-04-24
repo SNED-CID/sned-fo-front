@@ -97,14 +97,11 @@ export class PartnersComponent implements OnInit, AfterViewInit, OnDestroy {
   private lastFrameTime = 0;
   private currentOffset = 0;
   private singleSetWidth = 0;
-  private readonly autoSpeedPxPerSec = 32;
+  private readonly autoSpeedPxPerSec = 60;
 
   private isHovered = false;
   private pointerDown = false;
   private dragMoved = false;
-  private lastPartnerPointerUpTimestamp = 0;
-  private lastPartnerPointerUpCard: HTMLElement | null = null;
-  private readonly doubleClickThresholdMs = 400;
   private dragStartX = 0;
   private dragStartOffset = 0;
 
@@ -173,27 +170,12 @@ export class PartnersComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  openPartnerUrl(event: Event, url?: string): void {
-    if (this.dragMoved) {
-      this.dragMoved = false;
-      return;
-    }
-
+  getPartnerHref(url?: string): string | null {
     if (!url) {
-      return;
+      return null;
     }
 
-    const normalizedUrl = this.normalizeUrl(url);
-
-    if (!normalizedUrl) {
-      return;
-    }
-
-    window.open(normalizedUrl, '_blank', 'noopener,noreferrer');
-
-    // Keep click behavior explicit and prevent accidental text selection side effects.
-    event.preventDefault();
-    event.stopPropagation();
+    return this.normalizeUrl(url);
   }
 
   onViewportMouseEnter(): void {
@@ -244,41 +226,8 @@ export class PartnersComponent implements OnInit, AfterViewInit, OnDestroy {
       viewport.releasePointerCapture(event.pointerId);
     }
 
-    if (event.type === 'pointerup' && !this.dragMoved) {
-      const partnerCard = this.getPartnerCardUnderPointer(event);
-
-      if (partnerCard) {
-        const now = Date.now();
-        const isDoubleClick =
-          this.lastPartnerPointerUpCard === partnerCard
-          && now - this.lastPartnerPointerUpTimestamp <= this.doubleClickThresholdMs;
-
-        this.lastPartnerPointerUpTimestamp = now;
-        this.lastPartnerPointerUpCard = partnerCard;
-
-        if (isDoubleClick) {
-          const url = partnerCard.getAttribute('data-partner-url') ?? undefined;
-          this.openPartnerUrl(event, url);
-          this.lastPartnerPointerUpTimestamp = 0;
-          this.lastPartnerPointerUpCard = null;
-        }
-      }
-    }
-
     this.pointerDown = false;
     this.isDragging.set(false);
-  }
-
-  private getPartnerCardUnderPointer(event: PointerEvent): HTMLElement | null {
-    const viewport = this.partnersViewport?.nativeElement;
-    const targetElement = document.elementFromPoint(event.clientX, event.clientY) as HTMLElement | null;
-    const partnerCard = targetElement?.closest('.partner-card') as HTMLElement | null;
-
-    if (!viewport || !partnerCard) {
-      return null;
-    }
-
-    return viewport.contains(partnerCard) ? partnerCard : null;
   }
 
   private startAutoScroll(): void {

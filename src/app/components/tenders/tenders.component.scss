@@ -132,9 +132,9 @@ $shadow-xl:
     }
 
     &.is-open .sort-trigger {
-      border-color: $primary-orange;
+      border-color: #117a9c;
       box-shadow:
-        0 0 0 4px rgba(248, 152, 81, 0.24),
+        0 0 0 4px rgba(19, 157, 204, 0.2),
         $shadow-md;
     }
   }
@@ -177,9 +177,9 @@ $shadow-xl:
 
     &:focus {
       outline: none;
-      border-color: $primary-orange;
+      border-color: #117a9c;
       box-shadow:
-        0 0 0 4px rgba(248, 152, 81, 0.24),
+        0 0 0 4px rgba(19, 157, 204, 0.2),
         $shadow-md;
     }
 
