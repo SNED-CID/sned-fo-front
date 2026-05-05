@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PreviewTokenService } from './preview-token.service';
 
+
 export interface CommuniqueReadDTO {
   id: number;
   title: string;
@@ -16,6 +17,8 @@ export interface CommuniqueReadDTO {
   imageUUID: string;
   publicationStatus: PublicationStatus;
 }
+
+
 
 export enum PublicationStatus {
   PUBLISHED = 'PUBLISHED',
@@ -49,6 +52,7 @@ export enum SortDirection {
   providedIn: 'root',
 })
 export class CommuniqueService {
+
   BASE_URL: string = `${environment.apiUrl}/v1/communiques`;
   
   //BASE_URL: string = `http://localhost:8081/api/v1/communiques`;
@@ -59,6 +63,7 @@ export class CommuniqueService {
     private http: HttpClient,
     private previewTokenService: PreviewTokenService,
   ) {}
+
 
   getImageByUUID(
     imageUUID: string,

@@ -90,6 +90,7 @@ export class CommuniquePage implements OnInit {
     this.fetchCommuniques({ filter, page: 0, size: this.rows });
   }
 
+
   onPageChange(event: any) {
     this.fetchCommuniques({
       filter: this.currentFilter,
