@@ -69,6 +69,7 @@ export class CommuniquePage implements OnInit {
       .getFilteredCommunique(this.currentFilter, this.currentPage, this.rows)
       .subscribe({
         next: (data: any) => {
+          console.log("voici data : " , data);
           this.filteredCommuniques = data.content ?? [];
           console.log('Communiqués récupérés:', this.filteredCommuniques);
           this.totalPages = data.totalPages ?? 0;

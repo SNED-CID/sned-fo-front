@@ -50,7 +50,7 @@ export enum SortDirection {
 })
 export class CommuniqueService {
   BASE_URL: string = `${environment.apiUrl}/v1/communiques`;
-
+  
   //BASE_URL: string = `http://localhost:8081/api/v1/communiques`;
 
   public communiqueImages: { [key: string]: string } = {};
@@ -82,9 +82,11 @@ export class CommuniqueService {
       .set('size', size.toString());
 
     const url: string = this.BASE_URL + endpoint;
+    console.log("voici url " , url);
 
     return this.http.post<Page<CommuniqueReadDTO>>(url, communiqueFilter, {
       params,
     });
   }
+
 }

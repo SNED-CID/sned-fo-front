@@ -14,6 +14,7 @@ import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
 import { ScrollAnimationDirective } from '../../directives/scroll-animation.directive';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PartnersComponent } from '../partners/partners.component';
+import { CareerService } from '../../services/career.service';
 
 interface Section {
   id: string;
@@ -44,126 +45,137 @@ interface Section {
       <div
         class="w-full mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 space-y-24 lg:space-y-32 2xl:space-y-40 bg-white rounded-lg max-w-7xl lg:max-w-full 2xl:max-w-none"
       >
-        @for (section of sections; track $index; let i = $index) { @defer (on
+        @for (section of sections; track $index; let i = $index) {
+          @defer (on
         immediate; prefetch on idle) {
-        <div class="grid md:grid-cols-2 gap-12 lg:gap-16 2xl:gap-20">
-          <!-- Image -->
-          <div
-            class="flex items-center relative"
-            [id]="section.id"
-            [ngClass]="{
-              'order-first md:order-last': i % 2 === 1,
-              'md:justify-start': i % 2 === 0,
-              'md:justify-end': i % 2 === 1
-            }"
-            appScrollAnimation
-            [animationType]="'fadeUp'"
-            [animationDelay]="i * 100"
-          >
-            <!-- Section SNED-SECEGSA avec logos côte à côte -->
-            @if (section.id === 'sned_secegsa') {
-            <div
-              class="w-full max-w-md lg:max-w-lg 2xl:max-w-2xl aspect-[16/10] max-h-[320px] lg:max-h-[360px] flex items-center justify-center gap-8 p-8 lg:p-12 bg-gradient-to-r from-blue-50 to-orange-50 rounded-2xl shadow-lg"
-              [ngClass]="{ 'mr-auto': i % 2 === 0, 'ml-auto': i % 2 === 1 }"
-            >
-              <app-lazy-image
-                src="assets/logos/snednotext.png"
-                alt="SNED Logo"
-                imageClass="h-20 w-auto object-contain"
-                width="auto"
-                height="5rem"
-                [priority]="true"
-              >
-              </app-lazy-image>
-              <div class="text-3xl font-bold text-gray-400">+</div>
-              <app-lazy-image
-                src="assets/logos/secegsa.png"
-                alt="SECEGSA Logo"
-                imageClass="h-20 w-auto object-contain"
-                width="auto"
-                height="5rem"
-                [priority]="true"
-              >
-              </app-lazy-image>
-            </div>
-            }
-
-            <!-- Autres sections avec image normale -->
-            @if (section.id !== 'sned_secegsa') {
-            <app-lazy-image
-              [src]="section.image"
-              [alt]="section.title"
-              imageClass="rounded-2xl shadow-lg w-full max-w-md lg:max-w-lg 2xl:max-w-2xl aspect-[16/10] max-h-[320px] lg:max-h-[360px] object-cover"
-              width="100%"
-              height="auto"
-            >
-            </app-lazy-image>
-            }
-          </div>
-
-          <!-- Texte -->
-          <div class="flex flex-col items-center justify-center">
-            <div
-              class="w-full"
-              appScrollAnimation
-              [animationType]="'fadeUp'"
-              [animationDelay]="i * 100 + 50"
-            >
-              <h2
-                class="text-3xl lg:text-4xl xl:text-5xl font-bold text-primary mb-6 lg:mb-8"
-              >
-                {{ section.title }}
-              </h2>
-              <p
-                class="text-base lg:text-lg text-gray-700 mb-6 lg:mb-8 line-clamp-3 leading-relaxed"
-              >
-                {{ section.short }}
-              </p>
-            </div>
-            <app-read-more
-              [imageUrl]="section.image"
-              [label]="'shared.readmore.read_more' | translate"
-              [title]="section.title"
-              [paragraphs]="section.paragraphs"
-              [sectionId]="section.id"
-              [nextSectionId]="getNextSection(i)?.id || null"
-              [nextSectionTitle]="getNextSection(i)?.title || null"
-              (navigateToSection)="onNavigateToSection($event)"
-            >
-            </app-read-more>
-          </div>
-        </div>
-        } @placeholder {
-        <div class="grid md:grid-cols-2 gap-10 animate-pulse">
-          <div class="w-3/4 h-64 bg-gray-200 rounded-2xl mx-auto"></div>
-          <div class="space-y-4">
-            <div class="h-8 bg-gray-200 rounded w-3/4"></div>
-            <div class="h-4 bg-gray-200 rounded w-full"></div>
-            <div class="h-4 bg-gray-200 rounded w-5/6"></div>
-            <div class="h-10 bg-gray-200 rounded w-32"></div>
-          </div>
-        </div>
-        } @loading (minimum 300ms) {
-        <div class="grid md:grid-cols-2 gap-10">
-          <div
-            class="flex items-center justify-center w-3/4 h-64 bg-gray-100 rounded-2xl mx-auto"
-          >
-            <div class="text-center">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-16 2xl:gap-20">
+              <!-- Image -->
               <div
-                class="w-8 h-8 border-4 border-[var(--sned-orange)] border-t-transparent rounded-full animate-spin mx-auto mb-2"
-              ></div>
-              <p class="text-sm text-gray-500">Chargement...</p>
+                class="flex items-center relative"
+                [id]="section.id"
+                [ngClass]="{
+                  'order-first md:order-last': i % 2 === 1,
+                  'md:justify-start': i % 2 === 0,
+                  'md:justify-end': i % 2 === 1,
+                }"
+                appScrollAnimation
+                [animationType]="'fadeUp'"
+                [animationDelay]="i * 100"
+              >
+                <!-- Section SNED-SECEGSA avec logos côte à côte -->
+                @if (section.id === 'sned_secegsa') {
+                  <div
+                    class="w-full max-w-md lg:max-w-lg 2xl:max-w-2xl aspect-[16/10] max-h-[320px] lg:max-h-[360px] flex items-center justify-center gap-8 p-8 lg:p-12 bg-gradient-to-r from-blue-50 to-orange-50 rounded-2xl shadow-lg"
+                    [ngClass]="{
+                      'mr-auto': i % 2 === 0,
+                      'ml-auto': i % 2 === 1,
+                    }"
+                  >
+                    <app-lazy-image
+                      src="assets/logos/snednotext.png"
+                      alt="SNED Logo"
+                      imageClass="h-20 w-auto object-contain"
+                      width="auto"
+                      height="5rem"
+                      [priority]="true"
+                    >
+                    </app-lazy-image>
+                    <div class="text-3xl font-bold text-gray-400">+</div>
+                    <app-lazy-image
+                      src="assets/logos/secegsa.png"
+                      alt="SECEGSA Logo"
+                      imageClass="h-20 w-auto object-contain"
+                      width="auto"
+                      height="5rem"
+                      [priority]="true"
+                    >
+                    </app-lazy-image>
+                  </div>
+                }
+
+                <!-- Autres sections avec image normale -->
+                @if (section.id !== 'sned_secegsa') {
+                  <app-lazy-image
+                    [src]="section.image"
+                    [alt]="section.title"
+                    imageClass="rounded-2xl shadow-lg w-full max-w-md lg:max-w-lg 2xl:max-w-2xl aspect-[16/10] max-h-[320px] lg:max-h-[360px] object-cover"
+                    width="100%"
+                    height="auto"
+                  >
+                  </app-lazy-image>
+                }
+              </div>
+
+              <!-- Texte -->
+              <div class="flex flex-col items-center justify-center">
+                <div
+                  class="w-full"
+                  appScrollAnimation
+                  [animationType]="'fadeUp'"
+                  [animationDelay]="i * 100 + 50"
+                >
+                  <h2
+                    class="text-3xl lg:text-4xl xl:text-5xl font-bold text-primary mb-6 lg:mb-8"
+                  >
+                    {{ section.title }}
+                  </h2>
+                  <p
+                    class="text-base lg:text-lg text-gray-700 mb-6 lg:mb-8 line-clamp-3 leading-relaxed"
+                  >
+                    {{ section.short }}
+                  </p>
+                </div>
+                <app-read-more
+                  [imageUrl]="section.image"
+                  [label]="'shared.readmore.read_more' | translate"
+                  [title]="section.title"
+                  [paragraphs]="section.paragraphs"
+                  [sectionId]="section.id"
+                  [nextSectionId]="getNextSection(i)?.id || null"
+                  [nextSectionTitle]="getNextSection(i)?.title || null"
+                  (navigateToSection)="onNavigateToSection($event)"
+                >
+                </app-read-more>
+              </div>
             </div>
-          </div>
-          <div class="flex items-center">
-            <div class="w-full space-y-4">
-              <div class="h-8 bg-gray-200 rounded w-3/4 animate-pulse"></div>
-              <div class="h-4 bg-gray-200 rounded w-full animate-pulse"></div>
-              <div class="h-4 bg-gray-200 rounded w-5/6 animate-pulse"></div>
+          } @placeholder {
+            <div class="grid md:grid-cols-2 gap-10 animate-pulse">
+              <div class="w-3/4 h-64 bg-gray-200 rounded-2xl mx-auto"></div>
+              <div class="space-y-4">
+                <div class="h-8 bg-gray-200 rounded w-3/4"></div>
+                <div class="h-4 bg-gray-200 rounded w-full"></div>
+                <div class="h-4 bg-gray-200 rounded w-5/6"></div>
+                <div class="h-10 bg-gray-200 rounded w-32"></div>
+              </div>
             </div>
-          </div>
-        </div>
-        } }
+          } @loading (minimum 300ms) {
+            <div class="grid md:grid-cols-2 gap-10">
+              <div
+                class="flex items-center justify-center w-3/4 h-64 bg-gray-100 rounded-2xl mx-auto"
+              >
+                <div class="text-center">
+                  <div
+                    class="w-8 h-8 border-4 border-[var(--sned-orange)] border-t-transparent rounded-full animate-spin mx-auto mb-2"
+                  ></div>
+                  <p class="text-sm text-gray-500">Chargement...</p>
+                </div>
+              </div>
+              <div class="flex items-center">
+                <div class="w-full space-y-4">
+                  <div
+                    class="h-8 bg-gray-200 rounded w-3/4 animate-pulse"
+                  ></div>
+                  <div
+                    class="h-4 bg-gray-200 rounded w-full animate-pulse"
+                  ></div>
+                  <div
+                    class="h-4 bg-gray-200 rounded w-5/6 animate-pulse"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          }
+        }
       </div>
     </section>
 
@@ -248,35 +260,37 @@ interface Section {
               "
             >
               @defer (on viewport; prefetch on idle) {
-              <div class="p-6 text-center group">
-                <app-lazy-image
-                  src="assets/images/orga.png"
-                  alt="organigramme"
-                  imageClass="rounded-lg shadow-md w-full max-w-md lg:max-w-lg 2xl:max-w-2xl aspect-[16/10] max-h-[320px] lg:max-h-[360px] object-cover transition-all duration-500 ease-out hover:scale-110 hover:shadow-2xl cursor-pointer group-hover:opacity-100"
-                  width="100%"
-                  height="auto"
-                >
-                </app-lazy-image>
-              </div>
+                <div class="p-6 text-center group">
+                  <app-lazy-image
+                    src="assets/images/orga.png"
+                    alt="organigramme"
+                    imageClass="rounded-lg shadow-md w-full max-w-md lg:max-w-lg 2xl:max-w-2xl aspect-[16/10] max-h-[320px] lg:max-h-[360px] object-cover transition-all duration-500 ease-out hover:scale-110 hover:shadow-2xl cursor-pointer group-hover:opacity-100"
+                    width="100%"
+                    height="auto"
+                  >
+                  </app-lazy-image>
+                </div>
               } @placeholder {
-              <div class="p-6 text-center">
-                <div
-                  class="w-full h-64 bg-gray-200 rounded-lg animate-pulse"
-                ></div>
-              </div>
+                <div class="p-6 text-center">
+                  <div
+                    class="w-full h-64 bg-gray-200 rounded-lg animate-pulse"
+                  ></div>
+                </div>
               } @loading {
-              <div class="p-6 text-center">
-                <div
-                  class="flex items-center justify-center w-full h-64 bg-gray-100 rounded-lg"
-                >
-                  <div class="text-center">
-                    <div
-                      class="w-12 h-12 border-4 border-[var(--sned-blue)] border-t-transparent rounded-full animate-spin mx-auto mb-4"
-                    ></div>
-                    <p class="text-gray-600">Chargement de l'organigramme...</p>
+                <div class="p-6 text-center">
+                  <div
+                    class="flex items-center justify-center w-full h-64 bg-gray-100 rounded-lg"
+                  >
+                    <div class="text-center">
+                      <div
+                        class="w-12 h-12 border-4 border-[var(--sned-blue)] border-t-transparent rounded-full animate-spin mx-auto mb-4"
+                      ></div>
+                      <p class="text-gray-600">
+                        Chargement de l'organigramme...
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
               }
             </div>
           </div>
@@ -324,9 +338,12 @@ interface Section {
           {{ 'header.menu.careers' | translate }}
         </h2>
 
-        <div id="carrieres" class="pt-4 pb-8 lg:pt-6 lg:pb-10 w-full text-center">
+        <div
+          id="carrieres"
+          class="pt-4 pb-8 lg:pt-6 lg:pb-10 w-full text-center"
+        >
           <p class="text-lg lg:text-xl text-white font-medium mb-6">
-            {{ 'careers.cta_text' | translate }}
+            {{ careerContent }}
           </p>
           <a
             routerLink="/contact"
@@ -360,49 +377,50 @@ interface Section {
 
     <!-- Bouton Retour en haut amélioré -->
     @if (showScrollTop) {
-    <button
-      (click)="scrollToTop()"
-      class="cursor-pointer fixed bottom-6 right-6 z-50
+      <button
+        (click)="scrollToTop()"
+        class="cursor-pointer fixed bottom-6 right-6 z-50
                  w-14 h-14 flex items-center justify-center
                  rounded-full shadow-xl border-2 border-white
                  bg-gradient-to-br from-[var(--sned-blue)] to-[var(--sned-blue-dark)] text-white
                  hover:from-[var(--sned-orange)] hover:to-orange-600 hover:scale-110
                  active:scale-95 transition-all duration-300 ease-in-out
                  backdrop-blur-sm group"
-    >
-      <i class="fa-solid fa-arrow-up text-xl group-hover:animate-bounce"></i>
-      <!-- Effet de brillance au survol -->
-      <div
-        class="absolute inset-0 rounded-full opacity-0 group-hover:opacity-30
+      >
+        <i class="fa-solid fa-arrow-up text-xl group-hover:animate-bounce"></i>
+        <!-- Effet de brillance au survol -->
+        <div
+          class="absolute inset-0 rounded-full opacity-0 group-hover:opacity-30
                     bg-gradient-to-t from-transparent via-white to-transparent
                     transition-opacity duration-300"
-      ></div>
-    </button>
+        ></div>
+      </button>
     }
   `,
 })
 export class AboutComponent implements OnInit {
   sections: Section[] = [];
+  careerContent: string = '';
   @ViewChildren(ReadMoreComponent)
   readMoreComponents!: QueryList<ReadMoreComponent>;
 
   constructor(
     private translateService: TranslateService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private careerService: CareerService,
   ) {}
 
   ngOnInit() {
     this.initializeSections();
+    this.handleCareer();
 
-    // S'abonner aux changements de langue
     this.translateService.onLangChange.subscribe(() => {
       this.initializeSections();
+      this.handleCareer();
     });
 
-    // Écouter les changements du fragment dans l'URL
     this.activatedRoute.fragment.subscribe((fragment) => {
       if (fragment) {
-        // Délai pour laisser le DOM se charger et les éléments se rendre
         setTimeout(() => {
           this.scrollToFragment(fragment);
         }, 100);
@@ -431,7 +449,7 @@ export class AboutComponent implements OnInit {
         title: this.translateService.instant('about.sned_secegsa.title'),
         short: this.translateService.instant('about.sned_secegsa.short'),
         paragraphs: this.translateService.instant(
-          'about.sned_secegsa.paragraphs'
+          'about.sned_secegsa.paragraphs',
         ),
         image: 'assets/images/cooperation.jpg',
       },
@@ -452,6 +470,24 @@ export class AboutComponent implements OnInit {
 
   toggleOrganigramme() {
     this.isOrganigrammeExpanded = !this.isOrganigrammeExpanded;
+  }
+
+  handleCareer() {
+    const lang = this.translateService.getCurrentLang();
+    this.careerService.getCareer(lang).subscribe({
+      next: (career) => {
+        this.careerContent = this.stripHtmlAndEntities(career.content);
+      },
+      error: (error) => {
+        console.error('Error loading career:', error);
+      },
+    });
+  }
+
+  private stripHtmlAndEntities(html: string): string {
+    const temp = document.createElement('div');
+    temp.innerHTML = html;
+    return temp.textContent || temp.innerText || '';
   }
 
   getNextSection(currentIndex: number): { id: string; title: string } | null {
@@ -477,7 +513,7 @@ export class AboutComponent implements OnInit {
     return {
       id: 'conseil-administration-section',
       title: this.translateService.instant(
-        'about.conseil_administration.title'
+        'about.conseil_administration.title',
       ),
     };
   }
@@ -500,7 +536,7 @@ export class AboutComponent implements OnInit {
       if (sectionId !== 'organigramme') {
         setTimeout(() => {
           const readMoreComponent = this.readMoreComponents.find(
-            (comp) => comp.sectionId === sectionId
+            (comp) => comp.sectionId === sectionId,
           );
           if (readMoreComponent) {
             readMoreComponent.openSidebarFromExternal();
@@ -519,7 +555,8 @@ export class AboutComponent implements OnInit {
     if (element) {
       // Offset keeps the section visible below the fixed header.
       const headerOffset = 112;
-      const targetTop = element.getBoundingClientRect().top + window.scrollY - headerOffset;
+      const targetTop =
+        element.getBoundingClientRect().top + window.scrollY - headerOffset;
       window.scrollTo({
         top: Math.max(targetTop, 0),
         behavior: 'smooth',
