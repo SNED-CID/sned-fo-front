@@ -25,29 +25,7 @@
       >
         <div class="partners-marquee-track" #partnersTrack>
           <div class="partners-container" aria-label="Partners logos">
-            @if (partners().length === 0) { @for (image of pocCorporateImages;
-            track $index) {
-            <div
-              class="partner-card partner-card--poc cursor-pointer"
-              aria-label="POC partner card"
-            >
-              <img
-                [src]="image.imageUrl"
-                [alt]="image.title"
-                class="partner-stock-image"
-                loading="lazy"
-                draggable="false"
-                (dragstart)="$event.preventDefault()"
-              />
-
-              <div class="partner-tooltip">
-                <h3>
-                  <b>{{ image.title }}</b>
-                </h3>
-                <p>POC Partner</p>
-              </div>
-            </div>
-            } } @else {
+            
             @for (partner of partners(); track $index) {
             <div
               class="partner-card"
@@ -88,31 +66,9 @@
               </div>
             </div>
             }
-            }
+            
 
-            @if (partners().length === 0) { @for (image of pocCorporateImages;
-            track 'dup-poc-' + $index) {
-            <div
-              class="partner-card partner-card--poc cursor-pointer"
-              aria-hidden="true"
-            >
-              <img
-                [src]="image.imageUrl"
-                [alt]="image.title"
-                class="partner-stock-image"
-                loading="lazy"
-                draggable="false"
-                (dragstart)="$event.preventDefault()"
-              />
-
-              <div class="partner-tooltip">
-                <h3>
-                  <b>{{ image.title }}</b>
-                </h3>
-                <p>POC Partner</p>
-              </div>
-            </div>
-            } } @else {
+            
             @for (partner of partners(); track 'dup-real-' + $index) {
             <div
               class="partner-card cursor-pointer"
@@ -154,7 +110,7 @@
               </div>
             </div>
             }
-            }
+            
           </div>
         </div>
       </div>

@@ -8,8 +8,7 @@ import { registerLocaleData } from '@angular/common';
 export class LocaleService {
   private readonly translateService = inject(TranslateService);
 
-  constructor() {
-  }
+  constructor() {}
 
   setLanguage(language: string): void {
     localStorage.setItem('language', language);
@@ -34,7 +33,7 @@ export class LocaleService {
       case 'en':
         return 'en-US';
       default:
-        return 'en-US';
+        return 'fr-FR';
     }
   }
 
@@ -45,7 +44,7 @@ export class LocaleService {
       case 'en':
         return localeEn;
       default:
-        return localeEn;
+        return localeFr;
     }
   }
 }

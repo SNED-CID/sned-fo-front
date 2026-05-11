@@ -1,27 +1,43 @@
-import {APP_INITIALIZER, ApplicationConfig, provideZoneChangeDetection} from '@angular/core';
+import {
+  APP_INITIALIZER,
+  ApplicationConfig,
+  provideZoneChangeDetection,
+} from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-import {provideAnimations} from '@angular/platform-browser/animations';
-import {provideTranslateService, TranslateService} from '@ngx-translate/core';
-import {provideTranslateHttpLoader} from '@ngx-translate/http-loader';
-import {provideHttpClient, withInterceptorsFromDi, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {
+  provideClientHydration,
+  withEventReplay,
+} from '@angular/platform-browser';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideTranslateService, TranslateService } from '@ngx-translate/core';
+import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
+import {
+  provideHttpClient,
+  withInterceptorsFromDi,
+  HTTP_INTERCEPTORS,
+} from '@angular/common/http';
 import { PreviewTokenInterceptor } from './interceptors/preview-token.interceptor';
 import { PreviewTokenService } from './services/preview-token.service';
 
-function initializePreviewToken(previewTokenService: PreviewTokenService): () => void {
+function initializePreviewToken(
+  previewTokenService: PreviewTokenService,
+): () => void {
   return () => {
-   previewTokenService.hasToken();
+    previewTokenService.hasToken();
   };
 }
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }),
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
     provideHttpClient(withInterceptorsFromDi()),
-    provideRouter(routes), provideClientHydration(withEventReplay()), provideAnimations(),
+    provideRouter(routes),
+    provideClientHydration(withEventReplay()),
+    provideAnimations(),
     provideTranslateService({
-      // lang: 'en',
-      fallbackLang: 'en',
+      // lang: 'fr',
+      fallbackLang: 'fr',
       loader: provideTranslateHttpLoader({
         prefix: './assets/i18n/',
         suffix: '.json',
@@ -41,9 +57,10 @@ export const appConfig: ApplicationConfig = {
     {
       provide: APP_INITIALIZER,
       useFactory: (translate: TranslateService) => () => {
-        translate.use(translate.getBrowserLang() || 'en')
+        translate.use('fr');
       },
       deps: [TranslateService],
       multi: true,
-    },]
+    },
+  ],
 };

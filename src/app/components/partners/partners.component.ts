@@ -42,48 +42,7 @@ export class PartnersComponent implements OnInit, AfterViewInit, OnDestroy {
 
   partners = signal<PartnerWithLogo[]>([]);
 
-  pocCorporateImages: PocCorporateImage[] = [
-    {
-      title: 'Global Infrastructure Team',
-      imageUrl:
-        'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1000&q=70',
-    },
-    {
-      title: 'Engineering Collaboration',
-      imageUrl:
-        'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1000&q=70',
-    },
-    {
-      title: 'Corporate Board Room',
-      imageUrl:
-        'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=70',
-    },
-    {
-      title: 'Project Planning Office',
-      imageUrl:
-        'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=70',
-    },
-    {
-      title: 'Business Meeting',
-      imageUrl:
-        'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1000&q=70',
-    },
-    {
-      title: 'Transport Logistics Team',
-      imageUrl:
-        'https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=1000&q=70',
-    },
-    {
-      title: 'International Partnership',
-      imageUrl:
-        'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1000&q=70',
-    },
-    {
-      title: 'Construction Management',
-      imageUrl:
-        'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1000&q=70',
-    },
-  ];
+  
 
   @ViewChild('partnersViewport')
   partnersViewport?: ElementRef<HTMLDivElement>;
