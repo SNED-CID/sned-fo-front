@@ -90,7 +90,51 @@
         "title": "Appels d'Offres",
         "desc": "Les opportunités de marché et d'engagement dans le projet SNED",
         "subtitle": "Appels d'Offres"
+      },
+
+
+
+
+      "description_du_projet": {
+        "title": "Description du projet",
+        "desc": "Description du projet du SNED",
+        "subtitle": "Description du projet du SNED"
+      },
+      "Historique_du_projet": {
+        "title": "Historique du projet",
+        "desc": "Historique du projet du SNED",
+        "subtitle": "Historique du projet du SNED"
+      },
+      "Recherche_sur_le_milieu_physique": {
+        "title": "Recherche sur le milieu physique",
+        "desc": "Recherche sur le milieu physique du projet du SNED",
+        "subtitle": "Recherche sur le milieu physique du projet du SNED"
+      },
+      "Ingénierie_du_projet": {
+        "title": "Ingénierie du projet",
+        "desc": "Ingénierie du projet du SNED",
+        "subtitle": "Ingénierie du projet du SNED"
+      },
+      "Aspects_juridiques":{
+        "title": "Aspects juridiques",
+        "desc": "Aspects juridiques du projet du SNED",
+        "subtitle": "Aspects juridiques du projet du SNED"
+      },
+      "Réalité_et_perspectives_socio-économiques": {
+        "title": "Réalité et perspectives socio-économiques",
+        "desc": "Réalité et perspectives socio-économiques du projet du SNED",
+        "subtitle": "Réalité et perspectives socio-économiques du projet du SNED"
+      },
+      "Composante_géostratégique": {
+        "title": "La Composante géostratégique",
+        "desc": "Composante géostratégique du projet du SNED",
+        "subtitle": "Composante géostratégique du projet du SNED"
       }
+
+
+
+
+
     },
     "loading_content": "Chargement du contenu...",
     "loading_about": "Préparation de la section À propos..."
@@ -115,13 +159,19 @@
       "appels-offres": "Appels d'offre"
     },
     "project": {
-      "title": "Le Projet",
-      "engineering": "Composante Ingénierie",
-      "history": "Historique",
-      "physical": "Composante Milieu physique",
-      "socioeconomic": "Composante Socio-économique",
-      "promotion": "Composante promotion de projet",
-      "legal": "Mentions légales"
+
+
+      "description_du_projet": "Description du projet",
+      "historique_du_projet": "Historique du projet",
+      "recherche_sur_le_milieu_physique": "Recherche sur le milieu physique",
+      "ingénierie_du_projet": "Ingénierie du projet",
+      "aspects_juridiques": "Aspects juridiques",
+      "réalité_et_perspectives_socioéconomiques": "Réalité et perspectives socio-économiques",
+      "composante_géostratégique": "Composante géostratégique"
+
+
+
+
     },
     "gallery": {
       "title": "Galerie",
@@ -232,7 +282,16 @@
       "statistics_desc": "Données et indicateurs",
       "open_menu": "Ouvrir le menu",
       "close_menu": "Fermer le menu",
-      "discover_project_button": "Découvrir le projet"
+      "discover_project_button": "Découvrir le projet",
+
+
+      "description_du_projet": "Description du projet",
+      "historique_du_projet": "Historique du projet",
+      "recherche_sur_le_milieu_physique": "Recherche sur le milieu physique",
+      "ingénierie_du_projet": "Ingénierie du projet",
+      "aspects_juridiques": "Aspects juridiques",
+      "réalité_et_perspectives_socioéconomiques": "Réalité et perspectives socio-économiques",
+      "composante_géostratégique": "Composante géostratégique"
     },
     "menu": {
       "main_navigation": "Navigation Principale",
@@ -256,7 +315,20 @@
       "partners": "Partenaires",
       "careers": "Nous rejoindre",
       "call_for_tenders": "Appel d'offres",
-      "contact": "Contact"
+      "contact": "Contact",
+
+
+
+      "description_du_projet": "Description du projet",
+      "historique_du_projet": "Historique du projet",
+      "recherche_sur_le_milieu_physique": "Recherche sur le milieu physique",
+      "ingénierie_du_projet": "Ingénierie du projet",
+      "aspects_juridiques": "Aspects juridiques",
+      "réalité_et_perspectives_socioéconomiques": "Réalité et perspectives socio-économiques",
+      "composante_géostratégique": "Composante géostratégique"
+
+
+
     }
   },
   "partners": {
@@ -320,7 +392,7 @@
     },
     "missions": {
       "title": "Missions",
-      "short": "La SNED a pour mission principale de conduire les études relatives à la liaison fixe Europe-Afrique et de promouvoir le projet.",
+      "short": "La réalisation d'études d'une liaison fixe entre l'Europe et l'Afrique à travers le Détroit de Gibraltar, axées sur la conception, les moyens et les modalités de sa construction et de sa mise en exploitation ;\nLa promotion du projet sur le plan national et international, ainsi que la mise en œuvre de toutes opérations de quelque nature qu'elles soient, susceptibles d'en favoriser le développement ou la réalisation au Maroc, en Espagne ou à l'étranger ;\nEt généralement toutes opérations se rattachant directement ou indirectement aux objets ci-dessus.\nAinsi, le périmètre de la mission confiée à la SNED se concentre sur les études, la conception et les propositions de promotion de la liaison fixe. La réalisation à proprement dite de cette liaison fixe n'est pas dans le périmètre des responsabilités de la SNED.",
       "paragraphs": [
         "<strong>La SNED a pour objet social :</strong>",
         "La réalisation d'études d'une liaison fixe entre l'Europe et l'Afrique à travers le Détroit de Gibraltar, axées sur la conception, les moyens et les modalités de sa construction et de sa mise en exploitation ;",
@@ -336,15 +408,21 @@
     },
     "cadre": {
       "title": "Cadre institutionnel",
-      "short": "La SNED est une société anonyme de droit marocain à majorité publique, régie par un ensemble de textes législatifs et réglementaires.",
+      "short": "Rappel du statut juridique de la SNED ; La SNED est une Société Anonyme (SA) dont le capital est divisé en 27.500 actions d'une valeur nominale de 100 Dirhams chacune réparties comme suit : \n• 27 489 actions sont détenues par des Organismes Publiques [1] soit 99,96% ; \n• 11 actions sont détenues par divers administrateurs.",
       "paragraphs": [
         "<strong>Référentiel légal et réglementaire général inhérent au statut juridique de la SNED :</strong>",
-        "<strong>Rappel du statut juridique de la SNED ; La SNED est une Société Anonyme (SA) dont le capital est divisé en 27.500 actions d'une valeur nominale de 100 Dirhams chacune réparties comme suit :</strong> • 27 489 actions sont détenues par des Organismes Publiques [1] soit 99,96% ; • 11 actions sont détenues par divers administrateurs.",
+        "<strong>Rappel du statut juridique de la SNED ; La SNED est une Société Anonyme (SA) dont le capital est divisé en 27.500 actions d'une valeur nominale de 100 Dirhams chacune réparties comme suit :</strong> <br> &nbsp;&nbsp;&nbsp;&nbsp;• 27 489 actions sont détenues par des Organismes Publiques [1] soit 99,96% ;<br> &nbsp;&nbsp;&nbsp;&nbsp;• 11 actions sont détenues par divers administrateurs.",
         "Les caractéristique juridiques de la SNED, telles que présentées ci-dessus et au niveau de la section « Présentation de la SNED », correspondent à la forme juridique « Filiale Publique [2] à participation directe majoritaire de l'Etat » au sens des articles 1 et 15 de la loi 69-00 relative au contrôle financier de l'Etat sur les entreprises publiques et autres organismes, ainsi que l'article 3 de la loi n° 82-20 portant création de l'Agence Nationale de Gestion Stratégique des Participations de l'Etat et de Suivi des Performances des EEP.",
-        "<strong>Textes législatifs et réglementaires applicables à la SNED :</strong> • Statuts de la SNED refondus par l'Assemblée Générale Mixte du 21 juin 2023 ; • Dahir n° 1-03-195 du 16 ramadan 1424 (11 novembre 2003) portant promulgation de la Loi n° 69-00 relative au contrôle financier de l'Etat sur les entreprises publiques et autres organismes (Un nouveau projet de loi portant réforme du texte 69-00 a été examiné le 24 janvier 2023 par la Commission des finances à la chambre des représentants ; ce projet était déjà adopté en Conseil de gouvernement en décembre 2022) ;",
-        "• Dahir n° 1.21.96 du 15 Dou Al-hijja 1442 (26 Juillet 2021) de loi n° 82-20 portant création de l'Agence Nationale de Gestion Stratégique des Participations de l'Etat et de Suivi des Performances des Etablissements et Entreprises Publics (ANGSPE) ; • Loi-cadre n° 50-21 relative à la réforme des établissements et entreprises publics ;",
-        "• Dahir n° 1-11-147 du 16 ramadan 1432 (17 août 2011) portant promulgation de la loi n° 32-10 complétant la loi n° 15-95 formant code de commerce ; • Dahir n° 1-96-124 du 30 août 1996 portant promulgation de la loi n° 17-95 relative aux sociétés anonymes telle qu'elle a été modifiée et complétée • La loi n° 69-21 modifiant la loi n° 15-95 formant code de commerce et édictant des dispositions particulières relatives aux délais de paiement ;",
-        "• Code Général de Normalisation Comptable (C.G.N.C) ; • Dahir n ° 1-92-138 (30 Joumada II 1413) portant promulgation de la loi n ° 9-88 relative aux obligations comptables des commerçants (B.O. 30 décembre 1992) ; • Le Code général des impôts ; • Dahir 1-07-195 du 19 kaada 1428 (30 novembre 2007) portant promulgation de la loi n° 47-06 relative à la fiscalité des collectivités locales ;",
+        "<strong>Textes législatifs et réglementaires applicables à la SNED :</strong> ",
+        "• Statuts de la SNED refondus par l'Assemblée Générale Mixte du 21 juin 2023 ;",
+        " • Dahir n° 1-03-195 du 16 ramadan 1424 (11 novembre 2003) portant promulgation de la Loi n° 69-00 relative au contrôle financier de l'Etat sur les entreprises publiques et autres organismes (Un nouveau projet de loi portant réforme du texte 69-00 a été examiné le 24 janvier 2023 par la Commission des finances à la chambre des représentants ; ce projet était déjà adopté en Conseil de gouvernement en décembre 2022) ;",
+        "• Dahir n° 1.21.96 du 15 Dou Al-hijja 1442 (26 Juillet 2021) de loi n° 82-20 portant création de l'Agence Nationale de Gestion Stratégique des Participations de l'Etat et de Suivi des Performances des Etablissements et Entreprises Publics (ANGSPE) ;",
+        " • Loi-cadre n° 50-21 relative à la réforme des établissements et entreprises publics ;",
+        "• Dahir n° 1-11-147 du 16 ramadan 1432 (17 août 2011) portant promulgation de la loi n° 32-10 complétant la loi n° 15-95 formant code de commerce ;",
+        " • Dahir n° 1-96-124 du 30 août 1996 portant promulgation de la loi n° 17-95 relative aux sociétés anonymes telle qu'elle a été modifiée et complétée",
+        " • La loi n° 69-21 modifiant la loi n° 15-95 formant code de commerce et édictant des dispositions particulières relatives aux délais de paiement ;",
+        "• Code Général de Normalisation Comptable (C.G.N.C) ; ",
+        "• Dahir n ° 1-92-138 (30 Joumada II 1413) portant promulgation de la loi n ° 9-88 relative aux obligations comptables des commerçants (B.O. 30 décembre 1992) ; • Le Code général des impôts ; • Dahir 1-07-195 du 19 kaada 1428 (30 novembre 2007) portant promulgation de la loi n° 47-06 relative à la fiscalité des collectivités locales ;",
         "• Conventions fiscales internationales signées et ratifiées par le Maroc afin d'éviter les doubles impositions et l'évasion fiscale ; • La loi 65-99 relative au Code du travail ; • Dahir n° 1-02-296 du 25 rejeb 1423 (3 octobre 2002) portant promulgation de la loi n° 65-00 relative à l'assurance maladie obligatoire de base ;",
         "• Dahir n° 1-09-15 du 22 safar 1430 (18 février 2009) portant promulgation de la loi n° 09-08 relative à la protection des personnes physiques à l'égard du traitement des données à caractère personnel ; • Loi n° 86-12 relative aux contrats de PPP telle que modifiée par la loi 46-18 du 6 mars 2020 ;",
         "• Dahir n° 1-15-62 du 14 chaâbane 1436 (2 juin 2015) portant promulgation de la loi organique n° 130-13 relative à la loi de finances ; [1] « Organismes Publics : l'Etat, les collectivités locales et les établissements publics » - Article 1 de la loi 69.00. [2] « Filiales publiques : les sociétés dont le capital est détenu à plus de la moitié par des organismes publics » - Article 1 de la loi 69.00. Décret n° 2-15-426 du 28 ramadan 1436 (15 juillet 2015) relatif à l'élaboration et à l'exécution des lois de finance tel qu'il a été modifié et complété ;",
@@ -380,7 +458,7 @@
     },
     "sned_secegsa": {
       "title": "SNED et SECEGSA",
-      "short": "Coopération entre la SNED (Maroc) et la SECEGSA (Espagne) sous la supervision du Comité Mixte Intergouvernemental pour le projet de liaison fixe.",
+      "short": "Ce comité a été créé à la suite de l'accord complémentaire de coopération signé en 1980 entre le Maroc et l'Espagne donnant naissance aux études pour le projet de liaison fixe entre l'Europe et l'Afrique à travers le détroit de Gibraltar.\n Il constitue l'organe de gouvernance le plus élevé du projet de liaison fixe.\n Il donne les grandes directives pour la réalisation de l'objet social des deux entreprises étatiques, à savoir la SNED et la SECEGSA.",
       "paragraphs": [
         "• <strong>Comité Mixte Intergouvernemental :</strong>",
         "<strong>Ce comité a été créé à la suite de l'accord complémentaire de coopération signé en 1980 entre le Maroc et l'Espagne donnant naissance aux études pour le projet de liaison fixe entre l'Europe et l'Afrique à travers le détroit de Gibraltar.</strong> <em>Il constitue l'organe de gouvernance le plus élevé du projet de liaison fixe.</em> Il donne les grandes directives pour la réalisation de l'objet social des deux entreprises étatiques, à savoir la SNED et la SECEGSA.",
@@ -390,7 +468,7 @@
     },
     "conseil_administration": {
       "title": "Conseil d'Administration",
-      "short": "Organisation et gouvernance de la SNED : Conseil d'Administration, comités spécialisés, direction générale et structure opérationnelle par pôles d'activité.",
+      "short": "La SNED est administrée par un conseil d'administration composé de trois à douze membres, pris parmi les actionnaires. \n Comité de Gouvernance, de nomination et de rémunération : Ce Comité s'assure de l'application des bonnes pratiques édictées au niveau de l'Organe de Gouvernance et de ses comités spécialisés.\n La direction générale de la SNED est assumée par son Président Directeur Général. Il a pour rôle la représentation de la société dans ses rapports avec les tiers et la coordination de l'ensemble de ses activités.",
       "paragraphs": [
         "• <strong>Conseil d'Administration de la SNED :</strong>",
         "<strong>La SNED est administrée par un conseil d'administration composé de trois à douze membres, pris parmi les actionnaires.</strong> Le Conseil d'administration détermine les orientations de l'activité de la SNED et veille à leur mise en œuvre. Le Conseil procède également aux contrôles et vérifications qu'il juge opportuns. Par ailleurs, il choisit le mode de gouvernance et nomme le Président, le Directeur Général et les Directeurs Généraux Délégués.",
@@ -517,5 +595,10 @@
     "locationTitle": "Localisation",
     "openMaps": "Ouvrir dans Google Maps",
     "submit": "Envoyer"
-  }
+  },
+
+
+
+
+  
 }

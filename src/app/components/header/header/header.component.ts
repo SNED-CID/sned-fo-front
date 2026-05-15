@@ -80,7 +80,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   menuBackgrounds: Record<string, string> = {
     '/': 'assets/images/roi-mohammed-vi.jpg',
-    '/projet': 'assets/images/norway-underwater-tunnel.jpg',
+    '/projet': 'assets/images/tunnelMarocEspagne.png',
     '/galerie': 'assets/images/roi-mohammed-vi.jpg',
     '/publication': 'assets/images/m6_esp.jpg',
     '/partenariat': 'assets/images/m6_esp.jpg',
@@ -92,7 +92,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     'assets/images/gibraltar05.gif',
     'assets/images/roi-mohammed-vi.jpg',
     'assets/images/m6_esp.jpg',
-    'assets/images/norway-underwater-tunnel.jpg',
+    'assets/images/tunnelMarocEspagne.png',
   ];
 
   currentBackground: string | null = null;
@@ -509,7 +509,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     if (isArabic) {
       return 'assets/logos/arstdr.png';
     } else {
-      return 'assets/logos/frstdr.png';
+      return 'assets/logos/snednotext.png';
     }
   }
 

@@ -120,7 +120,7 @@ interface Section {
                     {{ section.title }}
                   </h2>
                   <p
-                    class="text-base lg:text-lg text-gray-700 mb-6 lg:mb-8 line-clamp-3 leading-relaxed"
+                    class="text-base lg:text-lg text-gray-700 mb-6 lg:mb-8 leading-relaxed whitespace-pre-line"
                   >
                     {{ section.short }}
                   </p>
@@ -203,7 +203,7 @@ interface Section {
             </h2>
 
             <div class="space-y-6 max-w-md">
-              <div class="space-y-4 text-gray-700 leading-relaxed text-center">
+              <div class="space-y-4 text-gray-700 leading-relaxed text-center whitespace-pre-line">
                 <p class="adaptive-body mb-4">
                   {{ 'about.conseil_administration.short' | translate }}
                 </p>
@@ -212,7 +212,7 @@ interface Section {
                 <app-read-more
                   [imageUrl]="null"
                   [label]="'shared.readmore.read_more' | translate"
-                  [title]="'about.conseil_administration.title' | translate"
+                  [title]="'header.menu.organization' | translate"
                   [paragraphs]="
                     'about.conseil_administration.paragraphs' | translate
                   "

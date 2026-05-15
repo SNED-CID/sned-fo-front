@@ -131,6 +131,6 @@ export class FooterComponent {
     const isArabic = currentLang === 'ar';
 
     // Pour le footer, on utilise toujours les logos sur fond sombre
-    return isArabic ? 'assets/logos/arstdr.png' : 'assets/logos/frstdr.png';
+    return isArabic ? 'assets/logos/arstdr.png' : 'assets/logos/snednotext.png';
   }
 }
