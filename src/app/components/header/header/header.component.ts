@@ -54,12 +54,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
     routes: {
       '': 'default',
       '/': 'default',
-      '/projet': 'ingenierie',
+      '/about': 'apropos',
+      '/projet': 'description_du_projet',
       '/galerie': 'galerie',
       '/publication': 'publication',
       '/partenariat': 'partenaires',
       '/travail': 'travail',
       '/appels-offres': 'appels_offres',
+      
     },
     // Fragments (ancres)
     fragments: {
@@ -71,15 +73,20 @@ export class HeaderComponent implements OnInit, OnDestroy {
       sned_secegsa: 'sned_secegsa',
       organigramme: 'organigramme',
       partenaires: 'partenaires',
-      ingenierie: 'ingenierie',
-      'milieu-physique': 'milieu_physique',
-      'socio-economique': 'socio_economique',
       promotion: 'promotion',
+      "description-du-projet": 'description_du_projet',
+      "historique-du-projet": 'historique_du_projet',
+      "recherche-sur-le-milieu-physique": 'recherche_sur_le_milieu_physique',
+      "ingenierie-du-projet": 'ingenierie_du_projet',
+      "aspects-juridiques": 'aspects_juridiques',
+      "realite-et-perspectives-socioeconomiques": 'realite_et_perspectives_socioeconomiques',
+      "composante-geostrategique": 'composante_geostrategique',
     },
   };
 
   menuBackgrounds: Record<string, string> = {
     '/': 'assets/images/roi-mohammed-vi.jpg',
+    '/about': 'assets/images/roi-mohammed-vi.jpg',
     '/projet': 'assets/images/tunnelMarocEspagne.png',
     '/galerie': 'assets/images/roi-mohammed-vi.jpg',
     '/publication': 'assets/images/m6_esp.jpg',
@@ -241,37 +248,52 @@ export class HeaderComponent implements OnInit, OnDestroy {
             children: [
               {
                 label: this.translateService.instant(
-                  'header.menu.project_history'
+                  'header.menu.description_du_projet'
                 ),
-                route: '/projet/ingenierie',
+                route: '/projet',
+                sectionId: 'description-du-projet'
               },
               {
                 label: this.translateService.instant(
-                  'header.menu.physical_environment'
+                  'header.menu.historique_du_projet'
                 ),
-                route: '/projet/milieu-physique',
-              },
-              {
-                label: this.translateService.instant('header.menu.engineering'),
-                route: '/projet/ingenierie',
+                route: '/projet',
+                sectionId: 'historique-du-projet'
               },
               {
                 label: this.translateService.instant(
-                  'header.menu.legal_aspect'
+                  'header.menu.recherche_sur_le_milieu_physique'
                 ),
-                route: '/projet/ingenierie',
+                route: '/projet',
+                sectionId: 'recherche-sur-le-milieu-physique'
               },
               {
                 label: this.translateService.instant(
-                  'header.menu.socioeconomic_aspect'
+                  'header.menu.ingénierie_du_projet'
                 ),
-                route: '/projet/socio-economique',
+                route: '/projet',
+                sectionId: 'ingenierie-du-projet'
               },
               {
                 label: this.translateService.instant(
-                  'header.menu.geostrategic_component'
+                  'header.menu.aspects_juridiques'
                 ),
-                route: '/projet/ingenierie',
+                route: '/projet',
+                sectionId: 'aspects-juridiques'
+              },
+              {
+                label: this.translateService.instant(
+                  'header.menu.réalité_et_perspectives_socioéconomiques'
+                ),
+                route: '/projet',
+                sectionId: 'realite-et-perspectives-socioeconomiques'
+              },
+              {
+                label: this.translateService.instant(
+                  'header.menu.composante_géostratégique'
+                ),
+                route: '/projet',
+                sectionId: 'composante-geostrategique'
               },
             ],
           },

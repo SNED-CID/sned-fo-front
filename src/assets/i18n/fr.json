@@ -92,49 +92,41 @@
         "subtitle": "Appels d'Offres"
       },
 
-
-
-
       "description_du_projet": {
         "title": "Description du projet",
         "desc": "Description du projet du SNED",
         "subtitle": "Description du projet du SNED"
       },
-      "Historique_du_projet": {
+      "historique_du_projet": {
         "title": "Historique du projet",
         "desc": "Historique du projet du SNED",
         "subtitle": "Historique du projet du SNED"
       },
-      "Recherche_sur_le_milieu_physique": {
+      "recherche_sur_le_milieu_physique": {
         "title": "Recherche sur le milieu physique",
         "desc": "Recherche sur le milieu physique du projet du SNED",
         "subtitle": "Recherche sur le milieu physique du projet du SNED"
       },
-      "Ingénierie_du_projet": {
+      "ingenierie_du_projet": {
         "title": "Ingénierie du projet",
         "desc": "Ingénierie du projet du SNED",
         "subtitle": "Ingénierie du projet du SNED"
       },
-      "Aspects_juridiques":{
+      "aspects_juridiques": {
         "title": "Aspects juridiques",
         "desc": "Aspects juridiques du projet du SNED",
         "subtitle": "Aspects juridiques du projet du SNED"
       },
-      "Réalité_et_perspectives_socio-économiques": {
+      "realite_et_perspectives_socioeconomiques": {
         "title": "Réalité et perspectives socio-économiques",
         "desc": "Réalité et perspectives socio-économiques du projet du SNED",
         "subtitle": "Réalité et perspectives socio-économiques du projet du SNED"
       },
-      "Composante_géostratégique": {
+      "composante_geostrategique": {
         "title": "La Composante géostratégique",
         "desc": "Composante géostratégique du projet du SNED",
         "subtitle": "Composante géostratégique du projet du SNED"
       }
-
-
-
-
-
     },
     "loading_content": "Chargement du contenu...",
     "loading_about": "Préparation de la section À propos..."
@@ -159,8 +151,6 @@
       "appels-offres": "Appels d'offre"
     },
     "project": {
-
-
       "description_du_projet": "Description du projet",
       "historique_du_projet": "Historique du projet",
       "recherche_sur_le_milieu_physique": "Recherche sur le milieu physique",
@@ -168,10 +158,6 @@
       "aspects_juridiques": "Aspects juridiques",
       "réalité_et_perspectives_socioéconomiques": "Réalité et perspectives socio-économiques",
       "composante_géostratégique": "Composante géostratégique"
-
-
-
-
     },
     "gallery": {
       "title": "Galerie",
@@ -284,13 +270,12 @@
       "close_menu": "Fermer le menu",
       "discover_project_button": "Découvrir le projet",
 
-
       "description_du_projet": "Description du projet",
       "historique_du_projet": "Historique du projet",
-      "recherche_sur_le_milieu_physique": "Recherche sur le milieu physique",
-      "ingénierie_du_projet": "Ingénierie du projet",
-      "aspects_juridiques": "Aspects juridiques",
-      "réalité_et_perspectives_socioéconomiques": "Réalité et perspectives socio-économiques",
+      "recherche_sur_le_milieu_physique": "Milieu physique",
+      "ingénierie_du_projet": "Ingénierie",
+      "aspects_juridiques": "Aspect juridique",
+      "réalité_et_perspectives_socioéconomiques": "Volet socio-économiques",
       "composante_géostratégique": "Composante géostratégique"
     },
     "menu": {
@@ -317,18 +302,13 @@
       "call_for_tenders": "Appel d'offres",
       "contact": "Contact",
 
-
-
       "description_du_projet": "Description du projet",
       "historique_du_projet": "Historique du projet",
-      "recherche_sur_le_milieu_physique": "Recherche sur le milieu physique",
-      "ingénierie_du_projet": "Ingénierie du projet",
-      "aspects_juridiques": "Aspects juridiques",
-      "réalité_et_perspectives_socioéconomiques": "Réalité et perspectives socio-économiques",
+      "recherche_sur_le_milieu_physique": "Milieu physique",
+      "ingénierie_du_projet": "Ingénierie",
+      "aspects_juridiques": "Aspect juridique",
+      "réalité_et_perspectives_socioéconomiques": "Volet socio-économiques",
       "composante_géostratégique": "Composante géostratégique"
-
-
-
     }
   },
   "partners": {
@@ -368,6 +348,7 @@
     "cta_text": "Rejoignez notre equipe et contribuez au projet SNED.",
     "cta_button": "Nous rejoindre"
   },
+
   "about": {
     "sned": {
       "title": "À propos de la SNED",
@@ -499,6 +480,216 @@
     }
   },
 
+  "projet_liaison_fixe": {
+    "description_du_projet": {
+      "title": "Description du projet",
+      "short": "Le détroit de Gibraltar est une zone de grand intérêt stratégique en raison de sa position géographique entre l'Europe et l'Afrique et comme carrefour entre l'Atlantique et la Méditerranée, étant considéré comme un passage crucial pour la navigation maritime.",
+      "description": "Description : Plan d'aménagement du détroit de Gibraltar montrant la planification des terminaux Nord et Sud, des entrées des tunnels Nord et Sud et des puits de ventilation. L'ancien tracé, Projet préliminaire primaire - 96, et le nouveau tracé sont également présentés.",
+      "paragraphs": [
+        "Le détroit de Gibraltar est une zone de grand intérêt stratégique en raison de sa position géographique entre l'Europe et l'Afrique et comme carrefour entre l'Atlantique et la Méditerranée, étant considéré comme un passage crucial pour la navigation maritime. </br>Le Maroc et l'Espagne, pays riverains du détroit de Gibraltar, ont décidé de lancer l'étude d'une liaison fixe à travers le bras de mer afin de renforcer leurs liens de coopération et de faire de la Méditerranée occidentale une plaque tournante des échanges entre l'Europe et l'Afrique.",
+        "Cette infrastructure de liaison permanente à travers le détroit constituerait un maillon essentiel du réseau de transport euro-méditerranéen. Faciliter la circulation des passagers, des biens et des services entraînera une accélération quantitative et qualitative de l'économie, qui se traduira par un nouvel ordre territorial et l'expansion des réseaux de transport des deux côtés du détroit.</br>En ce sens, cela serait d'une grande importance pour le développement économique et social des pays de la région, offrant une opportunité de croissance intégrée pour toute la zone. </br> En vue de l'avenir, une fois les nouvelles infrastructures de transport mises en service, les pays de la région pourront atteindre une position centrale dans cette zone de la Méditerranée occidentale.",
+
+        "<strong>Les premières études et leurs étapes</strong> " , " Depuis l'Antiquité, le détroit de Gibraltar est une enclave unique, un lieu de séparation entre les continents européen et africain, et en même temps, une union entre la mer Méditerranée et l'océan Atlantique, par laquelle les différentes civilisations du bassin méditerranéen se sont senties fortement attirées. Pour la mythologie grecque et romaine, le détroit était la fin des terres connues, une frontière délimitée par les colonnes d'Hercule, au-delà de laquelle s'ouvrait l'océan sombre et inconnu.",
+
+        "La construction d'une liaison fixe reliant les deux rives séparées par seulement 14 km est un rêve persistant qui vient d'une époque légendaire, prolongé au Moyen Âge selon les références recueillies par les historiens arabes, et qui a commencé à prendre forme à la fin du XIXe siècle avec la conception des premiers dessins et schémas d'alternatives possibles pour le projet.",
+
+        "Dans l'histoire récente, l'idée d'une communication fixe à travers le détroit de Gibraltar a gagné du terrain sur la scène technique internationale, par intermittence, depuis 1869, lorsque le Conseil des Travaux Publics, dépendant du Ministère espagnol des Travaux Publics, a présenté un premier rapport sur le projet.",
+
+        "Depuis lors, de nombreux ingénieurs, militaires, techniciens et hommes politiques ont consacré une partie de leur vie à étudier et à présenter des alternatives et des solutions à cet ambitieux projet. Parmi ceux-ci, il convient de mentionner, sans vouloir minimiser ceux qui ne sont pas mentionnés ici, les projets de tunnel creusé de D. Carlos Ibáñez de Ibero (1908) et D. Pedro Jevenois (1927), le projet de tube immergé de D. Fernando Gallego Herrera (1929) et le projet de pont suspendu de D. Alfonso Peña Boeuf (1956).",
+
+        "En 1972, dans un contexte international propice à la réalisation de grands travaux publics, avec l'impact du démarrage de la construction du tunnel de Seikan au Japon, une « Commission pour l'étude préliminaire sur la faisabilité d'une communication permanente entre l'Espagne et l'Afrique à travers le détroit de Gibraltar » a été créée au sein du Ministère des Travaux Publics.",
+
+        "Les programmes d'études sont élaborés par les Sociétés, approuvés par le Comité mixte intergouvernemental et mis en œuvre conjointement par elles.",
+
+        "Depuis le début, des études ont été développées en coopération entre les Sociétés SECEGSA et SNED, sur l'environnement physique du Détroit de Gibraltar, l'ingénierie liée aux aspects techniques du Projet, et les domaines socio-économiques, financiers, juridiques et institutionnels, en plus des activités de promotion, de communication et de relations extérieures.",
+
+        " <strong>On peut distinguer les étapes suivantes :</strong>\n1981 - 1990\n1991 - 1995\n1996 - 2005\n2006 - 2010\n2010 - Présent",
+
+        " Dans la première étape, les études réalisées visaient principalement à obtenir des données considérées comme essentielles dans les domaines de l'environnement physique, des études techniques, de l'environnement socio-économique, des études juridiques et institutionnelles et des relations extérieures.",
+
+        "Les programmes d'études sont élaborés par les Sociétés, approuvés par le Comité mixte intergouvernemental et mis en œuvre conjointement par elles.",
+
+        "Depuis le début, des études ont été développées en coopération entre les Sociétés SECEGSA et SNED, sur l'environnement physique du Détroit de Gibraltar, l'ingénierie liée aux aspects techniques du Projet, et les domaines socio-économiques, financiers, juridiques et institutionnels, en plus des activités de promotion, de communication et de relations extérieures."
+
+       ]
+    },
+
+    "historique_du_projet": {
+      "title": "Historique du projet",
+      "short": "Le détroit de Gibraltar a été, depuis l'Antiquité, un lieu au caractère singulier, tant par le fait d'être le point le plus rapproché entre les continents européen et africain – les deux rives n'étant séparées que par 14 kilomètres – que par son rôle de jonction entre la mer Méditerranée et l'océan Atlantique.",
+      "paragraphs": [
+        "Le détroit de Gibraltar constitue une zone d'un grand intérêt stratégique de par sa position géographique entre l'Afrique et l'Europe et comme carrefour des routes entre l'Atlantique et la Méditerranée, étant considéré comme un passage crucial pour la navigation maritime.",
+        "Le Maroc et l'Espagne, pays riverains du détroit, afin de consolider leurs liens de coopération et faire de la Méditerranée occidentale un centre névralgique d'échanges entre l'Afrique et l'Europe, ont décidé d'initier l'étude d'une liaison fixe à travers ce bras de mer.",
+        "Cette infrastructure de liaison permanente à travers le détroit constituerait un maillon essentiel du réseau de transport euro-méditerranéen. La facilitation des flux de passagers, de marchandises et de services produira une accélération quantitative et qualitative de l'économie qui se traduira par un nouvel aménagement du territoire et l'extension des réseaux de transport des deux côtés du détroit. En ce sens, elle aurait une grande importance pour le développement économique et social des pays de la région, offrant une opportunité de croissance intégrée pour toute la zone.",
+        "Les pays de la région, dans une vision prospective, après la mise en service des nouvelles infrastructures de transport, pourront atteindre une position centrale pour cette zone de la Méditerranée occidentale.",
+        "<strong>Antécédents</strong>",
+        "Le détroit de Gibraltar a été, depuis l'Antiquité, un lieu au caractère singulier, tant par le fait d'être le point le plus rapproché entre les continents européen et africain – les deux rives n'étant séparées que par 14 kilomètres – que par son rôle de jonction entre la mer Méditerranée et l'océan Atlantique.",
+        "Il y a entre six et neuf millions d'années, le mouvement de la croûte des plaques tectoniques eurasienne et africaine fit s'élever l'arc de Gibraltar et isola l'Atlantique de la Méditerranée, qui – en raison d'une évaporation intense – se retrouva pratiquement asséché 3000 ans plus tard. Par la suite, un nouvel et « spectaculaire événement » – l'avalanche de l'Atlantique après la montée du niveau des eaux post-décongélation – provoqua la réouverture, donnant ainsi naissance au détroit de Gibraltar.",
+        "<strong>Racines françaises du projet en 1869</strong>",
+        "La première mention d'un lien physique entre l'Europe et l'Afrique à travers le détroit remonte à 1869. L'ingénieur français Charles de Villedeuil imagina un tunnel sous-marin, en pleine effervescence lors de l'inauguration du canal de Suez – alors l'une des plus grandes réalisations d'ingénierie au monde – lié à l'essor du chemin de fer et aux connexions intercontinentales offertes par ce nouveau moyen de transport.",
+        "Quatorze ans plus tard, en 1883, apparaît le premier projet espagnol, porté par l'ingénieur de la Marine, M. Andrés Avelino Comerma i Batalla, illustre scientifique et inventeur, honoré en 2020 par la Real Academia Gallega de Ciencias (RAGC). En 1897, un second essai français, mené par l'ingénieur J.B. Berlier, se présente avec un avant-projet plus élaboré que celui de son prédécesseur, proposant un tunnel de 41 kilomètres, dont 32 seraient sous-marins.",
+        "Au cours des plus de 100 années suivantes, ingénieurs civils et militaires, techniciens, hommes politiques et nombreux journalistes consacrèrent une partie de leurs travaux au projet de liaison fixe, qui suscita à de multiples reprises l'intérêt de la société de l'époque.",
+        "<strong>Le projet s'affirme en Espagne jusqu'à la première Commission d'études en 1928</strong>",
+        "La première moitié du XXe siècle fut prolifique en projets de tunnels sous-marins, menés par les ingénieurs Pedro García Faria (1905 et 1906), Carlos Ibáñez de Ibero (1908 et 1927), Mariano Rubió y Bellvé et Henri Bressler (1916, 1918 et 1919), Carlos Mendoza (1919), Pedro Jevenois Labernade (1927) et le tube immergé de Fernando Gallego Herrera (1929).",
+        "Sur ordre du Ministère des Travaux publics, le 1er juin 1928 fut créée la Commission d'études du Tunnel Sous-Marin du Détroit de Gibraltar (CETSEG) à l'Institut minier et géologique d'Espagne, dans le but d'étudier le projet de l'ingénieur et artilleur Jevenois.",
+        "Parallèlement, Carlos Ibáñez de Ibero, ingénieur civil formé en France, poursuivait son projet, qu'il avait déjà rendu public en 1927 avec la publication du livre <em>Un túnel bajo el estrecho de Gibraltar</em>.",
+        "Un autre ingénieur espagnol qui se distingua à la fin des années 20 en lien avec le projet fut Fernando Gallego Herrera, qui imagina un système ingénieux très différent du tunnel sous-marin. Il s'agissait d'un « tunnel flottant » qui était ancré au fond marin au moyen d'immenses tirants.",
+        "Revenant au projet de Jevenois, son apparition suscita l'engouement de la société de l'époque, trouvant écho dans la presse nationale, locale et internationale. Le journal <em>Informaciones</em> de Madrid qualifiait, le 5 mai 1928, le projet de tunnel d'« une idée audacieuse et magnifique » qui faciliterait « les grandes communications intercontinentales (…) et permettrait de relier Madrid à Alger, Tripoli, Alexandrie jusqu'à Jérusalem », ainsi que d'autres routes africaines.",
+        "<strong>Seconde République en Espagne et rétablissement de la Commission du Tunnel de Gibraltar</strong>",
+        "Avec l'avènement de la Seconde République en 1931, le projet de liaison fixe du détroit connut des hauts et des bas : la Commission fut dissoute par le Conseil des ministres, décision que critiqua la presse française, compte tenu de l'importance de réaliser l'ouvrage du tunnel hispano-africain, un lieu stratégique au cœur des grandes routes commerciales, touristiques et de voyageurs.",
+        "Le ministre d'État, Alejandro Lerroux, fervent défenseur de la liaison, parvint – avant de quitter le gouvernement après l'adoption de la nouvelle Constitution de la République – in extremis à faire rétablir la Commission du tunnel par le Conseil des ministres, laquelle connut néanmoins une existence morose, n'étant pas dotée d'un budget en raison des avis divergents au sein du nouveau Cabinet.",
+        "À partir de 1933, les travaux de la Commission du tunnel se normalisèrent et retrouvèrent leur rythme antérieur grâce à de nouvelles études et réunions scientifiques. En juillet 1936, tout était prêt pour conclure la dernière campagne sous-marine et géophysique du détroit et, par là même, les travaux préparatoires devant aboutir à un rapport définitif quant à la faisabilité ou non de la construction du tunnel. Mais, finalement, ces espoirs furent anéantis avec le déclenchement de la guerre civile.",
+        "<strong>Le tunnel du détroit pendant le régime de Franco</strong>",
+        "La mort du général Jevenois, le 13 mai 1941 à Cadix, redonna un nouvel élan à son concurrent Ibáñez de Ibero, qui soumit une requête au Conseil des ministres de Franco pour poursuivre les études sur le tunnel.",
+        "Ce n'est qu'en 1956 qu'Ibáñez de Ibero, fort de l'expérience accumulée au cours des presque cinquante années écoulées depuis sa première proposition, présenta un projet plus élaboré, comportant un tunnel de diamètre plus important et des systèmes de ventilation plus performants.",
+        "Dans ces mêmes années, l'alors président de RENFE, l'ingénieur des Travaux publics Alfonso Peña Boeuf, jouissant d'une certaine renommée internationale, fit irruption sur la scène de la liaison fixe avec la proposition en 1957 d'un pont pour traverser le détroit, reposant sur d'immenses piles-caissons en ciment enfoncés dans le fond marin afin de supporter les piliers, avec des travées de 3 000 mètres pour le passage des navires (alors que, dans le monde entier, seules des travées de 1 250 mètres avaient été réalisées). De nombreuses promotions de l'École des ingénieurs des Travaux publics de Madrid se souviendront de la maquette de cet ancien ministre des Travaux publics, en fonction entre 1938 et 1945.",
+        "Avec la mort des deux experts qui défendaient des positions techniques aussi opposées qu'Ibáñez de Ibero (tunnel) et Peña Boeuf (pont) en 1966, à peine 15 jours d'intervalle, « une époque durant laquelle ils avaient personnifié les positions d'ingénierie les plus représentatives du franquisme s'est brusquement et presque définitivement refermée », écrit Carlos Velasco dans son ouvrage <em>Historia documental de los proyectos del enlace fijo del Estrecho de Gibraltar</em>.",
+        "De 1967 à 1972, une quinzaine d'années s'écoulèrent sans que personne ne reprenne le flambeau du projet. Toutefois, un arrêté du 20 mai créa au Ministère des Travaux publics une « Commission pour l'étude préalable sur la viabilité d'une communication permanente entre l'Espagne et l'Afrique à travers le détroit de Gibraltar ». Il fallut cependant attendre encore sept ans, avec la fin du régime du général Franco et le rétablissement de la démocratie en Espagne, pour que le projet d'unir deux nations et deux continents reçoive le véritable élan politique.",
+        "<strong>Goicoechea, du TALGO à la liaison fixe à Gibraltar</strong>",
+        "L'ingénieur militaire Alejandro Goicoechea Omar, inventeur visionnaire ayant anticipé son temps dans l'industrie ferroviaire avec le révolutionnaire TALGO, acronyme de « Tren Articulado Ligero Goicoechea-Oriol », fut également associé à la liaison fixe dès la fin des années 50, apportant une vision critique des projets antérieurs et suggérant par la même occasion quelques alternatives incontestablement innovantes.",
+        "Dans les années 50, Goicoechea commença à s'intéresser au projet de la liaison fixe du détroit de Gibraltar à travers diverses publications et conférences, telle que celle intitulée <em>España ante el nuevo orden euroafricano</em>, présentée en 1952. Dans cette allocution, il attirait l'attention sur la méconnaissance géologique du lit sous-marin et sur la nécessité préalable de créer les meilleures communications dans la région du Campo de Gibraltar et de Tanger, sur les deux rives du détroit. Techniquement, il concentrait sa première proposition sur un tunnel de dimensions bien plus modestes que les précédentes.",
+        "En 1957, il donna une nouvelle conférence au Conseil Supérieur de Recherches Scientifiques (CSIC), dans laquelle il exposait une étude critique et comparative de toutes les solutions proposées jusqu'alors pour franchir le détroit au cours du XXe siècle.",
+        "Dans cet esprit innovant, lors du Colloque international de Tanger en 1980, il proposa pour la liaison fixe une solution mixte combinant tunnel et pont. Il en vint même à suggérer une solution totalement révolutionnaire, qui eut un certain retentissement dans la presse marocaine : construire un gigantesque barrage dans le détroit de Gibraltar, sur lequel circuleraient le trafic routier et ferroviaire.",
+        "Ce barrage abriterait 1 600 turbines, mises en mouvement en exploitant le courant marin du détroit et une différence d'un mètre entre les niveaux de l'Atlantique et de la Méditerranée. Selon les calculs de Goicoechea, il produirait suffisamment d'électricité pour alimenter l'Espagne et le Maroc. Le célèbre inventeur résolvait le problème de la navigation des navires dans le détroit en construisant deux canaux du côté espagnol et deux autres du côté marocain.",
+        "Quoi qu'il en soit, Alejandro Goicoechea soulignait que toute solution technique nécessitait une étude approfondie du terrain – qui ne pouvait être réalisée que par le perçage d'une galerie d'exploration – ainsi que la matérialisation des accès sur les deux rives, questions qui seraient abordées avec rigueur à partir de 1981. Retiré en tant que colonel du Corps des ingénieurs en armement et construction (CIAC) de l'Armée, il décéda à Madrid, à l'hôpital militaire « Gómez Ulla », en 1984.",
+        " <strong>Quatre décennies de coopération entre l'Espagne et le Maroc</strong>",
+        "Le 16 juin 1979, lors de la Déclaration conjointe hispano-marocaine de Fès, les rois d'Espagne et du Maroc, Don Juan Carlos I et Hassan II, ont convenu de lancer les études en vue d'un lien fixe entre les deux pays, qui, grâce à sa position, faciliterait la relation permanente entre l'Afrique et l'Europe.",
+        "À partir de là, les accords suivants ont été établis :",
+        "&nbsp; &nbsp;&nbsp;&nbsp; • Le 8 novembre 1979, la Convention de coopération scientifique et technique entre l'Espagne et le Maroc a été signée, pour la réalisation conjointe d'études scientifiques, ainsi que pour l'échange d'informations, l'utilisation d'installations et la collaboration entre spécialistes.",
+        "&nbsp; &nbsp;&nbsp;&nbsp; • Ensuite, l'Accord de coopération, signé le 24 octobre 1980, a défini la manière de mener les études nécessaires à l'exécution du projet. Par la suite, le 26 février 1981, deux sociétés d'études d'État ont été créées : SECEGSA en Espagne et SNED au Maroc, chargées de leur mise en œuvre.",
+        "&nbsp; &nbsp;&nbsp;&nbsp; • La consolidation de la coopération sur une décennie a conduit, le 27 septembre 1989, à la signature par l'Espagne et le Maroc de l'Accord additionnel, quatrième texte légal de caractère international servant de base au développement des études pour ce projet stratégique.",
+        "Au cours des 40 dernières années, 43 comités mixtes ont été organisés entre les deux gouvernements afin de diriger, coordonner et superviser l'activité des deux sociétés. Lors des 11 réunions de haut niveau tenues ces dernières années entre les Rois et les chefs de gouvernement des deux pays, ce sujet a toujours figuré à l'ordre du jour."
+      ]
+    },
+
+    
+      "recherche_sur_le_milieu_physique": {
+        "title": "Milieu physique",
+        "short": "La recherche sur le milieu physique est une composante essentielle du projet de liaison fixe entre l'Europe et l'Afrique à travers le détroit de Gibraltar. Cette recherche vise à comprendre les caractéristiques géologiques, océanographiques, sismiques et météorologiques du site de la future zone de construction. Les études menées dans ce domaine permettent d'identifier les défis techniques liés à la construction d'un tunnel ferroviaire sous-marin et de développer des solutions adaptées pour garantir la sécurité et la durabilité de l'infrastructure.",
+        "paragraphs": [
+          "Pour que ce projet prenne forme, des années de recherche et d’investigation ont été nécessaires, ainsi qu’une coopération étroite entre le Maroc et l’Espagne à travers les sociétés SNED et SECEGSA, avec la collaboration d’instituts de recherche scientifique et technique, d’entreprises et d’experts de renommée internationale.",
+          "Ces années ont permis de comprendre les difficultés du site du point de vue géologique, océanographique, sismique et météorologique. Le détroit de Gibraltar se caractérise par l’agressivité du milieu marin et atmosphérique ainsi que par une géologie très complexe.",
+          "Afin de préciser les caractéristiques des formations géologiques de la zone, des forages profonds ont été réalisés sur terre, ainsi que des essais géotechniques par l’excavation d’une galerie sous-marine, à échelle réelle, près de Tanger, et d’une autre galerie terrestre, près de Tarifa.",
+          "<strong>o Recherches réalisées</strong>",
+          "Entre 1981 et 2010, le processus d’études et de recherches pour le projet s’est divisé en trois grandes étapes, séparées par les Colloques Internationaux de Marrakech (1990) et de Séville (1995).",
+          "&nbsp; &nbsp;&nbsp;&nbsp; • 1ère étape (1981 - 1990)",
+
+          "Réalisation d'études de caractère général et régional (cartographie, géologie, bathymétrie, géophysique marine, sondages terrestres...).",
+          "&nbsp; &nbsp;&nbsp;&nbsp; • 2ème étape (1990-2009)",
+          "&nbsp; &nbsp;&nbsp;&nbsp; • 3ème étape (2010-2021)",
+          "&nbsp; &nbsp;&nbsp;&nbsp; • Les travaux expérimentaux et les paléochenaux",
+          "&nbsp; &nbsp;&nbsp;&nbsp; • 4ème étape d'études (depuis 2022)"
+
+        ]
+      },
+
+  "ingénierie_du_projet": {
+    "title": "Ingénierie",
+    "short": "L'ingénierie du projet de liaison fixe entre l'Europe et l'Afrique à travers le détroit de Gibraltar est un aspect crucial qui englobe la conception, la planification et la mise en œuvre de l'infrastructure. Les ingénieurs travaillent sur la modélisation du choix technique de la solution, qui consiste en la construction d'un tunnel ferroviaire creusé dans le sous-sol marin. Cette phase d'ingénierie implique également la coordination avec les différentes parties prenantes, la gestion des risques techniques et la garantie de la conformité aux normes de sécurité et environnementales.",
+    "paragraphs": [
+      "<strong>Alternatives au Projet</strong>",
+      "Les différentes options analysées étaient un pont suspendu sur appuis fixes, un pont suspendu sur appuis flottants, un tunnel immergé appuyé sur le fond marin, un tunnel flottant immergé et un tunnel excavé. Sur la base d'une analyse multicritère des différentes alternatives étudiées, il a été conclu au milieu des années 1990 que les deux solutions les plus envisageables étaient le pont suspendu sur appuis fixes et le tunnel excavé.",
+      "Étant donné la configuration topographique de la zone du détroit de Gibraltar, il y avait deux itinéraires possibles : à l'est, la route du Canyon entre Punta Canales et Punta Cires avec une distance entre les rives de seulement 14 km et des profondeurs supérieures à 800 m, et à l'ouest, la route du Seuil entre Punta Paloma et Punta Malabata, avec un parcours maritime de 28 km et des profondeurs maximales d'environ 300 m.",
+      "<strong>Solution de Pont</strong>",
+      "Concernant l'option du pont, des solutions possibles pour chacun des tracés ont été évaluées. Ainsi, à la fin de la deuxième étape d'études en 1996, un avant-projet primaire APP95 a été obtenu avec la solution Pont 14, en référence au tracé le long de la Route du Canyon, et la solution Pont 28, en référence au tracé le long de la Route de l'Umbral.",
+      "Le pont 14 serait composé de deux grandes travées centrales de 5 000 m et de deux autres travées latérales de 1 800 m chacune. La profondeur maximale des fondations serait de 480 m et la hauteur maximale des pieux serait supérieure à 1 100 m. Cette alternative a été écartée en raison de son ampleur hors norme, très éloignée de ce qui a été fait dans le monde.",
+      "Le pont 28 serait composé de trois grandes travées centrales de 3 550 m et de deux autres travées latérales de 1 500 m chacune, qui seraient reliées à un viaduc d'approche nord de 7 475 m et à un autre viaduc sud de 6 275 m. La profondeur maximale des fondations serait de 315 m et la hauteur maximale des pieux serait d'environ 800 m. Le tronçon transversal serait composé de quatre voies de circulation, deux dans chaque direction. La possibilité d'incorporer deux voies ferrées centrées sur le tablier a également été analysée.",
+      "<strong>Solution de Tunnel</strong>",
+      "En ce qui concerne l'option du tunnel, le seul itinéraire possible est celui le moins profond, c'est-à-dire la Ruta del Umbral, et il serait conçu pour le trafic ferroviaire. La distance entre les terminaux serait de 42 km, dont 38,5 km en tunnel dont 28 km sous la mer. La section transversale du tunnel serait organisée en deux tubes parallèles à voie unique avec une galerie de service/sécurité centrée entre eux et des galeries transversales de connexion tous les 340 m. Le tunnel serait conçu pour le trafic ferroviaire conventionnel et à grande vitesse, ainsi que pour les navettes pour le transport de véhicules légers et lourds entre les deux terminaux situés sur les rives respectives. Ce modèle d'exploitation serait similaire à celui de l'Eurotunnel.",
+      "<strong> Choisir la Solution de Base </strong>",
+      "Finalement, suite au colloque international d'experts tenu à Séville, où les différentes solutions techniques ont été comparées, le Comité mixte intergouvernemental a décidé en 1996 d'opter pour le tunnel excavé comme solution de base à développer pour les raisons suivantes :",
+      "&nbsp;&nbsp;&nbsp;&nbsp;• C'est la solution qui affecte le moins la navigation maritime, car il n'y a aucun risque de collision des navires avec l'infrastructure.</br>&nbsp;&nbsp;&nbsp;&nbsp;• C'est l'alternative ayant le moins d'impact sur l'environnement. </br> &nbsp;&nbsp;&nbsp;&nbsp;</br>&nbsp;&nbsp;&nbsp;&nbsp;• C'est la solution la plus économique. De plus, la proposition APP95 d'exécution échelonnée adaptée à la demande a permis d'étaler les investissements dans le temps.</br>&nbsp;&nbsp;&nbsp;&nbsp;• Le creusement de tunnels, même sous le fond marin, est une technologie bien connue et largement testée.",
+      "<strong> Description de la solution de base du tunnel ferroviaire </strong>",
+      "La solution basée sur le tunnel prévoit la connexion du terminal marocain situé à Tanger et celui espagnol situé près de Punta Paloma. La composition des principaux ouvrages est illustrée dans les schémas ci-dessous et consisterait en deux tunnels ferroviaires à voie unique de section circulaire de 7,90 m de diamètre intérieur, une galerie de service/sécurité de 6 m de diamètre centrée entre les deux, et des galeries transversales tous les 340 m, chacune d'un diamètre de 6 m.",
+      "D'un point de vue de sécurité, il est prévu la construction d'une Zone de Stationnement Sécurisée (ZSS) au point le plus bas du tunnel, qui serait équipée d'aires d'arrêt dans les tunnels ferroviaires, de zones de sécurité et de zones d'intervention, ainsi que d'une galerie de désenfumage. Cette galerie, qui serait construite principalement pour étudier le terrain à traverser, notamment celui qui comble les paléochenaux, servirait de voie d'accès à la ZAS pendant l'exécution des travaux, et servirait enfin à l'évacuation des fumées pendant la phase opérationnelle de l'infrastructure.",
+      "Les découvertes géologiques (sables bioclastiques et paléochenaux remplis de brèches) au cours des campagnes réalisées au cours de la période de 1996 à 2005, ont donné lieu, entre autres modifications, à un nouveau projet préliminaire primaire en 2007 (APP07), dans lequel ces nouvelles découvertes ont été incorporées. Le document met en évidence une adaptation du tracé, un abaissement général de la hauteur du tunnel, une reconsidération du modèle géologique, ainsi qu'une analyse multiparamétrique du comportement géomécanique des brèches, et une révision de la conception des terminaux, de la sécurité, des installations et des équipements ferroviaires.",
+      "<strong> Disposition en plan </strong>",
+      "Dans la représentation, nous pouvons voir l'ancien et le nouveau tracé des tunnels et les différents points d'accès du côté espagnol et marocain.",
+   
+      " <strong>Profil Longitudinal du Tunnel</strong>",
+      "&nbsp; &nbsp;&nbsp;&nbsp;• Distance entre les stations terminales : 42 km. <br> &nbsp; &nbsp;&nbsp;&nbsp;• Longueur totale du tunnel : 38,5 km. <br> &nbsp; &nbsp;&nbsp;&nbsp;• Longueur du tunnel sous-marin : 27,7 km. <br> &nbsp; &nbsp;&nbsp;&nbsp;• Hauteur minimale au point le plus bas : 175 m. <br> &nbsp; &nbsp;&nbsp;&nbsp;• Profondeur maximale : 475 m. <br> &nbsp; &nbsp;&nbsp;&nbsp;• Pente : 3%.",
+
+      "<strong>Section Transversale</strong>",
+      "&nbsp;&nbsp;&nbsp;&nbsp;• Deux galeries ferroviaires à voie unique d'un diamètre intérieur de 7,9 m. </br> &nbsp;&nbsp;&nbsp;&nbsp;• Une galerie de service/sécurité pressurisée, de 6,0 m de diamètre, centrée entre les deux galeries ferroviaires et reliée à celles-ci par des passages transversaux à intervalles réguliers (tous les 340 m).",
+      "En ce qui concerne l'exploitation, l'APP95 avait prévu une première phase d'exploitation en tube unique, c'est-à-dire sur une seule voie ferrée sur laquelle la circulation aurait lieu dans les deux sens, reliée à une galerie de service de plus petit diamètre qui permettrait de résoudre les problèmes d'entretien et de sécurité de l'ouvrage, tandis qu'un deuxième tunnel ferroviaire serait construit en fonction de la demande.",
+      "Cependant, des études récentes ont montré que la demande de trafic, selon les modèles de prévision, ne conseille pas une construction par phases, et qu'il serait plus rentable de construire le projet dans sa configuration finale, c'est-à-dire avec les deux tubes ferroviaires. En revanche, les grands projets de tunnels de base réalisés en Europe ces dernières années créent une tendance avec une configuration de seulement deux tunnels ferroviaires, sans tunnel de service/sécurité entre eux. Cette variante permettrait de réduire les coûts tout en maintenant un niveau de sécurité acceptable."
+    ]
+  },
+
+  "aspects_juridiques": {
+    "title": "Aspect juridique",
+    "short": "L'aspect juridique du Projet vise à comprendre les implications juridiques que la construction du Projet de Liaison Fixe peut avoir en droit international et administratif, ainsi que d'autres implications en droit communautaire ou environnemental.",
+    "paragraphs": [
+      "L'aspect juridique du Projet vise à comprendre les implications juridiques que la construction du Projet de Liaison Fixe peut avoir en droit international et administratif, ainsi que d'autres implications en droit communautaire ou environnemental.",
+      
+      "<strong>Droit International</strong> </br> Les États côtiers d'une future liaison fixe Europe-Afrique au-dessus du détroit de Gibraltar détiennent la souveraineté sur les eaux du détroit, y compris son lit et son sous-sol, ainsi que sur l'espace aérien qui s'élève au-dessus de l'espace maritime, une condition qui est présentée comme un excellent point de départ pour faire avancer le projet de liaison fixe, sans préjudice des limitations que le droit international peut imposer à cette souveraineté.",
+      
+      "Cette pleine souveraineté des États côtiers dans les eaux intérieures et la mer territoriale n'est pas limitée par le Droit International en ce qui concerne la construction d'installations artificielles, et on peut affirmer que les États côtiers du Détroit de Gibraltar - dans l'exercice de leur souveraineté - sont autorisés à construire une structure permanente, quelle que soit la solution technique adoptée (pont ou tunnel).",
+      
+      "Le régime connu sous le nom de « passage de transit » est reconnu par la communauté internationale et accepté par l'Espagne et le Maroc comme régime régissant le détroit de Gibraltar.",
+      
+      "Il s'agit d'un régime dans lequel la liberté de navigation et de survol est autorisée exclusivement aux fins de transit rapide et ininterrompu : passage par le détroit pour entrer, sortir ou revenir dans un État côtier.",
+      
+      "Il doit être entendu que les navires, conformément aux réglementations internationales, ne peuvent mouiller ni s'arrêter pendant leur transit, sauf pour des raisons de danger ou de force majeure, et doivent communiquer ces circonstances immédiatement et par tout moyen à l'administration maritime la plus proche.",
+      
+      "L'Espagne, au moment de la ratification de la CNUDM, a introduit des déclarations relatives à ses droits souverains sur Gibraltar, mais celles-ci ne représentent aucun changement substantiel dans sa position concernant le régime de navigation et ne visaient qu'à sauvegarder ses droits et sa position sur le différend qu'elle a avec le Royaume-Uni.",
+      
+      "De son côté, le Maroc, avec la ratification de la CNUDM en 2007, a également fait des déclarations qui ont porté sur des questions de revendications de souveraineté sur des territoires situés sur la côte méditerranéenne - qui ont été contestées par l'Espagne - mais qui n'impliquent en aucun cas une altération du régime de navigation à travers le détroit.",
+      
+      
+      "<strong>Droit Administratif</strong> </br> Dans le domaine de la gestion administrative de la construction et de l'exploitation du tunnel, la meilleure option est une société mixte hispano-marocaine créée par un traité international, avec une forme juridique privée, de caractère juridique international - en dehors des droits étatiques - et avec des dispositions spécifiques pour les moyens de règlement des différends survenant dans la vie interne de l'entreprise, le recours à l'arbitrage international étant considéré comme particulièrement conseillé.",
+      
+      "<strong> Autres implications de la construction de la liaison fixe </strong> </br> Les droits et obligations de l'État côtier en matière d'environnement révèlent qu'il est à la fois du droit et du devoir des États côtiers d'adopter une législation visant à la protection de l'environnement, ainsi que d'exercer les pouvoirs exécutifs de l'État côtier en matière de suivi et d'application de cette législation.",
+      
+      "Les études réalisées au cours de ces années soulignent que la clé de la protection de l'environnement réside dans l'action diligente des habitants du littoral, afin que ceux-ci et les États tiers qui utilisent le détroit respectent la législation nationale visant à la protection de l'environnement.",
+      
+      "Aujourd'hui, la construction de la Liaison Fixe entre l'Europe et l'Afrique a des implications dans des domaines matériels sur lesquels l'Union européenne agit actuellement de manière normative, et l'Espagne perd donc la liberté dont elle disposait, en tant que pays souverain, lorsque, à la fin du XXe siècle et au début des années 1980, la viabilité juridique de la Liaison Fixe a commencé à être étudiée. L'Union européenne conditionnera l'Espagne dans des domaines matériels tels que la gestion et la conservation des ressources halieutiques, l'environnement et les marchés publics, et indirectement, elle conditionnera également le Maroc dans le cadre du Projet.",
+      
+      "Le cadre juridique du Projet est un exercice pratique conditionné par le Droit International et le Droit Administratif, avec de grandes opportunités d'innovation qui peuvent être obtenues grâce à la coopération entre l'Espagne et le Maroc, toujours dans le respect des réglementations internationales et de l'Union Européenne.",
+      
+      "Considérant le caractère stratégique du Détroit de Gibraltar, sa position sur la planète et les implications de tout ouvrage affectant son statut international et intercontinental, le projet de liaison fixe à travers le détroit doit développer un cadre juridique spécial détaillé qui protège non seulement les droits des États côtiers, mais aussi les droits des tiers et la sécurité et l'exploitation de cet ouvrage qui sera une référence sûre du XXe siècle."
+    ]
+  },
+
+
+  "réalité_et_perspectives_socioéconomiques": {
+    "title": "Volet socio-économiques",
+    "short": "La liaison fixe à travers le détroit de Gibraltar sera décisive pour une plus grande intégration des deux continents, l'Europe et l'Afrique, dans les domaines social, économique et humain.",
+    "paragraphs": [
+      
+      "La liaison fixe à travers le détroit de Gibraltar sera décisive pour une plus grande intégration des deux continents, l'Europe et l'Afrique, dans les domaines social, économique et humain.",
+      
+      "Le détroit de Gibraltar est un lieu clé pour le transport maritime et le commerce mondial, Est-Ouest, dont les possibilités vont s'accroître si la route complémentaire que serait la Liaison Fixe, Nord-Sud, est construite. Une infrastructure complémentaire et non exclusive des voies maritimes, qui profitera de toutes les opportunités offertes par les interconnexions ferroviaires entre l'Europe et l'Afrique, favorisant un développement équilibré et intégral des deux côtés du Détroit, des deux pays : l'Espagne et le Maroc, des deux côtés de la Méditerranée et aussi des deux continents : l'Europe et l'Afrique.",
+      
+      "La création de la Liaison Fixe entraînera un développement économique et social sans précédent pour les zones adjacentes de l'Andalousie et du Nord du Maroc ; Il favorisera la croissance des réseaux de transport entre l'Espagne et le Maroc et créera un espace de coopération sans précédent entre l'Union européenne et le Maghreb.",
+      "Les régions regroupées de part et d'autre du détroit continueront de bénéficier de l'augmentation des échanges terrestres et maritimes dans la zone, et profiteront sans aucun doute de cette nouvelle infrastructure dans le cadre du « hub logistique de Gibraltar ».",
+      "Il ne fait aucun doute que ces travaux apporteraient de grands bénéfices à la vie des populations des deux rives. Au nord du Maroc, de nouvelles infrastructures sont déjà une réalité : un réseau ferroviaire à grande vitesse, deux ports à Tanger Med, un aéroport international de premier ordre et plusieurs zones franches où l'industrie espagnole est déjà présente.",
+      "En ce qui concerne l'Espagne, les huit municipalités du Campo de Gibraltar seront les bénéficiaires les plus directs de ce grand projet public, lié aux nouvelles infrastructures ferroviaires des corridors européens qui doivent converger au Nœud d'Algésiras, et qui, à travers la Liaison Fixe, doivent s'étendre jusqu'au continent africain."
+    ]
+  },
+
+    "composante_géostratégique": {
+    "title": "Composante géostratégique",
+    "short": "La composante géostratégique du projet de liaison fixe entre l'Europe et l'Afrique à travers le détroit de Gibraltar est un aspect crucial qui englobe les implications politiques, économiques et militaires du projet. Cette dimension géostratégique examine les relations internationales, les intérêts nationaux et les dynamiques régionales qui influencent la conception et la mise en œuvre de l'infrastructure.",
+    "paragraphs": [
+      " Plus de 80 % des biens qui assurent l'approvisionnement de base de l'humanité sont transportés par voie maritime. Le trafic maritime doit traverser les difficiles « goulets d'étranglement » qui relient les océans, les mers et les continents de la planète.",
+      
+      "Le détroit de Gibraltar est le deuxième plus grand passage maritime au monde, surpassé seulement par la Manche, où a été construit le tunnel sous la Manche, reliant la France et le Royaume-Uni, sous la voie de navigation la plus fréquentée de la planète. Personne ne doute de la valeur géostratégique du détroit de Gibraltar, car l'histoire et l'activité commerciale croissante d'aujourd'hui confirment et revalident ce concept.",
+      
+      "D'un point de vue géopolitique, la présence des États-Unis en Afrique, la projection de l'Europe vers le Sud, l'expansion du commerce chinois et la présence physique de la Russie, ainsi que les intérêts d'Israël et des monarchies du Golfe Persique dans la région, donnent une idée de l'importance du détroit dans les relations internationales.",
+      
+      "Le projet de liaison fixe, à travers un tunnel ferroviaire souterrain, présente un aspect géopolitique d'une énorme importance en termes d'opportunités de croissance et de développement sur les deux rives, et surtout pour le développement du transport terrestre intercontinental, dont le premier bénéficiaire sera la zone économique euro-africaine, et il sera également un outil précieux pour apaiser les tensions qui facilitera le rapprochement entre deux cultures obligées de se comprendre et de coopérer.",
+      "Le tunnel sous le Détroit s'inscrit dans la construction d'un espace de coopération véritable entre l'Union européenne et le Maghreb, comme le démontrent les actions menées par différentes institutions : la Commission européenne, le Forum Euro-Med Transports, le Groupe des Ministres des Transports de la Méditerranée Occidentale 5+5 (GTMO 5+5), l'Union pour la Méditerranée (UpM), l'Union pour le Maghreb Arabe (UMA) et le Conseil Economique et Social des Nations Unies (ECOSOC) à travers la Commission Economique des Nations Unies pour l'Afrique et l'Europe.",
+      "Le tunnel sous le détroit de Gibraltar donnera, à court terme, l'impulsion définitive au développement et à l'intégration du Campo de Gibraltar avec l'axe atlantique autour de la ville de Tanger, en attirant et en consolidant de nouveaux investissements, infrastructures logistiques et industries qui faciliteront la création d'emplois et un meilleur développement durable pour les deux régions.",
+      "Au niveau transcontinental, l'impact de la Liaison Fixe sur les relations commerciales entre l'Europe et l'Afrique contribuera à une plus grande intégration et à un meilleur équilibre entre les deux espaces, favorisant le flux de marchandises, une plus grande productivité des entreprises de la région et la délocalisation et la création de nouvelles entreprises sur les deux rives, avec pour conséquence un effet positif sur leurs économies.",
+      "Sans aucun doute, un projet de cette nature facilitera des accords permanents entre l'Espagne et le Maroc, entre l'Europe et l'Afrique, qui apporteront paix et stabilité, permettront de surmonter d'éventuelles crises entre les deux rives de la Méditerranée et faciliteront un cadre de plus grande stabilité sociale, politique et économique dans les régions voisines, qui bénéficieront de la croissance que cela apportera.",
+      "Les réseaux de transport euro-africains, sans la barrière physique du détroit, réaliseront des progrès sans précédent des deux côtés de la Mare Nostrum.",
+      "Plus au sud, même le Sahel pourrait être influencé positivement par ce grand projet, en permettant le transport terrestre des importantes ressources énergétiques de cette région.",
+      "Nous pouvons conclure en affirmant, comme le conclut le rapport final de l'Étude d'Évaluation Globale du Projet (EEG-09) contractée en 2008 auprès d'un consortium international de consultants, entre autres conclusions, que « La composante géostratégique de la liaison entre l'Afrique et l'Europe et le potentiel de développement de réseaux de transport à très longue distance, pèsent lourdement en faveur de la mise en œuvre du Projet et de l'implication de la communauté internationale, notamment en ce qui concerne son financement. La décision sur la mise en œuvre du Projet dépendra de l'importance que les décideurs accorderont à la dimension géostratégique du Projet."
+    ]
+  }
+  },
+
   "legalNotice": {
     "title": "Mentions légales",
 
@@ -595,10 +786,5 @@
     "locationTitle": "Localisation",
     "openMaps": "Ouvrir dans Google Maps",
     "submit": "Envoyer"
-  },
-
-
-
-
-  
+  }
 }

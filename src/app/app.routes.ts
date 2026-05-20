@@ -5,13 +5,15 @@ export const routes: Routes = [
   // Home
   { path: '', component: HomeComponent },
 
+  // About
+  { path: 'about', 
+    loadComponent: () => import('./components/about/about.component').then(m => m.AboutComponent)
+  },
+
   // Projet
-  { path: 'projet', component: HomeComponent },
-  { path: 'projet/ingenierie', component: HomeComponent },
-  { path: 'projet/historique', component: HomeComponent },
-  { path: 'projet/milieu-physique', component: HomeComponent },
-  { path: 'projet/socio-economique', component: HomeComponent },
-  { path: 'projet/geostrategie', component: HomeComponent },
+  { path: 'projet', 
+    loadComponent: () => import('./components/projet/projet.component').then(m => m.ProjetComponent)
+  },
 
   // Galerie
   { path: 'galerie', component: HomeComponent },

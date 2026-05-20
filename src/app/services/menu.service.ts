@@ -89,33 +89,33 @@ export class MenuService {
           children: [
             {
               label: this.translateService.instant(
-                'header.menu.project_history'
+                'header.menu.historique_du_projet'
               ),
               route: '/projet/ingenierie',
             },
             {
               label: this.translateService.instant(
-                'header.menu.physical_environment'
+                'header.menu.recherche_sur_le_milieu_physique'
               ),
               route: '/projet/milieu-physique',
             },
             {
-              label: this.translateService.instant('header.menu.engineering'),
+              label: this.translateService.instant('header.menu.ingénierie_du_projet'),
               route: '/projet/ingenierie',
             },
             {
-              label: this.translateService.instant('header.menu.legal_aspect'),
+              label: this.translateService.instant('header.menu.aspects_juridiques'),
               route: '/projet/ingenierie',
             },
             {
               label: this.translateService.instant(
-                'header.menu.socioeconomic_aspect'
+                'header.menu.réalité_et_perspectives_socioéconomiques'
               ),
               route: '/projet/socio-economique',
             },
             {
               label: this.translateService.instant(
-                'header.menu.geostrategic_component'
+                'header.menu.composante_géostratégique'
               ),
               route: '/projet/ingenierie',
             },

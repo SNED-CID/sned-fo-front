@@ -429,32 +429,32 @@ export class AboutComponent implements OnInit {
   }
 
   private initializeSections() {
-    this.sections = [
-      {
-        id: 'cadre',
-        title: this.translateService.instant('about.cadre.title'),
-        short: this.translateService.instant('about.cadre.short'),
-        paragraphs: this.translateService.instant('about.cadre.paragraphs'),
-        image: 'assets/images/cadre.jpg',
-      },
-      {
-        id: 'missions',
-        title: this.translateService.instant('about.missions.title'),
-        short: this.translateService.instant('about.missions.short'),
-        paragraphs: this.translateService.instant('about.missions.paragraphs'),
-        image: 'assets/images/history.jpg',
-      },
-      {
-        id: 'sned_secegsa',
-        title: this.translateService.instant('about.sned_secegsa.title'),
-        short: this.translateService.instant('about.sned_secegsa.short'),
-        paragraphs: this.translateService.instant(
-          'about.sned_secegsa.paragraphs',
-        ),
-        image: 'assets/images/cooperation.jpg',
-      },
-    ];
-  }
+  const aboutSections = [
+    {
+      id: 'cadre',
+      title: this.translateService.instant('about.cadre.title'),
+      short: this.translateService.instant('about.cadre.short'),
+      paragraphs: this.translateService.instant('about.cadre.paragraphs'),
+      image: 'assets/images/cadre.jpg',
+    },
+    {
+      id: 'missions',
+      title: this.translateService.instant('about.missions.title'),
+      short: this.translateService.instant('about.missions.short'),
+      paragraphs: this.translateService.instant('about.missions.paragraphs'),
+      image: 'assets/images/history.jpg',
+    },
+    {
+      id: 'sned_secegsa',
+      title: this.translateService.instant('about.sned_secegsa.title'),
+      short: this.translateService.instant('about.sned_secegsa.short'),
+      paragraphs: this.translateService.instant('about.sned_secegsa.paragraphs'),
+      image: 'assets/images/cooperation.jpg',
+    },
+  ];
+
+  this.sections = aboutSections;
+}
 
   showScrollTop = false;
   isOrganigrammeExpanded = true;
