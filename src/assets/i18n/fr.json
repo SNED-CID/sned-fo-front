@@ -274,7 +274,7 @@
       "historique_du_projet": "Historique du projet",
       "recherche_sur_le_milieu_physique": "Milieu physique",
       "ingénierie_du_projet": "Ingénierie",
-      "aspects_juridiques": "Aspect juridique",
+      "aspects_juridiques": "aspects juridiques",
       "réalité_et_perspectives_socioéconomiques": "Volet socio-économiques",
       "composante_géostratégique": "Composante géostratégique"
     },
@@ -306,7 +306,7 @@
       "historique_du_projet": "Historique du projet",
       "recherche_sur_le_milieu_physique": "Milieu physique",
       "ingénierie_du_projet": "Ingénierie",
-      "aspects_juridiques": "Aspect juridique",
+      "aspects_juridiques": "aspects juridiques",
       "réalité_et_perspectives_socioéconomiques": "Volet socio-économiques",
       "composante_géostratégique": "Composante géostratégique"
     }
@@ -626,7 +626,7 @@
   },
 
   "aspects_juridiques": {
-    "title": "Aspect juridique",
+    "title": "aspects juridiques",
     "short": "L'aspect juridique du Projet vise à comprendre les implications juridiques que la construction du Projet de Liaison Fixe peut avoir en droit international et administratif, ainsi que d'autres implications en droit communautaire ou environnemental.",
     "paragraphs": [
       "L'aspect juridique du Projet vise à comprendre les implications juridiques que la construction du Projet de Liaison Fixe peut avoir en droit international et administratif, ainsi que d'autres implications en droit communautaire ou environnemental.",
