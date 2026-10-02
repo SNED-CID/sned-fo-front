@@ -87,21 +87,20 @@ export class HeaderComponent implements OnInit, OnDestroy {
   menuBackgrounds: Record<string, string> = {
     '/': 'assets/images/roi-mohammed-vi.jpg',
     '/about': 'assets/images/Afrique-Europe.jpg',
-    '/projet': 'assets/images/tunnelMarocEspagne.png',
     '/galerie': 'assets/images/Rois.gif',
     '/publication': 'assets/images/Rois.gif',
     '/partenariat': 'assets/images/Afrique-Europe.jpg',
-    '/travail': 'assets/images/gibraltar05.gif',
-    '/appels-offres': 'assets/images/gibraltar05.gif',
+    '/travail': 'assets/images/diap2.png',
+    '/appels-offres': 'assets/images/diap4.png',
   };
 
   heroImages: string[] = [
     'assets/images/Rois.gif',
     'assets/images/Afrique-Europe.jpg',
-    'assets/images/gibraltar05.gif',
-    'assets/images/roi-mohammed-vi.jpg',
-    'assets/images/m6_esp.jpg',
-    'assets/images/tunnelMarocEspagne.png',
+    // 'assets/images/m6_esp.jpg',
+    'assets/images/diap1.png',
+    'assets/images/diap2.png',
+    'assets/images/diap4.png',
   ];
 
   currentBackground: string | null = null;
