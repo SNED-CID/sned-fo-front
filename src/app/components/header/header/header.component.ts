@@ -61,7 +61,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
       '/partenariat': 'partenaires',
       '/travail': 'travail',
       '/appels-offres': 'appels_offres',
-      
     },
     // Fragments (ancres)
     fragments: {
@@ -74,28 +73,31 @@ export class HeaderComponent implements OnInit, OnDestroy {
       organigramme: 'organigramme',
       partenaires: 'partenaires',
       promotion: 'promotion',
-      "description-du-projet": 'description_du_projet',
-      "historique-du-projet": 'historique_du_projet',
-      "recherche-sur-le-milieu-physique": 'recherche_sur_le_milieu_physique',
-      "ingenierie-du-projet": 'ingenierie_du_projet',
-      "aspects-juridiques": 'aspects_juridiques',
-      "realite-et-perspectives-socioeconomiques": 'realite_et_perspectives_socioeconomiques',
-      "composante-geostrategique": 'composante_geostrategique',
+      'description-du-projet': 'description_du_projet',
+      'historique-du-projet': 'historique_du_projet',
+      'recherche-sur-le-milieu-physique': 'recherche_sur_le_milieu_physique',
+      'ingenierie-du-projet': 'ingenierie_du_projet',
+      'aspects-juridiques': 'aspects_juridiques',
+      'realite-et-perspectives-socioeconomiques':
+        'realite_et_perspectives_socioeconomiques',
+      'composante-geostrategique': 'composante_geostrategique',
     },
   };
 
   menuBackgrounds: Record<string, string> = {
     '/': 'assets/images/roi-mohammed-vi.jpg',
-    '/about': 'assets/images/roi-mohammed-vi.jpg',
+    '/about': 'assets/images/Afrique-Europe.jpg',
     '/projet': 'assets/images/tunnelMarocEspagne.png',
-    '/galerie': 'assets/images/roi-mohammed-vi.jpg',
-    '/publication': 'assets/images/m6_esp.jpg',
-    '/partenariat': 'assets/images/m6_esp.jpg',
+    '/galerie': 'assets/images/Rois.gif',
+    '/publication': 'assets/images/Rois.gif',
+    '/partenariat': 'assets/images/Afrique-Europe.jpg',
     '/travail': 'assets/images/gibraltar05.gif',
     '/appels-offres': 'assets/images/gibraltar05.gif',
   };
 
   heroImages: string[] = [
+    'assets/images/Rois.gif',
+    'assets/images/Afrique-Europe.jpg',
     'assets/images/gibraltar05.gif',
     'assets/images/roi-mohammed-vi.jpg',
     'assets/images/m6_esp.jpg',
@@ -113,7 +115,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   constructor(
     private router: Router,
-    private translateService: TranslateService
+    private translateService: TranslateService,
   ) {}
   private readonly localeService = inject(LocaleService);
   private readonly analytics = inject(AnalyticsService);
@@ -195,35 +197,35 @@ export class HeaderComponent implements OnInit, OnDestroy {
             children: [
               {
                 label: this.translateService.instant(
-                  'header.menu.institutional_framework'
+                  'header.menu.institutional_framework',
                 ),
                 route: '/about',
                 sectionId: 'cadre',
               },
               {
                 label: this.translateService.instant(
-                  'header.menu.missions_values'
+                  'header.menu.missions_values',
                 ),
                 route: '/about',
                 sectionId: 'missions',
               },
               {
                 label: this.translateService.instant(
-                  'header.menu.sned_secegsa'
+                  'header.menu.sned_secegsa',
                 ),
                 route: '/about',
                 sectionId: 'sned_secegsa',
               },
               {
                 label: this.translateService.instant(
-                  'header.menu.organization'
+                  'header.menu.organization',
                 ),
                 route: '/about',
                 sectionId: 'organigramme',
               },
               {
                 label: this.translateService.instant(
-                  'header.menu.call_for_tenders'
+                  'header.menu.call_for_tenders',
                 ),
                 route: '/about',
                 sectionId: 'appels_offres',
@@ -242,58 +244,58 @@ export class HeaderComponent implements OnInit, OnDestroy {
           },
           {
             label: this.translateService.instant(
-              'header.menu.fixed_link_project'
+              'header.menu.fixed_link_project',
             ),
             route: '/projet',
             children: [
               {
                 label: this.translateService.instant(
-                  'header.menu.description_du_projet'
+                  'header.menu.description_du_projet',
                 ),
                 route: '/projet',
-                sectionId: 'description-du-projet'
+                sectionId: 'description-du-projet',
               },
               {
                 label: this.translateService.instant(
-                  'header.menu.historique_du_projet'
+                  'header.menu.historique_du_projet',
                 ),
                 route: '/projet',
-                sectionId: 'historique-du-projet'
+                sectionId: 'historique-du-projet',
               },
               {
                 label: this.translateService.instant(
-                  'header.menu.recherche_sur_le_milieu_physique'
+                  'header.menu.recherche_sur_le_milieu_physique',
                 ),
                 route: '/projet',
-                sectionId: 'recherche-sur-le-milieu-physique'
+                sectionId: 'recherche-sur-le-milieu-physique',
               },
               {
                 label: this.translateService.instant(
-                  'header.menu.ingénierie_du_projet'
+                  'header.menu.ingénierie_du_projet',
                 ),
                 route: '/projet',
-                sectionId: 'ingenierie-du-projet'
+                sectionId: 'ingenierie-du-projet',
               },
               {
                 label: this.translateService.instant(
-                  'header.menu.aspects_juridiques'
+                  'header.menu.aspects_juridiques',
                 ),
                 route: '/projet',
-                sectionId: 'aspects-juridiques'
+                sectionId: 'aspects-juridiques',
               },
               {
                 label: this.translateService.instant(
-                  'header.menu.réalité_et_perspectives_socioéconomiques'
+                  'header.menu.réalité_et_perspectives_socioéconomiques',
                 ),
                 route: '/projet',
-                sectionId: 'realite-et-perspectives-socioeconomiques'
+                sectionId: 'realite-et-perspectives-socioeconomiques',
               },
               {
                 label: this.translateService.instant(
-                  'header.menu.composante_géostratégique'
+                  'header.menu.composante_géostratégique',
                 ),
                 route: '/projet',
-                sectionId: 'composante-geostrategique'
+                sectionId: 'composante-geostrategique',
               },
             ],
           },
@@ -414,7 +416,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     // Track mobile menu toggle
     this.analytics.trackMobileMenuToggle(
-      this.isMobileMenuOpen() ? 'open' : 'close'
+      this.isMobileMenuOpen() ? 'open' : 'close',
     );
 
     // Prevent body scroll when mobile menu is open
@@ -446,7 +448,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     this.analytics.trackMobileDropdownToggle(
       itemLabel,
-      isCurrentlyOpen ? 'close' : 'open'
+      isCurrentlyOpen ? 'close' : 'open',
     );
   }
 
@@ -560,13 +562,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   getDefaultSubtitlePrimaryWord(): string {
-    const subtitle = this.translateService.instant('home.sections.default.subtitle') || '';
+    const subtitle =
+      this.translateService.instant('home.sections.default.subtitle') || '';
     const parts = subtitle.trim().split(/\s+/).filter(Boolean);
     return parts[0] || '';
   }
 
   getDefaultSubtitleSecondaryWords(): string {
-    const subtitle = this.translateService.instant('home.sections.default.subtitle') || '';
+    const subtitle =
+      this.translateService.instant('home.sections.default.subtitle') || '';
     const parts = subtitle.trim().split(/\s+/).filter(Boolean);
     if (parts.length <= 1) {
       return '';
@@ -639,7 +643,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     const nextItem = this.getNextMenuItem();
     if (!nextItem) {
       return this.translateService.instant(
-        'header.navigation.discover_project_button'
+        'header.navigation.discover_project_button',
       );
     }
     return nextItem.label;
@@ -658,7 +662,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       // Track dynamic navigation
       this.analytics.trackDynamicNavigation(
         currentItem?.label || 'Unknown',
-        nextItem.label
+        nextItem.label,
       );
 
       this.router.navigate([nextItem.route]);
