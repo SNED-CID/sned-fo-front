@@ -202,12 +202,13 @@ interface Section {
               {{ 'about.conseil_administration.title' | translate }}
             </h2>
 
-            <div class="space-y-6 max-w-md">
-              <div class="space-y-4 text-gray-700 leading-relaxed text-center whitespace-pre-line">
-                <p class="adaptive-body mb-4">
-                  {{ 'about.conseil_administration.short' | translate }}
-                </p>
-              </div>
+            <div class="w-full px-6 lg:px-8">
+              <!-- Même mise en forme que le texte des autres sections -->
+              <p
+                class="text-base lg:text-lg text-gray-700 mb-6 lg:mb-8 leading-relaxed whitespace-pre-line"
+              >
+                {{ 'about.conseil_administration.short' | translate }}
+              </p>
               <div style="isolation: auto;">
                 <app-read-more
                   [imageUrl]="null"

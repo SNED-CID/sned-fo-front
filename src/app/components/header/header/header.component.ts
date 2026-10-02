@@ -85,18 +85,18 @@ export class HeaderComponent implements OnInit, OnDestroy {
   };
 
   menuBackgrounds: Record<string, string> = {
-    '/': 'assets/images/roi-mohammed-vi.jpg',
-    '/about': 'assets/images/Afrique-Europe.jpg',
+    '/': 'assets/images/Rois.gif',
+    '/about': 'assets/images/diap1.png',
     '/galerie': 'assets/images/Rois.gif',
     '/publication': 'assets/images/Rois.gif',
-    '/partenariat': 'assets/images/Afrique-Europe.jpg',
+    '/partenariat': 'assets/images/diap4.png',
     '/travail': 'assets/images/diap2.png',
     '/appels-offres': 'assets/images/diap4.png',
   };
 
   heroImages: string[] = [
     'assets/images/Rois.gif',
-    'assets/images/Afrique-Europe.jpg',
+    //'assets/images/Afrique-Europe.jpg',
     // 'assets/images/m6_esp.jpg',
     'assets/images/diap1.png',
     'assets/images/diap2.png',
