@@ -168,28 +168,13 @@ import { CommonModule } from '@angular/common';
             }
           }
 
-          <!-- Description sous l'image 1 -->
-          @if (description && !loading()) {
-            <div class="mb-4 text-center">
-              <p
-                class="w-3/4 mx-auto px-6 py-4 bg-gray-50 text-gray-700 leading-relaxed mb-4 adaptive-body rounded-lg shadow-md"
-              >
-                {{ description }}
-              </p>
-            </div>
-          }
-
           <!-- Texte en paragraphes -->
           @if (!loading() && paragraphs) {
 
   @for (paragraph of paragraphs; track $index; let i = $index) {
 
     <p
-      class="m-10 text-gray-700 leading-relaxed mb-4 adaptive-body"
-      [class.text-2xl]="sectionId === 'historique-du-projet' && (i === 4 || i === 34)"
-      [class.text-center]="sectionId === 'historique-du-projet' && (i === 4 || i === 34)"
-      [class.font-bold]="sectionId === 'historique-du-projet' && (i === 4 || i === 34)"
-      [class.text-blue-600]="sectionId === 'historique-du-projet' && (i === 4 || i === 34)"
+      class="m-10 text-gray-700 leading-relaxed mb-4 adaptive-body sned-richtext"
       [innerHTML]="paragraph"
     >
     </p>
@@ -297,7 +282,6 @@ export class ReadMoreComponent implements OnInit {
   @Input() title = 'shared.readmore.details';
   @Input() paragraphs: string[] | undefined = [];
   @Input() imageUrl: string | null = null;
-  @Input() description: string | null = null;
   @Input() imagePositionIndex: number | null = null;
   @Input() sectionId: string = '';
   @Input() nextSectionId: string | null = null;

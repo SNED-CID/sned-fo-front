@@ -18,7 +18,6 @@ interface Section {
   title: string;
   short: string;
   full?: string;
-  description?: string;
   paragraphs?: string[];
   image: string;
   image2?: string;
@@ -85,60 +84,22 @@ interface Section {
                     {{ section.title }}
                   </h2>
                   <p
-                    class="text-base lg:text-lg text-gray-700 mb-6 lg:mb-8 leading-relaxed whitespace-pre-line"
-                  >
-                    {{ section.short }}
-                  </p>
+                    class="text-base lg:text-lg text-gray-700 mb-6 lg:mb-8 leading-relaxed whitespace-pre-line sned-richtext"
+                    [innerHTML]="section.short"
+                  ></p>
                 </div>
                 <app-read-more
               [imageUrl]=section.image
               [label]="'shared.readmore.read_more' | translate"
               [title]="section.title"
-              [description]="section.description || null"
               [paragraphs]="section.paragraphs"
               [sectionId]="section.id"
               
 
-              [sectionImages]="
-                section.id === 'recherche-sur-le-milieu-physique'
-                  ? ['assets/images/recherche-milieu.jpg']
-                  : section.id === 'ingenierie-du-projet'
-                    ? [
-                        'assets/images/img1.png',
-                        'assets/images/img2.png',
-                        'assets/images/img3.png',
-                        'assets/images/img4.png',
-                        'assets/images/img5.png',
-                        'assets/images/img6.png',
-                        'assets/images/img7.png',
-                        'assets/images/img8.png'
-                      ]
-                    : section.id === 'realite-et-perspectives-socioeconomiques'
-                      ? [
-                          'assets/images/union-med-1.png',
-                          'assets/images/union-med-2.png'
-                        ]
-                      : section.id === 'composante-geostrategique'
-                        ? [
-                            'assets/images/geostrategique-1.png',
-                            'assets/images/geostrategique-2.png'
-                          ]
-                        : []
-              "
+              [sectionImages]="[]"
+              [titleImageIndexes]="[]"
 
-              [titleImageIndexes]="
-                section.id === 'recherche-sur-le-milieu-physique'
-                  ? [6]
-                  : section.id === 'ingenierie-du-projet'
-                    ? [0,3,7,10,12,16,18,20]
-                    : section.id === 'realite-et-perspectives-socioeconomiques'
-                      ? [3, 5]
-                      : section.id === 'composante-geostrategique'
-                        ? [3, 4]
-                        : []
-              "
-
-          [imagePositionIndex]="section.id === 'recherche-sur-le-milieu-physique' ? 6 : null"
+          [imagePositionIndex]="null"
 
               [nextSectionId]="getNextSection(i)?.id || null"
               [nextSectionTitle]="getNextSection(i)?.title || null"
@@ -239,9 +200,6 @@ export class ProjetComponent implements OnInit {
         short: this.translateService.instant(
           'projet_liaison_fixe.description_du_projet.short',
         ),
-        description: this.translateService.instant(
-          'projet_liaison_fixe.description_du_projet.description',
-        ),
         paragraphs: this.translateService.instant(
           'projet_liaison_fixe.description_du_projet.paragraphs',
         ),
@@ -271,7 +229,7 @@ export class ProjetComponent implements OnInit {
         paragraphs: this.translateService.instant(
           'projet_liaison_fixe.recherche_sur_le_milieu_physique.paragraphs',
         ),
-        image: 'assets/images/recherche-milieu.jpg',
+        image: 'assets/images/mp6.jpg',
       },
       {
         id: 'ingenierie-du-projet',
@@ -284,7 +242,7 @@ export class ProjetComponent implements OnInit {
         paragraphs: this.translateService.instant(
           'projet_liaison_fixe.ingénierie_du_projet.paragraphs',
         ),
-        image: 'assets/images/img7.png',
+        image: 'assets/images/i1.jpg',
       },
       {
         id: 'aspects-juridiques',
@@ -310,7 +268,7 @@ export class ProjetComponent implements OnInit {
         paragraphs: this.translateService.instant(
           'projet_liaison_fixe.réalité_et_perspectives_socioéconomiques.paragraphs',
         ),
-        image: 'assets/images/union-med-2.png',
+        image: 'assets/images/s1.jpg',
       },
       {
         id: 'composante-geostrategique',
@@ -323,7 +281,7 @@ export class ProjetComponent implements OnInit {
         paragraphs: this.translateService.instant(
           'projet_liaison_fixe.composante_géostratégique.paragraphs',
         ),
-        image: 'assets/images/geostrategique-1.png',
+        image: 'assets/images/s2.jpg',
       },
     ];
 

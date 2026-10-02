@@ -109,6 +109,61 @@ p, span, div {
   font-weight: 400; /* Regular */
 }
 
+/* Texte riche des sections "Lire la suite" (HTML venant des fichiers i18n, non vu par Tailwind).
+   Conventions dans les JSON, un élément du tableau "paragraphs" = un paragraphe :
+   - accroche (1er paragraphe) : <span class="lead">…</span>
+   - sous-titre                : <span class="subheading">…</span>
+   - liste                     : Phrase d'introduction :<ul><li>…</li><li>…</li></ul>  */
+.sned-richtext .lead {
+  display: block;
+  font-size: 1.2em;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #139dcc; /* sned.blue (tailwind.config.js) */
+}
+
+.sned-richtext .subheading {
+  display: block;
+  font-size: 1.15em;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.sned-richtext ul {
+  list-style: disc;
+  padding-inline-start: 1.5rem;
+  margin-top: 0.75rem;
+}
+
+.sned-richtext li {
+  margin-bottom: 0.4rem;
+}
+
+.sned-richtext li::marker {
+  color: #139dcc;
+}
+
+/* Image dans le texte : <img src="assets/images/xxx.jpg" alt="…"> (un élément "paragraphs" dédié) */
+.sned-richtext img {
+  display: block;
+  width: auto;       /* taille d'origine */
+  max-width: 100%;   /* sans dépasser le panneau */
+  height: auto;
+  margin: 1.5rem auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+/* Légende d'une figure, dans le même élément que l'image : <img …><span class="caption">Figure 1 : …</span> */
+.sned-richtext .caption {
+  display: block;
+  margin-top: -0.75rem;
+  text-align: center;
+  font-style: italic;
+  font-size: 0.9em;
+  color: #6b7280;
+}
+
 .adaptive-keyword {
   font-family: 'Nunito Sans', sans-serif;
   font-weight: 700; /* Bold */

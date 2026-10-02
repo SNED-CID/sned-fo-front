@@ -26,13 +26,10 @@ RUN apk add --no-cache curl openssl && \
 # Note: nginx.conf et nginx-ssl.conf sont montés via volumes depuis infra/configs/nginx/fo/
 # Voir docker-compose-fo.yml pour la configuration des volumes
 
-# Copier certificats SSL
-COPY --chown=nginx:nginx ssl/server.crt /etc/nginx/ssl/server.crt
-COPY --chown=nginx:nginx ssl/server.key /etc/nginx/ssl/server.key
-
-# Sécuriser les certificats
-RUN chmod 644 /etc/nginx/ssl/server.crt && \
-    chmod 600 /etc/nginx/ssl/server.key
+# Les certificats SSL ne sont plus copiés dans l'image (pas de clé privée dans le registry) :
+# - docker compose : montés depuis sned-fo-front/ssl/ (voir docker-compose-fo.yml)
+# - Kubernetes     : TLS terminé par l'Ingress, nginx écoute en HTTP sur 8080
+RUN mkdir -p /etc/nginx/ssl
 
 # Copier app buildée
 COPY --from=build --chown=nginx:nginx /app/dist/sned-fo-front /usr/share/nginx/html

@@ -50,3 +50,6 @@ tailwind.config.js.bak
 .env.local
 *.bak
 proxy.conf.json
+
+# Certificats SSL (montés au runtime, jamais dans l'image)
+ssl/
