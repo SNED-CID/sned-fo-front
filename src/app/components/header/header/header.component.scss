@@ -15,36 +15,62 @@
   background: #0f172a;
 }
 
-.hero-bg-layer {
+/* Hero responsive :
+   - --hero-nav-h = hauteur de la barre de navigation fixe (h-16 / lg:h-20) posée par-dessus le hero ;
+     l'image commence SOUS la barre, donc le haut (têtes) n'est jamais masqué.
+   - Zone image calée sur le format des photos (~3:2 → 66,7 % de la largeur) pour les recadrer
+     le moins possible, entre 28rem (titre + bouton tiennent sur mobile) et la hauteur d'écran.
+   Zone image : 1920×1080 → 1000 px · 1366×768 → 688 px · tablette 768 px → 512 px · téléphone 390 px → 448 px */
+.hero-section {
+  --hero-nav-h: 4rem;
+  min-height: calc(clamp(28rem, 66.67vw, 100vh - var(--hero-nav-h)) + var(--hero-nav-h));
+  min-height: calc(clamp(28rem, 66.67vw, 100svh - var(--hero-nav-h)) + var(--hero-nav-h));
+}
+
+@media (min-width: 1024px) {
+  .hero-section {
+    --hero-nav-h: 5rem;
+  }
+}
+
+/* Diaporama : l'image remplit le hero (pas de bandes). L'excédent est retiré par le BAS :
+   le haut de l'image (têtes des personnes debout) n'est jamais coupé. */
+/* Par défaut : l'image remplit tout le hero, y compris derrière la barre de navigation,
+   ancrée en haut (jamais recadrée par le haut). */
+.hero-img {
   position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  pointer-events: none;
-  will-change: opacity, transform, filter;
-}
-
-.hero-bg-base {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
   z-index: 0;
-  transform: scale(1.04);
+  pointer-events: none;
+  user-select: none;
 }
 
-.hero-bg-next {
+/* Première image (personnes debout) : commence SOUS la barre de navigation fixe,
+   pour que les têtes ne soient jamais masquées par le menu. */
+.hero-img.hero-img-below-nav {
+  top: var(--hero-nav-h);
+  height: calc(100% - var(--hero-nav-h));
+}
+
+/* Image suivante : superposée, apparaît en fondu */
+.hero-img-next {
   z-index: 1;
   opacity: 0;
-  transform: scale(1.08);
   filter: blur(8px) saturate(1.08);
   transition: opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 1000ms cubic-bezier(0.22, 1, 0.36, 1),
     filter 900ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.hero-bg-next-active {
+.hero-img-next-active {
   opacity: 1;
-  transform: scale(1.04);
   filter: blur(0) saturate(1);
 }
+
 
 .hero-fixed-strong {
   color: #1ea9dd;

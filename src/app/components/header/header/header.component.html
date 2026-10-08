@@ -204,23 +204,28 @@
 <!-- HERO Section -->
 <section
   [attr.dir]="currentLang() === 'ar' ? 'rtl' : 'ltr'"
-  class="hero-section relative min-h-screen text-white flex items-center overflow-hidden"
+  class="hero-section relative text-white flex items-center overflow-hidden"
 >
-  @if (!isVideoPlaying) {
-  <div
-    class="hero-bg-layer hero-bg-base"
-    [style.background-image]="
-      currentBackground ? 'url(' + currentBackground + ')' : 'none'
-    "
-  ></div>
+  @if (!isVideoPlaying && currentBackground) {
+  <!-- Image plein cadre, recadrée par le BAS uniquement (le haut — têtes — est toujours conservé) -->
+  <img
+    class="hero-img"
+    [class.hero-img-below-nav]="currentBackground === heroImages[0]"
+    [src]="currentBackground"
+    alt=""
+    aria-hidden="true"
+  />
 
-  <div
-    class="hero-bg-layer hero-bg-next"
-    [class.hero-bg-next-active]="isBackgroundTransitioning()"
-    [style.background-image]="
-      transitionBackground ? 'url(' + transitionBackground + ')' : 'none'
-    "
-  ></div>
+  @if (transitionBackground) {
+  <img
+    class="hero-img hero-img-next"
+    [class.hero-img-below-nav]="transitionBackground === heroImages[0]"
+    [class.hero-img-next-active]="isBackgroundTransitioning()"
+    [src]="transitionBackground"
+    alt=""
+    aria-hidden="true"
+  />
+  }
   }
 
   <!-- Vidéo -->
@@ -250,8 +255,8 @@
   </div>
   }
 
-  <!-- Contenu Hero optimisé et responsive -->
-  <div class="relative z-30 w-full px-6 sm:px-8 lg:px-12">
+  <!-- Contenu Hero -->
+  <div class="hero-content-layer relative z-30 w-full px-6 sm:px-8 lg:px-12">
     <div
       class="max-w-6xl mx-auto hero-content-wrap"
       [ngClass]="

@@ -85,8 +85,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   };
 
   menuBackgrounds: Record<string, string> = {
-    '/': 'assets/images/Rois.gif',
-    '/about': 'assets/images/diap1.png',
+    '/': 'assets/images/ima1.png',
+    '/about': 'assets/images/ima2.png',
     '/galerie': 'assets/images/Rois.gif',
     '/publication': 'assets/images/Rois.gif',
     '/partenariat': 'assets/images/diap4.png',
@@ -95,12 +95,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   };
 
   heroImages: string[] = [
-    'assets/images/Rois.gif',
-    //'assets/images/Afrique-Europe.jpg',
-    // 'assets/images/m6_esp.jpg',
-    'assets/images/diap1.png',
-    'assets/images/diap2.png',
-    'assets/images/diap4.png',
+    'assets/images/ima1.png',
+    'assets/images/ima3.jpeg',
+    'assets/images/ima4.jpeg',
+    'assets/images/ima5.jpeg',
+    'assets/images/ima2.png',
+    'assets/images/ima6.jpeg',
+    'assets/images/ima7.jpeg',
   ];
 
   currentBackground: string | null = null;
