@@ -255,7 +255,7 @@
       "publication": "Publications",
       
       "partners": "Partners",
-      "careers": "Join us",
+      "careers": "Get in touch",
       "call_for_tenders": "Call for Tenders",
       "contact": "Contact"
     }
@@ -295,7 +295,7 @@
   "careers": {
     "last_updated_on": "Last updated on",
     "cta_text": "Join our team and contribute to the SNED project.",
-    "cta_button": "Join us"
+    "cta_button": "Get in touch"
   },
   "about": {
     "sned": {
@@ -421,6 +421,16 @@
       ]
     }
   },
+  "projet_liaison_fixe": {
+    "aspects_juridiques": {
+      "title": "Legal Aspects",
+      "short": "Page under construction",
+      "paragraphs": [
+        "Page under construction"
+      ]
+    }
+  },
+
   "legalNotice": {
     "title": "Legal Notice",
 
@@ -459,7 +469,7 @@
       "snedSeceg": "SNED & SECEG SA",
       "organization": "Organization",
       "partners": "Partners",
-      "careers": "Join us",
+      "careers": "Get in touch",
       "purchases": "Call for Tenders"
     },
 

@@ -1,12 +1,12 @@
 <div class="max-w-7xl mx-auto p-4">
 
-  <div class="overflow-x-auto">
-    <table class="w-full border-collapse" style="min-width: 50rem">
+  <div>
+    <table class="w-full border-collapse">
       <!-- Header -->
       <thead>
         <tr>
           <th
-            class="w-full h-5 sm:h-8 bg-gradient-to-r from-[#F89851] via-[#FDBA74] to-[#FDE047] rounded-t-2xl text-3xl"
+            class="w-full h-5 sm:h-8 bg-gradient-to-r from-[#F89851] via-[#FDBA74] to-[#FDE047] rounded-t-2xl text-2xl sm:text-3xl"
           >
             {{ 'header.menu.publication' | translate }}
           </th>
@@ -19,20 +19,20 @@
         @for (communique of communiques; track $index; let i = $index, last =
         $last) {
         <tr
-          class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-indigo-400 hover:-translate-y-1"
+          class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:-translate-y-1"
         >
-          <td class="p-7 border-0">
-            <div class="flex items-stretch justify-between gap-4">
+          <td class="p-4 sm:p-6 lg:p-7 border-0">
+            <!-- Mobile/tablette : empilé ; desktop (lg) : texte à gauche, date/image/liens à droite -->
+            <div class="flex flex-col lg:flex-row lg:items-stretch lg:justify-between gap-4">
               <!-- Contenu texte à gauche -->
               <div
-                class="flex flex-col justify-between overflow-hidden min-w-0"
-                style="flex: 0 1 auto; max-width: calc(100% - 280px)"
+                class="flex flex-col justify-between overflow-hidden min-w-0 w-full lg:w-auto lg:flex-[0_1_auto] lg:max-w-[calc(100%-280px)]"
               >
                 <div>
                   <div class="flex items-center justify-between gap-4 mb-3 min-w-0">
                     <!-- Titre -->
                     <h3
-                      class="text-2xl font-bold text-slate-800 leading-tight truncate flex-1 min-w-0"
+                      class="text-xl sm:text-2xl font-bold text-slate-800 leading-tight line-clamp-2 lg:truncate flex-1 min-w-0"
                     >
                       {{ communique.title }}
                     </h3>
@@ -42,7 +42,7 @@
                     [innerHTML]="communique.details"
                     class="text-slate-500 text-base html-truncate"
                   ></div>
-                  <div class="flex justify-start mt-3">
+                  <div class="flex justify-center sm:justify-start mt-3">
                     <button
                       (click)="openReadMore(communique, i)"
                       class="cursor-pointer group flex items-center gap-2 px-5 py-2 rounded-full bg-[var(--sned-orange)] text-white font-medium transition-all duration-300 hover:translate-y-[-2px] btn-lien whitespace-nowrap"
@@ -54,9 +54,10 @@
               </div>
 
               <!-- Groupe Date + Liens + Image à droite -->
-<div class="flex items-stretch gap-4 flex-shrink-0">
+<!-- Mobile : image pleine largeur, puis date + liens ; tablette : sur une ligne -->
+<div class="flex flex-wrap sm:flex-nowrap items-stretch gap-4 flex-shrink-0">
   <!-- Date -->
-  <div class="flex items-center justify-center px-4 border-l border-r border-slate-200">
+  <div class="w-full sm:w-auto flex items-center justify-center px-4 sm:border-l sm:border-r border-slate-200">
     <div class="text-center">
       <div class="text-3xl font-bold text-indigo-600">
         {{ communique.datePosting | date: 'dd' }}
@@ -77,7 +78,7 @@
 
   <!-- Image (déplacée avant les boutons) -->
   <div
-    class="flex-shrink-0 w-40 h-30 overflow-hidden rounded-xl shadow-lg bg-slate-50 flex items-center justify-center "
+    class="order-first sm:order-none flex-shrink-0 w-full h-48 sm:w-40 sm:h-auto overflow-hidden rounded-xl shadow-lg bg-slate-50 flex items-center justify-center"
   >
     <img
       [src]="communiqueService.communiqueImages[communique.imageUUID]"
@@ -87,13 +88,13 @@
   </div>
 
   <!-- Boutons des liens langues (déplacés après l'image) -->
-  <div class="flex flex-col justify-center gap-2 px-2 border-l border-r border-slate-200">
+  <div class="w-full sm:w-auto flex flex-row flex-nowrap sm:flex-col justify-center gap-2 px-0 sm:px-2 sm:border-l sm:border-r border-slate-200">
     @if (communique.frLink) {
       <a
         [href]="communique.frLink"
         target="_blank"
         rel="noopener noreferrer"
-        class="btn-lien cursor-pointer flex items-center gap-2 px-5 py-2 justify-center rounded-full bg-[var(--sned-orange)] text-white font-medium transition-all duration-300 hover:translate-y-[-2px] whitespace-nowrap"
+        class="btn-lien cursor-pointer flex items-center gap-2 px-3 sm:px-5 py-2 text-sm sm:text-base justify-center rounded-full bg-[var(--sned-orange)] text-white font-medium transition-all duration-300 hover:translate-y-[-2px] whitespace-nowrap"
       >
         {{ 'communique.links.fr' | translate }}
       </a>
@@ -103,7 +104,7 @@
         [href]="communique.enLink"
         target="_blank"
         rel="noopener noreferrer"
-        class="btn-lien cursor-pointer flex items-center gap-2 px-5 py-2 justify-center rounded-full bg-[var(--sned-orange)] text-white font-medium transition-all duration-300 hover:translate-y-[-2px] whitespace-nowrap"
+        class="btn-lien cursor-pointer flex items-center gap-2 px-3 sm:px-5 py-2 text-sm sm:text-base justify-center rounded-full bg-[var(--sned-orange)] text-white font-medium transition-all duration-300 hover:translate-y-[-2px] whitespace-nowrap"
       >
         {{ 'communique.links.en' | translate }}
       </a>
@@ -113,7 +114,7 @@
         [href]="communique.esLink"
         target="_blank"
         rel="noopener noreferrer"
-        class="btn-lien cursor-pointer flex items-center gap-2 px-5 py-2 justify-center rounded-full bg-[var(--sned-orange)] text-white font-medium transition-all duration-300 hover:translate-y-[-2px] whitespace-nowrap"
+        class="btn-lien cursor-pointer flex items-center gap-2 px-3 sm:px-5 py-2 text-sm sm:text-base justify-center rounded-full bg-[var(--sned-orange)] text-white font-medium transition-all duration-300 hover:translate-y-[-2px] whitespace-nowrap"
       >
         {{ 'communique.links.es' | translate }}
       </a>

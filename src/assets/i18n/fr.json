@@ -298,7 +298,7 @@
       "recognition_gallery": "Galerie de reconnaissance",
       "publication": "Notre Travail",
       "partners": "Partenaires",
-      "careers": "Nous rejoindre",
+      "careers": "Nous joindre",
       "call_for_tenders": "Appel d'offres",
       "contact": "Contact",
 
@@ -346,7 +346,7 @@
   "careers": {
     "last_updated_on": "Mise à jour le",
     "cta_text": "Rejoignez notre equipe et contribuez au projet SNED.",
-    "cta_button": "Nous rejoindre"
+    "cta_button": "Nous joindre"
   },
 
   "about": {
@@ -470,20 +470,8 @@
 
     "recherche_sur_le_milieu_physique": {
       "title": "Milieu physique",
-      "short": "<span class=\"lead\">Quatre décennies de coopération entre le Maroc et l'Espagne</span>16 juin 1979 : lancement officiel du Projet par les deux Souverains.\n8 novembre 1979 : signature d’une Convention de Coopération Scientifique et Technique entre les deux États.\n24 octobre 1980 : signature d’un accord complémentaire de coopération entre les deux États portant création d’un Comité Mixte maroco-espagnol en charge de la direction du Projet, et création des deux sociétés SNED et SECEG.\n27 septembre 1989 : signature d’un accord additionnel visant à développer les études du Projet et à démarrer les investigations physiographiques, géologiques et géotechniques. Cet accord a été publié au BO du 21 juin 2012 par le dahir 1-91-43 du 1er ramadan 1432 (2 août 2011).\n4 juillet 1991 : Traité d’amitié, de bon voisinage et de coopération entre l’Espagne et le Maroc.",
+      "short": "<span class=\"lead\">Un milieu physique et environnemental complexe</span>C’est un projet à milieu physique et environnemental complexe, avec la conjonction de plusieurs spécificités :\n• une profondeur d’eau en mer atteignant 300 m dans le couloir le moins profond du détroit ;\n• des vents forts ;\n• des courants marins d’intensité importante, en surface et en profondeur, et dont le sens est variable au cours d’une même journée ;\n• une configuration géologique complexe et peu prévisible sur une coupe le long du tracé du Projet ;\n• des conditions géotechniques marquées par la variabilité et la faiblesse des caractéristiques des terrains, lorsqu’il est possible de les recueillir ;\n• l’existence de matériaux (brèches en sillons profonds) au milieu du tracé du Projet, dont les caractéristiques ayant pu être collectées montrent leur potentiel de déformation.",
       "paragraphs": [
-        "<span class=\"lead\">Quatre décennies de coopération entre le Maroc et l'Espagne</span>",
-        "<ul><li><strong>16 juin 1979 :</strong> lancement officiel du Projet par les deux Souverains.</li><li><strong>8 novembre 1979 :</strong> signature d’une Convention de Coopération Scientifique et Technique entre les deux États.</li><li><strong>24 octobre 1980 :</strong> signature d’un accord complémentaire de coopération entre les deux États portant création d’un Comité Mixte maroco-espagnol en charge de la direction du Projet, et création des deux sociétés SNED et SECEG.</li><li><strong>27 septembre 1989 :</strong> signature d’un accord additionnel visant à développer les études du Projet et à démarrer les investigations physiographiques, géologiques et géotechniques. Cet accord a été publié au BO du 21 juin 2012 par le dahir 1-91-43 du 1er ramadan 1432 (2 août 2011).</li><li><strong>4 juillet 1991 :</strong> Traité d’amitié, de bon voisinage et de coopération entre l’Espagne et le Maroc.</li></ul>",
-        "<span class=\"subheading\">Au cours des 40 dernières années</span><ul><li><strong>43 comités mixtes</strong> ont été organisés entre les deux gouvernements afin de diriger, coordonner et superviser l'activité des deux sociétés.</li><li><strong>4 colloques</strong> internationaux.</li><li><strong>11 réunions de haut niveau</strong> tenues ces dernières années entre les Rois et les chefs de gouvernement des deux pays.</li><li><strong>48 campagnes</strong> sur le milieu physique.</li></ul>",
-        "<span class=\"subheading\">Les phases du projet depuis 1980</span>",
-        "<strong>1980-1982 — Phase de diagnostic</strong><ul><li>Collecte des données physiques déjà existantes et d’informations sur les techniques disponibles de construction d’ouvrages similaires.</li><li>Diagnostic de plusieurs options : tunnel submergé, pont suspendu sur appuis flottants, pont sur appuis fixes, tunnel posé, tunnel flottant et tunnel foré.</li><li>Organisation de deux colloques, à Tanger en 1980 et à Madrid en 1982.</li></ul>",
-        "<strong>1983-1996 — Phase de préfaisabilité</strong><ul><li>Poursuite des investigations du milieu physique et des études d’ingénierie, socio-économiques et juridiques ;</li><li>Exécution de forages à terre et de 42 campagnes océanographiques ;</li><li>Ouvrages expérimentaux sur les deux rives ;</li><li>Collecte de données sur le courant marin et élaboration d’un modèle d’écoulement dans le détroit ;</li><li>Organisation de 2 colloques internationaux et de séminaires techniques et juridiques, pour une évaluation des plans de travail et la formulation des orientations pour les programmes futurs ;</li><li>Élaboration de cartes bathymétrique, géologique et topographique ;</li><li>Élaboration d’une analyse multicritère comparative entre les solutions de traversée envisagées, ayant conduit au choix de 2 variantes depuis 1987, puis d’une seule variante depuis 1995 : le tunnel foré ferroviaire, retenu en 1996 car c’est une solution viable techniquement et économiquement et respectueuse de l’environnement, qu’elle peut être réalisée par étapes en réduisant les coûts, qu’elle bénéficie d’antécédents de taille et qu’elle est la moins coûteuse ;</li><li>Promotion du Projet à l’échelle internationale.</li></ul>",
-        "<strong>1997-2005 — Phase de faisabilité</strong><ul><li>Période réservée aux investigations en mer (4 grandes campagnes offshore de forages profonds) ;</li><li>En 1998/99, découverte de sable sur une hauteur de 100 m et de 2 sillons remplis de matériaux quaternaires (les brèches), au milieu du détroit de Gibraltar et au niveau du seuil de Camarinal, où est calé le tracé en plan du Projet.</li></ul>",
-        "<strong>2006-2012 — Actualisation de la phase de faisabilité</strong><ul><li>Actualisation de l’APP96 axée sur la tunnelabilité des brèches et intégrant l’étude d’impact du projet sur l’environnement ;</li><li>Actualisation de l’étude de prévision des trafics (EPT) ;</li><li>Études des effets régionaux ;</li><li>Analyse des aspects économiques et financiers ;</li><li>Étude d’évaluation globale (EEG09).</li></ul>",
-        "<strong>Depuis 2023 — Relance du projet</strong>",
-        "Partant des orientations de la 43<sup>e</sup> session du Comité Mixte, qui s’est tenue en avril 2023, les deux sociétés SNED et SECEGSA ont été mandatées pour élaborer un Plan de Travail Conjoint :<ul><li>il comporte des actions relatives à l’écosystème du Projet de Liaison Fixe à travers le détroit de Gibraltar ;</li><li>il porte sur une mise à jour du Projet de Tunnel dans toutes ses composantes, sur la base des connaissances actuelles et des développements techniques et technologiques acquis depuis 2009 jusqu’à ce jour, y compris l’amélioration des connaissances du milieu physique du projet ;</li><li>il envisage de mener toutes les études nécessaires à la réalisation d’une Galerie de Reconnaissance.</li></ul>",
-        "Le Plan de Travail Conjoint est établi sur la base des deux principes régissant la nouvelle stratégie de relance du Projet :<ul><li><strong>L’unicité du Projet de la Liaison Fixe Europe-Afrique</strong>, en respectant le cadre juridique des accords bilatéraux internationaux et le mandat reçu de la 43<sup>e</sup> session du Comité Mixte ;</li><li><strong>Le travail en synergie</strong>, en mobilisant toutes les ressources utiles et nécessaires à l’aboutissement du projet.</li></ul>",
-        "Parmi les actions prioritaires envisagées par la SNED, on cite :<ul><li>la mise à jour des études du projet en intégrant toutes les avancées techniques et technologiques ;</li><li>les études du projet de la Galerie de Reconnaissance ;</li><li>l’évaluation socio-économique, environnementale, géostratégique et juridique du Projet selon les standards internationaux ;</li><li>l’élaboration des études d’impact ;</li><li>des campagnes d’investigation complémentaires du milieu physique du Projet.</li></ul>",
         "<span class=\"subheading\">Un milieu physique et environnemental complexe</span>C’est un projet à milieu physique et environnemental complexe, avec la conjonction de plusieurs spécificités :<ul><li>une profondeur d’eau en mer atteignant 300 m dans le couloir le moins profond du détroit ;</li><li>des vents forts ;</li><li>des courants marins d’intensité importante, en surface et en profondeur, et dont le sens est variable au cours d’une même journée ;</li><li>une configuration géologique complexe et peu prévisible sur une coupe le long du tracé du Projet ;</li><li>des conditions géotechniques marquées par la variabilité et la faiblesse des caractéristiques des terrains, lorsqu’il est possible de les recueillir ;</li><li>l’existence de matériaux (brèches en sillons profonds) au milieu du tracé du Projet, dont les caractéristiques ayant pu être collectées montrent leur potentiel de déformation.</li></ul>",
         "Plusieurs travaux terrestres et en mer ont été réalisés au cours des années précédentes.",
         "<span class=\"subheading\">Campagnes d’investigation en mer</span>Les actions en mer ont consisté en des reconnaissances géophysiques, des levés bathymétriques, des sondages carottés par forage et des essais in situ le long de ces forages :<ul><li>levé bathymétrique au 1/5 000 (maille de 10 m × 10 m) ;</li><li><strong>~ 10 000 km</strong> de profils géophysiques par sismique réflexion ;</li><li><strong>~ 5 000 km</strong> de profils Side Scan Sonar sous-marin autonome ;</li><li><strong>~ 40 h</strong> d’inspection visuelle du fond marin à l’aide d’un sous-marin autonome ;</li><li><strong>~ 2 000</strong> prélèvements d’échantillons du fond marin par lance ;</li><li><strong>~ 50 forages</strong> d’environ 5 m de profondeur ;</li><li><strong>3 campagnes de forages profonds</strong> (Bucentaure 1997, Norskald 1999, Kingfisher 2005) : ~ 40 sondages profonds totalisant 3 000 m, dont 18 en 2005, avec un sondage de 324 m de profondeur sous 275 m d’eau.</li></ul>",
@@ -550,14 +538,9 @@
 
     "aspects_juridiques": {
       "title": "Volet juridiques",
-      "short": "<span class=\"lead\">Droit international</span>Les États côtiers d’une future liaison fixe Europe-Afrique à travers le détroit de Gibraltar exercent leur souveraineté sur les eaux du détroit, y compris ses fonds marins et son sous-sol, ainsi que sur l’espace aérien au-dessus de la zone maritime. Cette situation constitue un excellent point de départ pour la réalisation du projet de liaison fixe, sans préjudice des limitations que le droit international peut imposer à cette souveraineté.",
+      "short": "Page en construction",
       "paragraphs": [
-        "<span class=\"lead\">Droit international</span>",
-        "Les États côtiers d’une future liaison fixe Europe-Afrique à travers le détroit de Gibraltar exercent leur souveraineté sur les eaux du détroit, y compris ses fonds marins et son sous-sol, ainsi que sur l’espace aérien au-dessus de la zone maritime. Cette situation constitue un excellent point de départ pour la réalisation du projet de liaison fixe, sans préjudice des limitations que le droit international peut imposer à cette souveraineté.",
-        "Cette pleine souveraineté des États côtiers sur leurs eaux intérieures et leur mer territoriale n’est pas limitée par le droit international en ce qui concerne la construction d’installations artificielles, et l’on peut affirmer que les États côtiers du détroit de Gibraltar, dans l’exercice de leur souveraineté, sont autorisés à construire un ouvrage fixe, quelle que soit la solution technique adoptée (pont ou tunnel).",
-        "Le régime dit de « passage de transit » est reconnu par la communauté internationale et accepté par l’Espagne et le Maroc comme le régime qui régit le détroit de Gibraltar.",
-        "Il s’agit d’un régime dans lequel la liberté de navigation et de survol est autorisée exclusivement aux fins de transit rapide et ininterrompu : passage par le détroit pour entrer dans un État côtier, quitter cet État ou y retourner.",
-        "Il est entendu que les navires, conformément au droit international, ne peuvent ni jeter l’ancre ni s’arrêter pendant leur transit, sauf en cas de danger ou de force majeure, et doivent communiquer immédiatement et par tous les moyens ces circonstances à l’administration maritime la plus proche."
+        "Page en construction"
       ]
     },
 
@@ -629,7 +612,7 @@
       "snedSeceg": "SNED & SECEG SA",
       "organization": "Organisation",
       "partners": "Partenaires",
-      "careers": "Nous rejoindre",
+      "careers": "Nous joindre",
       "purchases": "Appel d'offres"
     },
 

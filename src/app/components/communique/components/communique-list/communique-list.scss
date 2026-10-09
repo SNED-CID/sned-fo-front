@@ -10,9 +10,11 @@
     max-width: 100%; /* ← Important */
 }
 
-/* Hover sned-blue pour les boutons liens et lire la suite */
+/* Hover des boutons liens et lire la suite : même rendu que le hover global des boutons (styles.scss) */
 .btn-lien:hover {
-  background-color: var(--sned-blue) !important;
+  background: var(--sned-orange-dark) !important;
+  border-color: var(--sned-orange-dark);
+  box-shadow: 0 10px 24px rgba(209, 109, 40, 0.32);
 }
 
 .html-truncate * {
