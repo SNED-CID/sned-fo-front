@@ -7,7 +7,9 @@ import {
   inject,
   HostListener,
   OnInit,
+  DestroyRef,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { trigger, style, transition, animate } from '@angular/animations';
 import { LoaderComponent } from '../loader/loader.component';
 import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
@@ -142,6 +144,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 export class CommuniqueReadMoreComponent implements OnInit {
   private translate = inject(TranslateService);
   private sanitizer = inject(DomSanitizer);
+  private destroyRef = inject(DestroyRef);
 
   currentLang = signal('fr');
 
@@ -162,9 +165,11 @@ export class CommuniqueReadMoreComponent implements OnInit {
       this.translate.currentLang || this.translate.defaultLang || 'fr'
     );
 
-    this.translate.onLangChange.subscribe((event) => {
-      this.currentLang.set(event.lang);
-    });
+    this.translate.onLangChange
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((event) => {
+        this.currentLang.set(event.lang);
+      });
   }
 
   sanitizedDetails(): SafeHtml {

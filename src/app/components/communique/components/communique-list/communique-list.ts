@@ -7,7 +7,10 @@ import {
   SimpleChanges,
   inject,
   signal,
+  DestroyRef,
+  OnDestroy,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { DatePipe, NgIf, NgFor } from '@angular/common';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import {
@@ -25,8 +28,11 @@ import { parseLocalDateTimeToDate } from '../../../../utils/date-utils';
   templateUrl: './communique-list.html',
   styleUrls: ['./communique-list.scss'],
 })
-export class CommuniqueList implements OnChanges, OnInit {
+export class CommuniqueList implements OnChanges, OnInit, OnDestroy {
   private translate = inject(TranslateService);
+  private destroyRef = inject(DestroyRef);
+  // Images en cours de téléchargement, pour ne pas les demander deux fois
+  private pendingImages = new Set<string>();
   currentLang = signal('fr');
   @Input() communiques: CommuniqueReadDTO[] = [];
 
@@ -44,9 +50,19 @@ export class CommuniqueList implements OnChanges, OnInit {
       this.translate.currentLang || this.translate.defaultLang || 'fr'
     );
 
-    this.translate.onLangChange.subscribe((event) => {
-      this.currentLang.set(event.lang);
-    });
+    this.translate.onLangChange
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((event) => {
+        this.currentLang.set(event.lang);
+      });
+  }
+
+  ngOnDestroy(): void {
+    // Libère les URLs blob créées pour les images
+    Object.values(this.communiqueService.communiqueImages).forEach((url) =>
+      URL.revokeObjectURL(url),
+    );
+    this.communiqueService.communiqueImages = {};
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -63,39 +79,38 @@ export class CommuniqueList implements OnChanges, OnInit {
     }
   }
 
+  // Télécharge uniquement les images absentes du cache ; le cache vit tant que la liste est affichée
   loadImages() {
-    this.communiqueService.communiqueImages = {};
-    for (let i = 0; i < this.communiques.length; i++) {
-      const communique = this.communiques[i];
-      if (communique.publicationStatus === PublicationStatus.PUBLISHED) {
-        this.communiqueService.getImageByUUID(communique.imageUUID).subscribe({
+    for (const communique of this.communiques) {
+      const uuid = communique.imageUUID;
+      const status = communique.publicationStatus;
+      if (
+        !uuid ||
+        this.communiqueService.communiqueImages[uuid] ||
+        this.pendingImages.has(uuid) ||
+        (status !== PublicationStatus.PUBLISHED &&
+          status !== PublicationStatus.DRAFT)
+      ) {
+        continue;
+      }
+
+      this.pendingImages.add(uuid);
+      this.communiqueService
+        .getImageByUUID(uuid, status)
+        .pipe(takeUntilDestroyed(this.destroyRef))
+        .subscribe({
           next: (blob: Blob) => {
-            const imageUrl = URL.createObjectURL(blob);
+            this.pendingImages.delete(uuid);
             this.communiqueService.communiqueImages = {
               ...this.communiqueService.communiqueImages,
-              [communique.imageUUID]: imageUrl,
+              [uuid]: URL.createObjectURL(blob),
             };
           },
           error: (err) => {
+            this.pendingImages.delete(uuid);
             console.error("Erreur lors de la récupération du l'image", err);
           },
         });
-      } else if (communique.publicationStatus === PublicationStatus.DRAFT) {
-        this.communiqueService
-          .getImageByUUID(communique.imageUUID, PublicationStatus.DRAFT)
-          .subscribe({
-            next: (blob: Blob) => {
-              const imageUrl = URL.createObjectURL(blob);
-              this.communiqueService.communiqueImages = {
-                ...this.communiqueService.communiqueImages,
-                [communique.imageUUID]: imageUrl,
-              };
-            },
-            error: (err) => {
-              console.error("Erreur lors de la récupération du l'image", err);
-            },
-          });
-      }
     }
   }
 

@@ -1,4 +1,6 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { catchError, debounceTime, EMPTY, Subject, switchMap } from 'rxjs';
 import { CommuniqueList } from '../components/communique-list/communique-list';
 import { LoadMorePaginatorComponent } from '../components/app-loadMore-paginator/app-loadMore-paginator';
 import {
@@ -26,6 +28,12 @@ import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 })
 export class CommuniquePage implements OnInit {
   private translateService: TranslateService = inject(TranslateService);
+  private destroyRef = inject(DestroyRef);
+
+  // Chaque émission déclenche un chargement ; switchMap annule la requête précédente
+  private fetchTrigger$ = new Subject<void>();
+  // Saisies du filtre, regroupées par debounce avant de lancer la recherche
+  private filterChange$ = new Subject<FilterCriteria>();
 
   filteredCommuniques: CommuniqueReadDTO[] = [];
 
@@ -47,10 +55,36 @@ export class CommuniquePage implements OnInit {
   constructor(private communiqueService: CommuniqueService) {}
 
   ngOnInit(): void {
+    this.fetchTrigger$
+      .pipe(
+        switchMap(() =>
+          this.communiqueService
+            .getFilteredCommunique(this.currentFilter, this.currentPage, this.rows)
+            .pipe(
+              catchError((err: any) => {
+                console.error('HTTP error', err);
+                return EMPTY;
+              }),
+            ),
+        ),
+        takeUntilDestroyed(this.destroyRef),
+      )
+      .subscribe((data: any) => {
+        this.filteredCommuniques = data.content ?? [];
+        this.totalPages = data.totalPages ?? 0;
+      });
+
+    this.filterChange$
+      .pipe(debounceTime(300), takeUntilDestroyed(this.destroyRef))
+      .subscribe((event) => this.applyFilter(event));
+
+    this.translateService.onLangChange
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => {
+        this.fetchCommuniques();
+      });
+
     this.fetchCommuniques();
-    this.translateService.onLangChange.subscribe(() => {
-      this.fetchCommuniques();
-    });
   }
 
   fetchCommuniques(options?: {
@@ -65,20 +99,14 @@ export class CommuniquePage implements OnInit {
     this.currentPage = options?.page ?? this.currentPage;
     this.rows = options?.size ?? this.rows;
 
-    this.communiqueService
-      .getFilteredCommunique(this.currentFilter, this.currentPage, this.rows)
-      .subscribe({
-        next: (data: any) => {
-          console.log("voici data : " , data);
-          this.filteredCommuniques = data.content ?? [];
-          console.log('Communiqués récupérés:', this.filteredCommuniques);
-          this.totalPages = data.totalPages ?? 0;
-        },
-        error: (err: any) => console.error('HTTP error', err),
-      });
+    this.fetchTrigger$.next();
   }
 
   onFilter(event: FilterCriteria) {
+    this.filterChange$.next(event);
+  }
+
+  private applyFilter(event: FilterCriteria) {
     const filter: CommuniqueFilterClass = {
       title: event.searchText,
       sortDirection:

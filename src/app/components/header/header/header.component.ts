@@ -87,8 +87,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   menuBackgrounds: Record<string, string> = {
     '/': 'assets/images/ima1.png',
     '/about': 'assets/images/ima2.png',
-    '/galerie': 'assets/images/Rois.gif',
-    '/publication': 'assets/images/Rois.gif',
+    // '/galerie': 'assets/images/Rois.gif',
+    // '/publication': 'assets/images/Rois.gif',
     '/partenariat': 'assets/images/diap4.png',
     '/travail': 'assets/images/diap2.png',
     '/appels-offres': 'assets/images/diap4.png',
@@ -129,10 +129,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.loadTranslatedMenus();
     });
 
-    const initialBackground = this.getBackgroundForUrl(this.router.url);
-    if (initialBackground) {
-      this.loadBackgroundImage(initialBackground, false);
-    }
+    // Sans image dédiée à la route (ex. /projet), on démarre sur l'image courante du carrousel
+    const initialBackground =
+      this.getBackgroundForUrl(this.router.url) ??
+      this.heroImages[this.currentImageIndex];
+    this.loadBackgroundImage(initialBackground, false);
     this.showHero.set(this.shouldShowHeroForUrl(this.router.url));
 
     this.router.events
@@ -140,12 +141,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .subscribe((event: any) => {
         const url = event.urlAfterRedirects || event.url;
         this.showHero.set(this.shouldShowHeroForUrl(url));
-        const newBackground = this.getBackgroundForUrl(url);
+        // Route sans image dédiée : on garde l'image affichée au lieu de vider le carrousel
+        const newBackground =
+          this.getBackgroundForUrl(url) ??
+          this.currentBackground ??
+          this.heroImages[this.currentImageIndex];
 
-        if (newBackground && newBackground !== this.currentBackground) {
+        if (newBackground !== this.currentBackground) {
           this.loadBackgroundImage(newBackground, true);
-        } else {
-          this.currentBackground = newBackground;
         }
 
         // Mettre à jour la section actuelle
