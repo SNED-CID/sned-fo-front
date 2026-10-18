@@ -21,6 +21,8 @@ interface Section {
   paragraphs?: string[];
   image: string;
   image2?: string;
+  // Affiche l'image entière (sans rognage) dans la carte
+  fullImage?: boolean;
 }
 
 @Component({
@@ -63,7 +65,11 @@ interface Section {
                 <app-lazy-image
                   [src]="section.image"
                   [alt]="section.title"
-                  imageClass="rounded-2xl shadow-lg w-full max-w-md lg:max-w-lg 2xl:max-w-2xl aspect-[16/10] max-h-[320px] lg:max-h-[360px] object-cover"
+                  [imageClass]="
+                    section.fullImage
+                      ? 'rounded-2xl shadow-lg w-full max-w-md lg:max-w-lg 2xl:max-w-2xl h-auto object-contain'
+                      : 'rounded-2xl shadow-lg w-full max-w-md lg:max-w-lg 2xl:max-w-2xl aspect-[16/10] max-h-[320px] lg:max-h-[360px] object-cover'
+                  "
                   width="100%"
                   height="auto"
                 >
@@ -281,7 +287,8 @@ export class ProjetComponent implements OnInit {
         paragraphs: this.translateService.instant(
           'projet_liaison_fixe.composante_géostratégique.paragraphs',
         ),
-        image: 'assets/images/s2.jpg',
+        image: 'assets/images/volet-geostrategique-image.png',
+        fullImage: true,
       },
     ];
 
