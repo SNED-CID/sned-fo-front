@@ -119,6 +119,12 @@
         {{ 'communique.links.es' | translate }}
       </a>
     }
+
+    <!-- Téléchargement des fichiers joints (sélection de fichiers ou tous) -->
+    <app-communique-files-download
+      [filesUUID]="communique.filesUUID"
+      [title]="communique.title"
+    ></app-communique-files-download>
   </div>
 </div>
               

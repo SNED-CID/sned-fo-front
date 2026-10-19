@@ -20,11 +20,12 @@ import {
 } from '../../../../services/communique.service';
 import { CommuniqueReadMoreComponent } from '../../../readmore/communiqueReadMore.component';
 import { parseLocalDateTimeToDate } from '../../../../utils/date-utils';
+import { CommuniqueFilesDownload } from '../communique-files-download/communique-files-download';
 
 @Component({
   selector: 'app-communique-list',
   standalone: true,
-  imports: [NgIf, DatePipe, CommuniqueReadMoreComponent, TranslatePipe],
+  imports: [NgIf, DatePipe, CommuniqueReadMoreComponent, TranslatePipe, CommuniqueFilesDownload],
   templateUrl: './communique-list.html',
   styleUrls: ['./communique-list.scss'],
 })

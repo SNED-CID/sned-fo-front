@@ -341,6 +341,18 @@
       "fr": "FR : Lien",
       "en": "EN : Lien",
       "es": "ES : Lien"
+    },
+    "files": {
+      "button": "Fichiers",
+      "title": "Télécharger les fichiers",
+      "loading": "Chargement des fichiers…",
+      "select_all": "Tout sélectionner",
+      "file": "Fichier {{n}}",
+      "download_one": "Télécharger ce fichier",
+      "download_selected": "Télécharger la sélection ({{n}})",
+      "download_all": "Tout télécharger ({{n}})",
+      "cancel": "Annuler",
+      "close": "Fermer"
     }
   },
   "careers": {

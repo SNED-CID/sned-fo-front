@@ -338,6 +338,18 @@
       "fr": "FR : رابط",
       "en": "EN : رابط",
       "es": "ES : رابط"
+    },
+    "files": {
+      "button": "الملفات",
+      "title": "تحميل الملفات",
+      "loading": "جارٍ تحميل الملفات…",
+      "select_all": "تحديد الكل",
+      "file": "ملف {{n}}",
+      "download_one": "تحميل هذا الملف",
+      "download_selected": "تحميل المحدد ({{n}})",
+      "download_all": "تحميل الكل ({{n}})",
+      "cancel": "إلغاء",
+      "close": "إغلاق"
     }
   },
   "careers": {

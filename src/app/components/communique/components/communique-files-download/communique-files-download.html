@@ -1,0 +1,135 @@
+@if (count > 0) {
+  <!-- Bouton d'ouverture -->
+  <button
+    type="button"
+    (click)="openDialog()"
+    class="btn-lien cursor-pointer flex items-center gap-2 px-3 sm:px-5 py-2 text-sm sm:text-base justify-center rounded-full bg-[var(--sned-orange)] text-white font-medium transition-all duration-300 hover:translate-y-[-2px] whitespace-nowrap"
+    [attr.aria-label]="'communique.files.button' | translate"
+  >
+    <i class="fas fa-download" aria-hidden="true"></i>
+    <span>{{ 'communique.files.button' | translate }}</span>
+    <span class="files-badge">{{ count }}</span>
+  </button>
+
+  <!-- Fenêtre de sélection -->
+  @if (open()) {
+    <!-- Déplacé dans <body> à l'ouverture (voir modalRef) : hors de la ligne de la liste animée -->
+    <div #modal>
+    <div class="files-overlay" (click)="close()"></div>
+
+    <div
+      data-lenis-prevent
+      class="files-dialog"
+      role="dialog"
+      aria-modal="true"
+      [attr.aria-label]="'communique.files.title' | translate"
+    >
+      <!-- En-tête -->
+      <div class="flex items-start justify-between gap-4 p-5 border-b border-slate-200">
+        <div class="min-w-0">
+          <h3 class="text-lg sm:text-xl font-bold text-slate-800 m-0">
+            {{ 'communique.files.title' | translate }}
+          </h3>
+          @if (title) {
+            <p class="text-sm text-slate-500 mt-1 mb-0 truncate">{{ title }}</p>
+          }
+        </div>
+        <button
+          type="button"
+          (click)="close()"
+          class="cursor-pointer w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-full text-slate-500 hover:bg-slate-100 hover:text-slate-800 transition-colors"
+          [attr.aria-label]="'communique.files.close' | translate"
+        >
+          <i class="fas fa-xmark" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <!-- Contenu -->
+      <div class="files-body">
+        @if (loadingInfos()) {
+          <div class="flex items-center justify-center gap-3 py-10 text-slate-500">
+            <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+            <span>{{ 'communique.files.loading' | translate }}</span>
+          </div>
+        } @else {
+          <!-- Tout sélectionner -->
+          <label class="file-row file-row--all">
+            <input
+              type="checkbox"
+              class="file-checkbox"
+              [checked]="allSelected()"
+              [indeterminate]="someSelected()"
+              (change)="toggleAll()"
+            />
+            <span class="font-semibold text-slate-700">
+              {{ 'communique.files.select_all' | translate }}
+            </span>
+            <span class="ms-auto text-xs text-slate-400 whitespace-nowrap">
+              {{ selectedCount() }} / {{ files().length }}
+            </span>
+          </label>
+
+          <ul class="list-none m-0 p-0 flex flex-col gap-2">
+            @for (file of files(); track file.uuid; let i = $index) {
+              <li>
+                <label class="file-row" [class.file-row--selected]="isSelected(file.uuid)">
+                  <input
+                    type="checkbox"
+                    class="file-checkbox"
+                    [checked]="isSelected(file.uuid)"
+                    (change)="toggle(file.uuid)"
+                  />
+                  <i [class]="fileIcon(file) + ' text-xl flex-shrink-0'" aria-hidden="true"></i>
+                  <span class="min-w-0 flex-1">
+                    <span class="block truncate text-slate-800" [title]="file.name ?? ''">
+                      {{ file.name ?? ('communique.files.file' | translate: { n: i + 1 }) }}
+                    </span>
+                    @if (file.size != null) {
+                      <span class="block text-xs text-slate-400">{{ formatSize(file.size) }}</span>
+                    }
+                  </span>
+                  <button
+                    type="button"
+                    (click)="$event.preventDefault(); $event.stopPropagation(); downloadOne(file)"
+                    class="cursor-pointer w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-full text-[var(--sned-orange)] hover:bg-orange-50 transition-colors"
+                    [attr.aria-label]="'communique.files.download_one' | translate"
+                    [title]="'communique.files.download_one' | translate"
+                  >
+                    <i class="fas fa-download" aria-hidden="true"></i>
+                  </button>
+                </label>
+              </li>
+            }
+          </ul>
+        }
+      </div>
+
+      <!-- Pied -->
+      <div class="flex flex-wrap items-center justify-end gap-3 p-5 border-t border-slate-200">
+        <button
+          type="button"
+          (click)="close()"
+          class="cursor-pointer px-5 py-2 rounded-full border border-slate-300 text-slate-600 font-medium hover:bg-slate-50 transition-colors"
+        >
+          {{ 'communique.files.cancel' | translate }}
+        </button>
+        <button
+          type="button"
+          (click)="downloadSelected()"
+          [disabled]="loadingInfos() || selectedCount() === 0 || downloading()"
+          class="btn-lien cursor-pointer flex items-center gap-2 px-5 py-2 rounded-full bg-[var(--sned-orange)] text-white font-medium transition-all duration-300 hover:translate-y-[-2px] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+        >
+          <i
+            [class]="downloading() ? 'fas fa-spinner fa-spin' : 'fas fa-download'"
+            aria-hidden="true"
+          ></i>
+          {{
+            (allSelected() ? 'communique.files.download_all' : 'communique.files.download_selected')
+              | translate: { n: selectedCount() }
+          }}
+        </button>
+      </div>
+    </div>
+    </div>
+  }
+}

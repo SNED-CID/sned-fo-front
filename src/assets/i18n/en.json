@@ -290,6 +290,18 @@
       "fr": "FR : Link",
       "en": "EN : Link",
       "es": "ES : Link"
+    },
+    "files": {
+      "button": "Files",
+      "title": "Download files",
+      "loading": "Loading files…",
+      "select_all": "Select all",
+      "file": "File {{n}}",
+      "download_one": "Download this file",
+      "download_selected": "Download selection ({{n}})",
+      "download_all": "Download all ({{n}})",
+      "cancel": "Cancel",
+      "close": "Close"
     }
   },
   "careers": {
