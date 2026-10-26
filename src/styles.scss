@@ -143,10 +143,10 @@ p, span, div {
   color: #139dcc;
 }
 
-/* Image dans le texte : <img src="assets/images/xxx.jpg" alt="…"> (un élément "paragraphs" dédié) */
+/* Image dans le texte : <img src="assets/images/xxx.webp" width="…" height="…" alt="…"> (un élément "paragraphs" dédié)
+   width/height = taille d'origine du fichier : la place est réservée avant le chargement */
 .sned-richtext img {
   display: block;
-  width: auto;       /* taille d'origine */
   max-width: 100%;   /* sans dépasser le panneau */
   height: auto;
   margin: 1.5rem auto;

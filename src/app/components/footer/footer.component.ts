@@ -36,6 +36,8 @@ import { LazyImageComponent } from '../shared/lazy-image/lazy-image.component';
               <app-lazy-image
                 [src]="getLogoPath()"
                 alt="SNED Logo"
+                [imgWidth]="800"
+                [imgHeight]="getLogoPath().includes('arstdr') ? 236 : 266"
                 imageClass="h-10 w-auto"
                 [priority]="true"
               >
@@ -131,6 +133,6 @@ export class FooterComponent {
     const isArabic = currentLang === 'ar';
 
     // Pour le footer, on utilise toujours les logos sur fond sombre
-    return isArabic ? 'assets/logos/arstdr.png' : 'assets/logos/snednotext.png';
+    return isArabic ? 'assets/logos/arstdr.webp' : 'assets/logos/snednotext.webp';
   }
 }

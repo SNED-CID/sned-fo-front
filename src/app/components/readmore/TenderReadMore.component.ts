@@ -8,8 +8,9 @@ import {
   OnDestroy,
   OnInit,
   signal,
+  PLATFORM_ID,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { trigger, style, transition, animate } from '@angular/animations';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { LoaderComponent } from '../loader/loader.component';
@@ -414,6 +415,7 @@ import DOMPurify from 'dompurify';
 export class TenderReadMoreComponent implements OnInit, OnDestroy {
   private translate = inject(TranslateService);
   private sanitizer = inject(DomSanitizer);
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
   @Input() label = 'shared.readmore.read_more';
   @Input() tenderId: number | null = null;
@@ -559,6 +561,9 @@ export class TenderReadMoreComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    if (!this.isBrowser) {
+      return;
+    }
     document.documentElement.classList.remove('overflow-hidden');
     document.body.classList.remove('overflow-hidden', 'readmore-open');
   }

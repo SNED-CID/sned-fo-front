@@ -12,6 +12,8 @@ import { TranslatePipe } from '@ngx-translate/core';
         <img
           [src]="src"
           [alt]="alt"
+          [attr.width]="imgWidth"
+          [attr.height]="imgHeight"
           [class]="imageClass"
           (load)="onImageLoad()"
           (error)="onImageError()"
@@ -78,6 +80,8 @@ export class LazyImageComponent implements OnInit {
   @Input() width: string = 'auto';
   @Input() height: string = 'auto';
   @Input() priority: boolean = false; // Pour les images importantes (logo, hero)
+  @Input() imgWidth?: number; // Taille réelle du fichier : réserve la place avant chargement (CLS)
+  @Input() imgHeight?: number;
 
   isLoaded = signal(false);
   hasError = signal(false);

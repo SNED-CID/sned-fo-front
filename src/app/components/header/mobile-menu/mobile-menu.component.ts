@@ -64,6 +64,7 @@ export interface Language {
           class="flex items-center justify-center w-10 h-10 rounded-lg bg-white/90 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--sned-orange)]/50">
           <img [src]="currentLanguage.flag"
                [alt]="currentLanguage.label"
+               width="20" height="20"
                class="w-5 h-5 rounded-full object-cover"/>
         </button>
 
@@ -77,7 +78,7 @@ export interface Language {
                     [class.bg-[var(--sned-orange)]="lang.code === currentLanguage.code"
                     [class.text-white]="lang.code === currentLanguage.code"
                     class="w-full flex items-center space-x-3 px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 hover:bg-[var(--sned-orange)]/10 hover:text-[var(--sned-orange)]">
-              <img [src]="lang.flag" [alt]="lang.label" class="w-4 h-4 rounded-full object-cover flex-shrink-0"/>
+              <img [src]="lang.flag" [alt]="lang.label" width="16" height="16" class="w-4 h-4 rounded-full object-cover flex-shrink-0"/>
               <span>{{ lang.label }}</span>
               <i *ngIf="lang.code === currentLanguage.code" class="fas fa-check w-4 h-4 ml-auto"></i>
             </button>

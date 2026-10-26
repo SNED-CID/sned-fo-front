@@ -1,4 +1,5 @@
-import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Directive({
   selector: '[appScrollAnimation]',
@@ -7,6 +8,8 @@ import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 export class ScrollAnimationDirective implements OnInit {
   @Input() animationDelay: number = 0; // délai en ms
   @Input() animationType: 'fadeUp' | 'fadeIn' | 'slideLeft' | 'slideRight' = 'fadeUp';
+
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
   constructor(private el: ElementRef) {}
 
@@ -20,6 +23,11 @@ export class ScrollAnimationDirective implements OnInit {
 
     // Ne pas créer de contexte de stacking qui affecterait les éléments fixed enfants
     element.style.isolation = 'auto';
+
+    // Rendu serveur : pas d'IntersectionObserver
+    if (!this.isBrowser) {
+      return;
+    }
 
     // Créer l'Intersection Observer
     const observer = new IntersectionObserver(

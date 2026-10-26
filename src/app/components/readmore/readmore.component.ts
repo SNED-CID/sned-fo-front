@@ -112,7 +112,9 @@ import { CommonModule } from '@angular/common';
                 class="mb-4 w-3/4 mx-auto aspect-[4/3] flex items-center justify-center gap-8 p-8 bg-gradient-to-r from-blue-50 to-orange-50 rounded-lg shadow-md"
               >
                 <app-lazy-image
-                  src="assets/logos/snednotext.png"
+                  src="assets/logos/snednotext.webp"
+                  [imgWidth]="800"
+                  [imgHeight]="266"
                   alt="SNED Logo"
                   imageClass="h-20 w-auto object-contain"
                   width="auto"
@@ -122,7 +124,9 @@ import { CommonModule } from '@angular/common';
                 </app-lazy-image>
                 <div class="text-3xl font-bold text-gray-400">+</div>
                 <app-lazy-image
-                  src="assets/logos/secegsa.png"
+                  src="assets/logos/secegsa.webp"
+                  [imgWidth]="800"
+                  [imgHeight]="800"
                   alt="SECEGSA Logo"
                   imageClass="h-20 w-auto object-contain"
                   width="auto"

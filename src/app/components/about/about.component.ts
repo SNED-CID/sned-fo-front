@@ -72,7 +72,9 @@ interface Section {
                     }"
                   >
                     <app-lazy-image
-                      src="assets/logos/snednotext.png"
+                      src="assets/logos/snednotext.webp"
+                      [imgWidth]="800"
+                      [imgHeight]="266"
                       alt="SNED Logo"
                       imageClass="h-20 w-auto object-contain"
                       width="auto"
@@ -82,7 +84,9 @@ interface Section {
                     </app-lazy-image>
                     <div class="text-3xl font-bold text-gray-400">+</div>
                     <app-lazy-image
-                      src="assets/logos/secegsa.png"
+                      src="assets/logos/secegsa.webp"
+                      [imgWidth]="800"
+                      [imgHeight]="800"
                       alt="SECEGSA Logo"
                       imageClass="h-20 w-auto object-contain"
                       width="auto"
@@ -263,7 +267,9 @@ interface Section {
               @defer (on viewport; prefetch on idle) {
                 <div class="p-6 text-center group">
                   <app-lazy-image
-                    src="assets/images/orga.png"
+                    src="assets/images/orga.webp"
+                    [imgWidth]="836"
+                    [imgHeight]="532"
                     alt="organigramme"
                     imageClass="rounded-lg shadow-md w-full max-w-md lg:max-w-lg 2xl:max-w-2xl aspect-[16/10] max-h-[320px] lg:max-h-[360px] object-cover transition-all duration-500 ease-out hover:scale-110 hover:shadow-2xl cursor-pointer group-hover:opacity-100"
                     width="100%"
@@ -436,14 +442,14 @@ export class AboutComponent implements OnInit {
       title: this.translateService.instant('about.cadre.title'),
       short: this.translateService.instant('about.cadre.short'),
       paragraphs: this.translateService.instant('about.cadre.paragraphs'),
-      image: 'assets/images/cadre.jpg',
+      image: 'assets/images/cadre.webp',
     },
     {
       id: 'missions',
       title: this.translateService.instant('about.missions.title'),
       short: this.translateService.instant('about.missions.short'),
       paragraphs: this.translateService.instant('about.missions.paragraphs'),
-      image: 'assets/images/history.jpg',
+      image: 'assets/images/history.webp',
     },
     {
       id: 'sned_secegsa',

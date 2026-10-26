@@ -23,6 +23,8 @@ interface Section {
   image2?: string;
   // Affiche l'image entière (sans rognage) dans la carte
   fullImage?: boolean;
+  imageWidth?: number;
+  imageHeight?: number;
 }
 
 @Component({
@@ -65,6 +67,8 @@ interface Section {
                 <app-lazy-image
                   [src]="section.image"
                   [alt]="section.title"
+                  [imgWidth]="section.imageWidth"
+                  [imgHeight]="section.imageHeight"
                   [imageClass]="
                     section.fullImage
                       ? 'rounded-2xl shadow-lg w-full max-w-md lg:max-w-lg 2xl:max-w-2xl h-auto object-contain'
@@ -209,7 +213,7 @@ export class ProjetComponent implements OnInit {
         paragraphs: this.translateService.instant(
           'projet_liaison_fixe.description_du_projet.paragraphs',
         ),
-        image: 'assets/images/description.jpg',
+        image: 'assets/images/description.webp',
       },
       {
         id: 'historique-du-projet',
@@ -235,7 +239,7 @@ export class ProjetComponent implements OnInit {
         paragraphs: this.translateService.instant(
           'projet_liaison_fixe.recherche_sur_le_milieu_physique.paragraphs',
         ),
-        image: 'assets/images/mp6.jpg',
+        image: 'assets/images/mp6.webp',
       },
       {
         id: 'ingenierie-du-projet',
@@ -248,7 +252,7 @@ export class ProjetComponent implements OnInit {
         paragraphs: this.translateService.instant(
           'projet_liaison_fixe.ingénierie_du_projet.paragraphs',
         ),
-        image: 'assets/images/i1.jpg',
+        image: 'assets/images/i1.webp',
       },
       {
         id: 'aspects-juridiques',
@@ -261,7 +265,7 @@ export class ProjetComponent implements OnInit {
         paragraphs: this.translateService.instant(
           'projet_liaison_fixe.aspects_juridiques.paragraphs',
         ),
-        image: 'assets/images/aspect-jur.jpeg',
+        image: 'assets/images/aspect-jur.webp',
       },
       {
         id: 'realite-et-perspectives-socioeconomiques',
@@ -274,7 +278,7 @@ export class ProjetComponent implements OnInit {
         paragraphs: this.translateService.instant(
           'projet_liaison_fixe.réalité_et_perspectives_socioéconomiques.paragraphs',
         ),
-        image: 'assets/images/s1.jpg',
+        image: 'assets/images/s1.webp',
       },
       {
         id: 'composante-geostrategique',
@@ -287,8 +291,10 @@ export class ProjetComponent implements OnInit {
         paragraphs: this.translateService.instant(
           'projet_liaison_fixe.composante_géostratégique.paragraphs',
         ),
-        image: 'assets/images/volet-geostrategique-image.png',
+        image: 'assets/images/volet-geostrategique-image.webp',
         fullImage: true,
+        imageWidth: 554,
+        imageHeight: 499,
       },
     ];
 

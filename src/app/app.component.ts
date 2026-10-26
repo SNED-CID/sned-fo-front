@@ -1,4 +1,5 @@
-import {AfterViewInit, Component, OnInit, signal, inject} from '@angular/core';
+import {AfterViewInit, Component, OnInit, signal, inject, PLATFORM_ID} from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import {HeaderComponent} from './components/header/header/header.component';
 import Lenis from 'lenis';
 import {AboutComponent} from './components/about/about.component';
@@ -7,6 +8,7 @@ import {Router, NavigationEnd, RouterOutlet} from '@angular/router';
 import {FooterComponent} from './components/footer/footer.component';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { AnalyticsService } from './services/analytics.service';
+import { SeoService } from './services/seo.service';
 import { filter } from 'rxjs/operators';
 
 @Component({
@@ -22,9 +24,13 @@ export class AppComponent implements AfterViewInit, OnInit{
   private readonly translateService = inject(TranslateService);
   private readonly analytics = inject(AnalyticsService);
   private readonly router = inject(Router);
+  private readonly seo = inject(SeoService);
   private pageLoadTime: number = Date.now();
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
   ngOnInit() {
+    this.seo.init();
+
     // Initialiser la langue courante
     this.currentLang.set(this.translateService.currentLang || this.translateService.defaultLang || 'fr');
 
@@ -74,10 +80,13 @@ export class AppComponent implements AfterViewInit, OnInit{
       return this.translateService.instant(translationKey);
     }
 
-    return document.title || 'SNED';
+    return (this.isBrowser && document.title) || 'SNED';
   }
 
   ngAfterViewInit() {
+    if (!this.isBrowser) {
+      return;
+    }
     const lenis = new Lenis({
       lerp: 0.1,
       smoothWheel: true,

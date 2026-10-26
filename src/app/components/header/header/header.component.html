@@ -14,7 +14,9 @@
           <span class="logo-water-wrap">
             <img
               [src]="getLogoPath()"
-              alt="SNED Logo"
+              [alt]="'seo.images.logo' | translate"
+              width="800"
+              [attr.height]="currentLang() === 'ar' ? 236 : 266"
               class="h-12 lg:h-16 w-auto object-contain transition-all duration-300 filter drop-shadow-sm group-hover:drop-shadow-md"
             />
           </span>
@@ -212,8 +214,10 @@
     class="hero-img"
     [class.hero-img-below-nav]="currentBackground === heroImages[0]"
     [src]="currentBackground"
-    alt=""
-    aria-hidden="true"
+    [alt]="'seo.images.hero' | translate"
+    width="1672"
+    height="941"
+    fetchpriority="high"
   />
 
   @if (transitionBackground) {
@@ -222,6 +226,8 @@
     [class.hero-img-below-nav]="transitionBackground === heroImages[0]"
     [class.hero-img-next-active]="isBackgroundTransitioning()"
     [src]="transitionBackground"
+    width="1672"
+    height="941"
     alt=""
     aria-hidden="true"
   />

@@ -5,8 +5,10 @@ import {
   OnInit,
   OnDestroy,
   inject,
+  NgZone,
+  PLATFORM_ID,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { LoaderComponent } from '../../loader/loader.component';
 import { filter } from 'rxjs';
@@ -85,23 +87,23 @@ export class HeaderComponent implements OnInit, OnDestroy {
   };
 
   menuBackgrounds: Record<string, string> = {
-    '/': 'assets/images/ima1.png',
-    '/about': 'assets/images/ima2.png',
+    '/': 'assets/images/ima1.webp',
+    '/about': 'assets/images/ima2.webp',
     // '/galerie': 'assets/images/Rois.gif',
     // '/publication': 'assets/images/Rois.gif',
-    '/partenariat': 'assets/images/diap4.png',
-    '/travail': 'assets/images/diap2.png',
-    '/appels-offres': 'assets/images/diap4.png',
+    '/partenariat': 'assets/images/diap4.webp',
+    '/travail': 'assets/images/diap2.webp',
+    '/appels-offres': 'assets/images/diap4.webp',
   };
 
   heroImages: string[] = [
-    'assets/images/ima1.png',
-    'assets/images/ima3.jpeg',
+    'assets/images/ima1.webp',
+    'assets/images/ima3.webp',
     'assets/images/ima4.jpeg',
-    'assets/images/ima5.jpeg',
-    'assets/images/ima2.png',
-    'assets/images/ima6.jpeg',
-    'assets/images/ima7.jpeg',
+    'assets/images/ima5.webp',
+    'assets/images/ima2.webp',
+    'assets/images/ima6.webp',
+    'assets/images/ima7.webp',
   ];
 
   currentBackground: string | null = null;
@@ -119,6 +121,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) {}
   private readonly localeService = inject(LocaleService);
   private readonly analytics = inject(AnalyticsService);
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+  private readonly ngZone = inject(NgZone);
 
   ngOnInit() {
     // Charger les menus traduits
@@ -155,8 +159,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.updateCurrentSection(url);
       });
 
-    this.startHeroImageRotation();
+    // Pas de carrousel côté serveur : un setInterval bloquerait le prérendu.
+    // Côté navigateur, il démarre une fois la page chargée pour ne pas
+    // concurrencer l'image principale (LCP), le JS et le CSS.
+    if (this.isBrowser) {
+      if (document.readyState === 'complete') {
+        this.startHeroImageRotation();
+      } else {
+        window.addEventListener('load', this.onWindowLoad, { once: true });
+      }
+    }
   }
+
+  private readonly onWindowLoad = () => this.startHeroImageRotation();
 
   private shouldShowHeroForUrl(url: string): boolean {
     const urlWithoutFragment = (url || '').split('#')[0].split('?')[0];
@@ -164,6 +179,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    if (this.isBrowser) {
+      window.removeEventListener('load', this.onWindowLoad);
+    }
+
     if (this.heroRotationInterval) {
       clearInterval(this.heroRotationInterval);
       this.heroRotationInterval = null;
@@ -180,13 +199,24 @@ export class HeaderComponent implements OnInit, OnDestroy {
       clearInterval(this.heroRotationInterval);
     }
 
-    this.heroRotationInterval = setInterval(() => {
-      this.currentImageIndex =
-        (this.currentImageIndex + 1) % this.heroImages.length;
+    // Hors zone Angular : un intervalle permanent empêcherait l'application
+    // d'être "stable" (fin de l'hydratation retardée)
+    this.ngZone.runOutsideAngular(() => {
+      this.heroRotationInterval = setInterval(() => {
+        // Onglet masqué : on ne télécharge pas d'image pour rien
+        if (document.hidden) {
+          return;
+        }
 
-      const nextImage = this.heroImages[this.currentImageIndex];
-      this.loadBackgroundImage(nextImage, true);
-    }, 3000);
+        this.ngZone.run(() => {
+          this.currentImageIndex =
+            (this.currentImageIndex + 1) % this.heroImages.length;
+
+          const nextImage = this.heroImages[this.currentImageIndex];
+          this.loadBackgroundImage(nextImage, true);
+        });
+      }, 3000);
+    });
   }
 
   private loadTranslatedMenus() {
@@ -495,6 +525,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private loadBackgroundImage(imagePath: string, withTransition = true) {
     // this.isBackgroundLoading.set(true);
 
+    // Sans transition (chargement initial / rendu serveur) : affichage direct,
+    // l'image prérendue reste en place à l'hydratation
+    if (!this.isBrowser || !withTransition) {
+      this.currentBackground = imagePath;
+      this.transitionBackground = null;
+      this.isBackgroundTransitioning.set(false);
+      return;
+    }
+
     const img = new Image();
     img.onload = () => {
       const shouldTransition =
@@ -534,9 +573,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     const isArabic = this.currentLang() === 'ar';
 
     if (isArabic) {
-      return 'assets/logos/arstdr.png';
+      return 'assets/logos/arstdr.webp';
     } else {
-      return 'assets/logos/snednotext.png';
+      return 'assets/logos/snednotext.webp';
     }
   }
 

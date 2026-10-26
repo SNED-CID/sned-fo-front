@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 declare global {
   interface Window {
@@ -10,11 +11,19 @@ declare global {
   providedIn: 'root'
 })
 export class AnalyticsService {
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+
   constructor() {
+    if (!this.isBrowser) {
+      return;
+    }
     window.dataLayer = window.dataLayer || [];
   }
 
   private pushEvent(event: string, parameters?: Record<string, any>) {
+    if (!this.isBrowser) {
+      return;
+    }
     try {
       window.dataLayer.push({
         event,
@@ -31,7 +40,7 @@ export class AnalyticsService {
     this.pushEvent('page_view', {
       page_path: pagePath,
       page_title: pageTitle,
-      page_location: window.location.href
+      page_location: this.isBrowser ? window.location.href : pagePath
     });
   }
 

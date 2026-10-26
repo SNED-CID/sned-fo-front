@@ -451,7 +451,7 @@
         "On the Spanish shore, the European rail corridors converge on the Algeciras hub. The eight municipalities of the Campo de Gibraltar will be the first to reap the benefits of this major project.",
         "Between these two shores, the fixed link will be much more than a tunnel: it will be the first land link between Europe and Africa.",
         "<span class=\"subheading\">An ambition that goes beyond transport</span>Bringing together two shores, two economies and two peoples: the fixed link will be decisive for the social, economic and human integration of Europe and Africa. It will act on four levels:<ul><li><strong>A stronger global hub.</strong> A crossroads of East-West maritime trade, the strait will gain a North-South rail axis. Far from competing with sea routes, this axis will complement them by finally connecting the European and African rail networks.</li><li><strong>Balanced development at every scale.</strong> Spain and Morocco, the two shores of the Mediterranean, Europe and Africa: each will find its own benefit.</li><li><strong>A powerful regional knock-on effect.</strong> Andalusia and northern Morocco will experience unprecedented economic and social growth. Spanish-Moroccan transport networks will become denser, and an unprecedented area of cooperation will open up between the European Union and the Maghreb.</li><li><strong>The “Strait of Gibraltar logistics hub”:</strong> the regions on both shores will continue to benefit from the growth in land and maritime trade, and will take advantage of the new infrastructure.</li></ul>",
-        "<img src=\"assets/images/s1.jpg\" alt=\"Socio-economic Component\">",
+        "<img src=\"assets/images/s1.webp\" width=\"682\" height=\"367\" alt=\"Socio-economic Component\">",
         "<strong>The ground is favourable.</strong> Within the Western Mediterranean (5+5 dialogue), the Spain-Morocco relationship is the most dynamic. Elsewhere in the region, air transport dominates, whereas between Spain and Morocco, sea transport still carries the majority of passengers (56%). This points to a strong need to cross the strait, which the fixed link will meet directly."
       ]
     },
@@ -463,7 +463,7 @@
         "<span class=\"lead\">A strait at the heart of global routes</span>",
         "More than 80% of world trade, by volume, travels by sea. These flows depend on a few strategic chokepoints linking oceans, seas and continents:<ul><li>the Strait of Malacca (Asia–Indian Ocean)</li><li>the Strait of Hormuz (Gulf hydrocarbons)</li><li>the Bab el-Mandeb and the Suez Canal (Asia–Europe)</li><li>the Panama Canal (Atlantic–Pacific)</li><li>the Bosphorus and the Dardanelles (Black Sea)</li><li>the Strait of Dover, crossed by the Channel Tunnel since 1994</li><li>the <strong>Strait of Gibraltar</strong>, the only passage between the Atlantic and the Mediterranean, with more than 100,000 ships a year.</li></ul>",
         "By linking Europe and Africa by rail, the Fixed Link Project across the Strait of Gibraltar would extend Morocco’s Atlantic axis into a coastal Euro-African corridor running through Tangier to the Gulf of Guinea. In return, this corridor, with its branches into the interior of the continent, would bring the project its traffic and its continental reach.",
-        "<img src=\"assets/images/volet-geostrategique-image.png\" alt=\"Geostrategic Component\">",
+        "<img src=\"assets/images/volet-geostrategique-image.webp\" width=\"554\" height=\"499\" alt=\"Geostrategic Component\">",
         "Relaunched in 2022, it is presented as an instrument of integration, not merely a crossing structure. It is part of the cooperation between the European Union and the Maghreb led by the European Commission, the Euro-Mediterranean Transport Forum, the GTMO 5+5, the UfM and, depending on the year, ECOSOC, through the United Nations Economic Commissions for Africa (ECA) and for Europe (UNECE).",
         "<span class=\"subheading\">Expected effects</span><ul><li><strong>At the regional level:</strong> the tunnel would give decisive momentum to the integration of the Campo de Gibraltar and the Tangier region, set to form a single economic area on both sides of the strait. It would attract investment, logistics platforms and industries, sources of jobs and sustainable development.</li><li><strong>At the transcontinental level:</strong> freed from the break of load at the strait, Euro-African networks would streamline the movement of goods, boost business productivity and encourage companies to set up on both shores, in favour of a more balanced Europe–Africa relationship.</li><li><strong>Morocco as a platform:</strong> the tunnel would strengthen – although it competes with it in some respects – the port of Tanger Med, the leading container port in the Mediterranean (11.1 million TEU in 2025), and deepen the relationship with Spain, Morocco’s leading trading partner (more than €22 billion in trade), supporting Morocco’s industrial upgrading.</li><li><strong>The Sahel and energy:</strong> as an extension of the Sahelian corridors and the Nigeria–Morocco gas pipeline, it would open an overland route to Europe for the Sahel’s energy resources. Equipped with service galleries, it could also carry cables to export Moroccan renewable electricity, but not the transport of energy products.</li></ul>",
         "<span class=\"subheading\">Conclusion</span>The Global Assessment Study of the project (EEG-09), commissioned in 2008 from an international consortium, already concluded:",
@@ -568,5 +568,86 @@
     "openMaps": "Open in Google Maps",
 
     "submit": "Send"
+  },
+  "seo": {
+    "site_name": "SNED",
+    "images": {
+      "logo": "SNED logo – National Company for the Strait of Gibraltar Studies",
+      "hero": "Strait of Gibraltar – Europe–Africa fixed link project"
+    },
+    "pages": {
+      "home": {
+        "title": "SNED – National Company for the Strait of Gibraltar Studies",
+        "description": "SNED carries out the studies for the fixed link project between Europe and Africa across the Strait of Gibraltar."
+      },
+      "about": {
+        "title": "About SNED",
+        "description": "Discover SNED: institutional framework, missions, partnership with SECEG SA, organization and board of directors."
+      },
+      "projet": {
+        "title": "Europe–Africa fixed link project",
+        "description": "Description, history, physical environment, engineering, socio-economic and geostrategic aspects of the Strait of Gibraltar fixed link project."
+      },
+      "galerie": {
+        "title": "Gallery",
+        "description": "Photos and visuals of the fixed link project across the Strait of Gibraltar."
+      },
+      "galerie_ingenierie": {
+        "title": "Gallery – Engineering",
+        "description": "Images of the engineering studies carried out for the Europe–Africa fixed link project."
+      },
+      "galerie_milieu_physique": {
+        "title": "Gallery – Physical environment",
+        "description": "Images of the Strait of Gibraltar physical environment studies carried out by SNED."
+      },
+      "galerie_socio_economique": {
+        "title": "Gallery – Socio-economic aspects",
+        "description": "Images of the socio-economic aspects of the Europe–Africa fixed link project."
+      },
+      "publication": {
+        "title": "Publications and press releases",
+        "description": "Press releases, news and publications from SNED about the Strait of Gibraltar fixed link project."
+      },
+      "partenariat": {
+        "title": "Partners",
+        "description": "SNED's national and international partners in the Europe–Africa fixed link project."
+      },
+      "appels_offres": {
+        "title": "Calls for tenders",
+        "description": "Browse the current calls for tenders and notices published by SNED."
+      },
+      "travail": {
+        "title": "Our work",
+        "description": "Conferences, communication, videos and statistics: discover SNED's work on the fixed link project."
+      },
+      "travail_congres": {
+        "title": "Our work – Conferences",
+        "description": "Conferences and scientific meetings about the Strait of Gibraltar fixed link project."
+      },
+      "travail_communication": {
+        "title": "Our work – Communication",
+        "description": "SNED's communication activities about the Europe–Africa fixed link project."
+      },
+      "travail_video": {
+        "title": "Our work – Videos",
+        "description": "Presentation videos of the fixed link project across the Strait of Gibraltar."
+      },
+      "travail_statistiques": {
+        "title": "Our work – Statistics",
+        "description": "Key figures and statistics from the studies carried out by SNED."
+      },
+      "site_map": {
+        "title": "Site map",
+        "description": "SNED site map: quickly access every page."
+      },
+      "mentions_legales": {
+        "title": "Legal notice",
+        "description": "Legal notice of the National Company for the Strait of Gibraltar Studies (SNED) website."
+      },
+      "contact": {
+        "title": "Contact",
+        "description": "Contact SNED: contact details, location and contact form."
+      }
+    }
   }
 }

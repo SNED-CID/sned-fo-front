@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -10,9 +11,14 @@ export class PreviewTokenService {
   private readonly PREVIEW_SESSION_DURATION = 15 * 60 * 1000;
   private previewTokenSubject = new BehaviorSubject<string | null>(this.getStoredToken());
   private tokenTimeoutHandle: any;
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
 
   constructor() {
+    // Pas de window/localStorage lors du rendu serveur (prérendu SEO)
+    if (!this.isBrowser) {
+      return;
+    }
     this.initializeTokenFromUrl();
     this.checkAndCleanExpiredToken();
   }

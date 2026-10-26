@@ -7,9 +7,10 @@ import {
   ViewChild,
   inject,
   signal,
+  PLATFORM_ID,
 } from '@angular/core';
 import { PartnerService, PartnerReadDTO } from '../../services/partner.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { forkJoin, map } from 'rxjs';
 import { ScrollAnimationDirective } from '../../directives/scroll-animation.directive';
@@ -39,6 +40,7 @@ export class PartnersComponent implements OnInit, AfterViewInit, OnDestroy {
   private service: PartnerService = inject(PartnerService);
   private sanitizer: DomSanitizer = inject(DomSanitizer);
   private translateService: TranslateService = inject(TranslateService);
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
   partners = signal<PartnerWithLogo[]>([]);
 
@@ -65,6 +67,10 @@ export class PartnersComponent implements OnInit, AfterViewInit, OnDestroy {
   private dragStartOffset = 0;
 
   ngOnInit(): void {
+    // Logos chargés en blob : uniquement côté navigateur
+    if (!this.isBrowser) {
+      return;
+    }
     this.loadPartners();
 
     this.translateService.onLangChange.subscribe(() => {
@@ -73,6 +79,9 @@ export class PartnersComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
+    if (!this.isBrowser) {
+      return;
+    }
     this.measureTrack();
     this.startAutoScroll();
   }
