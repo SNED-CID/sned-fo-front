@@ -1,5 +1,5 @@
 export const environment = {
     production: false,
     apiUrl: '/api',
-    siteUrl: 'https://www.sned.ma',
+    siteUrl: 'https://sned.gov.ma',
 };

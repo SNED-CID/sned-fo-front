@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://www.sned.ma/sitemap.xml
+Sitemap: https://sned.gov.ma/sitemap.xml
