@@ -12,7 +12,7 @@ COPY . .
 RUN npm run build -- --configuration=production
 
 # Stage final : Nginx avec SSL
-FROM nginx:1.27-alpine
+FROM nginx:1.30.7-alpine
 
 # Metadata
 LABEL maintainer="SNED Team" \
